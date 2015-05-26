@@ -5,6 +5,12 @@ var GuideModel = function(sequelize, DataTypes) {
     title: {
       type: DataTypes.STRING,
       allowNull: false
+    }, {
+      classMethods: {
+        associate: function(models) {
+          Guide.hasMany(models.section);
+        }
+      }
     }
   });
 
