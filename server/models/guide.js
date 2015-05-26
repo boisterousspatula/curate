@@ -6,19 +6,9 @@ var GuideModel = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
-    // author: {
-    //   type: DataTypes.STRING
-    //   // find out who is logged in at time of guide creation
-    // },
-    // sections: {
-
-    // },
-    // comments: {
-
-    // }
   });
 
-
+  return Guide;
 };
 
 module.exports = GuideModel;
