@@ -4,21 +4,28 @@ var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var userActions = require('../../actions/user');
 var userStore = require('../../stores/user');
+var SectionLink = require('./sectionLink.jsx');
 
-var getState = function() {
-	return {
-		user: userStore.get()
-	};
-};
+//var getState = function() {
+//	return {
+//		user: userStore.get()
+//	};
+//};
 
 var SectionComponent = React.createClass({
-	getInitialState: function () {
-		return getState();
-	},
+
 	render: function() {
+
 		return (
 			/* jshint ignore:start */
-			<p>this.props.user</p>
+			<li>
+				<h3>{this.props.sec.title}</h3>
+				<h4>{this.props.sec.description}</h4>
+				<ul>
+					<li>test</li>
+					<SectionLink link={this.props.sec.links}/>
+				</ul>
+			</li>
 			/* jshint ignore:end */
 		);
 	},

@@ -25,7 +25,14 @@ var Defaults = {
 		links: [
 			'google.com', 'facebook.com'
 		]
-	}]
+	},
+		{
+			title:'test 2',
+			description: 'this is a long desc...',
+			links: [
+				'espn.com', 'youtube.com'
+			]
+		}]
 
 
 };
