@@ -3,12 +3,14 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var userActions = require('../../actions/user');
+var SectionList = require('./sectionList.jsx');
 
-var ResetComponent = React.createClass({
+var GuideComponent = React.createClass({
 	render: function() {
 		return (
 			/* jshint ignore:start */
-				<h3>Guide</h3>
+
+				<SectionList> </SectionList>
 				/* jshint ignore:end */
 		);
 	},
@@ -19,4 +21,4 @@ var ResetComponent = React.createClass({
 	}
 });
 
-module.exports = ResetComponent;
+module.exports = GuideComponent;

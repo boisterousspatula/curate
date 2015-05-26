@@ -17,7 +17,15 @@ var Defaults = {
     lastName: 'Doe'
   },
 
-  messages: {}
+  messages: {},
+
+	sections: [{
+		title:'test title',
+		description: 'this is a long desc...',
+		links: [
+			'google.com', 'facebook.com'
+		]
+	}]
 
 
 };

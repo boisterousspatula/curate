@@ -29,7 +29,6 @@ var IndexComponent = React.createClass({
 	handleNewGuide: function(e){
 
 		e.preventDefault();
-		console.log("in new guide");
 		routeActions.setRoute('/createguide');
 	}
 });

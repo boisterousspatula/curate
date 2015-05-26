@@ -11,6 +11,7 @@ var ResetPage = React.createFactory(require('./components/account/reset.jsx'));
 var ForgotPage = React.createFactory(require('./components/account/forgot.jsx'));
 var SettingsPage = React.createFactory(require('./components/account/settings.jsx'));
 var GuidePage = React.createFactory(require('./components/guide/guide.jsx'));
+var SectionListPage = React.createFactory(require('./components/guide/sectionList.jsx'));
 
 var render = function(Page) {
   React.render(new Page(), document.getElementById('app-wrapper'));
@@ -74,12 +75,12 @@ var settings = function() {
 };
 
 var createGuide = function(){
-	console.log('f yea');
+
 	if (!userStore.get().loggedIn) {
 		return routeActions.setRoute('/login');
 	}
 
-	render(GuidePage);
+	render(SectionListPage);
 };
 
 var routes = {
