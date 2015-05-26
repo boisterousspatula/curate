@@ -25,7 +25,7 @@ module.exports = {
       .get('/user')
       .type('json')
       .set({
-        'authorization': 'Bearer ' + token,
+        'authorization': 'Bearer ' + token
       })
       .end(function(res) {
         if (res.ok) {
@@ -71,6 +71,7 @@ module.exports = {
       })
       .send(postData)
       .end(function(res) {
+
         if (res.ok) {
           var userData;
           // If auth token needs to be stored
@@ -128,6 +129,7 @@ module.exports = {
   },
 
   login: function(form, callback) {
+		console.log('in login', form);
     var cb = callback || function() {};
     cb.options = {
       successUrl: '/',

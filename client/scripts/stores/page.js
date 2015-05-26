@@ -17,10 +17,10 @@ var PageStore = new Store({
 });
 
 PageStore.dispatcherToken = Dispatcher.register(function(payload) {
-
   var action = payload.action;
 
   if (action.actionType === pageConstants.SET_CURRENT_PAGE) {
+		console.log('in page store', payload);
     _page = action.page;
 
     PageStore.emitChange();

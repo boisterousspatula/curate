@@ -6,6 +6,7 @@ var PayloadSources = require('../constants/payload-sources');
 
 var DefaultDispatcher = assign(new Dispatcher(), {
   handleViewAction: function(action) {
+		console.log('in dispatcher', action);
     this.dispatch({
       source: PayloadSources.VIEW_ACTION,
       action: action
