@@ -40,7 +40,7 @@ userActions.isAuthenticated({
 
     // Handle route and page changes
     Dispatcher.register(function(payload) {
-
+			console.log(payload);
       var action = payload.action;
 
       if (action.actionType === routesConstants.SET_CURRENT_ROUTE) {
@@ -59,4 +59,4 @@ userActions.isAuthenticated({
 
 });
 
-console.log('Welcome to Yeogurt');
+//console.log('Welcome to Yeogurt');

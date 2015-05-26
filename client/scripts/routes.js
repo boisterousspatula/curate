@@ -10,6 +10,8 @@ var SignupPage = React.createFactory(require('./components/account/signup.jsx'))
 var ResetPage = React.createFactory(require('./components/account/reset.jsx'));
 var ForgotPage = React.createFactory(require('./components/account/forgot.jsx'));
 var SettingsPage = React.createFactory(require('./components/account/settings.jsx'));
+var GuidePage = React.createFactory(require('./components/guide/guide.jsx'));
+var SectionListPage = React.createFactory(require('./components/guide/sectionList.jsx'));
 
 var render = function(Page) {
   React.render(new Page(), document.getElementById('app-wrapper'));
@@ -72,12 +74,22 @@ var settings = function() {
   render(SettingsPage);
 };
 
+var createGuide = function(){
+
+	if (!userStore.get().loggedIn) {
+		return routeActions.setRoute('/login');
+	}
+
+	render(SectionListPage);
+};
+
 var routes = {
   '/login': login,
   '/forgot': forgot,
   '/reset/:token': reset,
   '/signup': signup,
   '/settings': settings,
+	'/createguide': createGuide,
   '/': index
 };
 

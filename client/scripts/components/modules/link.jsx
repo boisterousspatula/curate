@@ -14,7 +14,7 @@ var LinkComponent = React.createClass({
   },
 
   render: function() {
-    return (
+		return (
       /* jshint ignore:start */
       <a onClick={this.handleClick} href={this.props.url} {...this.props}>{this.props.children}</a>
       /* jshint ignore:end */

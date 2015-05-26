@@ -17,10 +17,10 @@ var UserStore = new Store({
 });
 
 UserStore.dispatcherToken = Dispatcher.register(function(payload) {
-
   var action = payload.action;
 
   if (action.actionType === userConstants.SET_CURRENT_USER) {
+		console.log('in user store', payload);
     _user = action.user;
 
     UserStore.emitChange();
