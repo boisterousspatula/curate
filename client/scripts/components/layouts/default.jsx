@@ -13,7 +13,7 @@ var getState = function() {
   };
 };
 
-var DefaultComponent = React.createClass({
+var DefaultComponent =  React.createClass({
   mixins: [pageStore.mixin, userStore.mixin],
   componentDidMount: function() {
     pageStore.emitChange();
