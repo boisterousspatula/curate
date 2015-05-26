@@ -80,7 +80,7 @@ var createGuide = function(){
 		return routeActions.setRoute('/login');
 	}
 
-	render(SectionListPage);
+	render(GuidePage);
 };
 
 var routes = {
