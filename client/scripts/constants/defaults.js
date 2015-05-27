@@ -38,7 +38,7 @@ var Defaults = {
   },
 
   link: {
-    link: null;
+    link: null
   }
 
 };

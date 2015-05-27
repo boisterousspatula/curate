@@ -51,10 +51,11 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
   }
   else if(action.actionType === sectionConstants.CREATE_NEW_LINK){
     var index = payload.action.index;
+    console.log("in section store, pushing link at index", index);
 
-
-    console.log("in section store, pushing link")
-    _sections[index].link.push(sectionDefaults.link);
+    _sections[index].links.push(sectionDefaults.link);
+    console.log(_sections)
+    SectionStore.emitChange();
 
   }
 
