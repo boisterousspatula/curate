@@ -12,9 +12,23 @@ var Guide = db.guide;
  * GET /guide
  * Read guide data
  */
-
 var readGuide = function (req, res, next) {
-  // fill in GET for guide here
+  // need to find correct guide by id now
+  Guide.find(req.guide).success(function(guide) {
+    if (!guide) {
+      return res.status(400).json({
+        errors: [{
+          msg: 'Failed to find guide'
+        }]
+      });
+    }
+    res.status(200).json({
+      guide: guide
+    });
+  }).error(function(err) {
+    return next(err);
+  });
+
   console.log("readGuide controller GET response");
 };
 
@@ -26,7 +40,6 @@ var readGuide = function (req, res, next) {
  * @param links
  * @param comments ?
  */
-
 var createGuide = function(req, res, next) {
   // add assert for requiring a title to the guide
   console.log("readGuide controller POST response");
