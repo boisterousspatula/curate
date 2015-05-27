@@ -15,7 +15,7 @@ module.exports = {
   addLink: function(index){
     console.log("in guide actions addLink")
     Dispatcher.handleViewAction({
-      actionType: sectionConstants.CREATE_NEW_LINK
+      actionType: sectionConstants.CREATE_NEW_LINK,
       index: index
     })
   }

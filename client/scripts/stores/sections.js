@@ -36,6 +36,7 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
 	var action = payload.action;
 
 	if (action.actionType === sectionConstants.SET_SECTIONS) {
+    console.log(action.sections)
 		_sections = action.sections;
 
 		SectionStore.emitChange();
@@ -47,9 +48,10 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
     SectionStore.emitChange();
   }
   else if(action.actionType === sectionConstants.CREATE_NEW_LINK){
+    var index = payload.action.index
 
     console.log("in section store, pushing link")
-    _sections.link.push()
+    _sections[index].link.push(payload);
   }
 
 });
