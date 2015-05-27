@@ -11,6 +11,7 @@ var GuideModel = function(sequelize, DataTypes) {
       associate: function(models) {
         Guide.hasMany(models.section);
       }
+    }
   });
 
   return Guide;
