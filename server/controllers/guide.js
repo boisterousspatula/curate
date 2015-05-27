@@ -15,10 +15,11 @@ var Guide = db.guide;
 
 var readGuide = function (req, res, next) {
   // fill in GET for guide here
+  console.log("readGuide controller GET response");
 };
 
 /**
- * POSt /guide
+ * POST /guide
  * Create a new guide
  * @param title
  * @param sections
@@ -28,7 +29,7 @@ var readGuide = function (req, res, next) {
 
 var createGuide = function(req, res, next) {
   // add assert for requiring a title to the guide
-
+  console.log("readGuide controller POST response");
   var guide = {
     // need to add real params for guide once we know how data is passed
 
