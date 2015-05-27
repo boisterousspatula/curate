@@ -12,10 +12,11 @@ module.exports = {
       actionType: sectionConstants.CREATE_NEW_SECTION
     })
   },
-  addLink: function(){
+  addLink: function(index){
     console.log("in guide actions addLink")
     Dispatcher.handleViewAction({
       actionType: sectionConstants.CREATE_NEW_LINK
+      index: index
     })
   }
 

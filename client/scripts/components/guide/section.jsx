@@ -35,7 +35,8 @@ var SectionComponent = React.createClass({
 	},
 	handleNewLink: function(e){
 		e.preventDefault();	
-		guideActions.addLink();
+		var index = this.props.key;
+		guideActions.addLink(index);
 		
 	}
 })
