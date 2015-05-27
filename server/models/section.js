@@ -10,6 +10,12 @@ var SectionModel = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Section.hasMany(models.link);
+      }
+    }
   });
 
   return Section;
