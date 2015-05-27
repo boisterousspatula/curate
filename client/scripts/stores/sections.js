@@ -15,6 +15,7 @@ var SectionStore = new Store({
 
   init: function(){
     _sections.push(sectionDefaults.section);
+    _sections[0].link.push(sectionDefaults.link);
   },
 
   addChangeListener: function(cb){
@@ -51,8 +52,10 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
   else if(action.actionType === sectionConstants.CREATE_NEW_LINK){
     var index = payload.action.index;
 
-    console.log('in section store, pushing link');
-    _sections[index].link.push(payload);
+
+    console.log("in section store, pushing link")
+    _sections[index].link.push(sectionDefaults.link);
+
   }
 
 });

@@ -6,8 +6,6 @@ var guideActions = require('../../actions/guide');
 var SectionList = require('./sectionList.jsx');
 var sectionStore = require('../../stores/sections');
 
-
-
 var GuideComponent = React.createClass({
 	getInitialState: function () {
 		sectionStore.init();
@@ -36,13 +34,15 @@ var GuideComponent = React.createClass({
         <div className="main-container">
 					<form method="post" action="/guide" onSubmit={this.handleSubmit}>
 						<SectionList sections={this.state.sections}/>
-
 						<input type="submit" name="save"></input>
 				</form>
 				</div>
 			</DefaultLayout>
+			/* jshint ignore:end */
 		);
+
 	},
+
 
 	handleSubmit: function(e) {
 		e.preventDefault();
