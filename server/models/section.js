@@ -6,7 +6,7 @@ var SectionModel = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    descr: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false
     }
