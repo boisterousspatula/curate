@@ -43,6 +43,12 @@ var UserModel = function(sequelize, DataTypes) {
         });
       }
     }
+  }, {
+    classMethods: {
+      associate: function(models) {
+        User.hasMany(models.guide);
+      }
+    }
   });
 
   // Run before validating any data
