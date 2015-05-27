@@ -19,10 +19,10 @@ var UserModel = function(sequelize, DataTypes) {
 
     // Profile info
     firstName: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     lastName: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
 
     // Reset token
