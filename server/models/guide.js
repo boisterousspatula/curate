@@ -7,10 +7,9 @@ var GuideModel = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-      classMethods: {
-        associate: function(models) {
-          Guide.hasMany(models.section);
-        }
+    classMethods: {
+      associate: function(models) {
+        Guide.hasMany(models.section);
       }
   });
 
