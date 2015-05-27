@@ -1,39 +1,44 @@
 'use strict';
 
 var React = require('react');
-var DefaultLayout = require('../layouts/default.jsx');
-var userActions = require('../../actions/user');
-var userStore = require('../../stores/user');
-var SectionLink = require('./sectionLink.jsx');
-
-//var getState = function() {
-//	return {
-//		user: userStore.get()
-//	};
-//};
+var guideActions = require('../../actions/guide');
+var SectionLinkList = require('./sectionLinkList.jsx');
+var SectionTextInput = require('./sectionTextInput.jsx')
 
 var SectionComponent = React.createClass({
 
 	render: function() {
-
 		return (
 			/* jshint ignore:start */
-			<li>
-				<h3>{this.props.sec.title}</h3>
-				<h4>{this.props.sec.description}</h4>
-				<ul>
-					<li>test</li>
-					<SectionLink link={this.props.sec.links}/>
-				</ul>
-			</li>
+		<div>
+			<ul>
+				<li>
+				<label>Title: </label>
+				<SectionTextInput name="title"/>
+				</li>
+
+				<li>
+				<label>Description: </label>
+				<SectionTextInput name="description"/>
+				</li>
+
+				<li>
+				<label>Links: </label>
+				<SectionTextInput name="links"/>
+				<button onClick={this.handleNewLink}>Add link</button>
+				</li>
+			</ul>
+		</div>
+
 			/* jshint ignore:end */
 		);
 	},
-			handleSubmit: function(e) {
-			e.preventDefault();
-			//var form = e.currentTarget;
-			//userActions.reset(form);
-		}
-			});
+	handleNewLink: function(e){
+		e.preventDefault();	
+		var index = this.props.key;
+		guideActions.addLink(index);
+		
+	}
+})
 
-			module.exports = SectionComponent;
+module.exports = SectionComponent;

@@ -19,20 +19,6 @@ var Defaults = {
 
   messages: {},
 
-	sections: [{
-		title:'test title',
-		description: 'this is a long desc...',
-		links: [
-			'google.com', 'facebook.com'
-		]
-	},
-		{
-			title:'test 2',
-			description: 'this is a long desc...',
-			links: [
-				'espn.com', 'youtube.com'
-			]
-		}],
 
 	guides: [{
 		title:'ze best',
@@ -43,8 +29,13 @@ var Defaults = {
 			title:'ze worst',
 			description: 'guide on how to determine worth...',
 			votes: 1
-		}]
+		}],
 
+	section: {
+		title: null,
+		description: null,
+		links: []
+  }
 
 };
 
