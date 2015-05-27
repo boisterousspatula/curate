@@ -34,7 +34,7 @@ var Defaults = {
 	section: {
 		title: null,
 		description: null,
-		links: ["www.google.com", "www.facebook.com"]
+		links: []
   }
 
 };
