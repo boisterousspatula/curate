@@ -32,6 +32,17 @@ var Defaults = {
 			links: [
 				'espn.com', 'youtube.com'
 			]
+		}],
+
+	guides: [{
+		title:'ze best',
+		description: 'this is a long desc...',
+		votes: 10
+	},
+		{
+			title:'ze worst',
+			description: 'guide on how to determine worth...',
+			votes: 1
 		}]
 
 
