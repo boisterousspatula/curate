@@ -15,7 +15,6 @@ var SectionStore = new Store({
 
   init: function(){
     _sections.push(sectionDefaults.section)
-
   },
 
   addChangeListener: function(cb){
@@ -45,8 +44,12 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
     //pushes a new section template to object
     console.log("in section store, pushing section")
     _sections.push(sectionDefaults.section);
-    console.log("SECTIONS: ", _sections)
     SectionStore.emitChange();
+  }
+  else if(action.actionType === sectionConstants.CREATE_NEW_LINK){
+
+    console.log("in section store, pushing link")
+    _sections.link.push()
   }
 
 });
