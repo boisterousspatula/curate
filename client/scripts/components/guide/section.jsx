@@ -19,8 +19,8 @@ var SectionComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<li>
-				<h3>{this.props.sec.title}</h3>
-				<h4>{this.props.sec.description}</h4>
+				<h3>Title: {this.props.sec.title}</h3>
+				<h4>Description: {this.props.sec.description}</h4>
 				<ul>
 					<li>test</li>
 					<SectionLink link={this.props.sec.links}/>
