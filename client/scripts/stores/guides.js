@@ -21,10 +21,16 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 	var action = payload.action;
 
 	if (action.actionType === guideConstants.SET_GUIDES) {
+		console.log('in guide store set guides');
 		_guides = action.guides;
 
 		GuideStore.emitChange();
 	}
+	//if (action.actionType === guideConstants.SAVE_GUIDE) {
+	//	_guides = action.guides;
+	//
+	//	GuideStore.emitChange();
+	//}
 
 });
 

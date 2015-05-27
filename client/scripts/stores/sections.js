@@ -14,11 +14,11 @@ var SectionStore = new Store({
   //starts the _sections repository with a section
 
   init: function(){
-    _sections.push(sectionDefaults.section)
+    _sections.push(sectionDefaults.section);
   },
 
   addChangeListener: function(cb){
-    this.on(CHANGE_EVENT, cb)
+    this.on(CHANGE_EVENT, cb);
   },
 
   removeChangeListener: function(cb){
@@ -36,22 +36,22 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
 	var action = payload.action;
 
 	if (action.actionType === sectionConstants.SET_SECTIONS) {
-    console.log(action.sections)
+    console.log(action.sections);
 		_sections = action.sections;
 
 		SectionStore.emitChange();
 	}
   else if(action.actionType === sectionConstants.CREATE_NEW_SECTION){
     //pushes a new section template to object
-    console.log("in section store, pushing section")
+    console.log('in section store, pushing section');
     _sections.push(sectionDefaults.section);
-    console.log(_sections)
+    console.log(_sections);
     SectionStore.emitChange();
   }
   else if(action.actionType === sectionConstants.CREATE_NEW_LINK){
-    var index = payload.action.index
+    var index = payload.action.index;
 
-    console.log("in section store, pushing link")
+    console.log('in section store, pushing link');
     _sections[index].link.push(payload);
   }
 
