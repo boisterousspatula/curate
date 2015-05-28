@@ -67,7 +67,7 @@ var defaults = {
 
       // similiar for sync: you can define this to always force sync for models
       sync: {
-        force: false
+        force: true
       },
 
       // sync after each association (see below). If set to false, you need to sync manually after setting all associations. Default: true
