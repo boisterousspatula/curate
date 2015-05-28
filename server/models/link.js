@@ -1,7 +1,8 @@
 'use strict';
 
 var LinkModel = function(sequelize, DataTypes) {
-  var Link = sequelize.define('link', {
+  var Link = sequelize.define('link',
+  {
     title: {
       type: DataTypes.STRING,
       allowNull: false
@@ -10,12 +11,13 @@ var LinkModel = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
+
   }, {
     classMethods: {
       associate: function(models) {
         Link.belongsTo(models.section);
       }
-     }
+    }
   });
 
   return Link;

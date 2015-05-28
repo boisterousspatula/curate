@@ -59,8 +59,8 @@ var createGuide = function(req, res, next) {
     sections: [{title: 'react stuff', description:'learn react', links:[{title: 'react link', url:'http://reactjs.com'}]}]
   };
 
-  var guide = req.body;
   console.log('createGuide controller POST req.body', req.body);
+  var guide = req.body;
 
   Guide.create(guide).success(function(guide) {
     res.status(200).json({
