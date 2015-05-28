@@ -5,8 +5,6 @@ var Dispatcher = require('../dispatchers/default');
 var sectionConstants = require('../constants/sections');
 var sectionDefaults = require('../constants/defaults');
 
-
-var CHANGE_EVENT = 'change';
 var _sections = [];
 
 var cloneObj = function(obj){
@@ -22,14 +20,6 @@ var SectionStore = new Store({
     _sections.push(newSection)
     _sections[0].links.push(newLink)
 
-  },
-
-  addChangeListener: function(cb){
-    this.on(CHANGE_EVENT, cb);
-  },
-
-  removeChangeListener: function(cb){
-    this.removeListener(CHANGE_EVENT, cb);
   },
 
 	// Gets all sections

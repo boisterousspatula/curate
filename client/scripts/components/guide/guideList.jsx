@@ -8,11 +8,17 @@ var guideStore = require('../../stores/guides');
 
 var GuideComponent = React.createClass({
 
-	mixin: [guideStore.mixin],
+  componentDidMount: function() {
+    guideStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    guideStore.removeChangeListener(this._onChange);
+  },
 
 	_onChange: function(){
 		this.setState({
-			guides: guideStore.get();
+			guides: guideStore.get()
 		})
 	},
 
@@ -21,6 +27,7 @@ var GuideComponent = React.createClass({
 			guides : guideActions.getGuides()
 		};
 	},
+  
 	render: function() {
 		if (this.state.guides) {
 
