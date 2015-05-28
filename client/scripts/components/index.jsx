@@ -19,7 +19,6 @@ var IndexComponent = React.createClass({
           </div>
 					<button className="guide-create" onClick={this.handleNewGuide}>Create New Guide</button>
         </div>
-        <code className="version">v0.14.5</code>
       </DefaultLayout>
       /* jshint ignore:end */
     );
