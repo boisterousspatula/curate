@@ -135,7 +135,6 @@ module.exports = {
 	},
 
 	getReq: function(idx, callback){
-		debugger;
 		var self = this;
 		var token = self.getToken();
 		var options = callback.options || {};
@@ -152,7 +151,7 @@ module.exports = {
 				if (res.ok) {
 					var guideData;
 
-					debugger;
+
 					guideData = res.body.guide;
 					self.setGuides(guideData);
 

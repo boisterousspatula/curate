@@ -16,16 +16,16 @@ var readGuide = function (req, res, next) {
   // need to find correct guide by id now
   Guide.findAll().then(function(guides) {
     console.log(guides);
-    if (!guide) {
+    if (!guides) {
       return res.status(400).json({
         errors: [{
           msg: 'Failed to find guide'
         }]
       });
     }
-    res.status(200.json({
-      guide: guide
-    }));
+    res.status(200).json({
+      guide: guides
+    });
   }).error(function(err) {
     return next(err);
   });

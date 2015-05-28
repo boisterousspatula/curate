@@ -7,14 +7,29 @@ var Guide = require('./guide.jsx');
 var guideStore = require('../../stores/guides');
 
 var GuideComponent = React.createClass({
+
+  componentDidMount: function() {
+    guideStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    guideStore.removeChangeListener(this._onChange);
+  },
+
+	_onChange: function(){
+		this.setState({
+			guides: guideStore.get()
+		})
+	},
+
 	getInitialState: function () {
 		return {
 			guides : guideActions.getGuides()
 		};
 	},
+  
 	render: function() {
 		if (this.state.guides) {
-
 
 		var guideList = this.state.guides.sort(function (a, b) {
 			return b.votes - a.votes;
