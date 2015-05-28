@@ -35,6 +35,10 @@ var Defaults = {
 		title: null,
 		description: null,
 		links: []
+  },
+
+  link: {
+    link: null
   }
 
 };

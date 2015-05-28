@@ -15,6 +15,7 @@ var SectionTextInputComponent = React.createClass({
       id={this.props.id}
       name={this.props.name}
       placeholder={this.props.placeholder}
+      value={this.props.value}
       />
       /* jshint ignore:end */
     );
