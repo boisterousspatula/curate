@@ -41,11 +41,22 @@ var readGuide = function (req, res, next) {
  * @param links
  * @param comments ?
  */
+
+// {
+//   title: 'guide title',
+//   description: 'guide description',
+//   sections: [{title: 'section title', description:'section description', links: [{url: 'link url'}]}
+//             ,{title: 'section title', description:'section description', links: [{url: 'link url'}]}
+// }
+
+
 var createGuide = function(req, res, next) {
   // add assert for requiring a title to the guide
   console.log('createGuide controller POST response');
   var dummyGuide = {
-    title: 'How to learn Flux & React'
+    title: 'How to learn Flux & React',
+    description: 'description stuff',
+    sections: [{title: 'react stuff', description:'learn react', links:[{title: 'react link', url:'http://reactjs.com'}]}]
   };
 
   var guide = req.body;

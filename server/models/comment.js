@@ -6,6 +6,12 @@ var CommentModel = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Comment.belongsTo(models.guide);
+      }
+    }
   });
 
   return Comment;

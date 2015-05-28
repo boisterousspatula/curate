@@ -9,8 +9,9 @@ var GuideModel = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
+        Guide.belongsTo(models.user);
         Guide.hasMany(models.section); 
-        Guide.hasOne(models.user);
+        Guide.hasMany(models.comment);
       }
     }
   });

@@ -13,7 +13,7 @@ var LinkModel = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Link.hasOne(models.section);
+        Link.belongsTo(models.section);
       }
      }
   });
