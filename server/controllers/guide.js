@@ -45,9 +45,6 @@ var createGuide = function(req, res, next) {
   // add assert for requiring a title to the guide
   console.log('createGuide controller POST response');
   var dummyGuide = {
-    // need to add real params for guide once we know how data is passed
-
-    // Dummy data here
     title: 'How to learn Flux & React'
   };
 
