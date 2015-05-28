@@ -10,6 +10,12 @@ var LinkModel = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Link.hasOne(models.section);
+      }
+     }
   });
 
   return Link;

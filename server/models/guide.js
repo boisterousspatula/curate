@@ -9,12 +9,8 @@ var GuideModel = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // console.log("GuideModel:", models.section);
-        // console.log("Models.section.id",models.section)
         Guide.hasMany(models.section); 
-        // , {as: 'Sections'}
         Guide.hasOne(models.user);
-        // , {foreignKey: 'foreign_key'}
       }
     }
   });
