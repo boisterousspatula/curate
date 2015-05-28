@@ -14,6 +14,7 @@ var SectionModel = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Section.hasMany(models.link);
+        Section.hasOne(models.guide);
       }
     }
   });
