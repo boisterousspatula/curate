@@ -15,7 +15,7 @@ var SectionLinkComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<li>
-				<SectionTextInput name="link" value ={this.state.value} />
+				<SectionTextInput name="link" value={this.state.value} index={this.props.index} />
 			</li>
 			/* jshint ignore:end */
 		);

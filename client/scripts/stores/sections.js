@@ -62,8 +62,8 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
     var val = payload.action.input;
     var nameProp = payload.action.name;
 
-console.log("INDEEEEX", index)
     _sections[index][nameProp]= val;
+    console.log("SECTIONS UPDATED TO:", _sections)
 
     SectionStore.emitChange();
   }

@@ -8,11 +8,15 @@ var SectionTextInput = require('./sectionTextInput.jsx')
 
 var SectionComponent = React.createClass({
 
+	componentDidMount: function(){
+		console.log(this.props.index);
+	},
 	render: function() {	
+		var self = this;
 		var linkList = this.props.sec.links.map(function(link, idx){
 			/* jshint ignore:start */
 			return(
-				<SectionLink key={idx} index={idx} link={link}/>
+				<SectionLink key={idx} index={self.props.index} link={link}/>
 				)
 			/* jshint ignore:end */
 		})
