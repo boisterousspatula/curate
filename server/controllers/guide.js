@@ -7,6 +7,9 @@
 
 var db = require('../config/database');
 var Guide = db.guide;
+var Section = db.section;
+var Link = db.link;
+var User = db.user;
 
 /**
  * GET /guide
@@ -41,17 +44,61 @@ var readGuide = function (req, res, next) {
  * @param links
  * @param comments ?
  */
+
 var createGuide = function(req, res, next) {
   // add assert for requiring a title to the guide
   console.log('createGuide controller POST response');
-  var dummyGuide = {
-    title: 'How to learn Flux & React'
+  var dummyReq = {
+    title: 'How to learn Flux & React',
+    description: 'description stuff',
+    sections: [
+      {
+        title: 'react stuff',
+        description:'learn react',
+        links:
+          [
+            {title: 'react link', url:'http://reactjs.com'}
+          ]
+      }
+    ],
+    userId: 1
   };
 
-  var guide = req.body;
   console.log('createGuide controller POST req.body', req.body);
+  var guide = req.body;
 
-  Guide.create(guide).success(function(guide) {
+  //Save guide data
+  Guide.create({ //create guide entry
+    title: dummyReq.title,
+    description: dummyReq.description,
+    userId: dummyReq.userId
+  })
+  .then(function(guide){
+    //create section obj with guide id
+    var guideId = guide.get('id');
+    dummyReq.sections.forEach(function(section){
+      Section.create({
+        title: section.title,
+        description: section.description,
+        guideId: guideId,
+      })
+      //create link entry with its section id
+      .then(function(newSection){
+        var sectionId = newSection.get('id');
+        console.log('newSection', newSection);
+        console.log('newSection.links', newSection.links);
+        console.log('section', section);
+        section.links.forEach(function(link){
+          Link.create({
+            title: link.title,
+            url: link.url,
+            sectionId: sectionId
+          });
+        });
+      });
+    });
+  })
+  .then(function(guide) {
     res.status(200).json({
       guide: guide,
       success: [{
@@ -65,26 +112,9 @@ var createGuide = function(req, res, next) {
   });
 };
 
+
 module.exports = {
   readGuide: readGuide,
   createGuide: createGuide
 };
-
-/*
-  req.body =
-  {
-    title: [ 'Test Guide', 'Test Guide 2' ],
-    description: [ 'test', 'test2' ],
-    link: [ 'www.test.com', 'www.facebook.com' ]
-  }
- */
-
-
-
-
-
-
-
-
-
 

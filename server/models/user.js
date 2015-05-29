@@ -29,6 +29,13 @@ var UserModel = function(sequelize, DataTypes) {
     resetPasswordToken: DataTypes.STRING,
     resetPasswordExpires: DataTypes.DATE
   }, {
+    classMethods: {
+      associate: function(models) {
+        User.hasMany(models.guide);
+      }
+    }
+  },
+  {
     instanceMethods: {
       /**
        * Validate user's password.
@@ -41,12 +48,6 @@ var UserModel = function(sequelize, DataTypes) {
           }
           done(null, isMatch);
         });
-      }
-    }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        User.hasMany(models.guide);
       }
     }
   });

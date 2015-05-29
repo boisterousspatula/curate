@@ -5,16 +5,17 @@ var GuideModel = function(sequelize, DataTypes) {
     title: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING(500),
+      allowNull: false
     }
   }, {
     classMethods: {
       associate: function(models) {
-        // console.log("GuideModel:", models.section);
-        // console.log("Models.section.id",models.section)
-        Guide.hasMany(models.section); 
-        // , {as: 'Sections'}
-        Guide.hasOne(models.user);
-        // , {foreignKey: 'foreign_key'}
+        Guide.belongsTo(models.user);
+        Guide.hasMany(models.section);
+        Guide.hasMany(models.comment);
       }
     }
   });
