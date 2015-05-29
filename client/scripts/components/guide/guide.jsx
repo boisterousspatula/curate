@@ -5,6 +5,7 @@ var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
 var SectionList = require('./sectionList.jsx');
 var sectionStore = require('../../stores/sections');
+var SectionTextInput = require('./sectionTextInput.jsx')
 
 var GuideComponent = React.createClass({
 	getInitialState: function () {
@@ -33,7 +34,19 @@ var GuideComponent = React.createClass({
 			<DefaultLayout>
         <div className="main-container">
 					<form method="post" action="/guide" onSubmit={this.handleSubmit}>
-						<SectionList sections={this.state.sections}/>
+            <div className="guide-headers">
+            <ul>
+              <li>
+              <label>Guide Title: </label>
+                <SectionTextInput name="guideTitle"/>
+              </li>
+              <li>
+              <label>Guide Description: </label>
+                <SectionTextInput name="guideDescription"/>
+						</li>
+            </ul>
+            </div>
+            <SectionList sections={this.state.sections}/>
 						<input type="submit" name="save"></input>
 				</form>
 				</div>
