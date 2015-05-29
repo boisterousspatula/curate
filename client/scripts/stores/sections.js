@@ -49,9 +49,17 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
   else if(action.actionType === sectionConstants.CREATE_NEW_LINK){
     console.log("in section store, pushing link at index");
     //adds a new link to _sections at the index of the section that the add button was clicked
-    var index = payload.action.index
+    var index = payload.action.index;
     var newLink = cloneObj(sectionDefaults.link);
     _sections[index].links.push(newLink);
+    SectionStore.emitChange();
+  }
+  else if(action.actionType === inputConstants.UPDATE_INPUT_VALUE){
+    console.log("in section store, updating form input val");
+
+    var index = payload.action.index;
+    _sections[index][name] = action.value;
+
     SectionStore.emitChange();
   }
 
