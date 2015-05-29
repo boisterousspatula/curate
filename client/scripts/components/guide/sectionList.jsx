@@ -42,7 +42,6 @@ var SectionListComponent = React.createClass({
 		e.preventDefault();
 		console.log("in handleNewSection func");		
 		guideActions.addSection();
-		
 	}
 });
 

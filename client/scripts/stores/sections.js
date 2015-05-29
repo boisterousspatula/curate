@@ -4,6 +4,7 @@ var Store = require('./default');
 var Dispatcher = require('../dispatchers/default');
 var sectionConstants = require('../constants/sections');
 var sectionDefaults = require('../constants/defaults');
+var inputConstants = require('../constants/input');
 
 var _sections = [];
 
@@ -58,7 +59,11 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
     console.log("in section store, updating form input val");
 
     var index = payload.action.index;
-    _sections[index][name] = action.value;
+    var val = payload.action.input;
+    var nameProp = payload.action.name;
+
+console.log("INDEEEEX", index)
+    _sections[index][nameProp]= val;
 
     SectionStore.emitChange();
   }

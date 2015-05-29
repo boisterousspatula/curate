@@ -22,13 +22,15 @@ var SectionComponent = React.createClass({
 		<div>
 			<ul>
 				<li>
+
 				<label>Section Title: </label>
-				<SectionTextInput name="title" value={this.props.sec.title}/>
+				<SectionTextInput name="title" index={this.props.index} />
 				</li>
 
 				<li>
 				<label>Section Description: </label>
-				<SectionTextInput name="description" value={this.props.sec.description}/>
+				<SectionTextInput name="description" index={this.props.index} />
+
 				</li>
 
 				<li>

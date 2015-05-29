@@ -32,7 +32,7 @@ module.exports = {
 	},
 
 	setGuides: function(guides) {
-		debugger;
+
 		Dispatcher.handleViewAction({
 			actionType: sectionConstants.SET_GUIDES,
 			guides: guides
@@ -113,7 +113,7 @@ module.exports = {
 	},
 
 	createGuide: function(form, callback) {
-		debugger;
+
 		console.log('in guide save', form);
 		var cb = callback || function() {};
 		cb.options = {
