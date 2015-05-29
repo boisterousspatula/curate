@@ -5,6 +5,10 @@ var GuideModel = function(sequelize, DataTypes) {
     title: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING(500),
+      allowNull: false
     }
   }, {
     classMethods: {
