@@ -12,7 +12,7 @@ var User = db.user;
 
 /**
  * GET /guide
- * Read guide data
+ * Read all guide data
  */
 var readGuides = function (req, res, next) {
   // need to find correct guide by id now
@@ -65,6 +65,57 @@ var readUserGuides = function (req, res, next) {
   });
 };
 
+/**
+ * GET /guide/single
+ * Read entire single guide
+ */
+var readIndividualGuide = function (req, res, next) {
+  var individualGuide = {};
+  var guideId = 1; // eventually needs to be req.body.guideId
+
+  Guide.find({
+    where: {
+      id: guideId
+    }
+  })
+  .then(function(guide) {
+    individualGuide.title = guide.title;
+    individualGuide.description = guide.description;
+
+    Section.findAll({
+      where: {
+        guideId: guide.id
+      }
+    })
+    .then(function(sections) {
+      individualGuide.sections = [];
+
+      sections.forEach(function(section) {
+        var currentSection = {};
+        currentSection.title = section.title;
+        currentSection.description = section.description;
+        currentSection.links = [];
+
+        Link.findAll({
+          where: {
+            sectionId: section.id
+          }
+        }).then(function(links) {
+          links.forEach(function(link) {
+            var currentLink = {};
+            currentLink.title = link.title;
+            
+          })
+        })
+
+        individualGuide.sections.push(currentSection);
+      });
+
+      console.log(individualGuide);
+    });
+  });
+};
+
 
 /**
  * POST /guide
@@ -74,7 +125,6 @@ var readUserGuides = function (req, res, next) {
  * @param links
  * @param comments ?
  */
-
 var createGuide = function(req, res, next) {
   // add assert for requiring a title to the guide
   console.log('createGuide controller POST response');
@@ -162,6 +212,7 @@ var createGuide = function(req, res, next) {
 module.exports = {
   readGuides: readGuides,
   readUserGuides: readUserGuides,
-  createGuide: createGuide
+  createGuide: createGuide,
+  readIndividualGuide: readIndividualGuide
 };
 
