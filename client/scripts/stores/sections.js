@@ -68,7 +68,7 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
       _sections[index][nameProp][keyProp].link = val;
       console.log("SECTION IS NOW", _sections)
     }else{
-    _sections[index][nameProp]= val;
+      _sections[index][nameProp]= val;
   }
 
     SectionStore.emitChange();

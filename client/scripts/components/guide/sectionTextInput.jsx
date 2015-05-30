@@ -6,16 +6,13 @@ var inputActions = require('../../actions/input')
 
 var SectionTextInputComponent = React.createClass({
 
-getInitialState: function(){
-console.log('PROOOOOOOOOPS', this.props)
-  return {
-    value: this.props.value || ''
+  getInitialState: function(){
+    return {
+      value: this.props.value || ''
+    }
+  },
 
-  }
-
-},
   render: function() {
-
     return (
       /* jshint ignore:start */
       <input 
@@ -32,23 +29,14 @@ console.log('PROOOOOOOOOPS', this.props)
     );
   },
 
-  // save: function(){
-  //   this.props.onSave(this.state.value);
-  //   this.setState({
-  //     value: ''
-  //   });
-  // },
-
   onChange: function(e){
     this.setState({
       value: e.target.value
     })
-
     this.handleUpdateStoreValue(e.target.value, e.target.name, this.props.index, this.props.linkidx)
-
   },
-  handleUpdateStoreValue: function(input, name, index, key){
 
+  handleUpdateStoreValue: function(input, name, index, key){
     inputActions.updateValue(input, name, index, key);
   }
 });
