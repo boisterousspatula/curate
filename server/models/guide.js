@@ -14,6 +14,7 @@ var GuideModel = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Guide.belongsTo(models.user);
+        Guide.belongsTo(models.category);
         Guide.hasMany(models.section);
         Guide.hasMany(models.comment);
         Guide.hasOne(models.guideVote);
