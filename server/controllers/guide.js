@@ -78,7 +78,7 @@ var readUserGuides = function (req, res, next) {
 var createGuide = function(req, res, next) {
   // add assert for requiring a title to the guide
   console.log('createGuide controller POST response');
-  var guideModel = {
+  var guideContract = {
     title: 'How to learn Flux & React',
     description: 'description stuff',
     sections: [
@@ -119,14 +119,14 @@ var createGuide = function(req, res, next) {
 
   //Save guide data
   Guide.create({ //create guide entry
-    title: guideModel.title,
-    description: guideModel.description,
-    userId: guideModel.userId
+    title: guideContract.title,
+    description: guideContract.description,
+    userId: guideContract.userId
   })
   .then(function(guide){
     //create section obj with guide id
     var guideId = guide.get('id');
-    guideModel.sections.forEach(function(section){
+    guideContract.sections.forEach(function(section){
       Section.create({
         title: section.title,
         description: section.description,
