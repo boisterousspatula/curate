@@ -44,7 +44,8 @@ var readGuide = function (req, res, next) {
 var readUserGuide = function (req, res, next) {
   Guide.findAll({
     where: {
-      userId: userId
+      // need to have front end send userId from localStorage
+      userId: req.userId
     }
   })
   .then(function(guides) {
