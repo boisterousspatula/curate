@@ -5,10 +5,11 @@ var SectionLink = require('./sectionLink.jsx')
 
 var SectionLinkListComponent = React.createClass({
   render: function () {
+    var self = this;
     var links = this.props.links
     var linkList = links.map(function(link, idx){
       return (
-        <SectionLink key={idx} link={link}/>
+        <SectionLink key={idx} index={self.props.index} link={link}/>
       )
     })
     return (
