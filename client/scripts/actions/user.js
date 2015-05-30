@@ -34,6 +34,8 @@ module.exports = {
             userData.loggedIn = true;
 
             self.setUser(userData);
+            window.localStorage.setItem('userId', userData.id);
+            window.localStorage.setItem('userEmail', userData.email);
           }
           else {
             self.logout();
@@ -149,6 +151,9 @@ module.exports = {
 
     // Redirect to homepage
     routeActions.setRoute('/');
+
+    // Clear local storage
+    window.localStorage.clear();
   },
 
   signup: function(form, callback) {
