@@ -2,7 +2,6 @@
  * Guide Controller
  */
 
-
 'use strict';
 
 var db = require('../config/database');
@@ -17,12 +16,14 @@ var User = db.user;
  */
 var readGuide = function (req, res, next) {
   // need to find correct guide by id now
+  // console.log('GET all guides:Cookie -', req.checkBody());
+
   Guide.findAll().then(function(guides) {
-    console.log(guides);
+    // console.log(guides);
     if (!guides) {
       return res.status(400).json({
         errors: [{
-          msg: 'Failed to find guide'
+          msg: 'Failed to find guides.'
         }]
       });
     }
@@ -33,8 +34,36 @@ var readGuide = function (req, res, next) {
     return next(err);
   });
 
-  console.log('readGuide controller GET response');
+  console.log('Guides successfully retrieved.');
 };
+
+/**
+ * GET /guide/user
+ * Read users guide data
+ */
+var readUserGuide = function (req, res, next) {
+  Guide.findAll({
+    where: {
+      userId: userId
+    }
+  })
+  .then(function(guides) {
+    // console.log(guides);
+    if (!guides) {
+      return res.status(400).json({
+        errors: [{
+          msg: 'Failed to find guides.'
+        }]
+      });
+    }
+    res.status(200).json({
+      guide: guides
+    });
+  }).error(function(err) {
+    return next(err);
+  });
+};
+
 
 /**
  * POST /guide
@@ -85,9 +114,9 @@ var createGuide = function(req, res, next) {
       //create link entry with its section id
       .then(function(newSection){
         var sectionId = newSection.get('id');
-        console.log('newSection', newSection);
-        console.log('newSection.links', newSection.links);
-        console.log('section', section);
+        // console.log('newSection', newSection);
+        // console.log('newSection.links', newSection.links);
+        // console.log('section', section);
         section.links.forEach(function(link){
           Link.create({
             title: link.title,
