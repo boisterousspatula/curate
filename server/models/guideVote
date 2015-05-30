@@ -1,0 +1,19 @@
+'use strict';
+
+var GuideVoteModel = function(sequelize, DataTypes) {
+  var GuideVote = sequelize.define('guideVote', {
+    val: {
+      type: DataTypes.INTEGER
+    }
+  }, {
+    classMethods: {
+      associate: function(models) {
+        GuideVote.belongsTo(models.guide);
+      }
+    }
+  });
+
+  return GuideVote;
+};
+
+module.exports = GuideVoteModel;

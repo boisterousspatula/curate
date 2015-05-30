@@ -16,6 +16,7 @@ var GuideModel = function(sequelize, DataTypes) {
         Guide.belongsTo(models.user);
         Guide.hasMany(models.section);
         Guide.hasMany(models.comment);
+        Guide.hasOne(models.guideVote);
       }
     }
   });
