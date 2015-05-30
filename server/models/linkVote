@@ -1,0 +1,19 @@
+'use strict';
+
+var LinkVoteModel = function(sequelize, DataTypes) {
+  var LinkVote = sequelize.define('linkVote', {
+    val: {
+      type: DataTypes.INTEGER
+    }
+  }, {
+    classMethods: {
+      associate: function(models) {
+        LinkVote.belongsTo(models.link);
+      }
+    }
+  });
+
+  return LinkVote;
+};
+
+module.exports = LinkVoteModel;

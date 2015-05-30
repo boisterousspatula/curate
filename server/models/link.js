@@ -16,6 +16,7 @@ var LinkModel = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Link.belongsTo(models.section);
+        Link.hasOne(models.linkVote);
       }
     }
   });
