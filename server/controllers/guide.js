@@ -78,7 +78,7 @@ var readUserGuides = function (req, res, next) {
 var createGuide = function(req, res, next) {
   // add assert for requiring a title to the guide
   console.log('createGuide controller POST response');
-  var dummyReq = {
+  var guideContract = {
     title: 'How to learn Flux & React',
     description: 'description stuff',
     sections: [
@@ -87,26 +87,46 @@ var createGuide = function(req, res, next) {
         description:'learn react',
         links:
           [
-            {title: 'react link', url:'http://reactjs.com'}
+            {title: 'react link',
+            url:'http://reactjs.com',
+            votes:null}
           ]
       }
     ],
-    userId: 1
+    userId: 1, //passed from front end
+    category: 'recipes',
+    votes: null, //will be populated in read state
+    comments: null //will be populated in read state
   };
+  // var dummyReq = {
+  //   title: 'How to learn Flux & React',
+  //   description: 'description stuff',
+  //   sections: [
+  //     {
+  //       title: 'react stuff',
+  //       description:'learn react',
+  //       links:
+  //         [
+  //           {title: 'react link', url:'http://reactjs.com'}
+  //         ]
+  //     }
+  //   ],
+  //   userId: 1
+  // };
 
   console.log('createGuide controller POST req.body', req.body);
   var guide = req.body;
 
   //Save guide data
   Guide.create({ //create guide entry
-    title: dummyReq.title,
-    description: dummyReq.description,
-    userId: dummyReq.userId
+    title: guideContract.title,
+    description: guideContract.description,
+    userId: guideContract.userId
   })
   .then(function(guide){
     //create section obj with guide id
     var guideId = guide.get('id');
-    dummyReq.sections.forEach(function(section){
+    guideContract.sections.forEach(function(section){
       Section.create({
         title: section.title,
         description: section.description,
@@ -115,9 +135,6 @@ var createGuide = function(req, res, next) {
       //create link entry with its section id
       .then(function(newSection){
         var sectionId = newSection.get('id');
-        // console.log('newSection', newSection);
-        // console.log('newSection.links', newSection.links);
-        // console.log('section', section);
         section.links.forEach(function(link){
           Link.create({
             title: link.title,
@@ -141,7 +158,6 @@ var createGuide = function(req, res, next) {
     }
   });
 };
-
 
 module.exports = {
   readGuides: readGuides,
