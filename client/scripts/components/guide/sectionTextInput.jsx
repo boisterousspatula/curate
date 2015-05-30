@@ -7,11 +7,12 @@ var inputActions = require('../../actions/input')
 var SectionTextInputComponent = React.createClass({
 
 getInitialState: function(){
-
+console.log('PROOOOOOOOOPS', this.props)
   return {
     value: this.props.value || ''
 
   }
+
 },
   render: function() {
 
@@ -25,6 +26,7 @@ getInitialState: function(){
       value={this.state.value}
       onChange={this.onChange}
       index={this.props.index}
+      linkidx={this.props.linkidx}
       />
       /* jshint ignore:end */
     );
@@ -42,12 +44,12 @@ getInitialState: function(){
       value: e.target.value
     })
 
-    this.handleUpdateStoreValue(e.target.value, e.target.name, this.props.index)
+    this.handleUpdateStoreValue(e.target.value, e.target.name, this.props.index, this.props.linkidx)
 
   },
-  handleUpdateStoreValue: function(input, name, index){
+  handleUpdateStoreValue: function(input, name, index, key){
 
-    inputActions.updateValue(input, name, index);
+    inputActions.updateValue(input, name, index, key);
   }
 });
 

@@ -5,13 +5,14 @@ var inputConstants = require('../constants/input');
 
 module.exports = {
 
-  updateValue: function(input, name, index) {
+  updateValue: function(input, name, index, key) {
 
     Dispatcher.handleViewAction({
       actionType: inputConstants.UPDATE_INPUT_VALUE,
       input: input,
       name: name,
-      index: index
+      index: index,
+      linkidx: key
     });
   }
 

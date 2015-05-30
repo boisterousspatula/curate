@@ -62,8 +62,14 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
     var val = payload.action.input;
     var nameProp = payload.action.name;
 
+    if(nameProp === "links"){
+
+      var keyProp = payload.action.linkidx
+      _sections[index][nameProp][keyProp].link = val;
+      console.log("SECTION IS NOW", _sections)
+    }else{
     _sections[index][nameProp]= val;
-    console.log("SECTIONS UPDATED TO:", _sections)
+  }
 
     SectionStore.emitChange();
   }
