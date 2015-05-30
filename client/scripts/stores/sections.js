@@ -4,6 +4,7 @@ var Store = require('./default');
 var Dispatcher = require('../dispatchers/default');
 var sectionConstants = require('../constants/sections');
 var sectionDefaults = require('../constants/defaults');
+var inputConstants = require('../constants/input');
 
 var _sections = [];
 
@@ -49,9 +50,27 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
   else if(action.actionType === sectionConstants.CREATE_NEW_LINK){
     console.log("in section store, pushing link at index");
     //adds a new link to _sections at the index of the section that the add button was clicked
-    var index = payload.action.index
+    var index = payload.action.index;
     var newLink = cloneObj(sectionDefaults.link);
     _sections[index].links.push(newLink);
+    SectionStore.emitChange();
+  }
+  else if(action.actionType === inputConstants.UPDATE_INPUT_VALUE){
+    console.log("in section store, updating form input val");
+
+    var index = payload.action.index;
+    var val = payload.action.input;
+    var nameProp = payload.action.name;
+
+    if(nameProp === "links"){
+
+      var keyProp = payload.action.linkidx
+      _sections[index][nameProp][keyProp].link = val;
+      console.log("SECTION IS NOW", _sections)
+    }else{
+      _sections[index][nameProp]= val;
+  }
+
     SectionStore.emitChange();
   }
 

@@ -61,6 +61,7 @@ var GuideComponent = React.createClass({
 		e.preventDefault();
 		//console.log('in handle submit view', e.currentTarget);
 		var form = e.currentTarget;
+
 		guideActions.createGuide(form);
 	}
 
