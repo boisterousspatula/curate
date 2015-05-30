@@ -14,7 +14,7 @@ var User = db.user;
  * GET /guide
  * Read guide data
  */
-var readGuide = function (req, res, next) {
+var readGuides = function (req, res, next) {
   // need to find correct guide by id now
   // console.log('GET all guides:Cookie -', req.checkBody());
 
@@ -41,7 +41,7 @@ var readGuide = function (req, res, next) {
  * GET /guide/user
  * Read users guide data
  */
-var readUserGuide = function (req, res, next) {
+var readUserGuides = function (req, res, next) {
   Guide.findAll({
     where: {
       // need to have front end send userId from localStorage
@@ -144,7 +144,8 @@ var createGuide = function(req, res, next) {
 
 
 module.exports = {
-  readGuide: readGuide,
+  readGuides: readGuides,
+  readUserGuides: readUserGuides,
   createGuide: createGuide
 };
 
