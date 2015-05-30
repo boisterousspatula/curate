@@ -31,6 +31,11 @@ var Defaults = {
 			votes: 1
 		}],
 
+  guide: {
+    title: null,
+    description: null,
+  },
+
 	section: {
 		title: null,
 		description: null,
@@ -38,8 +43,10 @@ var Defaults = {
   },
 
   link: {
+    title: null,
     link: null
   }
+  
 
 };
 

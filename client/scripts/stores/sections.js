@@ -7,6 +7,7 @@ var sectionDefaults = require('../constants/defaults');
 var inputConstants = require('../constants/input');
 
 var _sections = [];
+var _guide = sectionDefaults.guide;
 
 var cloneObj = function(obj){
   //returns a new copy of the object, used whenever we need to push a copy of a data structure into _sections
@@ -63,14 +64,14 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
     var nameProp = payload.action.name;
 
     if(nameProp === "links"){
-
       var keyProp = payload.action.linkidx
       _sections[index][nameProp][keyProp].link = val;
-      console.log("SECTION IS NOW", _sections)
-    }else{
+    } else if(nameProp === "guideTitle" || nameProp === "guideDescription"){
+      _guide[nameProp] = val;
+      console.log("GUIDE", _guide)
+    } else{
       _sections[index][nameProp]= val;
-  }
-
+    }
     SectionStore.emitChange();
   }
 
