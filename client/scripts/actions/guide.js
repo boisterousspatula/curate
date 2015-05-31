@@ -45,6 +45,58 @@ module.exports = {
 	//		index: index
 	//	});
 	//},
+	postGuide: function(sections, guide, callback){
+		var self= this;
+		var callback = callback || function() {};
+		callback.options = {
+			successUrl: '/',
+			errorUrl: '/createguide'
+
+		};
+		var options = callback.options || {};
+		var guideToSend = {
+			title: guide.title,
+			description: guide.description,
+			sections: sections
+		}
+		guideToSend = JSON.stringify(guideToSend);
+		var postUrl = ('/guide')
+		var token = self.getToken();
+
+		request
+			.post(postUrl)
+			.set('Content-Type', 'application/json')
+			.set({
+				'authorization': 'Bearer ' + token,
+				'X-Requested-With': 'XMLHttpRequest'
+			})
+			.send(guideToSend)
+			.end(function(res) {
+				console.log('guide post response', res);
+				if (res.ok) {
+					if (callback && callback.success) {
+						callback.success(res);
+					}
+					if (options.successUrl) {
+						routeActions.setRoute(options.successUrl);
+					}
+				}
+				else {
+					if (callback && callback.error) {
+						callback.error(res);
+					}
+					if (options.errorUrl) {
+						routeActions.setRoute(options.errorUrl);
+					}
+				}
+				// Show global messages
+				messagesActions.setMessages(res.body);
+				if (callback && callback.complete) {
+					callback.complete(res);
+				}
+			});
+	},
+
 
 	getToken: function() {
 		var cookies = cookie.parse(document.cookie);
@@ -113,7 +165,6 @@ module.exports = {
 	},
 
 	createGuide: function(form, callback) {
-
 		console.log('in guide save', form);
 		var cb = callback || function() {};
 		cb.options = {

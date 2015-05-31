@@ -27,7 +27,11 @@ var SectionStore = new Store({
 	// Gets all sections
 	get: function() {
 		return _sections;
-	}
+	},
+
+  getGuide: function(){
+    return _guide;
+  },
   
 });
 

@@ -11,7 +11,8 @@ var GuideComponent = React.createClass({
 	getInitialState: function () {
 		sectionStore.init();
 		return {
-			sections: sectionStore.get()
+			sections: sectionStore.get(),
+      guide: sectionStore.getGuide()
 		}
 	},
 	componentDidMount: function() {
@@ -62,10 +63,12 @@ var GuideComponent = React.createClass({
 		//console.log('in handle submit view', e.currentTarget);
 		var form = e.currentTarget;
 
-		guideActions.createGuide(form);
+    this.setState({
+      sections: sectionStore.get(),
+      guide: sectionStore.getGuide().guide
+    })
+    guideActions.postGuide(this.state.sections, this.state.guide);
 	}
-
-
 });
 
 module.exports = GuideComponent;
