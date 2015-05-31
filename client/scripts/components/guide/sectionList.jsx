@@ -32,15 +32,9 @@ var SectionListComponent = React.createClass({
 			/* jshint ignore:end */
 		);
 	},
-	handleSubmit: function (e) {
-		e.preventDefault();
-		//var form = e.currentTarget;
-		//userActions.reset(form);
-	},
 
 	handleNewSection: function(e){
 		e.preventDefault();
-		console.log("in handleNewSection func");		
 		guideActions.addSection();
 	}
 });
