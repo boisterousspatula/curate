@@ -54,14 +54,12 @@ module.exports = {
 
 		};
 		var options = callback.options || {};
-		console.log("SECTIONSSSS", sections)
 		var guideToSend = {
 			title: guide.title,
 			description: guide.description,
 			sections: sections
 		}
 		guideToSend = JSON.stringify(guideToSend);
-		console.log("guide to seneenenenenene", guideToSend)
 		var postUrl = ('/guide')
 		var token = self.getToken();
 
