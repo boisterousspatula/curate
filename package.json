@@ -81,7 +81,7 @@
   },
   "scripts": {
     "clean": "rimraf node_modules client/bower_components .tmp dist",
-    "postinstall": "bower install && grunt build",
+    "preinstall": "bower install && grunt build",
     "start": "NODE_ENV=production node server.js"
   },
   "engines": {
