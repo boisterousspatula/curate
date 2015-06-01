@@ -38,46 +38,45 @@ var SectionStore = new Store({
 SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
 
 	var action = payload.action;
-
-	if (action.actionType === sectionConstants.SET_SECTIONS) {
-
-		_sections = action.sections;
-		SectionStore.emitChange();
-	}
-  else if(action.actionType === sectionConstants.CREATE_NEW_SECTION){
-    console.log('in section store, pushing section');
-
-    //adds a new section to _sections
-    var newSection = cloneObj(sectionDefaults.section);
-    _sections.push(newSection);
-    SectionStore.emitChange();
-  }
-  else if(action.actionType === sectionConstants.CREATE_NEW_LINK){
-    console.log('in section store, pushing link at index');
-    //adds a new link to _sections at the index of the section that the add button was clicked
-    var index = payload.action.index;
-    var newLink = cloneObj(sectionDefaults.link);
-    _sections[index].links.push(newLink);
-    SectionStore.emitChange();
-  }
-  else if(action.actionType === inputConstants.UPDATE_INPUT_VALUE){
-    console.log("in section store, updating form input val");
-
-    var index = payload.action.index;
-    var val = payload.action.input;
-    var nameProp = payload.action.name;
-
-    if(nameProp === "links"){
-      var keyProp = payload.action.linkidx
-      _sections[index][nameProp][keyProp].link = val;
-    } else if(nameProp === "guideTitle" || nameProp === "guideDescription"){
-      _guide[nameProp] = val;
-      console.log("GUIDE", _guide)
-    } else{
-      _sections[index][nameProp]= val;
-    }
-    SectionStore.emitChange();
-  }
+  switch(action.actionType){
+    case sectionConstants.SET_SECTION:
+      _sections = action.sections;
+      SectionStore.emitChange();
+      break;
+    case sectionConstants.CREATE_NEW_SECTION:
+      var newSection = cloneObj(sectionDefaults.section);
+      _sections.push(newSection);
+      SectionStore.emitChange();
+      break;
+    case sectionConstants.CREATE_NEW_LINK:
+      var index = payload.action.index;
+      var newLink = cloneObj(sectionDefaults.link);
+      _sections[index].links.push(newLink);
+      SectionStore.emitChange();
+      break;
+    case inputConstants.UPDATE_INPUT_VALUE:
+      var index = payload.action.index;
+      var input = payload.action.input;
+      var fieldName = payload.action.name;
+      /*
+      updates the sections/guide object based on the 
+      field name that was modified in the view
+      */
+      switch(fieldName){
+        case "links":
+          var linkKey = payload.action.linkidx
+          _sections[index][fieldName][linkKey].link = input;
+          break;
+        case "guideTitle":
+        case "guideDescription":
+          _guide[fieldName] = input;
+          break;
+        default:
+        _sections[index][fieldName] = input;
+      }
+      SectionStore.emitChange();
+      break;
+  };
 
 });
 
