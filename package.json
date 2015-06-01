@@ -81,7 +81,7 @@
   },
   "scripts": {
     "clean": "rimraf node_modules client/bower_components .tmp dist",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production grunt build node server.js"
   },
   "engines": {
     "node": ">=0.10.0"
