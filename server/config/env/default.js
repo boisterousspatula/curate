@@ -33,7 +33,7 @@ var defaults = {
   },
   database: {
     // URL to connect to database
-    url: process.env.DBURL || 'mysql://b79cb04595f7cb:38889bee@us-cdbr-azure-west-b.cleardb.com:3306/curateDB',
+    url: process.env.DBURL || 'mysql://curatedb:Hackreactor27@curate.cloudapp.net:3306/curateDB',
     // Sequelize database options
     options: {
       // Database Type
