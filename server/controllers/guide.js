@@ -9,6 +9,10 @@ var Guide = db.guide;
 var Section = db.section;
 var Link = db.link;
 var User = db.user;
+var GuideVote = db.guideVote;
+var LinkVote = db.linkVote;
+var Comment = db.comment;
+var Category = db.category;
 
 /**
  * GET /guide
@@ -79,16 +83,30 @@ var readIndividualGuide = function (req, res, next) {
     }
   })
   .then(function(guide) {
+
+    if (!guide) {
+      return res.status(400).json({
+        errors: [{
+          msg: 'Failed to find guide.'
+        }]
+      });
+    }
+
     individualGuide.title = guide.title;
     individualGuide.description = guide.description;
+    individualGuide.sections = [];
+    individualGuide.userId = guide.userId;
+    individualGuide.userEmail = '';
+    individualGuide.category = '';
+    individualGuide.votes = 0;
+    individualGuide.comments = [];
 
-    Section.findAll({
+    Section.findAll({ // find all sections of the guide
       where: {
         guideId: guide.id
       }
     })
     .then(function(sections) {
-      individualGuide.sections = [];
 
       sections.forEach(function(section) {
         var currentSection = {};
@@ -96,7 +114,7 @@ var readIndividualGuide = function (req, res, next) {
         currentSection.description = section.description;
         currentSection.links = [];
 
-        Link.findAll({
+        Link.findAll({ // find all links of the section
           where: {
             sectionId: section.id
           }
@@ -104,14 +122,97 @@ var readIndividualGuide = function (req, res, next) {
           links.forEach(function(link) {
             var currentLink = {};
             currentLink.title = link.title;
+            currentLink.url = link.url;
+            currentLink.votes = 0;
             
-          })
+            LinkVote.findAll({ // find all linkVotes of the link
+              where: {
+                linkId: link.id
+              }
+            })
+            .then(function(linkVotes) {
+              var linkVoteTotal = 0;
+              linkVotes.forEach(function(linkVote) {
+                linkVoteTotal += linkVote.val;
+              });
+
+              currentLink.votes = linkVoteTotal;
+            });
+            currentSection.links.push(currentLink);
+          });
         })
 
         individualGuide.sections.push(currentSection);
       });
+    })
+    .then(function() {
+      GuideVote.findAll({ // find all votes associated with the guide
+        where: {
+          guideId: guide.id
+        }
+      })
+      .then(function(guideVotes) {
+        var guideVoteTotal = 0;
 
-      console.log(individualGuide);
+        for (var i = 0; i < guideVotes.length; i++) {
+          guideVoteTotal += guideVotes[i].val;
+        }
+
+        individualGuide.votes = guideVoteTotal;
+      });
+    })
+    .then(function() {
+      // Find category associated with guide.
+      // May want to refactor to allow for multiple categories later
+      Category.find({ 
+        where: {
+          id: guide.categoryId
+        }
+      })
+      .then(function(category) {
+        if (category) {
+          individualGuide.category = category.name;
+        } else {
+          individualGuide.category = null;
+        }
+      });
+    })
+    .then(function() {
+      // Find user email associated with the guide
+      User.find({
+        where: {
+          id: guide.userId
+        }
+      })
+      .then(function(user) {
+        if (user && user.email) {
+          console.log(user.email);
+          individualGuide.userEmail = user.email;
+        }
+      });
+    })
+    .then(function() {
+      // Find all comments associated with the guide
+      Comment.findAll({
+        where: {
+          guideId: guide.id
+        }
+      })
+      .then(function(comments) {
+        var currentComment = {};
+        
+        for (var i = 0; i < comments.length; i++) {
+          currentComment.message = comments[i].message;
+          // currentComment.userName = comments[i].userName;
+          individualGuide.comments.push(currentComment);
+        }
+      })
+      .then(function() {
+        console.log("Individual Guide: ", individualGuide);
+        res.status(200).json({
+          guide: individualGuide
+        });
+      });
     });
   });
 };
