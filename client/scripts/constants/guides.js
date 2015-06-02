@@ -5,7 +5,9 @@ var keyMirror = require('keymirror');
 var guideConstants = keyMirror({
 
   // Global message types
-  SET_GUIDES: null
+  SET_GUIDES: null,
+  UPVOTE: null,
+  DOWNVOTE: null
 
 });
 

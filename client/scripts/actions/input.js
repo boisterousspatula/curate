@@ -14,6 +14,15 @@ module.exports = {
       index: index,
       linkidx: key
     });
+  },
+
+  vote: function(type, linkidx, sectionidx){
+    type = type.toUpperCase();
+    Dispatcher.handleViewAction({
+      actionType: inputConstants[type],
+      linkIndex: linkidx,
+      sectionIndex: sectionidx
+    });
   }
 
 };

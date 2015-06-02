@@ -46,7 +46,7 @@ module.exports = {
 	//	});
 	//},
 	postGuide: function(sections, guide, callback){
-		var self= this;
+		var self = this;
 		var callback = callback || function() {};
 		callback.options = {
 			successUrl: '/',
@@ -187,13 +187,25 @@ module.exports = {
 		this.getReq(id, cb);
 	},
 
+	getGuide: function(id, callback){
+		var self = this;
+		var token = self.getToken();
+		var options = callback.options || {};
+		var cb = callback || function() {};
+		cb.options = {
+			successUrl: '/',
+			errorUrl: '/'
+		};
+		this.getReq(id, cb);
+	}
+
 	getReq: function(idx, callback){
 		var self = this;
 		var token = self.getToken();
 		var options = callback.options || {};
 
 		request
-			.get('/guide')
+			.get('/guide/'+idx)
 			.set({
 				'authorization': 'Bearer ' + token,
 				'X-Requested-With': 'XMLHttpRequest'
@@ -203,7 +215,6 @@ module.exports = {
 				console.log('guide get response', res);
 				if (res.ok) {
 					var guideData;
-
 
 					guideData = res.body.guide;
 					self.setGuides(guideData);

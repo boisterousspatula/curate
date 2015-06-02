@@ -23,12 +23,11 @@ var VoteComponent = React.createClass({
 
   _onChange: function(){
     this.setState({
-      votes: guideStore.getVotes()
+      votes: guideStore.getVotes(this.props.linkIndex, this.props.sectionIndex)
     })
   },
 
   render: function() {
- 
     return (
       /* jshint ignore:start */
      <div className = "vote-container">
@@ -41,10 +40,11 @@ var VoteComponent = React.createClass({
 
   handleVote: function(e) {
     e.preventDefault();
-    var index = this.props.index;
+    var linkIndex = this.props.linkIndex;
+    var sectionIndex = this.props.sectionIndex;
     var votetype = e.target.name;
 
-    inputActions.vote(votetype, index)
+    inputActions.vote(votetype, linkIndex, sectionIndex)
   }
 
 });

@@ -13,8 +13,8 @@ var GuideStore = new Store({
 	get: function() {
 		return _guides || guideDefaults;
 	},
-	getVotes: function(){
-		return _guides
+	getVotes: function(linkIndex, sectionIndex){
+		return _guides[sectionIndex][links][linkIndex][votes];
 	}
 
 });
@@ -30,20 +30,21 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 		GuideStore.emitChange();
 	}
 	else if (action.actionType === guideConstants.UPVOTE){
+		console.log('upboats')
 		var index = action.index;
 		_guides[sectionIndex][links][linkIndex][votes]++;
+		console.log(_guides[sectionIndex][links][linkIndex][votes])
+		GuideStore.emitChange();
 	}
 	else if (action.actionType === guideConstants.DOWNVOTE){
+		console.log('downboats')
 		var linkIndex = action.linkIndex;
 		var sectionIndex = action.sectionIndex;
 
-		_guides[sectionIndex][links][linkIndex][votes]++;
+		_guides[sectionIndex][links][linkIndex][votes]--;
+		GuideStore.emitChange();
 	}
-	//if (action.actionType === guideConstants.SAVE_GUIDE) {
-	//	_guides = action.guides;
-	//
-	//	GuideStore.emitChange();
-	//}
+	
 
 });
 
