@@ -33,7 +33,7 @@ var GuideComponent = React.createClass({
   },
 
 	render: function() {
-		return (
+    return (
 			/* jshint ignore:start */
 			<DefaultLayout>
         <div className="main-container">
