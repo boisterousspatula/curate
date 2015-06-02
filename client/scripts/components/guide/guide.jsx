@@ -66,7 +66,7 @@ var GuideComponent = React.createClass({
     this.setState({
       sections: sectionStore.get(),
       guide: sectionStore.getGuide().guide
-    })
+    });
     guideActions.postGuide(this.state.sections, this.state.guide);
 	}
 });

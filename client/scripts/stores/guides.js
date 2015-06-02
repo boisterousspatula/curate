@@ -21,9 +21,9 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 	var action = payload.action;
 
 	if (action.actionType === guideConstants.SET_GUIDES) {
-		console.log('in guide store set guides');
+		//console.log('in guide store set guides');
 		_guides = action.guides;
-		console.log(_guides);
+		//console.log(_guides);
 		GuideStore.emitChange();
 	}
 	//if (action.actionType === guideConstants.SAVE_GUIDE) {

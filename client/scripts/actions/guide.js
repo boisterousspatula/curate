@@ -55,12 +55,12 @@ module.exports = {
 		};
 		var options = callback.options || {};
 		var guideToSend = {
-			title: guide.title,
-			description: guide.description,
+			title: guide.guideTitle,
+			description: guide.guideDescription,
 			sections: sections
 		}
 		guideToSend = JSON.stringify(guideToSend);
-		var postUrl = ('/guide')
+		var postUrl = ('/guide');
 		var token = self.getToken();
 
 		request

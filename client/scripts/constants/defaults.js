@@ -32,8 +32,8 @@ var Defaults = {
 		}],
 
   guide: {
-    title: null,
-    description: null,
+		guideTitle: null,
+		guideDescription: null
   },
 
 	section: {
