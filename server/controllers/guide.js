@@ -75,7 +75,7 @@ var readUserGuides = function (req, res, next) {
  */
 var readIndividualGuide = function (req, res, next) {
   var individualGuide = {};
-  var guideId = 1; // eventually needs to be req.body.guideId
+  var guideId = 1; // TODO: eventually needs to be req.body.guideId
 
   Guide.find({
     where: {
@@ -228,7 +228,7 @@ var readIndividualGuide = function (req, res, next) {
  */
 var createGuide = function(req, res, next) {
   // add assert for requiring a title to the guide
-  console.log('createGuide controller POST response');
+  // console.log('createGuide controller POST response');
   var guideContract = {
     title: 'How to learn Flux & React',
     description: 'description stuff',
@@ -249,32 +249,17 @@ var createGuide = function(req, res, next) {
     votes: null, //will be populated in read state
     comments: null //will be populated in read state
   };
-  // var dummyReq = {
-  //   title: 'How to learn Flux & React',
-  //   description: 'description stuff',
-  //   sections: [
-  //     {
-  //       title: 'react stuff',
-  //       description:'learn react',
-  //       links:
-  //         [
-  //           {title: 'react link', url:'http://reactjs.com'}
-  //         ]
-  //     }
-  //   ],
-  //   userId: 1
-  // };
-
+  
   console.log('createGuide controller POST req.body', req.body);
-  var guide = req.body;
+  guideContract = req.body;
 
   //Save guide data
   Guide.create({ //create guide entry
-    title: guideContract.title,
-    description: guideContract.description,
-    userId: guideContract.userId
+    title: guideContract.title || "JY's Guide to JS",
+    description: guideContract.description || "If JY can JS so can you!",
+    userId: guideContract.userId || 1
   })
-  .then(function(guide){
+  .then(function(guide) {
     //create section obj with guide id
     var guideId = guide.get('id');
     guideContract.sections.forEach(function(section){
@@ -288,8 +273,8 @@ var createGuide = function(req, res, next) {
         var sectionId = newSection.get('id');
         section.links.forEach(function(link){
           Link.create({
-            title: link.title,
-            url: link.url,
+            title: link.title || 'Default Link Title',
+            url: link.link, // TODO: eventually change this to url on frontend
             sectionId: sectionId
           });
         });

@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Need to add estimated time to completion field for the sections
+ */
+
+
 var SectionModel = function(sequelize, DataTypes) {
   var Section = sequelize.define('section', {
     title: {

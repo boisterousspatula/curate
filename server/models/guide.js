@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ * Need to add estimated time to completion that will take ~6 values
+ * and compute an estimated time for whole guide
+ */
+
+
 var GuideModel = function(sequelize, DataTypes) {
   var Guide = sequelize.define('guide', {
     title: {
