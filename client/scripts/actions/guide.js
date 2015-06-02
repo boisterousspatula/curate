@@ -12,13 +12,13 @@ var cookie = require('cookie');
 module.exports = {
 
   addSection: function(){
-    console.log('in guide actions addSection');
+    //console.log('in guide actions addSection');
     Dispatcher.handleViewAction({
       actionType: sectionConstants.CREATE_NEW_SECTION
     });
   },
   addLink: function(index){
-    console.log('in guide actions addLink');
+    //console.log('in guide actions addLink');
     Dispatcher.handleViewAction({
       actionType: sectionConstants.CREATE_NEW_LINK,
       index: index
@@ -58,7 +58,7 @@ module.exports = {
 			title: guide.guideTitle,
 			description: guide.guideDescription,
 			sections: sections
-		}
+		};
 		guideToSend = JSON.stringify(guideToSend);
 		var postUrl = ('/guide');
 		var token = self.getToken();
@@ -68,11 +68,12 @@ module.exports = {
 			.set('Content-Type', 'application/json')
 			.set({
 				'authorization': 'Bearer ' + token,
-				'X-Requested-With': 'XMLHttpRequest'
+				'X-Requested-With': 'XMLHttpRequest',
+				'userId': window.localStorage.userId
 			})
 			.send(guideToSend)
 			.end(function(res) {
-				console.log('guide post response', res);
+				//console.log('guide post response', res);
 				if (res.ok) {
 					if (callback && callback.success) {
 						callback.success(res);
@@ -116,7 +117,8 @@ module.exports = {
 			.type('form')
 			.set({
 				'authorization': 'Bearer ' + token,
-				'X-Requested-With': 'XMLHttpRequest'
+				'X-Requested-With': 'XMLHttpRequest',
+				'userId': window.localStorage.userId
 			})
 			.send(postData)
 			.end(function(res) {

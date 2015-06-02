@@ -27,6 +27,35 @@ var castVote = function(req, res, next) {
   });
 };
 
+/**
+ * GET /vote/user
+ * Read users guide data
+ */
+var getVoteByUser = function (req, res, next) {
+	GuideVote.findAll({
+		where: {
+			// need to have front end send userId from localStorage
+			userId: req.headers.userid
+		}
+	})
+		.then(function(votes) {
+			// console.log(guides);
+			if (!votes) {
+				return res.status(400).json({
+					errors: [{
+						msg: 'Failed to find guide votes for user.'
+					}]
+				});
+			}
+			res.status(200).json({
+				votes: votes
+			});
+		}).error(function(err) {
+			return next(err);
+		});
+};
+
 module.exports = {
-  castVote: castVote
+  castVote: castVote,
+	getVoteByUser: getVoteByUser
 };
