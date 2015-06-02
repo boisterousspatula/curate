@@ -4,7 +4,7 @@ dist
 client/bower_components
 .tmp
 .grunt
-server/config/secrets.js
+#server/config/secrets.js
 .DS_Store
 .yo-rc.json
 
