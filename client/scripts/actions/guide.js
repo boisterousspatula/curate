@@ -182,7 +182,7 @@ module.exports = {
 		var cb = callback || function() {};
 		cb.options = {
 			successUrl: '/',
-			errorUrl: '/'
+			errorUrl: '/',
 			destination:'/guide'
 		};
 		this.getReq(id, cb);
@@ -195,17 +195,17 @@ module.exports = {
 		var cb = callback || function() {};
 		cb.options = {
 			successUrl: '/',
-			errorUrl: '/'
+			errorUrl: '/',
 			destination: '/guide/single'
 		};
 		this.getReq(id, cb);
-	}
+	},
 
 	getReq: function(idx, callback){
 		var self = this;
 		var token = self.getToken();
 		var options = callback.options || {};
-		var id = idx || ""
+		var id = idx || "";
 
 		request
 			.get(options.destination)
