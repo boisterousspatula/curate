@@ -5,7 +5,7 @@ var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
 var SectionList = require('./sectionList.jsx');
 var sectionStore = require('../../stores/sections');
-var SectionTextInput = require('./sectionTextInput.jsx')
+var SectionTextInput = require('./sectionTextInput.jsx');
 
 var GuideComponent = React.createClass({
 	getInitialState: function () {
@@ -13,8 +13,10 @@ var GuideComponent = React.createClass({
 		return {
 			sections: sectionStore.get(),
       guide: sectionStore.getGuide()
-		}
+		};
 	},
+
+  //Next 3 properties update state of the view based on the store
 	componentDidMount: function() {
   	sectionStore.addChangeListener(this._onChange);
   },
@@ -23,10 +25,11 @@ var GuideComponent = React.createClass({
     sectionStore.removeChangeListener(this._onChange);
   },
 
+  //Update view based on state of section store
   _onChange: function(){
   	this.setState({
   		sections: sectionStore.get()
-  	})
+  	});
   },
 
 	render: function() {
