@@ -75,7 +75,7 @@ var readUserGuides = function (req, res, next) {
  */
 var readIndividualGuide = function (req, res, next) {
   var individualGuide = {};
-  var guideId = 1; // TODO: eventually needs to be req.body.guideId
+  var guideId = req.body.guideId || 1; // TODO: eventually needs to be req.body.guideId
 
   Guide.find({
     where: {
