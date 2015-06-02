@@ -18,32 +18,35 @@ var NavbarComponent = React.createClass({
   },
   render: function() {
     var user = this.props.user;
-    var navLinks = user.loggedIn ? (
-      /* jshint ignore:start */
-      <ul className="nav-list pull-right">
-        <li className="nav-item">
-          Hello {user.firstName ? user.firstName : user.email}
-        </li>
-        <li className="nav-item">
-          <Link url="/settings">My Account</Link>
-        </li>
-        <li className="nav-item">
-          <Link url="/logout" onClick={this.handleLogout}>Logout</Link>
-        </li>
-      </ul>
-      /* jshint ignore:end */
-    ) : (
-      /* jshint ignore:start */
-      <ul className="nav-list pull-right">
-        <li className="nav-item">
-          <Link url="/login">Login</Link>
-        </li>
-        <li className="nav-item">
-          <Link url="/signup">Create Account</Link>
-        </li>
-      </ul>
-      /* jshint ignore:end */
-    );
+		var navLinks = user.loggedIn ? (
+			/* jshint ignore:start */
+			<ul className="nav-list pull-right">
+				<li className="nav-item">
+					Hello {user.firstName ? user.firstName : user.email}
+				</li>
+				<li className="nav-item">
+					<Link url="/knowrepo">Repo</Link>
+				</li>
+				<li className="nav-item">
+					<Link url="/settings">Settings</Link>
+				</li>
+				<li className="nav-item">
+					<Link url="/logout" onClick={this.handleLogout}>Logout</Link>
+				</li>
+			</ul>
+			/* jshint ignore:end */
+		) : (
+			/* jshint ignore:start */
+			<ul className="nav-list pull-right">
+				<li className="nav-item">
+					<Link url="/login">Login</Link>
+				</li>
+				<li className="nav-item">
+					<Link url="/signup">Create Account</Link>
+				</li>
+			</ul>
+			/* jshint ignore:end */
+		);
 
     return (
       /* jshint ignore:start */
@@ -59,7 +62,7 @@ var NavbarComponent = React.createClass({
       </div>
       /* jshint ignore:end */
     );
-  },
+	},
   handleLogout: function(e) {
     e.preventDefault();
     userActions.logout();
