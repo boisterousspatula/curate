@@ -266,7 +266,7 @@ var createGuide = function(req, res, next) {
       Section.create({
         title: section.title,
         description: section.description,
-        guideId: guideId,
+        guideId: guideId
       })
       //create link entry with its section id
       .then(function(newSection){
