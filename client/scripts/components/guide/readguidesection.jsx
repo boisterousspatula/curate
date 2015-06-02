@@ -1,0 +1,58 @@
+'use strict';
+
+var React = require('react');
+var inputActions = require('../../actions/input')
+
+var ReadGuideSectionComponent = React.createClass({
+
+  render: function() {
+    var section = this.props.sec;
+
+    var self = this;
+    var linkList = this.props.sec.links.map(function(link, idx){
+      /* jshint ignore:start */
+      return(
+       <li>{link.title}</li>
+       <li><{link.link}</li>
+       <VoteComponent index={idx} />
+        )
+      /* jshint ignore:end */
+    })
+
+    return (
+      /* jshint ignore:start */
+    <div>
+      <ul>
+        <li>
+        <label>Section Title: </label>
+        {sec.title}
+        </li>
+
+        <li>
+        <label>Section Description: </label>
+        {sec.description}
+        </li>
+
+        <li>
+        <label>Links: </label>
+        {linkList}
+        </li>
+      </ul>
+    </div>
+    /* jshint ignore:end */
+    );
+  },
+
+  onChange: function(e){
+    this.setState({
+      value: e.target.value
+    })
+ 
+  },
+
+  handleUpdateStoreValue: function(input, name, index, key){
+    inputActions.updateValue(input, name, index, key);
+  }
+});
+
+module.exports = ReadGuideSectionComponent;

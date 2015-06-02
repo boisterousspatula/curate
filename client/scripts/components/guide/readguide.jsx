@@ -3,13 +3,10 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
-var SectionList = require('./sectionList.jsx');
-var sectionStore = require('../../stores/sections');
-var SectionTextInput = require('./sectionTextInput.jsx')
+var guideStore = require('../../stores/guide');
+var GuideSection = require('./readguidesection')
 
-
-
-var GuideComponent = React.createClass({
+var ReadGuideComponent = React.createClass({
 	getInitialState: function () {
     var guideId = this.props.id;
 		return {
@@ -17,59 +14,39 @@ var GuideComponent = React.createClass({
 		}
 	},
 	componentDidMount: function() {
-  	sectionStore.addChangeListener(this._onChange);
+  	guideStore.addChangeListener(this._onChange);
   },
 
 	componentWillUnmount: function() {
-    sectionStore.removeChangeListener(this._onChange);
+    guideStore.removeChangeListener(this._onChange);
   },
 
   _onChange: function(){
   	this.setState({
-  		sections: sectionStore.get()
+  		votes: guideStore.getVotes()
   	})
   },
 
 	render: function() {
+    var guide = this.state.guide
+    var sections = guide.sections.map(function(sec, idx){
+      return (
+        <GuideSection key={idx} index={idx} sec={section}/>
+        )
+    })
 		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
         <div className="main-container">
-					<form method="post" action="/guide" onSubmit={this.handleSubmit}>
-            <div className="guide-headers">
-            <ul>
-              <li>
-              <label>Guide Title: </label>
-                <SectionTextInput name="guideTitle"/>
-              </li>
-              <li>
-              <label>Guide Description: </label>
-                <SectionTextInput name="guideDescription"/>
-						</li>
-            </ul>
-            </div>
-            <SectionList sections={this.state.sections}/>
-						<input type="submit" name="save"></input>
-				</form>
+          <ul>
+            {sections}
+          </ul>
 				</div>
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);
-
 	},
 
-
-	handleSubmit: function(e) {
-		e.preventDefault();
-		//console.log('in handle submit view', e.currentTarget);
-		var form = e.currentTarget;
-
-    this.setState({
-      sections: sectionStore.get(),
-      guide: sectionStore.getGuide().guide
-    })
-    guideActions.postGuide(this.state.sections, this.state.guide);
-	}
 });
 
-module.exports = GuideComponent;
+module.exports = ReadGuideComponent;
