@@ -1,7 +1,7 @@
 'use strict';
 
 var Dispatcher = require('../dispatchers/default');
-var sectionConstants = require('../constants/sections');
+var sectionConstants = require('../constants/knowledgerepo');
 var assign = require('object-assign');
 var messagesActions = require('./messages');
 var routeActions = require('./routes');
@@ -11,30 +11,22 @@ var cookie = require('cookie');
 
 module.exports = {
 
-  addSection: function(){
-    console.log('in guide actions addSection');
-    Dispatcher.handleViewAction({
-      actionType: sectionConstants.CREATE_NEW_SECTION
-    });
-  },
-  addLink: function(index){
-    console.log('in guide actions addLink');
-    Dispatcher.handleViewAction({
-      actionType: sectionConstants.CREATE_NEW_LINK,
-      index: index
-    });
-  },
-	saveGuide: function(index){
+	//saveGuide: function(index){
+	//	Dispatcher.handleViewAction({
+	//		actionType: sectionConstants.SAVE_GUIDE,
+	//		index: index
+	//	});
+	//},
+
+	setCurated: function(guides) {
+
 		Dispatcher.handleViewAction({
-			actionType: sectionConstants.SAVE_GUIDE,
-			index: index
+			actionType: sectionConstants.SET_CURATED,
+			guides: guides
 		});
-	},
-
-	setGuides: function(guides) {
 
 		Dispatcher.handleViewAction({
-			actionType: sectionConstants.SET_GUIDES,
+			actionType: sectionConstants.SET_FAVS,
 			guides: guides
 		});
 	},
@@ -55,12 +47,12 @@ module.exports = {
 		};
 		var options = callback.options || {};
 		var guideToSend = {
-			title: guide.guideTitle,
-			description: guide.guideDescription,
+			title: guide.title,
+			description: guide.description,
 			sections: sections
 		}
 		guideToSend = JSON.stringify(guideToSend);
-		var postUrl = ('/guide');
+		var postUrl = ('/guide')
 		var token = self.getToken();
 
 		request
@@ -123,23 +115,7 @@ module.exports = {
 				console.log('guide post response', res);
 				if (res.ok) {
 					var userData;
-					// If auth token needs to be stored
-					//if (options.setToken) {
-					//	// Store token in cookie that expires in a week
-					//	self.setToken(res.body.token, 7);
-					//}
-					//// If user needs to be updated
-					//if (options.updateUser) {
-					//	userData = res.body.user;
-					//	userData.loggedIn = true;
-					//
-					//	self.setUser(userData);
-					//}
-					//// If user needs to be destroyed
-					//if (options.destroyUser) {
-					//	// Log user out
-					//	self.logout();
-					//}
+
 					if (callback && callback.success) {
 						callback.success(res);
 					}
@@ -164,26 +140,26 @@ module.exports = {
 			});
 	},
 
-	createGuide: function(form, callback) {
-		console.log('in guide save', form);
-		var cb = callback || function() {};
-		cb.options = {
-			successUrl: '/',
-			errorUrl: '/createguide'
 
-		};
-		this.postForm(form, cb);
-	},
-
-	getGuides: function(idx, callback) {
+	getHome: function(idx, callback) {
 		var id = idx || null;
 		var cb = callback || function() {};
 		cb.options = {
-			successUrl: '/',
-			errorUrl: '/'
+			successUrl: '/knowrepo',
+			errorUrl: '/knowrepo'
 		};
 		this.getReq(id, cb);
 	},
+
+	//getCurated: function(idx, callback) {
+	//	var id = idx || null;
+	//	var cb = callback || function() {};
+	//	cb.options = {
+	//		successUrl: '/knowrepo',
+	//		errorUrl: '/knowrepo'
+	//	};
+	//	this.getReq(id, cb);
+	//},
 
 	getReq: function(idx, callback){
 		var self = this;
@@ -191,6 +167,7 @@ module.exports = {
 		var options = callback.options || {};
 
 		request
+			// TODO: change to guide/user and get the id somehow.
 			.get('/guide')
 			.set({
 				'authorization': 'Bearer ' + token,
@@ -204,7 +181,7 @@ module.exports = {
 
 
 					guideData = res.body.guide;
-					self.setGuides(guideData);
+					self.setCurated(guideData);
 
 					if (callback && callback.success) {
 						callback.success(res);
