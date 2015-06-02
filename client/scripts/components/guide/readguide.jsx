@@ -12,20 +12,6 @@ var ReadGuideComponent = React.createClass({
 		return {
       guide: guideActions.getGuide(guideId)
 		}
-	},
-	componentDidMount: function() {
-  	guideStore.addChangeListener(this._onChange);
-  },
-
-	componentWillUnmount: function() {
-    guideStore.removeChangeListener(this._onChange);
-  },
-
-  _onChange: function(){
-  	this.setState({
-  		votes: guideStore.getVotes()
-  	})
-  },
 
 	render: function() {
     var guide = this.state.guide

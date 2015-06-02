@@ -5,16 +5,18 @@ var inputActions = require('../../actions/input')
 
 var ReadGuideSectionComponent = React.createClass({
 
+
   render: function() {
     var section = this.props.sec;
 
     var self = this;
     var linkList = this.props.sec.links.map(function(link, idx){
       /* jshint ignore:start */
+      link.votes = link.votes || 0;
       return(
        <li>{link.title}</li>
        <li><{link.link}</li>
-       <VoteComponent index={idx} />
+       <VoteComponent key={idx} sectionIndex={this.props.index} linkIndex={idx} votes={link.votes}/>
         )
       /* jshint ignore:end */
     })
@@ -43,16 +45,6 @@ var ReadGuideSectionComponent = React.createClass({
     );
   },
 
-  onChange: function(e){
-    this.setState({
-      value: e.target.value
-    })
- 
-  },
-
-  handleUpdateStoreValue: function(input, name, index, key){
-    inputActions.updateValue(input, name, index, key);
-  }
 });
 
 module.exports = ReadGuideSectionComponent;

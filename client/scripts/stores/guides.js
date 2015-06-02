@@ -12,6 +12,9 @@ var GuideStore = new Store({
 	// Gets data associated with the current messages.
 	get: function() {
 		return _guides || guideDefaults;
+	},
+	getVotes: function(){
+		return _guides
 	}
 
 });
@@ -25,6 +28,16 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 		_guides = action.guides;
 		//console.log(_guides);
 		GuideStore.emitChange();
+	}
+	else if (action.actionType === guideConstants.UPVOTE){
+		var index = action.index;
+		_guides[sectionIndex][links][linkIndex][votes]++;
+	}
+	else if (action.actionType === guideConstants.DOWNVOTE){
+		var linkIndex = action.linkIndex;
+		var sectionIndex = action.sectionIndex;
+
+		_guides[sectionIndex][links][linkIndex][votes]++;
 	}
 	//if (action.actionType === guideConstants.SAVE_GUIDE) {
 	//	_guides = action.guides;

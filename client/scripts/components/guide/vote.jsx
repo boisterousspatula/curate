@@ -6,11 +6,11 @@ var guideActions = require('../../actions/guide');
 var guideStore = require('../../stores/guide');
 var GuideSection = require('./readguidesection')
 
-var ReadGuideComponent = React.createClass({
+var VoteComponent = React.createClass({
   getInitialState: function () {
     var guideId = this.props.id;
     return {
-      guide: guideActions.getGuide(guideId)
+      votes: this.props.votes
     }
   },
   componentDidMount: function() {
@@ -31,28 +31,22 @@ var ReadGuideComponent = React.createClass({
  
     return (
       /* jshint ignore:start */
-      <DefaultLayout>
-        <div className="main-container">
-          <ul>
-            {sections}
-          </ul>
-        </div>
-      </DefaultLayout>
+     <div className = "vote-container">
+      <li name="upvote" onClick = {this.handleVote}>upvote</li>
+      <li name="downvote" onClick = {this.handleVote}>downvote</li>
+     </div>
       /* jshint ignore:end */
     );
   },
 
   handleVote: function(e) {
     e.preventDefault();
-    //console.log('in handle submit view', e.currentTarget);
-    var form = e.currentTarget;
-    this.setState({
-      sections: sectionStore.get(),
-      guide: sectionStore.getGuide().guide
-    })
-    guideActions.postGuide(this.state.sections, this.state.guide);
+    var index = this.props.index;
+    var votetype = e.target.name;
+
+    inputActions.vote(votetype, index)
   }
 
 });
 
-module.exports = ReadGuideComponent;
+module.exports = VoteComponent;
