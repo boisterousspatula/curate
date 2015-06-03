@@ -11,6 +11,7 @@ var CommentModel = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Comment.belongsTo(models.guide);
+        Comment.belongsTo(models.user);
       }
     }
   });
