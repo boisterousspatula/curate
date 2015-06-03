@@ -50,9 +50,9 @@ module.exports = {
 			title: guide.title,
 			description: guide.description,
 			sections: sections
-		}
+		};
 		guideToSend = JSON.stringify(guideToSend);
-		var postUrl = ('/guide')
+		var postUrl = ('/guide');
 		var token = self.getToken();
 
 		request
@@ -167,11 +167,11 @@ module.exports = {
 		var options = callback.options || {};
 
 		request
-			// TODO: change to guide/user and get the id somehow.
-			.get('/guide')
+			.get('/guide/user')
 			.set({
 				'authorization': 'Bearer ' + token,
-				'X-Requested-With': 'XMLHttpRequest'
+				'X-Requested-With': 'XMLHttpRequest',
+				'userId': window.localStorage.userId
 			})
 			//.send(idx)
 			.end(function(res) {
