@@ -1,26 +1,30 @@
 'use strict';
 
 var React = require('react');
-var DefaultLayout = require('../layouts/default.jsx');
-var RaisedButton = require('material-ui/lib/raised-button');
-var ThemeManager = require('material-ui/lib/styles/theme-manager')();
+var mui = require('material-ui');
+var RaisedButton = mui.RaisedButton;
+var ThemeManager = new mui.Styles.ThemeManager();
 var Colors = require('material-ui/lib/styles/colors');
+var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
 var guideStore = require('../../stores/guides');
 var GuidePreview = require('./guidepreview.jsx');
 
 var GuideListComponent = React.createClass({
 
+	//Needed for mui to load theme
 	childContextTypes: {
 	  muiTheme: React.PropTypes.object
 	},
 
+	//Needed for mui to load theme
 	getChildContext: function() {
 	  return {
 	    muiTheme: ThemeManager.getCurrentTheme()
 	  };
 	},
 
+	//Set current theme
 	componentWillMount: function() {
 	  ThemeManager.setPalette({
 	    accent1Color: Colors.deepOrange500
