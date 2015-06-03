@@ -6,6 +6,7 @@ var guideConstants = require('../constants/guides');
 var guideDefaults = require('../constants/defaults').guides;
 
 var _guides;
+var _guideId;
 
 var GuideStore = new Store({
 
@@ -15,6 +16,9 @@ var GuideStore = new Store({
 	},
 	getVotes: function(linkIndex, sectionIndex){
 		return _guides[sectionIndex][links][linkIndex][votes];
+	},
+	getId: function() {
+		return _guideId;
 	}
 
 });
@@ -30,21 +34,25 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 		GuideStore.emitChange();
 	}
 	else if (action.actionType === guideConstants.UPVOTE){
-		console.log('upboats')
+		console.log('upboats');
 		var index = action.index;
 		_guides[sectionIndex][links][linkIndex][votes]++;
-		console.log(_guides[sectionIndex][links][linkIndex][votes])
+		console.log(_guides[sectionIndex][links][linkIndex][votes]);
 		GuideStore.emitChange();
 	}
 	else if (action.actionType === guideConstants.DOWNVOTE){
-		console.log('downboats')
+		console.log('downboats');
 		var linkIndex = action.linkIndex;
 		var sectionIndex = action.sectionIndex;
 
 		_guides[sectionIndex][links][linkIndex][votes]--;
 		GuideStore.emitChange();
 	}
-	
+	else if (action.actionType === guideConstants.PASS_ID) {
+		_guideId = payload.action.id;
+		GuideStore.emitChange();
+	}
+
 
 });
 

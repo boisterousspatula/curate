@@ -20,7 +20,7 @@ var GuideListComponent = React.createClass({
 	_onChange: function(){
 		this.setState({
 			guides: guideStore.get()
-		})
+		});
 	},
 
 	getInitialState: function () {
@@ -28,23 +28,21 @@ var GuideListComponent = React.createClass({
 			guides : guideActions.getGuides()
 		};
 	},
-  
+
 	render: function() {
 		var self = this;
 		if (this.state.guides) {
-
-		var guideList = this.state.guides.sort(function (a, b) {
-			return b.votes - a.votes;
-		}).map(function (guide, idx) {
-			console.log('GUIDE', guide)
-			return (
-				/* jshint ignore:start */
-				<GuidePreview key={idx} guideId={guide} guide={guide} click={self.handleGetGuide}/>
-				/* jshint ignore:end */
-			)
-
-		});
+			var guideList = this.state.guides.sort(function (a, b) {
+				return b.votes - a.votes;
+			}).map(function (guide, idx) {
+				return (
+					/* jshint ignore:start */
+					<GuidePreview key={idx} guide={guide}/>
+					/* jshint ignore:end */
+				);
+			});
 		}
+
 		return (
 			/* jshint ignore:start */
 			<table className="top-guides">
@@ -52,14 +50,7 @@ var GuideListComponent = React.createClass({
 			</table>
 				/* jshint ignore:end */
 		);
-	},
-
-	handleGetGuide: function(e){
-		e.preventDefault();
-		var guideId = e.target.guideId
-		console.log("TARGET", guideId);
 	}
-
 });
 
 module.exports = GuideListComponent;
@@ -68,7 +59,7 @@ module.exports = GuideListComponent;
 				// 	<td>
 				// 		<h4 onClick={self.handleGetGuide}>{guide.title}</h4>
 				// 		<div>
-							
+
 				// 			<b>{guide.votes}</b>
 				// 			<br/>
 

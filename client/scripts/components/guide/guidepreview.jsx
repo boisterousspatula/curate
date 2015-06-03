@@ -2,6 +2,7 @@
 
 var React = require('react');
 var guideActions = require('../../actions/guide');
+var routeActions = require('../../actions/routes');
 
 var GuidePreviewComponent = React.createClass({
   render: function() {
@@ -10,9 +11,9 @@ var GuidePreviewComponent = React.createClass({
       /* jshint ignore:start */
       <tr>
         <td>
-          <h4 guideId={guide.id} onClick={this.handleClick}>{guide.title}</h4>
+          <h4 guideId={this.props.guide.id} onClick={this.handleClick}>{guide.title}</h4>
           <div>
-            
+
             <b>{guide.votes}</b>
             <br/>
 
@@ -21,12 +22,14 @@ var GuidePreviewComponent = React.createClass({
         </td>
       </tr>
       /* jshint ignore:end */
-    )
-  }
+    );
+  },
 
   handleClick: function(e){
-    var id = e.target.guideId
-    console.log(id)
+    var id = this.props.guide.id;
+    console.log('selected guide id', id);
+
+    routeActions.setRoute('/readguide');
   }
 });
 

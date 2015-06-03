@@ -2,6 +2,7 @@
 
 var Dispatcher = require('../dispatchers/default');
 var sectionConstants = require('../constants/sections');
+var guideConstants = require('../constants/guides');
 var assign = require('object-assign');
 var messagesActions = require('./messages');
 var routeActions = require('./routes');
@@ -36,6 +37,13 @@ module.exports = {
 		Dispatcher.handleViewAction({
 			actionType: sectionConstants.SET_GUIDES,
 			guides: guides
+		});
+	},
+
+	passGuideId: function(id) {
+		Displatcher.handleViewAction({
+			actionType: guideConstants.PASS_ID,
+			id: id
 		});
 	},
 	//saveGuide: function(index){
@@ -191,14 +199,17 @@ module.exports = {
 	getGuide: function(id, callback){
 		var self = this;
 		var token = self.getToken();
-		var options = callback.options || {};
-		var cb = callback || function() {};
-		cb.options = {
-			successUrl: '/',
-			errorUrl: '/',
-			destination: '/guide/single'
-		};
-		this.getReq(id, cb);
+		// var options = callback.options || {};
+		// var cb = callback || function() {};
+		// cb.options = {
+		// 	successUrl: '/',
+		// 	errorUrl: '/',
+		// 	destination: '/guide/single'
+		// }
+		// ;
+		var callback = {options: {destination: null}};
+		callback.options.destination = '/guide/single';
+		this.getReq(id, callback);
 	},
 
 	getReq: function(idx, callback){
@@ -221,6 +232,8 @@ module.exports = {
 					var guideData;
 
 					guideData = res.body.guide;
+					console.log('RESPONSE GUIDE: ', guideData)
+
 					self.setGuides(guideData);
 
 					if (callback && callback.success) {

@@ -11,6 +11,7 @@ var ResetPage = React.createFactory(require('./components/account/reset.jsx'));
 var ForgotPage = React.createFactory(require('./components/account/forgot.jsx'));
 var SettingsPage = React.createFactory(require('./components/account/settings.jsx'));
 var CreateGuidePage = React.createFactory(require('./components/guide/createguide.jsx'));
+var ReadGuidePage = React.createFactory(require('./components/guide/readguide.jsx'));
 var SectionListPage = React.createFactory(require('./components/guide/sectionList.jsx'));
 var KnowledgeRepoPage = React.createFactory(require('./components/knorepo/home.jsx'));
 
@@ -84,6 +85,15 @@ var createGuide = function(){
 	render(CreateGuidePage);
 };
 
+var readGuide = function(){
+
+  if (!userStore.get().loggedIn) {
+    return routeActions.setRoute('/login');
+  }
+
+  render(ReadGuidePage);
+};
+
 var knowledgeRepo = function(){
 
 	if (!userStore.get().loggedIn) {
@@ -100,6 +110,7 @@ var routes = {
   '/signup': signup,
   '/settings': settings,
 	'/createguide': createGuide,
+  '/readguide': readGuide,
 	'/knowrepo': knowledgeRepo,
   '/': index
 };

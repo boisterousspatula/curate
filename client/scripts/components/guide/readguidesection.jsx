@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var inputActions = require('../../actions/input')
+var inputActions = require('../../actions/input');
 
 var ReadGuideSectionComponent = React.createClass({
 
@@ -14,12 +14,14 @@ var ReadGuideSectionComponent = React.createClass({
       /* jshint ignore:start */
       link.votes = link.votes || 0;
       return(
+        <div>
        <li>{link.title}</li>
-       <li><{link.link}</li>
+       <li>{link.link}</li>
        <VoteComponent key={idx} sectionIndex={this.props.index} linkIndex={idx} votes={link.votes}/>
+       </div>
         )
       /* jshint ignore:end */
-    })
+    });
 
     return (
       /* jshint ignore:start */
