@@ -14,7 +14,7 @@ var IndexComponent = React.createClass({
       <DefaultLayout>
         <div className="main-container">
           <div className="yeogurt-info">
-            <h1>Welcome to Curate!</h1>
+            <h1>≈skill.it!</h1>
             <GuideList/>
           </div>
 					<button className="guide-create" onClick={this.handleNewGuide}>Create New Guide</button>
