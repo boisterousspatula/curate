@@ -8,15 +8,15 @@ var ReadGuideSectionComponent = React.createClass({
 
   render: function() {
     var section = this.props.sec;
-
+    console.log('in readguidesection.jsx section:', section);
     var self = this;
-    var linkList = this.props.sec.links.map(function(link, idx){
+    var linkList = section.links.map(function(link, idx){
       /* jshint ignore:start */
       link.votes = link.votes || 0;
       return(
-        <div>
+        <div key={idx}>
        <li>{link.title}</li>
-       <li>{link.link}</li>
+       <li>{link.url}</li>
        </div>
         )
        //   Add back VoteComponent to linkList once fixed
