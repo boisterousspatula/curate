@@ -1,9 +1,19 @@
 'use strict';
 
 var React = require('react');
+var injectTapEventPlugin = require('react-tap-event-plugin'); //here?
 var DefaultLayout = require('./layouts/default.jsx');
 var routeActions = require('./../actions/routes');
 var GuideList = require('./guide/guideList.jsx');
+
+//Needed for React Developer Tools
+window.React = React;
+
+//Needed for onTouchTap
+//Can go away when react 1.0 release
+//Check this repo:
+//https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin();
 
 
 var IndexComponent = React.createClass({

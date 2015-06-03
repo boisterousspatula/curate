@@ -2,11 +2,30 @@
 
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
+var RaisedButton = require('material-ui/lib/raised-button');
+var ThemeManager = require('material-ui/lib/styles/theme-manager')();
+var Colors = require('material-ui/lib/styles/colors');
 var guideActions = require('../../actions/guide');
 var guideStore = require('../../stores/guides');
 var GuidePreview = require('./guidepreview.jsx');
 
 var GuideListComponent = React.createClass({
+
+	childContextTypes: {
+	  muiTheme: React.PropTypes.object
+	},
+
+	getChildContext: function() {
+	  return {
+	    muiTheme: ThemeManager.getCurrentTheme()
+	  };
+	},
+
+	componentWillMount: function() {
+	  ThemeManager.setPalette({
+	    accent1Color: Colors.deepOrange500
+	  });
+	},
 
   componentDidMount: function() {
     guideStore.addChangeListener(this._onChange);
@@ -28,6 +47,7 @@ var GuideListComponent = React.createClass({
 		};
 	},
 
+
 	render: function() {
 		var self = this;
 		if (this.state.guides) {
@@ -35,11 +55,12 @@ var GuideListComponent = React.createClass({
 				return b.votes - a.votes;
 			}).map(function (guide, idx) {
 				guide.votes = guide.votes || 0;
-				return (
+				return ([
 					/* jshint ignore:start */
-					<GuidePreview key={idx} index={idx} guide={guide} votes={guide.votes}/>
+					<GuidePreview key={idx} index={idx} guide={guide} votes={guide.votes}/>,
+					<RaisedButton label="Material Button" primary={true}/>
 					/* jshint ignore:end */
-				);
+				]);
 			});
 		}
 
@@ -50,7 +71,8 @@ var GuideListComponent = React.createClass({
 			</table>
 				/* jshint ignore:end */
 		);
-	}
+	},
+
 });
 
 module.exports = GuideListComponent;
