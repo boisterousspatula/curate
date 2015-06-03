@@ -17,9 +17,10 @@ var ReadGuideSectionComponent = React.createClass({
         <div>
        <li>{link.title}</li>
        <li>{link.link}</li>
-       <VoteComponent key={idx} sectionIndex={this.props.index} linkIndex={idx} votes={link.votes}/>
        </div>
         )
+       //   Add back VoteComponent to linkList once fixed
+       //  <VoteComponent key={idx} sectionIndex={this.props.index} linkIndex={idx} votes={link.votes}/>
       /* jshint ignore:end */
     });
 
@@ -29,12 +30,12 @@ var ReadGuideSectionComponent = React.createClass({
       <ul>
         <li>
         <label>Section Title: </label>
-        {sec.title}
+        {section.title}
         </li>
 
         <li>
         <label>Section Description: </label>
-        {sec.description}
+        {section.description}
         </li>
 
         <li>

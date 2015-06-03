@@ -9,30 +9,46 @@ var GuideSection = require('./readguidesection.jsx');
 var ReadGuideComponent = React.createClass({
 
   getInitialState: function () {
+
     var dummyObj = {
-      title: "test title",
-      description: "blah",
+      title: 'test title',
+      description: 'blah',
       sections: [],
       userId: 1,
       userEmail: 'ankuto@gmail.com',
       category: null,
       votes: 0,
-      comments: [] };
-
+      comments: []
+    };
   var guideId = guideStore.getId();
-  console.log('readguide guide id', guideId);
-		return {
-      //guide: guideActions.getGuide(guideId),
-      guide: dummyObj,
-      id: guideId
+
+  guideActions.getGuide(guideId);
+    return {
+      // guide: guideStore.get(),
+      id: guideId,
+      guide: dummyObj
 		};
+  },
+
+  componentDidMount: function() {
+    guideStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    guideStore.removeChangeListener(this._onChange);
+  },
+
+  _onChange: function() {
+    this.setState({
+      guide: guideStore.get()
+    });
   },
 
 	render: function() {
     var guide = this.state.guide;
     var sections = guide.sections.map(function(sec, idx){
       return (
-        <GuideSection key={idx} index={idx} sec={section}/>
+        <GuideSection key={idx} index={idx} sec={sec}/>
         )
     })
 

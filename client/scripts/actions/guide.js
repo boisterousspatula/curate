@@ -33,7 +33,7 @@ module.exports = {
 	},
 
 	setGuides: function(guides) {
-
+		console.log('in guide action, guides:', guides);
 		Dispatcher.handleViewAction({
 			actionType: sectionConstants.SET_GUIDES,
 			guides: guides
@@ -41,7 +41,7 @@ module.exports = {
 	},
 
 	passGuideId: function(id) {
-		Displatcher.handleViewAction({
+		Dispatcher.handleViewAction({
 			actionType: guideConstants.PASS_ID,
 			id: id
 		});
@@ -209,6 +209,7 @@ module.exports = {
 		// ;
 		var callback = {options: {destination: null}};
 		callback.options.destination = '/guide/single';
+		console.log('in actions/guide getGuide id:', id);
 		this.getReq(id, callback);
 	},
 
@@ -216,7 +217,7 @@ module.exports = {
 		var self = this;
 		var token = self.getToken();
 		var options = callback.options || {};
-		var id = idx || "";
+		var id = idx || '';
 
 		request
 			.get(options.destination)
