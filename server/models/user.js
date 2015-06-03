@@ -34,11 +34,9 @@ var UserModel = function(sequelize, DataTypes) {
         User.hasMany(models.guide);
         User.hasMany(models.comment);
         // User.hasMany(models.userFavorites);
-        User.hasOne(models.userFavorites);
+        // User.hasOne(models.userFavorites);
       }
-    }
-  },
-  {
+    },
     instanceMethods: {
       /**
        * Validate user's password.
