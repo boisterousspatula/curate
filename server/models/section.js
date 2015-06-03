@@ -20,6 +20,7 @@ var SectionModel = function(sequelize, DataTypes) {
       associate: function(models) {
         Section.belongsTo(models.guide);
         Section.hasMany(models.link);
+        Section.hasMany(models.userFavorites);
       }
     }
   });
