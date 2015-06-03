@@ -1,7 +1,7 @@
 'use strict';
 
 var CrowdLinkModel = function(sequelize, DataTypes) {
-  var CrowdLink = sequelize.define('link',
+  var CrowdLink = sequelize.define('crowdLink',
   {
     title: {
       type: DataTypes.STRING,
