@@ -17,7 +17,6 @@ var addToUserFavorites = function(req, res, next) {
   var userId = req.userId || 1;
   req.guide = {id:1};
 
-
   UserFavorites.findOrCreate({
     userId: userId
   })
@@ -66,14 +65,39 @@ var addToUserFavorites = function(req, res, next) {
  */
 
 var readUserFavorites = function(req, res, next) {
+  var allUserFavorites = {};
+  req.userId = req.userId || 1; // TODO: remove this 1
+
   UserFavorites.find({
     where: {
       userId: req.userId // TODO: check this piece of req
     }
   })
   .then(function(userFavorites) {
-    // TODO: Need to figure out how to get all of users
-    // favorite guides, sections and links
+    userFavorites.getGuides().then(function(guides) {
+      allUserFavorites.guides = guides;
+    })
+    .then(function () {
+      userFavorites.getSections().then(function(sections) {
+        allUserFavorites.sections = sections;
+      }).then(function () {
+        userFavorites.getLinks().then(function(links) {
+          allUserFavorites.links = links;
+        }).then(function () {
+          res.status(200).json({
+            userFavorites: allUserFavorites,
+            success: [{
+              msg: 'UserFavorites sent successfully.'
+            }]
+          });
+        });
+      });
+    });
+  })
+  .error(function(err) {
+    if (err) {
+      return next(err);
+    }
   });
 };
 
