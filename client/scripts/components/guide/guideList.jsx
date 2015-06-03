@@ -3,10 +3,11 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
-var Guide = require('./guide.jsx');
+//var Guide = require('./guide.jsx');
 var guideStore = require('../../stores/guides');
+var GuidePreview = require('./guidepreview.jsx');
 
-var GuideComponent = React.createClass({
+var GuideListComponent = React.createClass({
 
   componentDidMount: function() {
     guideStore.addChangeListener(this._onChange);
@@ -19,7 +20,7 @@ var GuideComponent = React.createClass({
 	_onChange: function(){
 		this.setState({
 			guides: guideStore.get()
-		})
+		});
 	},
 
 	getInitialState: function () {
@@ -27,31 +28,21 @@ var GuideComponent = React.createClass({
 			guides : guideActions.getGuides()
 		};
 	},
-  
+
 	render: function() {
+		var self = this;
 		if (this.state.guides) {
-
-		var guideList = this.state.guides.sort(function (a, b) {
-			return b.votes - a.votes;
-		}).map(function (val, idx) {
-			return (
-				/* jshint ignore:start */
-				<tr key={idx}>
-					<td>
-						<h4>{val.title}</h4>
-
-						<div>
-							<b>{val.votes}</b>
-							<br/>
-
-							<p>{val.description}</p>
-						</div>
-					</td>
-				</tr>
-				/* jshint ignore:end */
-			)
-		});
+			var guideList = this.state.guides.sort(function (a, b) {
+				return b.votes - a.votes;
+			}).map(function (guide, idx) {
+				return (
+					/* jshint ignore:start */
+					<GuidePreview key={idx} guide={guide}/>
+					/* jshint ignore:end */
+				);
+			});
 		}
+
 		return (
 			/* jshint ignore:start */
 			<table className="top-guides">
@@ -62,4 +53,17 @@ var GuideComponent = React.createClass({
 	}
 });
 
-module.exports = GuideComponent;
+module.exports = GuideListComponent;
+
+// 	<tr key={idx} guideId={guide.id}>
+				// 	<td>
+				// 		<h4 onClick={self.handleGetGuide}>{guide.title}</h4>
+				// 		<div>
+
+				// 			<b>{guide.votes}</b>
+				// 			<br/>
+
+				// 			<p>{guide.description}</p>
+				// 		</div>
+				// 	</td>
+			//	</tr>

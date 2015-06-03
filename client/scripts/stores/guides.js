@@ -6,12 +6,19 @@ var guideConstants = require('../constants/guides');
 var guideDefaults = require('../constants/defaults').guides;
 
 var _guides;
+var _guideId;
 
 var GuideStore = new Store({
 
 	// Gets data associated with the current messages.
 	get: function() {
 		return _guides || guideDefaults;
+	},
+	getVotes: function(linkIndex, sectionIndex){
+		return _guides[sectionIndex][links][linkIndex][votes];
+	},
+	getId: function() {
+		return _guideId;
 	}
 
 });
@@ -26,11 +33,26 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 		//console.log(_guides);
 		GuideStore.emitChange();
 	}
-	//if (action.actionType === guideConstants.SAVE_GUIDE) {
-	//	_guides = action.guides;
-	//
-	//	GuideStore.emitChange();
-	//}
+	else if (action.actionType === guideConstants.UPVOTE){
+		console.log('upboats');
+		var index = action.index;
+		_guides[sectionIndex][links][linkIndex][votes]++;
+		console.log(_guides[sectionIndex][links][linkIndex][votes]);
+		GuideStore.emitChange();
+	}
+	else if (action.actionType === guideConstants.DOWNVOTE){
+		console.log('downboats');
+		var linkIndex = action.linkIndex;
+		var sectionIndex = action.sectionIndex;
+
+		_guides[sectionIndex][links][linkIndex][votes]--;
+		GuideStore.emitChange();
+	}
+	else if (action.actionType === guideConstants.PASS_ID) {
+		_guideId = payload.action.id;
+		GuideStore.emitChange();
+	}
+
 
 });
 
