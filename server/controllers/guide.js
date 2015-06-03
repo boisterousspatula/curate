@@ -92,8 +92,8 @@ var readIndividualGuide = function (req, res, next) {
       });
     }
 
-    individualGuide.title = guide.guideTitle;
-    individualGuide.description = guide.guideDescription;
+    individualGuide.title = guide.title;
+    individualGuide.description = guide.description;
     individualGuide.sections = [];
     individualGuide.userId = guide.userId;
     individualGuide.userEmail = '';
@@ -301,4 +301,3 @@ module.exports = {
   createGuide: createGuide,
   readIndividualGuide: readIndividualGuide
 };
-
