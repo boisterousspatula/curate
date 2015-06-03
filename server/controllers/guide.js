@@ -49,7 +49,7 @@ var readUserGuides = function (req, res, next) {
   Guide.findAll({
     where: {
       // need to have front end send userId from localStorage
-      userId: req.userId
+      userId: req.headers.userid
     }
   })
   .then(function(guides) {
@@ -140,7 +140,7 @@ var readIndividualGuide = function (req, res, next) {
             });
             currentSection.links.push(currentLink);
           });
-        })
+        });
 
         individualGuide.sections.push(currentSection);
       });
