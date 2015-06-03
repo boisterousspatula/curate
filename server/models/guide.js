@@ -24,7 +24,7 @@ var GuideModel = function(sequelize, DataTypes) {
         Guide.hasMany(models.section);
         Guide.hasMany(models.comment);
         Guide.hasMany(models.guideVote);
-        Guide.hasMany(models.user, {through: 'Starred'});
+        Guide.hasMany(models.userFavorites);
       }
     }
   });

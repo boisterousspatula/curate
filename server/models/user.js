@@ -32,7 +32,9 @@ var UserModel = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         User.hasMany(models.guide);
-        User.hasMany(models.guide, {through: 'Starred'});
+        User.hasMany(models.comment);
+        // User.hasMany(models.userFavorites);
+        User.hasOne(models.userFavorites);
       }
     }
   },
