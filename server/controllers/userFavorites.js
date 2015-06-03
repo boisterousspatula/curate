@@ -42,6 +42,12 @@ var addToUserFavorites = function(req, res, next) {
       .then(function(link) {
         userFavorites.addLink(link);
       })
+    } else {
+      return res.status(400).json({
+        errors: [{
+          msg: 'Request not formatted properly.'
+        }]
+      })
     }
   })
   .then(function(userFavorites) {
