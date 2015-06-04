@@ -5,7 +5,7 @@ var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
 var guideStore = require('../../stores/guides');
 var GuideSection = require('./readguidesection.jsx');
-
+var CommentsBox = require('../comment/commentBox.jsx');
 var ReadGuideComponent = React.createClass({
 
   getInitialState: function () {
@@ -18,7 +18,7 @@ var ReadGuideComponent = React.createClass({
       userEmail: 'ankuto@gmail.com',
       category: null,
       votes: 0,
-      comments: []
+      comments: [{message:'fake', author:'tester'}, {message:'another fake', author:'tester1'}]
     };
   var guideId = guideStore.getId();
 
@@ -50,8 +50,7 @@ var ReadGuideComponent = React.createClass({
       return (
         <GuideSection key={idx} index={idx} sec={sec}/>
         )
-    })
-
+    });
 		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
@@ -59,11 +58,12 @@ var ReadGuideComponent = React.createClass({
           <ul>
             {sections}
           </ul>
+				<CommentsBox guideId={this.state.id} comments={guide.comments}/>
 				</div>
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);
-	},
+	}
 
 });
 

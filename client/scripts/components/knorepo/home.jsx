@@ -8,6 +8,9 @@ var FavoritesList = require('../knorepo/favoritesList.jsx');
 
 
 var HomeComponent = React.createClass({
+	getInitialState:function(){
+		//return;
+	},
   render: function() {
 
     return (
@@ -17,8 +20,8 @@ var HomeComponent = React.createClass({
           <div className="yeogurt-info">
             <h1>Knowledge Repository!</h1>
 						<div>
-            	<CuratedList/>
 							<button className="guide-create" onClick={this.handleNewGuide}>Create New Guide</button>
+            	<CuratedList/>
 						</div>
 						<div>
 							<FavoritesList/>
