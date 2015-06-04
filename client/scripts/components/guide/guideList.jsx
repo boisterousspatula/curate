@@ -62,7 +62,7 @@ var GuideListComponent = React.createClass({
 				return ([
 					/* jshint ignore:start */
 					<GuidePreview key={idx} index={idx} guide={guide} votes={guide.votes}/>,
-					<RaisedButton label="Material Button" primary={true}/>
+					<RaisedButton label="VIEW GUIDE" primary={true}/>
 					/* jshint ignore:end */
 				]);
 			});
