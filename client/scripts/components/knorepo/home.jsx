@@ -8,9 +8,9 @@ var FavoritesList = require('../knorepo/favoritesList.jsx');
 
 
 var HomeComponent = React.createClass({
-	getInitialState:function(){
-		//return;
-	},
+	// getInitialState:function(){
+	// 	//return;
+	// },
   render: function() {
 
     return (
