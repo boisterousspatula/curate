@@ -16,6 +16,7 @@ var ReadGuideSectionComponent = React.createClass({
         <div key={idx}>
        <li>{link.title}</li>
        <li>{link.url}</li>
+       <VoteComponent votes={section.votes} type="link" index={idx} onDownVote={this.handleDownVote} onUpvote={this.handleUpvote}/>
        </div>
         )
        //   Add back VoteComponent to linkList once fixed
