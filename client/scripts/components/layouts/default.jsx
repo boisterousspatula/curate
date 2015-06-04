@@ -1,6 +1,12 @@
 'use strict';
 
 var React = require('react');
+var mui = require('material-ui');
+var ThemeManager = new mui.Styles.ThemeManager();
+var Colors = require('material-ui/lib/styles/colors');
+var AppBar = mui.AppBar;
+var LeftNav = mui.LeftNav;
+var MenuItem = mui.MenuItem;
 var Navbar = require('../modules/navbar.jsx');
 var Messages = require('../modules/messages.jsx');
 var pageStore = require('../../stores/page');
@@ -15,17 +21,68 @@ var getState = function() {
 
 var DefaultComponent =  React.createClass({
   mixins: [pageStore.mixin, userStore.mixin],
+
+  //Needed for mui to load theme
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  //Needed for mui to load theme
+  getChildContext: function() {
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  },
+
+  //Set current theme
+  componentWillMount: function() {
+    ThemeManager.setPalette({
+      accent1Color: Colors.deepOrange500
+    });
+  },
+
   componentDidMount: function() {
     pageStore.emitChange();
     userStore.emitChange();
   },
+
   getInitialState: function() {
     return getState();
   },
+
   render: function() {
+    //Initialize left nav menu items
+    var menuItems = [
+      { route: '/', text: 'LIST OF GUIDES' },
+      { route: '/createguide', text: 'CREATE GUIDE' },
+      { route: 'knorepo', text: 'KNOWLEDGE REPO' },
+      { type: MenuItem.Types.SUBHEADER, text: 'Resources' },
+      {
+         type: MenuItem.Types.LINK,
+         payload: 'https://github.com/callemall/material-ui',
+         text: 'GitHub'
+      },
+      {
+         text: 'Disabled',
+         disabled: true
+      },
+      {
+         type: MenuItem.Types.LINK,
+         payload: 'https://www.google.com',
+         text: 'Disabled Link',
+         disabled: true
+      },
+    ];
+
     return (
       /* jshint ignore:start */
       <div>
+        <div className="app-bar">
+          <AppBar title="Skillit"/>
+        </div>
+        <div className="left-nav">
+          <LeftNav menuItems={menuItems} />,
+        </div>
         <div className="main-nav">
           <Navbar user={this.state.user} />
         </div>
