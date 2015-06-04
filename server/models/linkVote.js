@@ -9,6 +9,7 @@ var LinkVoteModel = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         LinkVote.belongsTo(models.link);
+        LinkVote.belongsTo(models.crowdLink);
         LinkVote.belongsTo(models.user);
       }
     }

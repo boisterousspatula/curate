@@ -33,6 +33,7 @@ var UserModel = function(sequelize, DataTypes) {
       associate: function(models) {
         User.hasMany(models.guide);
         User.hasMany(models.comment);
+        User.hasMany(models.crowdLink);
         // User.hasMany(models.userFavorites);
         // User.hasOne(models.userFavorites);
       }
