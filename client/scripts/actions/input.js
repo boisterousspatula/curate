@@ -16,12 +16,31 @@ module.exports = {
     });
   },
 
-  vote: function(type, linkidx, sectionidx){
-    type = type.toUpperCase();
+  upvoteLink: function(linkidx, sectionidx){
     Dispatcher.handleViewAction({
-      actionType: inputConstants[type],
+      actionType: inputConstants.UPVOTE_LINK,
       linkIndex: linkidx,
       sectionIndex: sectionidx
+    });
+  },
+  downvoteLink: function(linkidx, sectionidx){
+    Dispatcher.handleViewAction({
+      actionType: inputConstants.DOWNVOTE_LINK,
+      linkIndex: linkidx,
+      sectionIndex: sectionidx
+    });
+  },
+
+  upvoteGuide: function(idx){
+    Dispatcher.handleViewAction({
+      actionType: inputConstants.UPVOTE_GUIDE,
+      index: idx
+    });
+  },
+  downvoteGuide: function(idx){
+    Dispatcher.handleViewAction({
+      actionType: inputConstants.DOWNVOTE_GUIDE,
+      index: idx
     });
   }
 

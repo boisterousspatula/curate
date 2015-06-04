@@ -35,9 +35,10 @@ var GuideListComponent = React.createClass({
 			var guideList = this.state.guides.sort(function (a, b) {
 				return b.votes - a.votes;
 			}).map(function (guide, idx) {
+				guide.votes = guide.votes || 0;
 				return (
 					/* jshint ignore:start */
-					<GuidePreview key={idx} guide={guide}/>
+					<GuidePreview key={idx} index={idx} guide={guide} votes={guide.votes}/>
 					/* jshint ignore:end */
 				);
 			});
@@ -54,16 +55,3 @@ var GuideListComponent = React.createClass({
 });
 
 module.exports = GuideListComponent;
-
-// 	<tr key={idx} guideId={guide.id}>
-				// 	<td>
-				// 		<h4 onClick={self.handleGetGuide}>{guide.title}</h4>
-				// 		<div>
-
-				// 			<b>{guide.votes}</b>
-				// 			<br/>
-
-				// 			<p>{guide.description}</p>
-				// 		</div>
-				// 	</td>
-			//	</tr>

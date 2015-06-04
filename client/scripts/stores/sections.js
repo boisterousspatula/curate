@@ -63,12 +63,12 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
       field name that was modified in the view
       */
       switch(fieldName){
-        case "links":
-          var linkKey = payload.action.linkidx
+        case 'links':
+          var linkKey = payload.action.linkidx;
           _sections[index][fieldName][linkKey].link = input;
           break;
-        case "guideTitle":
-        case "guideDescription":
+        case 'guideTitle':
+        case 'guideDescription':
           _guide[fieldName] = input;
           break;
         default:
@@ -76,7 +76,7 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
       }
       SectionStore.emitChange();
       break;
-  };
+  }
 
 });
 
