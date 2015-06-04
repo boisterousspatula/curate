@@ -36,7 +36,7 @@ var VoteComponent = React.createClass({
   },
 
   render: function() {
-    console.log("PROOOOPS", this.props)
+
     return (
       /* jshint ignore:start */
      <div className = "vote-container">

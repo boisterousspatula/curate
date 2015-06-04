@@ -3,7 +3,6 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
-//var Guide = require('./guide.jsx');
 var guideStore = require('../../stores/guides');
 var GuidePreview = require('./guidepreview.jsx');
 
