@@ -5,12 +5,11 @@ var DefaultLayout = require('../layouts/default.jsx');
 var routeActions = require('../../actions/routes');
 var CuratedList = require('../knorepo/curatedList.jsx');
 var FavoritesList = require('../knorepo/favoritesList.jsx');
-var CommentsBox = require('../comment/commentBox.jsx');
 
 
 var HomeComponent = React.createClass({
 	getInitialState:function(){
-		return {guide: 1}
+		//return;
 	},
   render: function() {
 
@@ -28,7 +27,6 @@ var HomeComponent = React.createClass({
 							<FavoritesList/>
 						</div>
           </div>
-					<CommentsBox items={this.state.guide}/>
         </div>
       </DefaultLayout>
       /* jshint ignore:end */

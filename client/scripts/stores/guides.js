@@ -23,6 +23,9 @@ var GuideStore = new Store({
 	},
 	getId: function() {
 		return _guideId;
+	},
+	getCommentsBySection: function() {
+		return _guides.comments;
 	}
 
 });
@@ -60,6 +63,15 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 	}
 	else if (action.actionType === guideConstants.PASS_ID) {
 		_guideId = payload.action.id;
+		GuideStore.emitChange();
+	}
+
+	else if (action.actionType === guideConstants.SET_COMMENTS) {
+		_guides.comments.push(action.comments);
+		GuideStore.emitChange();
+	}
+	else if (action.actionType === guideConstants.ADD_COMMENT) {
+		_guides.comments = action.comments;
 		GuideStore.emitChange();
 	}
 

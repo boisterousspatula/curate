@@ -6,7 +6,9 @@ var guideConstants = keyMirror({
 
   // Global message types
   SET_GUIDES: null,
-  PASS_ID: null
+  PASS_ID: null,
+	SET_COMMENTS:null,
+	ADD_COMMENT:null
 
 });
 

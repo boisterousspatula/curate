@@ -46,6 +46,21 @@ module.exports = {
 			id: id
 		});
 	},
+
+	setComments: function(comments) {
+		console.log('in comments:', comments);
+		Dispatcher.handleViewAction({
+			actionType: guideConstants.SET_COMMENTS,
+			comments: comments
+		});
+	},
+
+	//addComment: function(comment) {
+	//	Dispatcher.handleViewAction({
+	//		actionType: guideConstants.ADD_COMMENT,
+	//		id:
+	//	});
+	//},
 	//saveGuide: function(index){
 	//	console.log('in guide actions save guide');
 	//	Dispatcher.handleViewAction({
@@ -174,7 +189,6 @@ module.exports = {
 	},
 
 	createGuide: function(form, callback) {
-		console.log('in guide save', form);
 		var cb = callback || function() {};
 		cb.options = {
 			successUrl: '/',
@@ -260,25 +274,37 @@ module.exports = {
 			});
 	},
 
-	getComments:function(idx, callback){
-		var id = idx || null;
-		var cb = callback || function() {};
+	//getComments:function(idx, callback){
+	//	var id = idx || null;
+	//	var cb = callback || function() {};
+	//	cb.options = {
+	//		successUrl: '/',
+	//		errorUrl: '/',
+	//		destination, '/'
+	//	};
+	//	this.getReq(id, cb);
+	//},
+
+	comment: function(form, callback) {
+		var cb = callback || function () {
+			};
 		cb.options = {
-			successUrl: '/',
-			errorUrl: '/'
+			successUrl: '/readguide',
+			errorUrl: '/readguide'
+
 		};
-		this.getReq(id, cb);
+		this.postComments(form, cb);
 	},
 
 	postComments:function(form, callback ){
 		var self = this;
 		var postData = serialize(form);
+		console.log("comments post", form);
 		var postUrl = form.getAttribute('action') || window.location.pathname;
 		var token = self.getToken();
 		var options = callback.options || {};
-
 		request
-			.post('/guide/comment')
+			.post('/comment')
 			.type('form')
 			.set({
 				'authorization': 'Bearer ' + token,
@@ -290,15 +316,15 @@ module.exports = {
 				console.log('guide post response', res);
 				if (res.ok) {
 
-					if (callback && callback.success) {
-						callback.success(res);
+					if (callback ) {
+						callback(res.body.comment);
 					}
 					if (options.successUrl) {
 						routeActions.setRoute(options.successUrl);
 					}
 				}
 				else {
-					if (callback && callback.error) {
+					if (callback) {
 						callback.error(res);
 					}
 					if (options.errorUrl) {

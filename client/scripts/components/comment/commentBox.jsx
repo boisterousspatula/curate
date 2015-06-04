@@ -2,9 +2,7 @@
 
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
-var knowRepoActions = require('../../actions/knowRepo');
-//var Guide = require('./guide.jsx');
-var knowRepoStore = require('../../stores/knowrepo');
+var guideStore = require('../../stores/guides');
 var CommentList = require('./commentList.jsx');
 var CommentForm = require('./commentForm.jsx');
 
@@ -25,9 +23,9 @@ var CommentBox = React.createClass({
 		//});
 	},
 	handleCommentSubmit: function(comment) {
-		var comments = this.state.data;
+		var comments = this.props.comments;
 		comments.push(comment);
-		this.setState({data: comments}, function() {
+		this.setState({comments: comments}, function() {
 			// `setState` accepts a callback. To avoid (improbable) race condition,
 			// `we'll send the ajax request right after we optimistically set the new
 			// `state.
@@ -45,19 +43,28 @@ var CommentBox = React.createClass({
 			//});
 		});
 	},
+	_onChange: function() {
+		this.setState({
+			comments: guideStore.getCommentsBySection()
+		});
+	},
 	getInitialState: function() {
-		return {data: []};
+		return {comments: this.props.comments};
 	},
 	componentDidMount: function() {
-
+		guideStore.addChangeListener(this._onChange);
+	},
+	componentWillUnmount: function() {
+		guideStore.removeChangeListener(this._onChange);
 	},
 	render: function() {
+		console.log(this.props.comments);
 		return (
 			/* jshint ignore:start */
 			<div className="commentBox">
 				<h5>Comments</h5>
-				<CommentList data={this.state.data} />
-				<CommentForm onCommentSubmit={this.handleCommentSubmit} />
+				<CommentForm guideId={this.props.guideId} onCommentSubmit={this.handleCommentSubmit} />
+				<CommentList comments={this.props.comments} />
 			</div>
 			/* jshint ignore:end */
 		);

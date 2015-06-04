@@ -8,46 +8,46 @@ var knowRepoStore = require('../../stores/knowrepo');
 
 var Comment = React.createClass({
 	componentDidMount: function() {
-		knowRepoStore.addChangeListener(this._onChange);
+		//knowRepoStore.addChangeListener(this._onChange);
 	},
 
 	componentWillUnmount: function() {
-		knowRepoStore.removeChangeListener(this._onChange);
+		//knowRepoStore.removeChangeListener(this._onChange);
 	},
-
-	_onChange: function(){
-		this.setState({
-			guides: knowRepoStore.getUserGuides()
-		})
-	},
-
+	//
+	//_onChange: function(){
+	//	this.setState({
+	//		guides: knowRepoStore.getUserGuides()
+	//	})
+	//},
+	//
 	getInitialState: function () {
 		return {
-			guides : knowRepoActions.getHome()
+			comment: this.props.comment
 		};
 	},
 
 	render: function() {
-		var commentNodes = this.props.data.map(function(comment, index) {
-			return (
-				// `key` is a React-specific concept and is not mandatory for the
-				// purpose of this tutorial. if you're curious, see more here:
-				// http://facebook.github.io/react/docs/multiple-components.html#dynamic-children
-				/* jshint ignore:start */
-				<Comment author={comment.author} key={index}>
-					{comment.text}
-				</Comment>
-				/* jshint ignore:end */
-			);
-		});
+		//var commentNodes = this.props.comments.map(function(comment, index) {
+		//	return (
+		//		// http://facebook.github.io/react/docs/multiple-components.html#dynamic-children
+		//		/* jshint ignore:start */
+		//		<Comment author={comment.email||'bro'} key={index}>
+		//			{comment.message}
+		//		</Comment>
+		//		/* jshint ignore:end */
+		//	);
+		//});
+		//console.log(this.props);
 		return (
 			/* jshint ignore:start */
 			<div className="comment">
-				<h2 className="commentAuthor">
+				<h6 className="commentAuthor">
 					{this.props.author}
-				</h2>
-				{commentNodes}
+				</h6>
+				{this.props.message}
 			</div>
+
 			/* jshint ignore:end */
 		);
 	}
