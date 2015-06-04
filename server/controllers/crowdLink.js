@@ -11,26 +11,27 @@ var CrowdLink = db.crowdLink;
  * POST /addCrowdLink
  * Add crowdLink to the crowdLinks of a section
  * @param userId
+ * @param sectionId
  * @param url
  */
 
 var addCrowdLink = function(req, res, next) {
-  var url = blah;
+  var url = req.link || 'http://learndatjs.com';
+  var userId = req.userId || 1;
+  var sectionId = req.sectionId || 5;
 
-
-
-
-  var voteContract = req.body;
-  var dummyVoteContract = {
-    linkId: 1,
-    userId: 1,
-    val: 1
-  };
-
-  LinkVote.create({
-    linkId: dummyVoteContract.linkId,
-    userId: dummyVoteContract.userId,
-    val: dummyVoteContract.val
+  CrowdLink.create({
+    userId: userId,
+    sectionId: sectionId,
+    url: url
+  })
+  .then(function(crowdLink) {
+    res.status(200).json({
+      crowdLink: crowdLink,
+      success: [{
+        msg: 'CrowdLink created successfully.'
+      }]
+    });
   })
   .error(function(err) {
     if (err) {

@@ -3,10 +3,6 @@
 var CrowdLinkModel = function(sequelize, DataTypes) {
   var CrowdLink = sequelize.define('crowdLink',
   {
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     url: {
       type: DataTypes.STRING,
       allowNull: false

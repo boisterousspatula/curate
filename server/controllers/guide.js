@@ -8,6 +8,7 @@ var db = require('../config/database');
 var Guide = db.guide;
 var Section = db.section;
 var Link = db.link;
+var CrowdLink = db.crowdLink;
 var User = db.user;
 var GuideVote = db.guideVote;
 var LinkVote = db.linkVote;
@@ -110,15 +111,18 @@ var readIndividualGuide = function (req, res, next) {
 
       sections.forEach(function(section) {
         var currentSection = {};
+        currentSection.sectionId = section.id;
         currentSection.title = section.title;
         currentSection.description = section.description;
         currentSection.links = [];
+        currentSection.crowdLinks = [];
 
         Link.findAll({ // find all links of the section
           where: {
             sectionId: section.id
           }
-        }).then(function(links) {
+        })
+        .then(function(links) {
           links.forEach(function(link) {
             var currentLink = {};
             currentLink.title = link.title;
@@ -141,8 +145,41 @@ var readIndividualGuide = function (req, res, next) {
             currentSection.links.push(currentLink);
           });
         });
-
         individualGuide.sections.push(currentSection);
+      });
+    })
+    .then(function(sections) {
+      individualGuide.sections.forEach(function(section) {
+        CrowdLink.findAll({ // Find all crowdLinks of the section
+          where: {
+            sectionId: section.sectionId
+          }
+        })
+        .then(function(crowdLinks) {
+          console.log('Crowd Links: ', crowdLinks);
+          crowdLinks.forEach(function(crowdLink) {
+            var currentCrowdLink = {};
+            currentCrowdLink.userId = crowdLink.userId;
+            currentCrowdLink.sectionId = crowdLink.sectionId;
+            currentCrowdLink.url = crowdLink.url;
+            currentCrowdLink.votes = 0;
+
+            LinkVote.findAll({
+              where: {
+                crowdLinkId: crowdLink.id
+              }
+            })
+            .then(function(crowdLinkVotes) {
+              var crowdLinkVoteTotal = 0;
+              crowdLinkVotes.forEach(function(crowdLinkVote) {
+                crowdLinkVoteTotal += crowdLinkVote.val;
+              });
+
+              currentCrowdLink.votes = crowdLinkVoteTotal;
+            });
+            section.crowdLinks.push(currentCrowdLink);
+          });
+        });
       });
     })
     .then(function() {
@@ -199,13 +236,13 @@ var readIndividualGuide = function (req, res, next) {
         }
       })
       .then(function(comments) {
-        var currentComment = {};
 
-        for (var i = 0; i < comments.length; i++) {
-          currentComment.message = comments[i].message;
-          // currentComment.userName = comments[i].userName;
+        comments.forEach(function(comment) {
+          var currentComment = {};
+          currentComment.userId = comment.userId;
+          currentComment.message = comment.message;
           individualGuide.comments.push(currentComment);
-        }
+        });
       })
       .then(function() {
         console.log("Individual Guide: ", individualGuide);
