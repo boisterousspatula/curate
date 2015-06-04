@@ -2,7 +2,9 @@
 
 var React = require('react');
 var guideActions = require('../../actions/guide');
+var inputActions = require('../../actions/input');
 var routeActions = require('../../actions/routes');
+var VoteComponent = require('./vote.jsx');
 
 var GuidePreviewComponent = React.createClass({
   render: function() {
@@ -13,12 +15,9 @@ var GuidePreviewComponent = React.createClass({
         <td>
           <h4 guideId={this.props.guide.id} onClick={this.handleClick}>{guide.title}</h4>
           <div>
-
-            <b>{guide.votes}</b>
-            <br/>
-
             <p>{guide.description}</p>
           </div>
+           <VoteComponent votes={guide.votes} type="guide" index={this.props.index} onDownvote={this.handleDownvote} onUpvote={this.handleUpvote}/>
         </td>
       </tr>
       /* jshint ignore:end */
@@ -27,9 +26,21 @@ var GuidePreviewComponent = React.createClass({
 
   handleClick: function(e){
     var id = this.props.guide.id;
-    console.log('selected guide id', id);
+
     guideActions.passGuideId(id);
     routeActions.setRoute('/readguide');
+  },
+
+  handleUpvote: function(e) {
+    e.preventDefault();
+    var index = this.props.index;
+    inputActions.upvoteGuide(index)
+
+  },
+  handleDownvote: function(e) {
+   e.preventDefault();
+    var index = this.props.index;
+    inputActions.downvoteGuide(index)
   }
 });
 

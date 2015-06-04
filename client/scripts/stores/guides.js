@@ -3,6 +3,7 @@
 var Store = require('./default');
 var Dispatcher = require('../dispatchers/default');
 var guideConstants = require('../constants/guides');
+var inputConstants = require('../constants/input');
 var guideDefaults = require('../constants/defaults').guides;
 
 var _guides;
@@ -14,8 +15,11 @@ var GuideStore = new Store({
 	get: function() {
 		return _guides || guideDefaults;
 	},
-	getVotes: function(linkIndex, sectionIndex){
-		return _guides[sectionIndex][links][linkIndex][votes];
+	getLinkVotes: function(linkIndex, sectionIndex){
+		return _guides[sectionIndex][links][linkIndex].votes;
+	},
+	getGuideVotes: function(){
+		return _guides[index][votes];
 	},
 	getId: function() {
 		return _guideId;
@@ -33,19 +37,25 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 		//console.log(_guides);
 		GuideStore.emitChange();
 	}
-	else if (action.actionType === guideConstants.UPVOTE){
-		console.log('upboats');
-		var index = action.index;
-		_guides[sectionIndex][links][linkIndex][votes]++;
-		console.log(_guides[sectionIndex][links][linkIndex][votes]);
+	else if (action.actionType === inputConstants.UPVOTE_GUIDE){
+		var index = action.index
+		_guides[index].votes++;
 		GuideStore.emitChange();
 	}
-	else if (action.actionType === guideConstants.DOWNVOTE){
-		console.log('downboats');
+	else if (action.actionType === inputConstants.DOWNVOTE_GUIDE){
+		var index = action.index
+		_guides[index].votes--;
+		GuideStore.emitChange();
+	}
+	else if (action.actionType === inputConstants.UPVOTE_LINK){
+		_guides[sectionIndex][links][linkIndex].votes++;
+		GuideStore.emitChange();
+	}
+	else if (action.actionType === inputConstants.DOWNVOTE_LINK){
 		var linkIndex = action.linkIndex;
 		var sectionIndex = action.sectionIndex;
 
-		_guides[sectionIndex][links][linkIndex][votes]--;
+		_guides[sectionIndex][links][linkIndex].votes--;
 		GuideStore.emitChange();
 	}
 	else if (action.actionType === guideConstants.PASS_ID) {

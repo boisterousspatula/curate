@@ -2,9 +2,8 @@
 
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
-var guideActions = require('../../actions/guide');
-var guideStore = require('../../stores/guide');
-var GuideSection = require('./readguidesection')
+var guideStore = require('../../stores/guides');
+var GuideSection = require('./readguidesection.jsx');
 
 var VoteComponent = React.createClass({
   getInitialState: function () {
@@ -22,30 +21,34 @@ var VoteComponent = React.createClass({
   },
 
   _onChange: function(){
-    this.setState({
-      votes: guideStore.getVotes(this.props.linkIndex, this.props.sectionIndex)
-    })
+    if(this.props.type === "link"){
+      this.setState({
+       votes: guideStore.getLinkVotes(this.props.linkIndex, this.props.sectionIndex)
+     })
+    }
+    else if(this.props.type ==="guide"){
+      var index = this.props.index
+      this.setState({
+        votes: guideStore.getGuideVotes(index)
+      })
+    }
+
   },
 
   render: function() {
+    console.log("PROOOOPS", this.props)
     return (
       /* jshint ignore:start */
      <div className = "vote-container">
-      <li name="upvote" onClick = {this.handleVote}>upvote</li>
-      <li name="downvote" onClick = {this.handleVote}>downvote</li>
+      <div name="upvote" onClick = {this.props.onUpvote}>upvote</div>
+      <div name="downvote" onClick = {this.props.onDownvote}>downvote</div>
+      <div name="votes">{this.props.votes}</div>
      </div>
       /* jshint ignore:end */
     );
   },
 
-  handleVote: function(e) {
-    e.preventDefault();
-    var linkIndex = this.props.linkIndex;
-    var sectionIndex = this.props.sectionIndex;
-    var votetype = e.target.name;
 
-    inputActions.vote(votetype, linkIndex, sectionIndex)
-  }
 
 });
 
