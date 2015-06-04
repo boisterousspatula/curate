@@ -18,8 +18,8 @@ var GuideStore = new Store({
 	getLinkVotes: function(linkIndex, sectionIndex){
 		return _guides[sectionIndex][links][linkIndex].votes;
 	},
-	getGuideVotes: function(){
-		return _guides[index][votes];
+	getGuideVotes: function(index){
+		return _guides[index].votes;
 	},
 	getId: function() {
 		return _guideId;
