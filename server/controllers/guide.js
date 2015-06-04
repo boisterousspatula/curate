@@ -253,7 +253,6 @@ var readIndividualGuide = function (req, res, next) {
             comment.userEmail = user.email;
             next();
           });
-
         }, function(err) {
           if (err) {
             console.log('Failed to find User Emails');
@@ -351,4 +350,3 @@ module.exports = {
   createGuide: createGuide,
   readIndividualGuide: readIndividualGuide
 };
-  
