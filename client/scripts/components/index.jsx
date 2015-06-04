@@ -1,6 +1,10 @@
 'use strict';
 
 var React = require('react');
+var mui = require('material-ui');
+var ThemeManager = new mui.Styles.ThemeManager();
+var MenuItem = mui.MenuItem;
+var LeftNav = mui.LeftNav;
 var injectTapEventPlugin = require('react-tap-event-plugin'); //here?
 var DefaultLayout = require('./layouts/default.jsx');
 var routeActions = require('./../actions/routes');
@@ -17,11 +21,47 @@ injectTapEventPlugin();
 
 
 var IndexComponent = React.createClass({
+
+  //Needed for mui to load theme
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  //Needed for mui to load theme
+  getChildContext: function() {
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  },
+
   render: function() {
+    //Initialize left nav menu items
+    var menuItems = [
+      { route: '/', text: 'LIST OF GUIDES' },
+      { route: '/createguide', text: 'CREATE GUIDE' },
+      { route: 'knorepo', text: 'KNOWLEDGE REPO' },
+      { type: MenuItem.Types.SUBHEADER, text: 'Resources' },
+      {
+         type: MenuItem.Types.LINK,
+         payload: 'https://github.com/callemall/material-ui',
+         text: 'GitHub'
+      },
+      {
+         text: 'Disabled',
+         disabled: true
+      },
+      {
+         type: MenuItem.Types.LINK,
+         payload: 'https://www.google.com',
+         text: 'Disabled Link',
+         disabled: true
+      },
+    ];
 
     return (
       /* jshint ignore:start */
       <DefaultLayout>
+        <LeftNav menuItems={menuItems} />,
         <div className="main-container">
           <div className="yeogurt-info">
             <h1>≈skill.it!</h1>

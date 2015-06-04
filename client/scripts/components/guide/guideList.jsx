@@ -73,7 +73,7 @@ var GuideListComponent = React.createClass({
 			<table className="top-guides">
 					{guideList}
 			</table>
-				/* jshint ignore:end */
+			/* jshint ignore:end */
 		);
 	},
 
