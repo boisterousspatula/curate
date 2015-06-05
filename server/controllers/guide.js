@@ -105,6 +105,12 @@ var readIndividualGuide = function (req, res, next) {
       where: {
         guideId: guide.id
       }
+			//,
+			//include: [
+			//	//{ model: Section },
+			//	{ model: Category},
+			//	{ model: Comment, include: {model:user}},
+			//]
     })
     .then(function(sections) {
 

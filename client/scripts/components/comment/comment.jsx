@@ -28,6 +28,7 @@ var Comment = React.createClass({
 	},
 
 	render: function() {
+		console.log('in comment', this.props.comment);
 		//var commentNodes = this.props.comments.map(function(comment, index) {
 		//	return (
 		//		// http://facebook.github.io/react/docs/multiple-components.html#dynamic-children
@@ -42,8 +43,8 @@ var Comment = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<div className="comment">
-				<h6 className="commentAuthor">
-					{this.props.author}
+				<h6 className="userEmail">
+					{this.props.userEmail}
 				</h6>
 				{this.props.message}
 			</div>

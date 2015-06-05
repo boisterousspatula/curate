@@ -58,7 +58,7 @@ var CommentBox = React.createClass({
 		guideStore.removeChangeListener(this._onChange);
 	},
 	render: function() {
-		console.log(this.props.comments);
+		console.log('comments', this.props.comments);
 		return (
 			/* jshint ignore:start */
 			<div className="commentBox">

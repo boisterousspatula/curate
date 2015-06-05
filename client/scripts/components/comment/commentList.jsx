@@ -35,7 +35,7 @@ var CommentList = React.createClass({
 				// purpose of this tutorial. if you're curious, see more here:
 				// http://facebook.github.io/react/docs/multiple-components.html#dynamic-children
 				/* jshint ignore:start */
-				<Comment author={comment.author} key={index} message={comment.message}/>
+				<Comment userEmail={comment.userEmail} key={index} message={comment.message}/>
 				/* jshint ignore:end */
 			);
 		});
