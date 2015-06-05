@@ -1,28 +1,27 @@
 'use strict';
 
 var React = require('react');
+var Vote= require('./readguidevote.jsx');
 var inputActions = require('../../actions/input');
+
 
 var ReadGuideSectionComponent = React.createClass({
 
-
   render: function() {
     var section = this.props.sec;
-    console.log('in readguidesection.jsx section:', section);
     var self = this;
     var linkList = section.links.map(function(link, idx){
       /* jshint ignore:start */
       return(
         <div key={idx}>
-       <li>{link.title}</li>
-       <li>{link.url}</li>
-       <VoteComponent votes={section.votes} type="link" index={idx} onDownVote={this.handleDownVote} onUpvote={this.handleUpvote}/>
-       </div>
+        <ul>
+          <li>{link.title}</li>
+          <li>{link.url}</li>
+        </ul>
+         <Vote votes={link.votes} type="link" linkIndex={idx} sectionIndex={self.props.index} />
+        </div>
+
         )
-       //   Add back VoteComponent to linkList once fixed
-      // link.votes = link.votes || 0;
-       //  <VoteComponent key={idx} sectionIndex={this.props.index} linkIndex={idx} votes={link.votes}/>
-      /* jshint ignore:end */
     });
 
     return (
@@ -49,6 +48,7 @@ var ReadGuideSectionComponent = React.createClass({
     /* jshint ignore:end */
     );
   },
+
 
 });
 
