@@ -3,7 +3,8 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var knowRepoActions = require('../../actions/knowRepo');
-//var Guide = require('./guide.jsx');
+var guideActions = require('../../actions/guide');
+var routeActions = require('../../actions/routes');
 var knowRepoStore = require('../../stores/knowrepo');
 
 var FavsComponent = React.createClass({
@@ -30,13 +31,12 @@ var FavsComponent = React.createClass({
 
 	render: function() {
 		if (this.state.guides) {
-
-			var guideList = this.state.guides.sort(function (a, b) {
+			var guideList = this.state.guides.guides.sort(function (a, b) {
 				return b.votes - a.votes;
 			}).map(function (val, idx) {
 				return (
 					/* jshint ignore:start */
-					<tr key={idx}>
+					<tr key={idx} onClick={this.handleClick.bind(this,idx)}>
 						<td>
 							<h6>{val.title}</h6>
 
@@ -50,7 +50,7 @@ var FavsComponent = React.createClass({
 					</tr>
 					/* jshint ignore:end */
 				)
-			});
+			}, this);
 		}
 		return (
 			/* jshint ignore:start */
@@ -60,7 +60,12 @@ var FavsComponent = React.createClass({
 			</table>
 			/* jshint ignore:end */
 		);
+	},
+	handleClick: function(i){
+		console.log('id', this.state.guides.guides[i]);
+
+		guideActions.passGuideId(this.state.guides.guides[i].id);
+		routeActions.setRoute('/readguide');
 	}
 });
-
 module.exports = FavsComponent;

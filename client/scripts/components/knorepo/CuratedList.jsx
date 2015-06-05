@@ -3,7 +3,8 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var knowRepoActions = require('../../actions/knowRepo');
-//var Guide = require('./guide.jsx');
+var guideActions = require('../../actions/guide');
+var routeActions = require('../../actions/routes');
 var knowRepoStore = require('../../stores/knowrepo');
 
 var CuratedComponent = React.createClass({
@@ -36,7 +37,7 @@ var CuratedComponent = React.createClass({
 		}).map(function (val, idx) {
 			return (
 				/* jshint ignore:start */
-				<tr key={idx}>
+				<tr key={idx} onClick={this.handleClick.bind(this,idx)}>
 					<td>
 						<h6>{val.title}</h6>
 
@@ -50,7 +51,7 @@ var CuratedComponent = React.createClass({
 				</tr>
 				/* jshint ignore:end */
 			)
-		});
+		}, this);
 		}
 		return (
 			/* jshint ignore:start */
@@ -60,6 +61,12 @@ var CuratedComponent = React.createClass({
 			</table>
 				/* jshint ignore:end */
 		);
+	},
+	handleClick: function(i){
+		console.log('id', this.state.guides[i]);
+
+		guideActions.passGuideId(this.state.guides[i].id);
+		routeActions.setRoute('/readguide');
 	}
 });
 
