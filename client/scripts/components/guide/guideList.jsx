@@ -75,7 +75,7 @@ var GuideListComponent = React.createClass({
 			</table>
 			/* jshint ignore:end */
 		);
-	},
+	}
 
 });
 
