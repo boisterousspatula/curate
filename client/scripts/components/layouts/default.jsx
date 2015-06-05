@@ -8,6 +8,7 @@ var AppBar = mui.AppBar;
 var LeftNav = mui.LeftNav;
 var MenuItem = mui.MenuItem;
 var Navbar = require('../modules/navbar.jsx');
+var RaisedButton = mui.RaisedButton;
 var Messages = require('../modules/messages.jsx');
 var pageStore = require('../../stores/page');
 var userStore = require('../../stores/user');
@@ -76,14 +77,15 @@ var DefaultComponent =  React.createClass({
     ];
         //AppBar component
         // <div className="app-bar">
-        //   <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap} title="skillit" />
         // </div>
+          // <LeftNav ref="leftNav" menuItems={menuItems} />
 
     return (
       /* jshint ignore:start */
       <div>
         <div>
-          <LeftNav ref="leftNav" menuItems={menuItems} />
+          <AppBar onLeftIconButtonTouchTap={this._showLeftNavClick} title="Navigation" />
+          <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
         </div>
         <div className="main-nav">
           <Navbar user={this.state.user} />
@@ -104,10 +106,9 @@ var DefaultComponent =  React.createClass({
 
   },
 
-  // _onLeftIconButtonTouchTap: function() {
-  //   console.log('onLeftIconButtonTouchTap called');
-  //   this.refs.leftNav.toggle();
-  // },
+  _showLeftNavClick: function() {
+    this.refs.leftNav.toggle();
+  },
 
   // Event handler for 'change' events coming from store mixins.
   _onChange: function() {
