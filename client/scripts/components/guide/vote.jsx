@@ -1,7 +1,6 @@
 'use strict';
 
 var React = require('react');
-var DefaultLayout = require('../layouts/default.jsx');
 var guideStore = require('../../stores/guides');
 var GuideSection = require('./readguidesection.jsx');
 
@@ -12,6 +11,7 @@ var VoteComponent = React.createClass({
       votes: this.props.votes
     }
   },
+  
   componentDidMount: function() {
     guideStore.addChangeListener(this._onChange);
   },
@@ -22,8 +22,10 @@ var VoteComponent = React.createClass({
 
   _onChange: function(){
     if(this.props.type === "link"){
+      var linkIndex = this.props.linkIndex;
+      var sectionIndex = this.props.sectionIndex;
       this.setState({
-       votes: guideStore.getLinkVotes(this.props.linkIndex, this.props.sectionIndex)
+       votes: guideStore.getLinkVotes(linkIndex, sectionIndex)
      })
     }
     else if(this.props.type ==="guide"){
@@ -32,11 +34,9 @@ var VoteComponent = React.createClass({
         votes: guideStore.getGuideVotes(index)
       })
     }
-
   },
 
   render: function() {
-
     return (
       /* jshint ignore:start */
      <div className = "vote-container">

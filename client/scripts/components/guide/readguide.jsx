@@ -13,14 +13,14 @@ var ReadGuideComponent = React.createClass({
   getInitialState: function () {
 
     var dummyObj = {
-      title: 'test title',
-      description: 'blah',
+      title: null,
+      description: null,
       sections: [],
-      userId: 1,
-      userEmail: 'ankuto@gmail.com',
+      userId: null,
+      userEmail: null,
       category: null,
       votes: 0,
-      comments: [{message:'fake', author:'tester'}, {message:'another fake', author:'tester1'}]
+      comments: [{message:null, author:null}, {message:null, author:null}]
     };
 
     var guideId = guideStore.getId();

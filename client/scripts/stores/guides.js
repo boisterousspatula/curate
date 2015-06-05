@@ -16,7 +16,7 @@ var GuideStore = new Store({
 		return _guides || guideDefaults;
 	},
 	getLinkVotes: function(linkIndex, sectionIndex){
-		return _guides[sectionIndex][links][linkIndex].votes;
+		return _guides.sections[sectionIndex].links[linkIndex].votes;
 	},
 	getGuideVotes: function(index){
 		return _guides[index].votes;
@@ -51,14 +51,16 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 		GuideStore.emitChange();
 	}
 	else if (action.actionType === inputConstants.UPVOTE_LINK){
-		_guides[sectionIndex][links][linkIndex].votes++;
+		var linkIndex = action.linkIndex;
+		var sectionIndex = action.sectionIndex;
+		_guides.sections[sectionIndex].links[linkIndex].votes++;
 		GuideStore.emitChange();
 	}
 	else if (action.actionType === inputConstants.DOWNVOTE_LINK){
 		var linkIndex = action.linkIndex;
 		var sectionIndex = action.sectionIndex;
 
-		_guides[sectionIndex][links][linkIndex].votes--;
+		_guides.sections[sectionIndex].links[linkIndex].votes--;
 		GuideStore.emitChange();
 	}
 	else if (action.actionType === guideConstants.PASS_ID) {
