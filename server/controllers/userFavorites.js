@@ -77,33 +77,25 @@ var addToUserFavorites = function(req, res, next) {
 
 var readUserFavorites = function(req, res, next) {
   var allUserFavorites = {};
-  req.userId = req.userId || 1; // TODO: remove this 1
 
-  UserFavorites.find({
+  UserFavorites.findAll({
     where: {
-      userId: req.userId // TODO: check this piece of req
-    }
-  })
+      userId:  req.headers.userid
+    },
+		include: [
+			{ model: Guide },
+			{ model: Section },
+			{ model: Link}
+			]
+	})
   .then(function(userFavorites) {
-    userFavorites.getGuides().then(function(guides) {
-      allUserFavorites.guides = guides;
-    })
-    .then(function () {
-      userFavorites.getSections().then(function(sections) {
-        allUserFavorites.sections = sections;
-      }).then(function () {
-        userFavorites.getLinks().then(function(links) {
-          allUserFavorites.links = links;
-        }).then(function () {
-          res.status(200).json({
-            userFavorites: allUserFavorites,
-            success: [{
-              msg: 'UserFavorites sent successfully.'
-            }]
-          });
-        });
-      });
-    });
+		allUserFavorites = userFavorites;
+		res.status(200).json({
+			userFavorites: allUserFavorites,
+			success: [{
+				msg: 'UserFavorites sent successfully.'
+			}]
+		});
   })
   .error(function(err) {
     if (err) {
