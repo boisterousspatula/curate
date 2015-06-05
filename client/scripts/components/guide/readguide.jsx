@@ -6,6 +6,8 @@ var guideActions = require('../../actions/guide');
 var guideStore = require('../../stores/guides');
 var GuideSection = require('./readguidesection.jsx');
 var CommentsBox = require('../comment/commentBox.jsx');
+var FavoriteButton = require('../favorites/favoriteButton.jsx')
+
 var ReadGuideComponent = React.createClass({
 
   getInitialState: function () {
@@ -63,6 +65,7 @@ var ReadGuideComponent = React.createClass({
           <h4>
             {this.state.guide.description}
           </h4>
+          <FavoriteButton guideId={this.state.id} />
           <ul>
             {sections}
           </ul>
