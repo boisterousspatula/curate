@@ -14,30 +14,35 @@ var Link = db.link;
  */
 
 var addToUserFavorites = function(req, res, next) {
-  var userId = req.userId || 1;
-  req.guide = {id:1};
+  console.log('UserID: ', req.headers.userid);
 
+  var userId = req.headers.userid || 1;
+  console.log('GuideId: ', req.body.guideId);
+  // // req.guide = {id:1};
+  // // console.log(req);
+  // console.log(Console.log('req', req.guideIdToSend);
+  // console.log('User ID: ', userId);
   UserFavorites.findOrCreate({
     userId: userId
   })
   .then(function(userFavorites) {
-    if (req.guide) {
+    if (req.body.guideId) {
       Guide.find({ where: { 
-        id: req.guide.id
+        id: req.body.guideId
       }})
       .then(function(guide) {
         userFavorites.addGuide(guide);
       })
-    } else if (req.section) {
+    } else if (req.body.sectionId) {
       Section.find({ where: { 
-        id: req.section.id
+        id: req.body.sectionId
       }})
       .then(function(section) {
         userFavorites.addSection(section);
       })
-    } else if (req.link) {
+    } else if (req.body.linkId) {
       Link.find({ where: { 
-        id: req.link.id
+        id: req.body.linkId
       }})
       .then(function(link) {
         userFavorites.addLink(link);
