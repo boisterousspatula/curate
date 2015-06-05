@@ -27,7 +27,7 @@ var GuideListComponent = React.createClass({
 	//Set current theme
 	componentWillMount: function() {
 	  ThemeManager.setPalette({
-	    accent1Color: Colors.deepOrange500
+	    accent1Color: Colors.green800
 	  });
 	},
 

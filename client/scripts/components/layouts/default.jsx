@@ -20,6 +20,7 @@ var getState = function() {
 };
 
 var DefaultComponent =  React.createClass({
+
   mixins: [pageStore.mixin, userStore.mixin],
 
   //Needed for mui to load theme
@@ -73,15 +74,16 @@ var DefaultComponent =  React.createClass({
          disabled: true
       },
     ];
+        //AppBar component
+        // <div className="app-bar">
+        //   <AppBar onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap} title="skillit" />
+        // </div>
 
     return (
       /* jshint ignore:start */
       <div>
-        <div className="app-bar">
-          <AppBar title="Skillit"/>
-        </div>
-        <div className="left-nav">
-          <LeftNav menuItems={menuItems} />,
+        <div>
+          <LeftNav ref="leftNav" menuItems={menuItems} />
         </div>
         <div className="main-nav">
           <Navbar user={this.state.user} />
@@ -99,7 +101,14 @@ var DefaultComponent =  React.createClass({
       </div>
       /* jshint ignore:end */
     );
+
   },
+
+  // _onLeftIconButtonTouchTap: function() {
+  //   console.log('onLeftIconButtonTouchTap called');
+  //   this.refs.leftNav.toggle();
+  // },
+
   // Event handler for 'change' events coming from store mixins.
   _onChange: function() {
     this.setState(getState());
