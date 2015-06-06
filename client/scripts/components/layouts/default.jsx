@@ -58,41 +58,15 @@ var DefaultComponent =  React.createClass({
   },
 
   render: function() {
-    var menuItems = [
-      { route: '/', text: 'LIST OF GUIDES' },
-      { route: '/createguide', text: 'CREATE A GUIDE' },
-      { route: '/knowrepo', text: 'KNOWLEDGE REPO' },
-      { type: MenuItem.Types.SUBHEADER, text: 'Resources' },
-      {
-         type: MenuItem.Types.LINK,
-         payload: 'https://github.com/callemall/material-ui',
-         text: 'GitHub'
-      },
-      {
-         type: MenuItem.Types.LINK,
-         payload: 'https://github.com/callemall/material-ui',
-         text: 'GitHub'
-      },
-      {
-         type: MenuItem.Types.LINK,
-         payload: 'https://www.google.com',
-         text: 'Disabled Link',
-         disabled: true
-      },
-    ];
 
     return (
       /* jshint ignore:start */
       <div>
         <div>
           <AppBar onLeftIconButtonTouchTap={this._showLeftNavClick} title="Navigation" />
-          <LeftNav
-            docked={false}
-            menuItems={menuItems} />
           <AppLeftNav
             ref="leftNav"
-            docked={false}
-            menuItems={menuItems} />
+            docked={false}/>
         </div>
         <div className="main-nav">
           <Navbar user={this.state.user} />
