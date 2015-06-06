@@ -31,7 +31,7 @@ var SectionStore = new Store({
 
   getGuide: function(){
     return _guide;
-  },
+  }
   
 });
 
@@ -69,19 +69,19 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
           break;
 				case 'linkTitle':
 					var linkKey = payload.action.linkidx;
-					_sections[index][fieldName][linkKey].linkTitle = input;
+					_sections[index].links[linkKey].linkTitle = input;
 					break;
 				case 'contentTypes':
 					var linkKey = payload.action.linkidx;
-					_sections[index][fieldName][linkKey].contentTypes = input;
+					_sections[index].links[linkKey].contentTypes = input;
 					break;
 				case 'linkDuration':
 					var linkKey = payload.action.linkidx;
-					_sections[index][fieldName][linkKey].linkDuration = input;
+					_sections[index].links[linkKey].linkDuration = input;
 					break;
 				case 'linkDescription':
 					var linkKey = payload.action.linkidx;
-					_sections[index][fieldName][linkKey].linkDescription = input;
+					_sections[index].links[linkKey].linkDescription = input;
 					break;
         case 'guideTitle':
         case 'guideDescription':

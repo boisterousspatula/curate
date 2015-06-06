@@ -4,8 +4,29 @@ var React = require('react');
 var inputActions = require('../../actions/input');
 var mui = require('material-ui');
 var	DropDownMenu = mui.DropDownMenu;
+var ThemeManager = new mui.Styles.ThemeManager();
+var Colors = require('material-ui/lib/styles/colors');
 
-var SectionTextInputComponent = React.createClass({
+var SectionMenuListComponent = React.createClass({
+
+	//Needed for mui to load theme
+	childContextTypes: {
+		muiTheme: React.PropTypes.object
+	},
+
+	//Needed for mui to load theme
+	getChildContext: function() {
+		return {
+			muiTheme: ThemeManager.getCurrentTheme()
+		};
+	},
+
+	//Set current theme
+	componentWillMount: function() {
+		ThemeManager.setPalette({
+			accent1Color: Colors.deepOrange500
+		});
+	},
 
   getInitialState: function(){
     return {
@@ -14,14 +35,14 @@ var SectionTextInputComponent = React.createClass({
   },
 
   render: function() {
-    return (
+		return (
       /* jshint ignore:start */
       <DropDownMenu
       className={this.props.className}
       id={this.props.id}
       name={this.props.name}
       //placeholder={this.props.placeholder}
-      //value={this.state.value}
+      value={this.state.value}
       onChange={this.onChange}
       index={this.props.index}
       linkidx={this.props.linkidx}
@@ -31,11 +52,11 @@ var SectionTextInputComponent = React.createClass({
     );
   },
 
-  onChange: function(e){
+  onChange: function(e, selected, menuItem){
     this.setState({
-      value: e.target.value
-    });
-    this.handleUpdateStoreValue(e.target.value, e.target.name, this.props.index, this.props.linkidx);
+      value: menuItem.text
+		});
+    this.handleUpdateStoreValue(menuItem.payload, this.props.name, this.props.index, this.props.linkidx);
   },
 
   handleUpdateStoreValue: function(input, name, index, key){
@@ -43,4 +64,4 @@ var SectionTextInputComponent = React.createClass({
   }
 });
 
-module.exports = SectionTextInputComponent;
+module.exports = SectionMenuListComponent;

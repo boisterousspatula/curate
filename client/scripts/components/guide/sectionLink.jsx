@@ -20,9 +20,8 @@ var SectionLinkComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<li>
-
 					<label>Title: </label>
-					<SectionTextInput name="linkTitle" linkidx={this.props.linkidx} index={this.props.index} />
+					<SectionTextInput name="linkTitle"  linkidx={this.props.linkidx} index={this.props.index} />
 
 					<label>URL: </label>
 					<SectionTextInput name="links" linkidx={this.props.linkidx} index={this.props.index} />
@@ -31,10 +30,10 @@ var SectionLinkComponent = React.createClass({
 					<SectionMenuList menuItems={this.state.contentTypes} name="contentTypes" linkidx={this.props.linkidx} index={this.props.index}/>
 
 					<label>Estimated Time to Completion: </label>
-					<SectionMenuList menuItems={this.state.timeRange} name="linkDuration" linkidx={this.props.linkidx} index={this.props.index}/>
+					<SectionMenuList menuItems={this.state.timeRanges} name="linkDuration" linkidx={this.props.linkidx} index={this.props.index}/>
 
 					<label>Description: </label>
-					<SectionTextInput name="linkDescription" linkidx={this.props.linkidx} index={this.props.index} />
+					<SectionTextInput name="linkDescription" isMultiLine="true" linkidx={this.props.linkidx} index={this.props.index} />
 			</li>
 			/* jshint ignore:end */
 		);

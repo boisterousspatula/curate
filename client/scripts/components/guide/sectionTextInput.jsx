@@ -2,10 +2,32 @@
 
 var React = require('react');
 var SectionLinkList = require('./sectionLinkList.jsx');
-var inputActions = require('../../actions/input')
+var inputActions = require('../../actions/input');
+var mui = require('material-ui');
+var	TextInputs = mui.TextField;
+var ThemeManager = new mui.Styles.ThemeManager();
+var Colors = require('material-ui/lib/styles/colors');
 
 var SectionTextInputComponent = React.createClass({
 
+	//Needed for mui to load theme
+	childContextTypes: {
+		muiTheme: React.PropTypes.object
+	},
+
+	//Needed for mui to load theme
+	getChildContext: function() {
+		return {
+			muiTheme: ThemeManager.getCurrentTheme()
+		};
+	},
+
+	//Set current theme
+	componentWillMount: function() {
+		ThemeManager.setPalette({
+			accent1Color: Colors.deepOrange500
+		});
+	},
   getInitialState: function(){
     return {
       value: this.props.value || ''
@@ -19,7 +41,8 @@ var SectionTextInputComponent = React.createClass({
       className={this.props.className}
       id={this.props.id}
       name={this.props.name}
-      placeholder={this.props.placeholder}
+      hintText={this.props.placeholder}
+			multiline={this.props.isMultiLine}
       value={this.state.value}
       onChange={this.onChange}
       index={this.props.index}

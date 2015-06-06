@@ -12,7 +12,7 @@ var SectionModel = function(sequelize, DataTypes) {
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1024),
       allowNull: false
     }
   }, {
