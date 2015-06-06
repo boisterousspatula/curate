@@ -19,9 +19,12 @@ var SectionStore = new Store({
   init: function(){
     var newSection = cloneObj(sectionDefaults.section);
     var newLink = cloneObj(sectionDefaults.link);
-    _sections.push(newSection);
-    _sections[0].links.push(newLink);
-
+    if(_sections.length === 0) {
+      _sections.push(newSection);
+    }
+    if(_sections[0].links.length === 0) {
+      _sections[0].links.push(newLink);
+    }
   },
 
 	// Gets all sections
@@ -32,7 +35,6 @@ var SectionStore = new Store({
   getGuide: function(){
     return _guide;
   }
-  
 });
 
 SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
@@ -59,7 +61,7 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
       var input = payload.action.input;
       var fieldName = payload.action.name;
       /*
-      updates the sections/guide object based on the 
+      updates the sections/guide object based on the
       field name that was modified in the view
       */
       switch(fieldName){

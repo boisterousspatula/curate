@@ -88,6 +88,14 @@ module.exports = {
 		this.getReq(id, cb);
 	},
 
+	getFavsForKnowRepoBar: function(idx, callback) {
+		var id = idx || null;
+		var cb = callback || function() {};
+		cb.options = {
+		};
+		this.getReq(id, cb);
+	},
+
 	getReq: function(idx, callback){
 		var self = this;
 		var token = self.getToken();

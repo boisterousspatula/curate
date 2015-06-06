@@ -146,6 +146,7 @@ var KnowledgeRepoBar = React.createClass({
   },
 
   _onLeftNavChange: function(e, key, payload) {
+    routeActions.setRoute(payload.route);
   },
 
 });
