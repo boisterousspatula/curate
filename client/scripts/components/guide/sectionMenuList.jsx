@@ -1,8 +1,9 @@
 'use strict';
 
 var React = require('react');
-var SectionLinkList = require('./sectionLinkList.jsx');
-var inputActions = require('../../actions/input')
+var inputActions = require('../../actions/input');
+var mui = require('material-ui');
+var	DropDownMenu = mui.DropDownMenu;
 
 var SectionTextInputComponent = React.createClass({
 
@@ -15,15 +16,16 @@ var SectionTextInputComponent = React.createClass({
   render: function() {
     return (
       /* jshint ignore:start */
-      <input
+      <DropDownMenu
       className={this.props.className}
       id={this.props.id}
       name={this.props.name}
-      placeholder={this.props.placeholder}
-      value={this.state.value}
+      //placeholder={this.props.placeholder}
+      //value={this.state.value}
       onChange={this.onChange}
       index={this.props.index}
       linkidx={this.props.linkidx}
+			menuItems={this.props.menuItems}
       />
       /* jshint ignore:end */
     );

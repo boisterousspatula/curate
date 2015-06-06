@@ -67,6 +67,22 @@ SectionStore.dispatcherToken = Dispatcher.register(function(payload) {
           var linkKey = payload.action.linkidx;
           _sections[index][fieldName][linkKey].link = input;
           break;
+				case 'linkTitle':
+					var linkKey = payload.action.linkidx;
+					_sections[index][fieldName][linkKey].linkTitle = input;
+					break;
+				case 'contentTypes':
+					var linkKey = payload.action.linkidx;
+					_sections[index][fieldName][linkKey].contentTypes = input;
+					break;
+				case 'linkDuration':
+					var linkKey = payload.action.linkidx;
+					_sections[index][fieldName][linkKey].linkDuration = input;
+					break;
+				case 'linkDescription':
+					var linkKey = payload.action.linkidx;
+					_sections[index][fieldName][linkKey].linkDescription = input;
+					break;
         case 'guideTitle':
         case 'guideDescription':
           _guide[fieldName] = input;
