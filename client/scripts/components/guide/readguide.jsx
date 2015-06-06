@@ -6,9 +6,34 @@ var guideActions = require('../../actions/guide');
 var guideStore = require('../../stores/guides');
 var GuideSection = require('./readguidesection.jsx');
 var CommentsBox = require('../comment/commentBox.jsx');
-var FavoriteButton = require('../favorites/favoriteButton.jsx')
+var FavoriteButton = require('../favorites/favoriteButton.jsx');
+
+//Load Material-UI Components
+var mui = require('material-ui');
+var ThemeManager = new mui.Styles.ThemeManager();
+var Colors = require('material-ui/lib/styles/colors');
+var AppBar = mui.AppBar;
+var LeftNav = mui.LeftNav;
+var AppLeftNav = require('../modules/appLeftNav.jsx');
+var MenuItem = mui.MenuItem;
+var Navbar = require('../modules/navbar.jsx');
+var RaisedButton = mui.RaisedButton;
+var KnowledgeRepoBar = require('../modules/knowledgeRepoBar.jsx');
+
 
 var ReadGuideComponent = React.createClass({
+
+  //Needed for mui to load theme
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  //Needed for mui to load theme
+  getChildContext: function() {
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  },
 
   getInitialState: function () {
 
@@ -25,7 +50,7 @@ var ReadGuideComponent = React.createClass({
 
     var guideId = guideStore.getId();
     guideActions.getGuide(guideId);
-    
+
     return {
       // guide: guideStore.get(),
       id: guideId,
@@ -51,10 +76,13 @@ var ReadGuideComponent = React.createClass({
     var guide = this.state.guide;
     var sections = guide.sections.map(function(sec, idx) {
       return (
+        /* jshint ignore:start */
         <GuideSection key={idx} index={idx} sec={sec}/>
-      )
+        /* jshint ignore:end */
+
+      );
     });
-    
+
 		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
@@ -69,12 +97,20 @@ var ReadGuideComponent = React.createClass({
           <ul>
             {sections}
           </ul>
+          <RaisedButton label="Show Hideable Left Nav" onTouchTap={this._showLeftNavClick} />
+          <KnowledgeRepoBar
+            ref="knowledgeRepoBar"
+            docked={false}/>
 				<CommentsBox guideId={this.state.id} comments={guide.comments}/>
 				</div>
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);
-	}
+	},
+
+  _showLeftNavClick: function() {
+    this.refs.knowledgeRepoBar.toggle();
+  },
 
 });
 

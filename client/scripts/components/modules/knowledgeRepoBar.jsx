@@ -122,7 +122,6 @@ var KnowledgeRepoBar = React.createClass({
     /* jshint ignore:end */
 
     // selectedIndex={this._getSelectedIndex()}
-
   },
 
   toggle: function() {
@@ -147,8 +146,6 @@ var KnowledgeRepoBar = React.createClass({
   },
 
   _onLeftNavChange: function(e, key, payload) {
-    // console.log('')
-    routeActions.setRoute(payload.route);
   },
 
 });
