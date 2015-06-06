@@ -8,37 +8,58 @@ var db = require('../config/database');
 var GuideVote = db.guideVote;
 
 var castVote = function(req, res, next) {
-  var voteContract = req.body;
-  var dummyVoteContract = {
-    guideId: 1,
-    userId: 1,
-    val: 1
-  };
 
-  GuideVote.create({
-    guideId: dummyVoteContract.guideId,
-    userId: dummyVoteContract.userId,
-    val: dummyVoteContract.val
+  GuideVote.find({
+    where:{
+      guideId: req.body.guideId,
+      userId: req.body.userId
+    }
   })
-  .error(function(err) {
-    if (err) {
+  .success(function(vote){
+    if(!vote) {
+      GuideVote.create({
+        userId: req.body.userId,
+        guideId: req.body.guideId,
+        val: req.body.val
+      });
+    } else {
+      vote.val = req.body.val;
+      vote.save().success(function(){
+        res.status(200).json({
+          success: [{
+            msg: 'Updated vote.'
+          }]
+        });
+      }).error(function(err){
+        if(err) {
+          return next(err);
+        }
+      }).error(function(err){
+        if(err) {
+          return next(err);
+        }
+      });
+    }
+  }).error(function(err){
+    if(err) {
       return next(err);
     }
   });
 };
 
+
 /**
  * GET /vote/user
  * Read users guide data
  */
-var getVoteByUser = function (req, res, next) {
-	GuideVote.findAll({
-		where: {
+ var getVoteByUser = function (req, res, next) {
+   GuideVote.findAll({
+    where: {
 			// need to have front end send userId from localStorage
 			userId: req.headers.userid
 		}
 	})
-		.then(function(votes) {
+   .then(function(votes) {
 			// console.log(guides);
 			if (!votes) {
 				return res.status(400).json({
@@ -53,9 +74,9 @@ var getVoteByUser = function (req, res, next) {
 		}).error(function(err) {
 			return next(err);
 		});
-};
+  };
 
-module.exports = {
-  castVote: castVote,
-	getVoteByUser: getVoteByUser
-};
+  module.exports = {
+    castVote: castVote,
+    getVoteByUser: getVoteByUser
+  };

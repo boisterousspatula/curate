@@ -2,6 +2,10 @@
 
 var Dispatcher = require('../dispatchers/default');
 var inputConstants = require('../constants/input');
+var assign = require('object-assign');
+var messagesActions = require('./messages');
+var request = require('superagent');
+var cookie = require('cookie');
 
 module.exports = {
 
@@ -41,6 +45,51 @@ module.exports = {
     Dispatcher.handleViewAction({
       actionType: inputConstants.DOWNVOTE_GUIDE,
       index: idx
+    });
+  },
+
+  getToken: function() {
+    var cookies = cookie.parse(document.cookie);
+
+    return cookies.token;
+  },
+
+
+  postGuideVote: function(guideid, typeOfVote){
+    var self = this;
+    var postUrl = '/guideVote'
+    var val;
+    if(typeOfVote === 'downvote'){
+      val = -1;
+    } else if (typeOfVote === 'upvote'){
+      val = 1;
+    }
+
+    var postData= {
+      'userId': window.localStorage.userId,
+      'guideId': guideid,
+      'val': val
+    }
+
+    var token = self.getToken();
+    request
+    .post(postUrl)
+    .set({
+      'authorization': 'Bearer ' + token,
+      'X-Requested-With': 'XMLHttpRequest',
+    })
+    .send(postData)
+    .end(function(res) {
+      if (res.ok) {
+        switch(name){
+          case "upvote":
+          self.upvoteGuide(index);
+          break;
+          case "downvote":
+          self.downvoteGuide(index);
+          break;
+        }
+      }
     });
   }
 
