@@ -55,7 +55,7 @@ module.exports = {
   },
 
 
-  postGuideVote: function(guideid, typeOfVote){
+  postGuideVote: function(guideid, typeOfVote, index){
     var self = this;
     var postUrl = '/guideVote'
     var val;
@@ -81,7 +81,8 @@ module.exports = {
     .send(postData)
     .end(function(res) {
       if (res.ok) {
-        switch(name){
+
+        switch(typeOfVote){
           case "upvote":
           self.upvoteGuide(index);
           break;

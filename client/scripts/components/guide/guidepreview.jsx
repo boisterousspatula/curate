@@ -37,14 +37,15 @@ var GuidePreviewComponent = React.createClass({
     var index = this.props.index;
     var guideid = this.props.id;
 
-    inputActions.postGuideVote(guideid, name);
+    inputActions.postGuideVote(guideid, name, index);
 
   },
   handleDownvote: function(e) {
    e.preventDefault();
    var name = 'downvote';
+   var index = this.props.index
    var guideid = this.props.id;
-   inputActions.postGuideVote(guideid, name);
+   inputActions.postGuideVote(guideid, name, index);
   }
 });
 
