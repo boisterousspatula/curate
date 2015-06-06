@@ -10,6 +10,7 @@ var User = db.user;
 
 var comment = function(req, res, next) {
   var comment = req.body;
+	console.log('Comment on server: ', comment);
   Comment.create({
     guideId: comment.guideId,
     userId: req.headers.userid,
