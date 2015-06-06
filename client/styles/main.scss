@@ -106,6 +106,17 @@
 .success{
   color: #58e44e;
 }
+
+// Custom Styling
+.favorite {
+  width: 50px;
+  height: 50px;
+  border: 5px;
+  border-color: #000;
+  border-style: solid;
+  display: inline-block;
+}
+
 // Styling on warning for users on IE7 or below
 .browsehappy {
   text-align: center;
