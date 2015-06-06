@@ -1,17 +1,22 @@
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
+var Messages = require('../modules/messages.jsx');
+var pageStore = require('../../stores/page');
+var userStore = require('../../stores/user');
+
+//Load Material-UI Components
 var mui = require('material-ui');
 var ThemeManager = new mui.Styles.ThemeManager();
 var Colors = require('material-ui/lib/styles/colors');
 var AppBar = mui.AppBar;
 var LeftNav = mui.LeftNav;
+var AppLeftNav = require('../modules/appLeftNav.jsx');
 var MenuItem = mui.MenuItem;
 var Navbar = require('../modules/navbar.jsx');
 var RaisedButton = mui.RaisedButton;
-var Messages = require('../modules/messages.jsx');
-var pageStore = require('../../stores/page');
-var userStore = require('../../stores/user');
+
 
 var getState = function() {
   return {
@@ -53,11 +58,10 @@ var DefaultComponent =  React.createClass({
   },
 
   render: function() {
-    //Initialize left nav menu items
     var menuItems = [
       { route: '/', text: 'LIST OF GUIDES' },
-      { route: '/createguide', text: 'CREATE GUIDE' },
-      { route: 'knorepo', text: 'KNOWLEDGE REPO' },
+      { route: '/createguide', text: 'CREATE A GUIDE' },
+      { route: '/knowrepo', text: 'KNOWLEDGE REPO' },
       { type: MenuItem.Types.SUBHEADER, text: 'Resources' },
       {
          type: MenuItem.Types.LINK,
@@ -65,8 +69,9 @@ var DefaultComponent =  React.createClass({
          text: 'GitHub'
       },
       {
-         text: 'Disabled',
-         disabled: true
+         type: MenuItem.Types.LINK,
+         payload: 'https://github.com/callemall/material-ui',
+         text: 'GitHub'
       },
       {
          type: MenuItem.Types.LINK,
@@ -75,17 +80,19 @@ var DefaultComponent =  React.createClass({
          disabled: true
       },
     ];
-        //AppBar component
-        // <div className="app-bar">
-        // </div>
-          // <LeftNav ref="leftNav" menuItems={menuItems} />
 
     return (
       /* jshint ignore:start */
       <div>
         <div>
           <AppBar onLeftIconButtonTouchTap={this._showLeftNavClick} title="Navigation" />
-          <LeftNav ref="leftNav" docked={false} menuItems={menuItems} />
+          <LeftNav
+            docked={false}
+            menuItems={menuItems} />
+          <AppLeftNav
+            ref="leftNav"
+            docked={false}
+            menuItems={menuItems} />
         </div>
         <div className="main-nav">
           <Navbar user={this.state.user} />

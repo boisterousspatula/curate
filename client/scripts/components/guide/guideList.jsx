@@ -1,14 +1,16 @@
 'use strict';
 
 var React = require('react');
-var mui = require('material-ui');
-var RaisedButton = mui.RaisedButton;
-var ThemeManager = new mui.Styles.ThemeManager();
-var Colors = require('material-ui/lib/styles/colors');
 var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
 var guideStore = require('../../stores/guides');
 var GuidePreview = require('./guidepreview.jsx');
+
+//Load Material-UI Components
+var mui = require('material-ui');
+var RaisedButton = mui.RaisedButton;
+var ThemeManager = new mui.Styles.ThemeManager();
+var Colors = require('material-ui/lib/styles/colors');
 
 var GuideListComponent = React.createClass({
 
