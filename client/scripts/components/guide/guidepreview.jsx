@@ -7,8 +7,16 @@ var routeActions = require('../../actions/routes');
 var VoteComponent = require('./vote.jsx');
 
 var GuidePreviewComponent = React.createClass({
+
+  getInitialState: function(){
+    return {
+      hasVoted: false
+    }
+  },
+
   render: function() {
     var guide = this.props.guide;
+
     return (
       /* jshint ignore:start */
       <tr>
@@ -17,7 +25,7 @@ var GuidePreviewComponent = React.createClass({
           <div>
             <p>{guide.description}</p>
           </div>
-           <VoteComponent votes={guide.votes} type="guide" index={this.props.index} onDownvote={this.handleDownvote} onUpvote={this.handleUpvote}/>
+           <VoteComponent votes={guide.votes} type="guide" index={this.props.index} onDownvote={this.handleDownvote} onUpvote={this.handleUpvote} hasVoted={this.state.hasVoted}/>
         </td>
       </tr>
       /* jshint ignore:end */
@@ -38,6 +46,7 @@ var GuidePreviewComponent = React.createClass({
     var guideid = this.props.id;
 
     inputActions.postGuideVote(guideid, name, index);
+
 
   },
   handleDownvote: function(e) {
