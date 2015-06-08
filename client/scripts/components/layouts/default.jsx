@@ -63,10 +63,8 @@ var DefaultComponent =  React.createClass({
       /* jshint ignore:start */
       <div>
         <div>
-          <AppBar onLeftIconButtonTouchTap={this._showLeftNavClick} title="Navigation" />
           <AppLeftNav
-            ref="leftNav"
-            docked={false}/>
+            ref="leftNav"/>
         </div>
         <div className="main-nav">
           <Navbar user={this.state.user} />
@@ -84,6 +82,7 @@ var DefaultComponent =  React.createClass({
       </div>
       /* jshint ignore:end */
     );
+          // <AppBar onLeftIconButtonTouchTap={this._showLeftNavClick} title="Navigation" />
 
   },
 
