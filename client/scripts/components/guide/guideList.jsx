@@ -51,17 +51,17 @@ var GuideListComponent = React.createClass({
 		};
 	},
 
-
 	render: function() {
 		var self = this;
 		if (this.state.guides) {
 			var guideList = this.state.guides.sort(function (a, b) {
 				return b.votes - a.votes;
 			}).map(function (guide, idx) {
+				console.log('GUIDE VOTES', guide);
 				guide.votes = guide.votes || 0;
 				return ([
 					/* jshint ignore:start */
-					<GuidePreview key={idx} index={idx} guide={guide} votes={guide.votes}/>,
+					<GuidePreview key={idx} id={guide.id} index={idx} guide={guide} votes={guide.votes}/>,
 					<RaisedButton label="VIEW GUIDE" primary={true}/>
 					/* jshint ignore:end */
 				]);

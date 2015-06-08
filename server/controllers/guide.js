@@ -22,7 +22,7 @@ var async = require('async');
  */
 var readGuides = function (req, res, next) {
   // need to find correct guide by id now
-
+  var guidesToSend = [];
   Guide.findAll().then(function(guides) {
     if (!guides) {
       return res.status(400).json({
@@ -31,15 +31,51 @@ var readGuides = function (req, res, next) {
         }]
       });
     }
-    res.status(200).json({
-      guide: guides
-    });
-  }).error(function(err) {
+
+    async.each(guides, function(guide, next){
+      var guideObj = {};
+      GuideVote.findAll({ // find all votes associated with the guide
+        where: {
+          guideId: guide.id
+        }
+      })
+      .then(function(guideVotes){
+        var guideVoteTotal = 0;
+        for(var i = 0; i < guideVotes.length; i++) {
+          guideVoteTotal += guideVotes[i].val;
+        }
+        guideObj.votes = guideVoteTotal;
+        guideObj.id = guide.id;
+        guideObj.title = guide.title;
+        guideObj.description = guide.description;
+        guideObj.createdAt = guide.createdAt;
+        guideObj.updatedAt = guide.updatedAt;
+        guideObj.categoryId = guide.categoryId;
+        guideObj.userId = guide.userId;
+
+        guidesToSend.push(guideObj);
+        next();
+      })
+
+    }, function(err){
+      console.log('NEXT')
+      if (err) {
+        console.log('failed to find');
+      } else {
+        console.log("GUIDES: ", guidesToSend);
+        res.status(200).json({
+          guide: guidesToSend
+        });
+      }
+    }
+  )
+  })
+  .error(function(err) {
     return next(err);
   });
 
   console.log('Guides successfully retrieved.');
-};
+}
 
 /**
  * GET /guide/user

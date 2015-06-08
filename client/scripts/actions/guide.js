@@ -12,48 +12,48 @@ var cookie = require('cookie');
 
 module.exports = {
 
-  addSection: function(){
+	addSection: function(){
     //console.log('in guide actions addSection');
     Dispatcher.handleViewAction({
-      actionType: sectionConstants.CREATE_NEW_SECTION
+    	actionType: sectionConstants.CREATE_NEW_SECTION
     });
   },
   addLink: function(index){
     //console.log('in guide actions addLink');
     Dispatcher.handleViewAction({
-      actionType: sectionConstants.CREATE_NEW_LINK,
-      index: index
+    	actionType: sectionConstants.CREATE_NEW_LINK,
+    	index: index
     });
   },
-	saveGuide: function(index){
-		Dispatcher.handleViewAction({
-			actionType: sectionConstants.SAVE_GUIDE,
-			index: index
-		});
-	},
+  saveGuide: function(index){
+  	Dispatcher.handleViewAction({
+  		actionType: sectionConstants.SAVE_GUIDE,
+  		index: index
+  	});
+  },
 
-	setGuides: function(guides) {
-		console.log('in guide action, guides:', guides);
-		Dispatcher.handleViewAction({
-			actionType: sectionConstants.SET_GUIDES,
-			guides: guides
-		});
-	},
+  setGuides: function(guides) {
+  	console.log('in guide action, guides:', guides);
+  	Dispatcher.handleViewAction({
+  		actionType: sectionConstants.SET_GUIDES,
+  		guides: guides
+  	});
+  },
 
-	passGuideId: function(id) {
-		Dispatcher.handleViewAction({
-			actionType: guideConstants.PASS_ID,
-			id: id
-		});
-	},
+  passGuideId: function(id) {
+  	Dispatcher.handleViewAction({
+  		actionType: guideConstants.PASS_ID,
+  		id: id
+  	});
+  },
 
-	setComments: function(comments) {
-		console.log('in comments:', comments);
-		Dispatcher.handleViewAction({
-			actionType: guideConstants.SET_COMMENTS,
-			comments: comments
-		});
-	},
+  setComments: function(comments) {
+  	console.log('in comments:', comments);
+  	Dispatcher.handleViewAction({
+  		actionType: guideConstants.SET_COMMENTS,
+  		comments: comments
+  	});
+  },
 
 	//addComment: function(comment) {
 	//	Dispatcher.handleViewAction({
@@ -87,15 +87,15 @@ module.exports = {
 		var token = self.getToken();
 
 		request
-			.post(postUrl)
-			.set('Content-Type', 'application/json')
-			.set({
-				'authorization': 'Bearer ' + token,
-				'X-Requested-With': 'XMLHttpRequest',
-				'userId': window.localStorage.userId
-			})
-			.send(guideToSend)
-			.end(function(res) {
+		.post(postUrl)
+		.set('Content-Type', 'application/json')
+		.set({
+			'authorization': 'Bearer ' + token,
+			'X-Requested-With': 'XMLHttpRequest',
+			'userId': window.localStorage.userId
+		})
+		.send(guideToSend)
+		.end(function(res) {
 				//console.log('guide post response', res);
 				if (res.ok) {
 					if (callback && callback.success) {
@@ -135,18 +135,18 @@ module.exports = {
 		var options = callback.options || {};
 
 		request
-			.post(postUrl)
-			.type('form')
-			.set({
-				'authorization': 'Bearer ' + token,
-				'X-Requested-With': 'XMLHttpRequest',
-				'userId': window.localStorage.userId
-			})
-			.send(postData)
-			.end(function(res) {
-				console.log('guide post response', res);
-				if (res.ok) {
-					var userData;
+		.post(postUrl)
+		.type('form')
+		.set({
+			'authorization': 'Bearer ' + token,
+			'X-Requested-With': 'XMLHttpRequest',
+			'userId': window.localStorage.userId
+		})
+		.send(postData)
+		.end(function(res) {
+			console.log('guide post response', res);
+			if (res.ok) {
+				var userData;
 					// If auth token needs to be stored
 					//if (options.setToken) {
 					//	// Store token in cookie that expires in a week
@@ -186,32 +186,32 @@ module.exports = {
 					callback.complete(res);
 				}
 			});
-	},
+},
 
-	createGuide: function(form, callback) {
-		var cb = callback || function() {};
-		cb.options = {
-			successUrl: '/',
-			errorUrl: '/createguide'
+createGuide: function(form, callback) {
+	var cb = callback || function() {};
+	cb.options = {
+		successUrl: '/',
+		errorUrl: '/createguide'
 
-		};
-		this.postForm(form, cb);
-	},
+	};
+	this.postForm(form, cb);
+},
 
-	getGuides: function(idx, callback) {
-		var id = idx || null;
-		var cb = callback || function() {};
-		cb.options = {
-			successUrl: '/',
-			errorUrl: '/',
-			destination:'/guide'
-		};
-		this.getReq(id, cb);
-	},
+getGuides: function(idx, callback) {
+	var id = idx || null;
+	var cb = callback || function() {};
+	cb.options = {
+		successUrl: '/',
+		errorUrl: '/',
+		destination:'/guide'
+	};
+	this.getReq(id, cb);
+},
 
-	getGuide: function(id, callback){
-		var self = this;
-		var token = self.getToken();
+getGuide: function(id, callback){
+	var self = this;
+	var token = self.getToken();
 		// var options = callback.options || {};
 		// var cb = callback || function() {};
 		// cb.options = {
@@ -233,12 +233,12 @@ module.exports = {
 		var id = idx || '';
 
 		request
-			.get(options.destination)
-			.set({
-				'authorization': 'Bearer ' + token,
-				'X-Requested-With': 'XMLHttpRequest',
-				'id': id
-			})
+		.get(options.destination)
+		.set({
+			'authorization': 'Bearer ' + token,
+			'X-Requested-With': 'XMLHttpRequest',
+			'id': id
+		})
 			//.send(idx)
 			.end(function(res) {
 				console.log('guide get response', res);
@@ -272,7 +272,7 @@ module.exports = {
 					callback.complete(res);
 				}
 			});
-	},
+		},
 
 	//getComments:function(idx, callback){
 	//	var id = idx || null;
@@ -287,7 +287,7 @@ module.exports = {
 
 	comment: function(form, callback) {
 		var cb = callback || function () {
-			};
+		};
 		cb.options = {
 			successUrl: '/readguide',
 			errorUrl: '/readguide'
@@ -304,33 +304,33 @@ module.exports = {
 		var token = self.getToken();
 		var options = callback.options || {};
 		request
-			.post('/comment')
-			.type('form')
-			.set({
-				'authorization': 'Bearer ' + token,
-				'X-Requested-With': 'XMLHttpRequest',
-				'userId': window.localStorage.userId
-			})
-			.send(postData)
-			.end(function(res) {
-				console.log('guide post response', res);
-				if (res.ok) {
+		.post('/comment')
+		.type('form')
+		.set({
+			'authorization': 'Bearer ' + token,
+			'X-Requested-With': 'XMLHttpRequest',
+			'userId': window.localStorage.userId
+		})
+		.send(postData)
+		.end(function(res) {
+			console.log('guide post response', res);
+			if (res.ok) {
 
-					if (callback ) {
-						callback(res.body.comment);
-					}
-					if (options.successUrl) {
-						routeActions.setRoute(options.successUrl);
-					}
+				if (callback ) {
+					callback(res.body.comment);
 				}
-				else {
-					if (callback) {
-						callback.error(res);
-					}
-					if (options.errorUrl) {
-						routeActions.setRoute(options.errorUrl);
-					}
+				if (options.successUrl) {
+					routeActions.setRoute(options.successUrl);
 				}
+			}
+			else {
+				if (callback) {
+					callback.error(res);
+				}
+				if (options.errorUrl) {
+					routeActions.setRoute(options.errorUrl);
+				}
+			}
 
 				// Show global messages
 				messagesActions.setMessages(res.body);
