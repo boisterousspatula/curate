@@ -12,7 +12,6 @@ var LinearProgress = mui.LinearProgress;
 var ThemeManager = new mui.Styles.ThemeManager();
 var Colors = require('material-ui/lib/styles/colors');
 
-
 var ReadGuideComponent = React.createClass({
 //Needed for mui to load theme
 	childContextTypes: {
