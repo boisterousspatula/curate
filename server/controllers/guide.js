@@ -116,7 +116,10 @@ var readIndividualGuide = function (req, res, next) {
   Guide.find({
     where: {
       id: guideId
-    }
+    },
+		//include: [
+		//		{ model: Section, include: {model:Link} }
+		//	]
   })
   .then(function(guide) {
 
@@ -144,7 +147,7 @@ var readIndividualGuide = function (req, res, next) {
 			//,
 			//include: [
 			//	//{ model: Section },
-			//	{ model: Category},
+			//	{ model: Link, },
 			//	{ model: Comment, include: {model:user}},
 			//]
     })
@@ -166,23 +169,26 @@ var readIndividualGuide = function (req, res, next) {
         .then(function(links) {
           links.forEach(function(link) {
             var currentLink = {};
-            currentLink.title = link.title;
+            currentLink.linkTitle = link.title;
             currentLink.url = link.url;
-            currentLink.votes = 0;
+            currentLink.votes = link.voteTotal;
+						currentLink.linkDescription = link.description;
+						currentLink.contentTypes = link.type;
+						currentLink.linkDuration =link.duration;
 
-            LinkVote.findAll({ // find all linkVotes of the link
-              where: {
-                linkId: link.id
-              }
-            })
-            .then(function(linkVotes) {
-              var linkVoteTotal = 0;
-              linkVotes.forEach(function(linkVote) {
-                linkVoteTotal += linkVote.val;
-              });
-
-              currentLink.votes = linkVoteTotal;
-            });
+            //LinkVote.findAll({ // find all linkVotes of the link
+            //  where: {
+            //    linkId: link.id
+            //  }
+            //})
+            //.then(function(linkVotes) {
+            //  var linkVoteTotal = 0;
+            //  linkVotes.forEach(function(linkVote) {
+            //    linkVoteTotal += linkVote.val;
+            //  });
+						//
+            //  currentLink.votes = linkVoteTotal;
+            //});
             currentSection.links.push(currentLink);
           });
         });
@@ -197,27 +203,29 @@ var readIndividualGuide = function (req, res, next) {
           }
         })
         .then(function(crowdLinks) {
-          // console.log('Crowd Links: ', crowdLinks);
+						console.log('Crowd Links: ', crowdLinks);
           crowdLinks.forEach(function(crowdLink) {
             var currentCrowdLink = {};
-            currentCrowdLink.userId = crowdLink.userId;
-            currentCrowdLink.sectionId = crowdLink.sectionId;
-            currentCrowdLink.url = crowdLink.url;
-            currentCrowdLink.votes = 0;
+						currentCrowdLink.linkTitle = crowdLink.title;
+						currentCrowdLink.url = crowdLink.url;
+						currentCrowdLink.votes = crowdLink.voteTotal;
+						currentCrowdLink.linkDescription = crowdLink.description;
+						currentCrowdLink.contentTypes = crowdLink.type;
+						currentCrowdLink.linkDuration =crowdLink.duration;
 
-            LinkVote.findAll({
-              where: {
-                crowdLinkId: crowdLink.id
-              }
-            })
-            .then(function(crowdLinkVotes) {
-              var crowdLinkVoteTotal = 0;
-              crowdLinkVotes.forEach(function(crowdLinkVote) {
-                crowdLinkVoteTotal += crowdLinkVote.val;
-              });
-
-              currentCrowdLink.votes = crowdLinkVoteTotal;
-            });
+            //LinkVote.findAll({
+            //  where: {
+            //    crowdLinkId: crowdLink.id
+            //  }
+            //})
+            //.then(function(crowdLinkVotes) {
+            //  var crowdLinkVoteTotal = 0;
+            //  crowdLinkVotes.forEach(function(crowdLinkVote) {
+            //    crowdLinkVoteTotal += crowdLinkVote.val;
+            //  });
+						//
+            //  currentCrowdLink.votes = crowdLinkVoteTotal;
+            //});
             section.crowdLinks.push(currentCrowdLink);
           });
         });
@@ -362,12 +370,17 @@ var createGuide = function(req, res, next) {
       //create link entry with its section id
       .then(function(newSection){
         var sectionId = newSection.get('id');
+					console.log('this is what links look like', section.links);
         section.links.forEach(function(link){
           Link.create({
-            title: link.title || 'Default Link Title',
-            url: link.link, // TODO: eventually change this to url on frontend
+            title: link.linkTitle,
+            url: link.link,
+						description: link.linkDescription,
+						type: link.contentTypes,
+						duration: link.linkDuration,
             sectionId: sectionId
-          });
+						//voteTotal: link.votes || 0
+          })
         });
       });
     });

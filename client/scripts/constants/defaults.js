@@ -43,9 +43,32 @@ var Defaults = {
   },
 
   link: {
-    title: null,
-    link: null
-  }
+		linkTitle :null,
+		link:null,
+		votes :null,
+		linkDescription:null,
+		contentTypes:null,
+		linkDuration: null
+  },
+
+	contentTypes : [
+		{ payload: 'Course', text: 'Course' },
+		{ payload: 'Blog', text: 'Blog' },
+		{ payload: 'Demo', text: 'Demo' },
+		{ payload: 'Video', text: 'Video' }
+	],
+
+	timeRange : [
+		{ payload: '10', text: '10 Minutes' },
+		{ payload: '30', text: '30 Minutes' },
+		{ payload: '60', text: '1 Hour' 		},
+		{ payload: '90', text: '1.5 Hours' },
+		{ payload: '120', text: '2 Hours' 	},
+		{ payload: '150', text: '2.5 Hours' },
+		{ payload: '300', text: '5 Hours' 	},
+		{ payload: '600', text: '10 Hours'	 }
+
+	]
   
 
 };
