@@ -22,7 +22,7 @@ var menuItems = [
   { route: '/', text: 'LIST OF GUIDES' },
   { route: '/createguide', text: 'CREATE A GUIDE' },
   { route: '/knowrepo', text: 'KNOWLEDGE REPO' },
-  { route: '/logout', text: 'LOGOUT' }
+  { route: '/login', text: 'LOGIN' }
 ];
 
 var AppLeftNav = React.createClass({
