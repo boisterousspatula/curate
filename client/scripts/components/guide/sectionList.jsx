@@ -9,7 +9,7 @@ var guideActions = require('../../actions/guide');
 
 
 var SectionListComponent = React.createClass({
-	
+
 	render: function () {
 		var sectionList = this.props.sections;
 		var htmlSections = sectionList.map(function(sec, idx){
@@ -28,7 +28,7 @@ var SectionListComponent = React.createClass({
 				<button onClick={this.handleNewSection}>Add new section</button>
 			</div>
 
-			
+
 			/* jshint ignore:end */
 		);
 	},

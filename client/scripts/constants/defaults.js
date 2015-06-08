@@ -67,10 +67,7 @@ var Defaults = {
 		{ payload: '150', text: '2.5 Hours' },
 		{ payload: '300', text: '5 Hours' 	},
 		{ payload: '600', text: '10 Hours'	 }
-
 	]
-  
-
 };
 
 module.exports = Defaults;

@@ -6,7 +6,8 @@ var guideActions = require('../../actions/guide');
 var guideStore = require('../../stores/guides');
 var GuideSection = require('./readguidesection.jsx');
 var CommentsBox = require('../comment/commentBox.jsx');
-var FavoriteButton = require('../favorites/favoriteButton.jsx')
+var FavoriteButton = require('../favorites/favoriteButton.jsx');
+
 
 var ReadGuideComponent = React.createClass({
 
@@ -25,7 +26,7 @@ var ReadGuideComponent = React.createClass({
 
     var guideId = guideStore.getId();
     guideActions.getGuide(guideId);
-    
+
     return {
       // guide: guideStore.get(),
       id: guideId,
@@ -51,10 +52,13 @@ var ReadGuideComponent = React.createClass({
     var guide = this.state.guide;
     var sections = guide.sections.map(function(sec, idx) {
       return (
+        /* jshint ignore:start */
         <GuideSection key={idx} index={idx} sec={sec}/>
-      )
+        /* jshint ignore:end */
+
+      );
     });
-    
+
 		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
@@ -74,7 +78,7 @@ var ReadGuideComponent = React.createClass({
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);
-	}
+	},
 
 });
 

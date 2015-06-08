@@ -7,7 +7,32 @@ var SectionList = require('./sectionList.jsx');
 var sectionStore = require('../../stores/sections');
 var SectionTextInput = require('./sectionTextInput.jsx');
 
+//Load Material-UI Components
+var mui = require('material-ui');
+var ThemeManager = new mui.Styles.ThemeManager();
+var Colors = require('material-ui/lib/styles/colors');
+var AppBar = mui.AppBar;
+var LeftNav = mui.LeftNav;
+var AppLeftNav = require('../modules/appLeftNav.jsx');
+var MenuItem = mui.MenuItem;
+var Navbar = require('../modules/navbar.jsx');
+var RaisedButton = mui.RaisedButton;
+var KnowledgeRepoBar = require('../modules/knowledgeRepoBar.jsx');
+
 var GuideComponent = React.createClass({
+
+  //Needed for mui to load theme
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  //Needed for mui to load theme
+  getChildContext: function() {
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  },
+
 	getInitialState: function () {
 		sectionStore.init();
 		return {
@@ -42,7 +67,7 @@ var GuideComponent = React.createClass({
             <ul>
               <li>
               <label>Guide Title: </label>
-                <SectionTextInput name="guideTitle"/>
+                <SectionTextInput value={this.state.guide.guideTitle} name="guideTitle"/>
               </li>
               <li>
               <label>Guide Description: </label>
@@ -53,6 +78,10 @@ var GuideComponent = React.createClass({
             <SectionList sections={this.state.sections}/>
 						<input type="submit" name="save"></input>
 				</form>
+        <RaisedButton label="Show Knowledge Repo" onTouchTap={this._showKnowledgeRepoBar} />
+        <KnowledgeRepoBar
+          ref="knowledgeRepoBar"
+          docked={false}/>
 				</div>
 			</DefaultLayout>
 			/* jshint ignore:end */
@@ -60,6 +89,9 @@ var GuideComponent = React.createClass({
 
 	},
 
+  _showKnowledgeRepoBar: function() {
+    this.refs.knowledgeRepoBar.toggle();
+  },
 
 	handleSubmit: function(e) {
 		e.preventDefault();

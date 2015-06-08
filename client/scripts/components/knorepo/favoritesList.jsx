@@ -20,7 +20,7 @@ var FavsComponent = React.createClass({
 	_onChange: function(){
 		this.setState({
 			guides: knowRepoStore.getFavGuides()
-		})
+		});
 	},
 
 	getInitialState: function () {

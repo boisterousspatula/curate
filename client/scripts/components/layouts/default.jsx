@@ -1,10 +1,22 @@
 'use strict';
 
 var React = require('react');
-var Navbar = require('../modules/navbar.jsx');
+var Router = require('react-router');
 var Messages = require('../modules/messages.jsx');
 var pageStore = require('../../stores/page');
 var userStore = require('../../stores/user');
+
+//Load Material-UI Components
+var mui = require('material-ui');
+var ThemeManager = new mui.Styles.ThemeManager();
+var Colors = require('material-ui/lib/styles/colors');
+var AppBar = mui.AppBar;
+var LeftNav = mui.LeftNav;
+var AppLeftNav = require('../modules/appLeftNav.jsx');
+var MenuItem = mui.MenuItem;
+var Navbar = require('../modules/navbar.jsx');
+var RaisedButton = mui.RaisedButton;
+
 
 var getState = function() {
   return {
@@ -14,18 +26,48 @@ var getState = function() {
 };
 
 var DefaultComponent =  React.createClass({
+
   mixins: [pageStore.mixin, userStore.mixin],
+
+  //Needed for mui to load theme
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  //Needed for mui to load theme
+  getChildContext: function() {
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  },
+
+  //Set current theme
+  componentWillMount: function() {
+    ThemeManager.setPalette({
+      accent1Color: Colors.deepOrange500
+    });
+  },
+
   componentDidMount: function() {
     pageStore.emitChange();
     userStore.emitChange();
   },
+
   getInitialState: function() {
     return getState();
   },
+
   render: function() {
+
     return (
       /* jshint ignore:start */
       <div>
+        <div>
+          <AppBar onLeftIconButtonTouchTap={this._showLeftNavClick} title="Navigation" />
+          <AppLeftNav
+            ref="leftNav"
+            docked={false}/>
+        </div>
         <div className="main-nav">
           <Navbar user={this.state.user} />
         </div>
@@ -42,7 +84,13 @@ var DefaultComponent =  React.createClass({
       </div>
       /* jshint ignore:end */
     );
+
   },
+
+  _showLeftNavClick: function() {
+    this.refs.leftNav.toggle();
+  },
+
   // Event handler for 'change' events coming from store mixins.
   _onChange: function() {
     this.setState(getState());
