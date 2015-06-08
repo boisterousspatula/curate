@@ -22,23 +22,7 @@ var menuItems = [
   { route: '/', text: 'LIST OF GUIDES' },
   { route: '/createguide', text: 'CREATE A GUIDE' },
   { route: '/knowrepo', text: 'KNOWLEDGE REPO' },
-  { type: MenuItem.Types.SUBHEADER, text: 'Resources' },
-  {
-     type: MenuItem.Types.LINK,
-     payload: 'https://github.com/callemall/material-ui',
-     text: 'GitHub'
-  },
-  {
-     type: MenuItem.Types.LINK,
-     payload: 'https://github.com/callemall/material-ui',
-     text: 'GitHub'
-  },
-  {
-     type: MenuItem.Types.LINK,
-     payload: 'https://www.google.com',
-     text: 'Disabled Link',
-     disabled: true
-  },
+  { route: '/logout', text: 'LOGOUT' }
 ];
 
 var AppLeftNav = React.createClass({
@@ -54,12 +38,12 @@ var AppLeftNav = React.createClass({
     /* jshint ignore:start */
     var header = <div className="logo" onClick={this._onHeaderClick}>≈skill.it!</div>;
 
+        // docked={false}
+        // isInitiallyOpen={false}
 
     return (
       <LeftNav
         ref="leftNav"
-        docked={false}
-        isInitiallyOpen={false}
         header={header}
         menuItems={menuItems}
         onChange={this._onLeftNavChange} />
