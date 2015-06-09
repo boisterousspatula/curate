@@ -92,6 +92,46 @@ module.exports = {
         }
       }
     });
+  },
+
+  postLinkVote: function(typeOfVote, linkId, guideId, linkIndex, sectionIndex){
+    var self = this;
+    var postUrl = '/linkVote'
+    var val;
+    if(typeOfVote === 'downvote'){
+      val = -1;
+    } else if (typeOfVote === 'upvote'){
+      val = 1;
+    }
+
+    var postData= {
+      'userId': window.localStorage.userId,
+      'guideId': guideId,
+      'linkId': linkId,
+      'val': val
+    }
+
+    var token = self.getToken();
+    request
+    .post(postUrl)
+    .set({
+      'authorization': 'Bearer ' + token,
+      'X-Requested-With': 'XMLHttpRequest',
+    })
+    .send(postData)
+    .end(function(res) {
+      if (res.ok) {
+
+        switch(typeOfVote){
+          case "upvote":
+          self.upvoteLink(linkIndex, sectionIndex);
+          break;
+          case "downvote":
+          self.downvoteLink(linkIndex, sectionIndex);
+          break;
+        }
+      }
+    });
   }
 
 };

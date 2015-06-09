@@ -53,7 +53,7 @@ var ReadGuideComponent = React.createClass({
     var sections = guide.sections.map(function(sec, idx) {
       return (
         /* jshint ignore:start */
-        <GuideSection key={idx} index={idx} sec={sec}/>
+        <GuideSection key={idx} index={idx} sec={sec} guideId={guide.id}/>
         /* jshint ignore:end */
 
       );

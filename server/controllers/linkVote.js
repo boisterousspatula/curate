@@ -8,20 +8,41 @@ var db = require('../config/database');
 var LinkVote = db.linkVote;
 
 var castVote = function(req, res, next) {
-  var voteContract = req.body;
-  var dummyVoteContract = {
-    linkId: 1,
-    userId: 1,
-    val: 1
-  };
 
-  LinkVote.create({
-    linkId: dummyVoteContract.linkId,
-    userId: dummyVoteContract.userId,
-    val: dummyVoteContract.val
+  LinkVote.find({
+    where:{
+      linkId: req.body.linkId,
+      userId: req.body.userId
+    }
   })
-  .error(function(err) {
-    if (err) {
+  .success(function(vote){
+    if(!vote) {
+      LinkVote.create({
+        userId: req.body.userId,
+        guideId: req.body.guideId,
+        linkId: req.body.linkId,
+        val: req.body.val
+      });
+    } else {
+      vote.val = req.body.val;
+      vote.save().success(function(){
+        res.status(200).json({
+          success: [{
+            msg: 'Updated vote.'
+          }]
+        });
+      }).error(function(err){
+        if(err) {
+          return next(err);
+        }
+      }).error(function(err){
+        if(err) {
+          return next(err);
+        }
+      });
+    }
+  }).error(function(err){
+    if(err) {
       return next(err);
     }
   });

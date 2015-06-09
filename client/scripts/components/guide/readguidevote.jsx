@@ -7,7 +7,7 @@ var inputActions = require('../../actions/input');
 var ReadGuideVoteComponent = React.createClass({
   getInitialState: function () {
     return {
-      votes: this.props.votes
+      votes: this.props.votes || 0
     }
   },
    componentDidMount: function() {
@@ -46,16 +46,22 @@ var ReadGuideVoteComponent = React.createClass({
 
     handleUpvote: function(e) {
     e.preventDefault();
+    var type = 'upvote';
     var linkIndex = this.props.linkIndex;
     var sectionIndex = this.props.sectionIndex;
-    inputActions.upvoteLink(linkIndex, sectionIndex)
+    var linkId = this.props.linkId;
+    var guideId = this.props.guideId;
+    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
 
   },
   handleDownvote: function(e) {
     e.preventDefault();
+    var type = 'downvote';
     var linkIndex = this.props.linkIndex;
     var sectionIndex = this.props.sectionIndex;
-    inputActions.downvoteLink(linkIndex, sectionIndex)
+    var linkId = this.props.linkId;
+    var guideId = this.props.guideId;
+    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
 
   }
 });
