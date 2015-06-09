@@ -4,7 +4,7 @@ var React = require('react');
 var SectionLinkList = require('./sectionLinkList.jsx');
 var inputActions = require('../../actions/input');
 var mui = require('material-ui');
-var	TextInputs = mui.TextField;
+var	TextField = mui.TextField;
 var ThemeManager = new mui.Styles.ThemeManager();
 var Colors = require('material-ui/lib/styles/colors');
 
@@ -24,9 +24,7 @@ var SectionTextInputComponent = React.createClass({
 
 	//Set current theme
 	componentWillMount: function() {
-		ThemeManager.setPalette({
-			accent1Color: Colors.deepOrange500
-		});
+
 	},
   getInitialState: function(){
     return {
@@ -37,7 +35,7 @@ var SectionTextInputComponent = React.createClass({
   render: function() {
     return (
       /* jshint ignore:start */
-      <input
+      <TextField
       className={this.props.className}
       id={this.props.id}
       name={this.props.name}

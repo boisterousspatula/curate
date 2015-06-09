@@ -1,3 +1,4 @@
+'use strict';
 var Dispatcher = require('../dispatchers/default');
 var sectionConstants = require('../constants/sections');
 var request = require('superagent');

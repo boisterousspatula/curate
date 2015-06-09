@@ -19,7 +19,7 @@ var SectionLinkComponent = React.createClass({
 		var index = this.props.index;
 		return (
 			/* jshint ignore:start */
-			<li>
+			<div className="contentCard">
 					<label>Title: </label>
 					<SectionTextInput name="linkTitle"  linkidx={this.props.linkidx} index={this.props.index} />
 
@@ -34,7 +34,7 @@ var SectionLinkComponent = React.createClass({
 
 					<label>Description: </label>
 					<SectionTextInput name="linkDescription" isMultiLine="true" linkidx={this.props.linkidx} index={this.props.index} />
-			</li>
+			</div>
 			/* jshint ignore:end */
 		);
 	}
