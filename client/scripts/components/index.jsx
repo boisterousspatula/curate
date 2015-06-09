@@ -14,7 +14,6 @@ var IndexComponent = React.createClass({
 
     return (
       /* jshint ignore:start */
-      
       <DefaultLayout>
         <div className="main-container">
           <div className="homepage">
@@ -38,7 +37,6 @@ var IndexComponent = React.createClass({
           </div>
         </div>
       </DefaultLayout>
-
       /* jshint ignore:end */
     );
   },
