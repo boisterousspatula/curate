@@ -182,7 +182,6 @@ var readIndividualGuide = function (req, res, next) {
             }).success(function(count){
               currentLink.votes = count;
             })
-            console.log('VOTE COUNT=============', currentLink.votes)
 
             currentSection.links.push(currentLink);
           });
