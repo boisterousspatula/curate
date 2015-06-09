@@ -18,19 +18,30 @@
 
 
 .background {
-  background-color: #1A3034;
+  background-color: white;
 }
 
 .crosshatch {
-
   /*background: #1A3034; */
-  background: #1A3034;
-  background-repeat: repeat;
-  background-position: absolute;
+  background-image: url(https://paylike.io/images/grid.png);
+  // background-repeat: repeat;
+  // position: absolute;
+  background-size: 10px 10px;
+  z-index: -5;
+  // opacity: .15;
   /*background: #1A3034;*/
   /*background-color: transparent;*/
-  /*opacity: 0.15;*/
 }
+
+.cover {
+  background: #1A3034;
+  // opacity: .1;
+}
+
+.min-window-height {
+  min-height: 100vh;
+}
+
 
 .homepage {
   /*background-color: #1A3034;*/
@@ -50,7 +61,7 @@
 
 
 
-.description {  
+.description {
   font-family: Roboto-Light;
   font-size: 20px;
   color: #678387;

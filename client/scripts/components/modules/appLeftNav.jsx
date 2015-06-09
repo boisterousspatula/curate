@@ -7,6 +7,7 @@ var routeActions = require('../../actions/routes');
 var Messages = require('../modules/messages.jsx');
 var pageStore = require('../../stores/page');
 var userStore = require('../../stores/user');
+var userActions = require('../../actions/user');
 
 //Load Material-UI Components
 var mui = require('material-ui');
@@ -22,7 +23,9 @@ var menuItems = [
   { route: '/', text: 'LIST OF GUIDES' },
   { route: '/createguide', text: 'CREATE A GUIDE' },
   { route: '/knowrepo', text: 'KNOWLEDGE REPO' },
-  { route: '/login', text: 'LOGIN' }
+  { route: '/signup', text: 'CREATE ACCOUNT' },
+  { route: '/login', text: 'LOGIN' },
+  { route: '/logout', text: 'LOGOUT' }
 ];
 
 var AppLeftNav = React.createClass({
@@ -37,9 +40,6 @@ var AppLeftNav = React.createClass({
   render: function() {
     /* jshint ignore:start */
     var header = <div className="logo" onClick={this._onHeaderClick}>≈skill.it!</div>;
-
-        // docked={false}
-        // isInitiallyOpen={false}
 
     return (
       <LeftNav
@@ -72,6 +72,9 @@ var AppLeftNav = React.createClass({
   },
 
   _onLeftNavChange: function(e, key, payload) {
+    if(payload.route === '/logout') {
+      userActions.logout();
+    }
     routeActions.setRoute(payload.route);
   },
 

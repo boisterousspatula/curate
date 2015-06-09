@@ -15,11 +15,11 @@ var IndexComponent = React.createClass({
       <DefaultLayout>
         <div className="main-container">
           <div className="homepage">
-          
-            <section className="cover">
+
+            <section className="cover min-window-height">
               <h1 className="title">Crowd-sourced Curriculums</h1>
-              <h2 className="description">Sign up and create your own learning path. Share it with the world 
-              and help others find the most effective material on the internet.</h2>
+              <h2 className="description">Sign up and create your own learning path. Share it with the world
+                and help others find the most effective material on the internet.</h2>
             </section>
 
             <section className="guide-list">

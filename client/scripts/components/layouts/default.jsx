@@ -58,6 +58,9 @@ var DefaultComponent =  React.createClass({
   },
 
   render: function() {
+        // <div className="main-nav">
+        //   <Navbar user={this.state.user} />
+        // </div>
 
     return (
       /* jshint ignore:start */
@@ -65,9 +68,6 @@ var DefaultComponent =  React.createClass({
         <div>
           <AppLeftNav
             ref="leftNav"/>
-        </div>
-        <div className="main-nav">
-          <Navbar user={this.state.user} />
         </div>
         <div className="default">
           <div className="main-container">
