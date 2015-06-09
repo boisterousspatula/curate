@@ -175,6 +175,7 @@ var readIndividualGuide = function (req, res, next) {
 						currentLink.linkDescription = link.description;
 						currentLink.contentTypes = link.type;
 						currentLink.linkDuration =link.duration;
+            currentLink.linkId = link.id
 
             //LinkVote.findAll({ // find all linkVotes of the link
             //  where: {
