@@ -1,17 +1,17 @@
 'use strict';
 
 var React = require('react');
-var SectionLink = require('./sectionLink.jsx')
+var SectionLink = require('./sectionLink.jsx');
 
 var SectionLinkListComponent = React.createClass({
   render: function () {
     var self = this;
-    var links = this.props.links
+    var links = this.props.links;
     var linkList = links.map(function(link, idx){
       return (
         <SectionLink key={idx} index={self.props.index} link={link}/>
       )
-    })
+    });
     return (
       /* jshint ignore:start */
       <li>
@@ -19,7 +19,7 @@ var SectionLinkListComponent = React.createClass({
       </li>
       /* jshint ignore:end */
     );
-  },
+  }
 
 });
 

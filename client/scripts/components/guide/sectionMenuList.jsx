@@ -23,9 +23,9 @@ var SectionMenuListComponent = React.createClass({
 
 	//Set current theme
 	componentWillMount: function() {
-		ThemeManager.setPalette({
-			accent1Color: Colors.deepOrange500
-		});
+		//ThemeManager.setPalette({
+		//	accent1Color: Colors.deepOrange500
+		//});
 	},
 
   getInitialState: function(){
