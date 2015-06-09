@@ -124,10 +124,10 @@ module.exports = {
 
         switch(typeOfVote){
           case "upvote":
-          self.upvoteGuide(index);
+          self.upvoteLink(linkIndex, sectionIndex);
           break;
           case "downvote":
-          self.downvoteGuide(index);
+          self.downvoteLink(linkIndex, sectionIndex);
           break;
         }
       }

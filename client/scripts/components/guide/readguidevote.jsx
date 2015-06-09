@@ -7,7 +7,7 @@ var inputActions = require('../../actions/input');
 var ReadGuideVoteComponent = React.createClass({
   getInitialState: function () {
     return {
-      votes: this.props.votes
+      votes: this.props.votes || 0
     }
   },
    componentDidMount: function() {

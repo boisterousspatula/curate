@@ -8,7 +8,7 @@ var VoteComponent = React.createClass({
   getInitialState: function () {
     var guideId = this.props.id;
     return {
-      votes: this.props.votes,
+      votes: this.props.votes || 0,
       hasVoted: this.props.hasVoted
     }
   },

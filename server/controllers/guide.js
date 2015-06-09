@@ -182,18 +182,7 @@ var readIndividualGuide = function (req, res, next) {
             }).success(function(count){
               currentLink.votes = count;
             })
-
-            // LinkVote.findAll({ // find all linkVotes of the link
-            //  where: {
-            //    linkId: link.id
-            //  }
-            // })
-            // .then(function(linkVotes) {
-            //  var linkVoteTotal = 0;
-            //  linkVotes.forEach(function(linkVote) {
-            //    linkVoteTotal += linkVote.val;
-            //  });
-             // currentLink.votes = linkVoteTotal;
+            console.log('VOTE COUNT=============', currentLink.votes)
 
             currentSection.links.push(currentLink);
           });
