@@ -7,31 +7,31 @@ var guideStore = require('../../stores/guides');
 var GuideSection = require('./readguidesection.jsx');
 var CommentsBox = require('../comment/commentBox.jsx');
 var FavoriteButton = require('../favorites/favoriteButton.jsx');
-//var mui = require('material-ui');
-//var LinearProgress = mui.LinearProgress;
-//var ThemeManager = new mui.Styles.ThemeManager();
-//var Colors = require('material-ui/lib/styles/colors');
+var mui = require('material-ui');
+var LinearProgress = mui.LinearProgress;
+var ThemeManager = new mui.Styles.ThemeManager();
+var Colors = require('material-ui/lib/styles/colors');
 
 
 var ReadGuideComponent = React.createClass({
 //Needed for mui to load theme
-//	childContextTypes: {
-//		muiTheme: React.PropTypes.object
-//	},
-//
-//	//Needed for mui to load theme
-//	getChildContext: function() {
-//		return {
-//			muiTheme: ThemeManager.getCurrentTheme()
-//		};
-//	},
-//
-//	//Set current theme
-//	componentWillMount: function() {
-//		ThemeManager.setPalette({
-//			accent1Color: Colors.deepOrange500
-//		});
-//	},
+	childContextTypes: {
+		muiTheme: React.PropTypes.object
+	},
+
+	//Needed for mui to load theme
+	getChildContext: function() {
+		return {
+			muiTheme: ThemeManager.getCurrentTheme()
+		};
+	},
+
+	//Set current theme
+	componentWillMount: function() {
+		//ThemeManager.setPalette({
+		//	accent1Color: Colors.deepOrange500
+		//});
+	},
   getInitialState: function () {
 
     var dummyObj = {
@@ -81,7 +81,6 @@ var ReadGuideComponent = React.createClass({
     });
 
 		return (
-					//<LinearProgress mode="determinate" value={50}/>
 			/* jshint ignore:start */
 			<DefaultLayout>
         <div className="main-container">
@@ -89,6 +88,7 @@ var ReadGuideComponent = React.createClass({
           <h3>
             {this.state.guide.title}
           </h3>
+					<LinearProgress mode="determinate" value={50}/>
           <h4>
             {this.state.guide.description}
           </h4>

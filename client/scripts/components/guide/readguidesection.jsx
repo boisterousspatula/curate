@@ -97,8 +97,9 @@ var ReadGuideSectionComponent = React.createClass({
 					{crowdSourcedLinks}
 				</div>
 				<h4>
-					Is this the freshest content on the interwebz?
+					Is this the freshest content on the Interwebz?
 				</h4>
+
 			</div>
 			/* jshint ignore:end */
 		);
