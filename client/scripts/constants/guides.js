@@ -8,7 +8,8 @@ var guideConstants = keyMirror({
   SET_GUIDES: null,
   PASS_ID: null,
 	SET_COMMENTS:null,
-	ADD_COMMENT:null
+	ADD_COMMENT:null,
+	SET_USER_CONTENT:null
 
 });
 

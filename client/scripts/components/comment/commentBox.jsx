@@ -22,13 +22,13 @@ var CommentBox = React.createClass({
 		//	}.bind(this)
 		//});
 	},
-	handleCommentSubmit: function(comment) {
-		var comments = this.props.comments;
-		comments.push(comment);
-		this.setState({comments: comments}, function() {
-
-		});
-	},
+	//handleCommentSubmit: function(comment) {
+	//	var comments = this.props.comments;
+	//	comments.push(comment);
+	//	this.setState({comments: comments}, function() {
+	//
+	//	});
+	//},
 	_onChange: function() {
 		this.setState({
 			comments: guideStore.getCommentsBySection()
@@ -44,12 +44,11 @@ var CommentBox = React.createClass({
 		guideStore.removeChangeListener(this._onChange);
 	},
 	render: function() {
-		console.log('comments', this.props.comments);
 		return (
 			/* jshint ignore:start */
 			<div className="commentBox">
 				<h5>Comments</h5>
-				<CommentForm guideId={this.props.guideId} onCommentSubmit={this.handleCommentSubmit} />
+				<CommentForm guideId={this.props.guideId} />
 				<CommentList comments={this.props.comments} />
 			</div>
 			/* jshint ignore:end */

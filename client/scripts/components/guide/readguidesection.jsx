@@ -5,9 +5,10 @@ var Vote= require('./readguidevote.jsx');
 var inputActions = require('../../actions/input');
 var mui = require('material-ui');
 var	Paper = mui.Paper;
-var	Dialog = mui.Dialog;
+var RaisedButton = mui.RaisedButton;
 var ThemeManager = new mui.Styles.ThemeManager();
 var Colors = require('material-ui/lib/styles/colors');
+var UserContentForm = require('./userContent/userContentForm.jsx');
 //var SectionTextInput = require('./sectionTextInput.jsx');
 
 
@@ -30,9 +31,11 @@ var ReadGuideSectionComponent = React.createClass({
 		//	accent1Color: Colors.deepOrange500
 		//});
 	},
+	getInitialState: function(){
+		return { showContentForm : false }
+	},
 	render: function() {
 		var section = this.props.sec;
-		//console.log('links', section.links);
 		var self = this;
 		var linkList = section.links.map(function(link, idx){
 			/* jshint ignore:start */
@@ -49,8 +52,8 @@ var ReadGuideSectionComponent = React.createClass({
 				</div>
 			)
 		});
-
 		var crowdSourcedLinks = section.crowdLinks.map(function(link, idx){
+		console.log('link view', link);
 			/* jshint ignore:start */
 			return(
 				<div key={idx}>
@@ -59,30 +62,15 @@ var ReadGuideSectionComponent = React.createClass({
 						<p>{link.linkTitle}</p>
 						<p>{link.url}</p>
 						<p>{link.linkDescription}</p>
-						<p>{link.contentTypes}</p>
-						<p>{link.linkDuration}</p>
 					</Paper>
 				</div>
 			);
 			/* jshint ingnore:end */
+						//<p>{link.contentTypes}</p>
+						//<p>{link.linkDuration}</p>
 		});
 
-		//var userContentModal = //Standard Actions
-		var standardActions = [
-			{ text: 'Cancel' },
-			{ text: 'Submit', onClick: this._onDialogSubmit, ref: 'submit' }
-		];
-
-		//var dialog =
-		//	/* jshint ignore:start */
-		//	(<Dialog
-		//	title="Dialog With Standard Actions"
-		//	actions={standardActions}
-		//	actionFocus="submit"
-		//	modal={this.state.modal}>
-		//	The actions in this window are created from the json that's passed in.
-		//</Dialog>);
-		///* jshint ignore:end */
+		console.log('in guide section', section);
 		return (
 			/* jshint ignore:start */
 			<div>
@@ -99,11 +87,29 @@ var ReadGuideSectionComponent = React.createClass({
 				<h4>
 					Is this the freshest content on the Interwebz?
 				</h4>
+				<RaisedButton label="Suggest your own content here..." primary={true} onClick={this.toggleMenu}/>
 
+				{this.state.showContentForm ? <UserContentForm className="userContent" section={section.sectionId} sectionIndex={self.props.index} onContentSubmit={this.handleContentSubmit} /> : null}
 			</div>
 			/* jshint ignore:end */
 		);
-	}
+	},
+	toggleMenu: function() {
+		// since we put `ref="nav"` on the LeftNav, we can get to it
+		// via `this.refs.nav`
+		//this.refs.nav.toggle();
+		var currentState = this.state.showContentForm;
+		this.setState({ showContentForm: !currentState });
+	},
+
+	handleContentSubmit: function(content) {
+		//var userContent = this.props.sec.crowdLinks;
+		//userContent.push(content);
+		// not sure if I should add the state because state is on parent component.
+		//this.setState({comments: comments}, function() {
+		//
+		//});
+	},
 					//<SectionTextInput placeholder='Suggest your own content here...' index={this.props.index} />
 });
 

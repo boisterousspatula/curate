@@ -18,8 +18,8 @@ var ReadGuideComponent = React.createClass({
 	childContextTypes: {
 		muiTheme: React.PropTypes.object
 	},
-
-	//Needed for mui to load theme
+//
+//	//Needed for mui to load theme
 	getChildContext: function() {
 		return {
 			muiTheme: ThemeManager.getCurrentTheme()
@@ -42,7 +42,7 @@ var ReadGuideComponent = React.createClass({
       userEmail: null,
       category: null,
       votes: 0,
-      comments: [{message:null, author:null}, {message:null, author:null}]
+      comments: [{message:null, userEmail:null}, {message:null, userEmail:null}]
     };
 
     var guideId = guideStore.getId();
