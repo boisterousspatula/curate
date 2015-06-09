@@ -218,7 +218,7 @@ var readIndividualGuide = function (req, res, next) {
       // find out if user viewing the guide has it previously favorited
       UserFavorites.find({
         where: {
-          userId: req.headers.userId || 2
+          userId: req.headers.userId || 3
         },
         include: [
           { model: Guide }

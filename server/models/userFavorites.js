@@ -14,9 +14,9 @@ var UserFavorites = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        UserFavorites.hasMany(models.link);
-        UserFavorites.hasMany(models.section);
-        UserFavorites.hasMany(models.guide);
+        UserFavorites.hasMany(models.link, {onDelete: 'cascade'});
+        UserFavorites.hasMany(models.section, {onDelete: 'cascade'});
+        UserFavorites.hasMany(models.guide, {onDelete: 'cascade'});
         UserFavorites.belongsTo(models.user);
       }
     }
