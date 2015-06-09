@@ -104,9 +104,7 @@ var ReadGuideSectionComponent = React.createClass({
 			/* jshint ignore:end */
 		);
 	}
-
 					//<SectionTextInput placeholder='Suggest your own content here...' index={this.props.index} />
-
 });
 
 module.exports = ReadGuideSectionComponent;
