@@ -94,7 +94,7 @@ module.exports = {
     });
   },
 
-  postLinkVote: function(type, linkId, guideId, linkIndex, sectionIndex){
+  postLinkVote: function(typeOfVote, linkId, guideId, linkIndex, sectionIndex){
     var self = this;
     var postUrl = '/linkVote'
     var val;
@@ -106,7 +106,7 @@ module.exports = {
 
     var postData= {
       'userId': window.localStorage.userId,
-      'guideId': guideid,
+      'guideId': guideId,
       'linkId': linkId,
       'val': val
     }

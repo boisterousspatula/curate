@@ -58,7 +58,6 @@ var readGuides = function (req, res, next) {
       })
 
     }, function(err){
-      console.log('NEXT')
       if (err) {
         console.log('failed to find');
       } else {
@@ -177,23 +176,30 @@ var readIndividualGuide = function (req, res, next) {
 						currentLink.linkDuration =link.duration;
             currentLink.linkId = link.id
 
-            //LinkVote.findAll({ // find all linkVotes of the link
+            LinkVote.count({where: {
+              linkId: link.id
+              }
+            }).success(function(count){
+              currentLink.votes = count;
+            })
+
+            // LinkVote.findAll({ // find all linkVotes of the link
             //  where: {
             //    linkId: link.id
             //  }
-            //})
-            //.then(function(linkVotes) {
+            // })
+            // .then(function(linkVotes) {
             //  var linkVoteTotal = 0;
             //  linkVotes.forEach(function(linkVote) {
             //    linkVoteTotal += linkVote.val;
             //  });
-						//
-            //  currentLink.votes = linkVoteTotal;
-            //});
+             // currentLink.votes = linkVoteTotal;
+
             currentSection.links.push(currentLink);
           });
         });
         individualGuide.sections.push(currentSection);
+
       });
     })
     .then(function(sections) {
