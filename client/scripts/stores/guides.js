@@ -76,7 +76,12 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 		_guides.comments = action.comments;
 		GuideStore.emitChange();
 	}
-
+	else if (action.actionType === guideConstants.SET_USER_CONTENT) {
+		var sectionIndex = action.sectionIdx;
+		_guides.sections[sectionIndex].crowdLinks.push(action.userContent);
+		console.log('in guide store', _guides.sections[sectionIndex]);
+		GuideStore.emitChange();
+	}
 
 });
 

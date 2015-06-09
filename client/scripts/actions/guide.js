@@ -48,12 +48,19 @@ module.exports = {
   },
 
   setComments: function(comments) {
-  	console.log('in comments:', comments);
   	Dispatcher.handleViewAction({
   		actionType: guideConstants.SET_COMMENTS,
   		comments: comments
   	});
   },
+	setUserContent: function(content, sectionIdx) {
+		console.log('set user content action:', content);
+		Dispatcher.handleViewAction({
+			actionType: guideConstants.SET_USER_CONTENT,
+			userContent: content,
+			sectionIdx:sectionIdx
+		});
+	},
 
 	//addComment: function(comment) {
 	//	Dispatcher.handleViewAction({
@@ -146,35 +153,11 @@ module.exports = {
 		.end(function(res) {
 			console.log('guide post response', res);
 			if (res.ok) {
-				var userData;
-					// If auth token needs to be stored
-					//if (options.setToken) {
-					//	// Store token in cookie that expires in a week
-					//	self.setToken(res.body.token, 7);
-					//}
-					//// If user needs to be updated
-					//if (options.updateUser) {
-					//	userData = res.body.user;
-					//	userData.loggedIn = true;
-					//
-					//	self.setUser(userData);
-					//}
-					//// If user needs to be destroyed
-					//if (options.destroyUser) {
-					//	// Log user out
-					//	self.logout();
-					//}
-					if (callback && callback.success) {
-						callback.success(res);
-					}
-					if (options.successUrl) {
-						routeActions.setRoute(options.successUrl);
-					}
+				if (callback ) {
+					callback(res.body.crowdLink, callback.options.sectionIdx);
+				}
 				}
 				else {
-					if (callback && callback.error) {
-						callback.error(res);
-					}
 					if (options.errorUrl) {
 						routeActions.setRoute(options.errorUrl);
 					}
@@ -182,9 +165,7 @@ module.exports = {
 
 				// Show global messages
 				messagesActions.setMessages(res.body);
-				if (callback && callback.complete) {
-					callback.complete(res);
-				}
+
 			});
 },
 
@@ -338,7 +319,18 @@ getGuide: function(id, callback){
 					callback.complete(res);
 				}
 			});
-	}
+	},
 
+	userContent: function(form, callback, sectionIndex) {
+		var cb = callback || function () {
+			};
+		cb.options = {
+			successUrl: '/readguide',
+			errorUrl: '/readguide',
+			sectionIdx: sectionIndex
+
+		};
+		this.postForm(form, cb);
+	}
 
 };

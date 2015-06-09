@@ -6,7 +6,7 @@ var guideActions = require('../../actions/guide');
 //var Guide = require('./guide.jsx');
 //var knowRepoStore = require('../../stores/knowrepo');
 
-var CommentList = React.createClass({
+var CommentForm = React.createClass({
 	componentDidMount: function() {
 		//knowRepoStore.addChangeListener(this._onChange);
 	},
@@ -48,4 +48,4 @@ var CommentList = React.createClass({
 		);
 	}
 });
-module.exports = CommentList;
+module.exports = CommentForm;
