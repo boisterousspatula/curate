@@ -96,7 +96,7 @@ module.exports = {
 
   postLinkVote: function(type, linkId, guideId, linkIndex, sectionIndex){
     var self = this;
-    var postUrl = '/guideVote'
+    var postUrl = '/linkVote'
     var val;
     if(typeOfVote === 'downvote'){
       val = -1;
@@ -107,6 +107,7 @@ module.exports = {
     var postData= {
       'userId': window.localStorage.userId,
       'guideId': guideid,
+      'linkId': linkId,
       'val': val
     }
 
