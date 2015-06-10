@@ -61,7 +61,6 @@ var readGuides = function (req, res, next) {
 				if (err) {
 					console.log('failed to find');
 				} else {
-					console.log("GUIDES: ", guidesToSend);
 					res.status(200).json({
 						guide: guidesToSend
 					});
@@ -74,8 +73,7 @@ var readGuides = function (req, res, next) {
 		});
 
 	console.log('Guides successfully retrieved.');
-}
-
+};
 /**
  * GET /guide/user
  * Read users guide data
@@ -115,7 +113,7 @@ var readIndividualGuide = function (req, res, next) {
 	Guide.find({
 		where: {
 			id: guideId
-		},
+		}
 		//include: [
 		//		{ model: Section, include: {model:Link} }
 		//	]
@@ -198,7 +196,6 @@ var readIndividualGuide = function (req, res, next) {
 							}
 						})
 							.then(function(crowdLinks) {
-								console.log('Crowd Links: ', crowdLinks);
 								crowdLinks.forEach(function(crowdLink) {
 									var currentCrowdLink = {};
 									currentCrowdLink.linkTitle = crowdLink.title;
@@ -244,7 +241,6 @@ var readIndividualGuide = function (req, res, next) {
 				})
 				.then(function() {
 					// Find category associated with guide.
-					// TODO: May want to refactor to allow for multiple categories later
 					Category.find({
 						where: {
 							id: guide.categoryId
@@ -302,7 +298,7 @@ var readIndividualGuide = function (req, res, next) {
 								if (err) {
 									console.log('Failed to find User Emails');
 								} else {
-									console.log("Individual Guide: ", individualGuide);
+									//console.log("Individual Guide: ", individualGuide);
 									res.status(200).json({
 										guide: individualGuide
 									});
@@ -310,6 +306,10 @@ var readIndividualGuide = function (req, res, next) {
 							});
 						});
 				});
+		}).error(function(err) {
+			if (err) {
+				return next(err);
+			}
 		});
 };
 
