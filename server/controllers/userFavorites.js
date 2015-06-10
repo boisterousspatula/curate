@@ -52,9 +52,11 @@ var toggleUserFavorite = function(req, res, next) {
     } else {
       console.log("already Favorited");
       // guideToDelete = userFavoriteResource[0];
-      holdUserFavorites.destroy({where: { guideId: req.body.guideId }}).then(function() {
-        console.log('I am now dust...');
-      });
+      // userFavoriteResource.destroy({where: { guideId: req.body.guideId }}).then(function() {
+      //   console.log('I am now dust...');
+      // });
+
+      
 
       // userFavoriteResource[0].destroy().then(function() {
       //   console.log('I am now dust...');
