@@ -17,29 +17,31 @@
 
 
 
-.background {
-  background-color: white;
-}
+// .background {
+//   background-color: white;
+// }
 
 .crosshatch {
   /*background: #1A3034; */
   background-image: url(https://paylike.io/images/grid.png);
-  // background-repeat: repeat;
-  // position: absolute;
+  background-repeat: repeat;
+  position: absolute;
   background-size: 10px 10px;
-  z-index: -5;
-  // opacity: .15;
-  /*background: #1A3034;*/
-  /*background-color: transparent;*/
+  z-index: -2;
+  opacity: .15;
+  // background: #1A3034;
+  // background-color: transparent;
 }
 
 .cover {
   background: #1A3034;
-  // opacity: .1;
+  // opacity: .5;
+  z-index: 1;
 }
 
 .min-window-height {
   min-height: 100vh;
+  min-width: 100vw;
 }
 
 
@@ -54,7 +56,7 @@
 .title {
   font-family: Roboto-Light;
   font-size: 40px;
-
+  margin: 0;
   color: #FFFFFF;
   /*line-height: 18px;*/
 }

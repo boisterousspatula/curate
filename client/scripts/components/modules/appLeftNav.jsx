@@ -46,6 +46,9 @@ var AppLeftNav = React.createClass({
         ref="leftNav"
         header={header}
         menuItems={menuItems}
+        style={{
+          opacity: .5,
+        }}
         onChange={this._onLeftNavChange} />
     );
         // selectedIndex={this._getSelectedIndex()}
