@@ -31,9 +31,6 @@ var CommentList = React.createClass({
 	render: function() {
 		var commentNodes = this.props.comments.map(function(comment, index) {
 			return (
-				// `key` is a React-specific concept and is not mandatory for the
-				// purpose of this tutorial. if you're curious, see more here:
-				// http://facebook.github.io/react/docs/multiple-components.html#dynamic-children
 				/* jshint ignore:start */
 				<Comment userEmail={comment.userEmail} key={index} message={comment.message}/>
 				/* jshint ignore:end */
@@ -41,7 +38,7 @@ var CommentList = React.createClass({
 		});
 		return (
 			/* jshint ignore:start */
-			<div className="commentList">
+			<div className="collection">
 				{commentNodes}
 			</div>
 			/* jshint ignore:end */
