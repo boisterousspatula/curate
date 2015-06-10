@@ -371,11 +371,16 @@ var createGuide = function(req, res, next) {
 								title: link.linkTitle,
 								url: link.link,
 								description: link.linkDescription,
-								type: link.contentTypes,
-								duration: link.linkDuration,
+								type: link.contentTypes || 'Course',
+								duration: link.linkDuration || '10',
 								sectionId: sectionId
 								//voteTotal: link.votes || 0
 							})
+							.error(function(err) {
+								if (err) {
+									return next(err);
+								}
+							});
 						});
 					});
 			});
