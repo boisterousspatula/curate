@@ -8,15 +8,17 @@ var Messages = require('../modules/messages.jsx');
 var pageStore = require('../../stores/page');
 var userStore = require('../../stores/user');
 var userActions = require('../../actions/user');
+var Navbar = require('../modules/navbar.jsx');
 
 //Load Material-UI Components
 var mui = require('material-ui');
 var ThemeManager = new mui.Styles.ThemeManager();
 var Colors = require('material-ui/lib/styles/colors');
+var Spacing = mui.Styles.Spacing;
+var Typography = mui.Styles.Typography;
 var AppBar = mui.AppBar;
 var LeftNav = mui.LeftNav;
 var MenuItem = mui.MenuItem;
-var Navbar = require('../modules/navbar.jsx');
 var RaisedButton = mui.RaisedButton;
 
 var menuItems = [
@@ -30,16 +32,31 @@ var menuItems = [
 
 var AppLeftNav = React.createClass({
 
+  getStyles: function() {
+    return {
+      cursor: 'pointer',
+      //.mui-font-style-headline
+      fontSize: '30px',
+      color: Typography.textFullWhite,
+      lineHeight: Spacing.desktopKeylineIncrement + 'px',
+      fontWeight: Typography.fontWeightLight,
+      backgroundColor: Colors.green500,
+      paddingLeft: Spacing.desktopGutter,
+      paddingTop: '0px',
+      marginBottom: '8px'
+    };
+  },
+
   componentWillMount: function() {
-    this.toggle = this.toggle.bind(this);
+    // this.toggle = this.toggle.bind(this);
     // this._getSelectedIndex = this._getSelectedIndex.bind(this);
-    this._onLeftNavChange = this._onLeftNavChange.bind(this);
-    this._onHeaderClick = this._onHeaderClick.bind(this);
+    // this._onLeftNavChange = this._onLeftNavChange.bind(this);
+    // this._onHeaderClick = this._onHeaderClick.bind(this);
   },
 
   render: function() {
     /* jshint ignore:start */
-    var header = <div className="logo" onClick={this._onHeaderClick}>≈skill.it!</div>;
+    var header = <div className="logo" style={this.getStyles()} onClick={this._onHeaderClick}>≈skill.it!</div>;
 
     return (
       <LeftNav

@@ -28,10 +28,15 @@
   position: absolute;
   background-size: 10px 10px;
   z-index: -2;
-  opacity: .15;
+  // opacity: .15;
   // background: #1A3034;
   // background-color: transparent;
 }
+
+// .leftNav {
+//   left: 0;
+//   position: fixed;
+// }
 
 .cover {
   background: #1A3034;
@@ -185,22 +190,22 @@ line-height: 169px;
 }
 
 .arrow-up:after{
-content:"\231d"; 
-font-size:50px; 
+content:"\231d";
+font-size:50px;
 display:inline-block;
 transform: rotate(-45deg);
 
 }
 
 .arrow-down:after{
-content:"\231d"; 
-font-size:50px; 
+content:"\231d";
+font-size:50px;
 display:inline-block;
 transform: translateX(8px) rotate(135deg);
 
 }
 
-.vote { 
+.vote {
   font-family: Roboto;
   font-weight: 400;
   font-size: 15;

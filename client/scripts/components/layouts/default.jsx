@@ -29,12 +29,10 @@ var DefaultComponent =  React.createClass({
 
   mixins: [pageStore.mixin, userStore.mixin],
 
-  //Needed for mui to load theme
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
 
-  //Needed for mui to load theme
   getChildContext: function() {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
@@ -44,7 +42,7 @@ var DefaultComponent =  React.createClass({
   //Set current theme
   componentWillMount: function() {
     ThemeManager.setPalette({
-      accent1Color: Colors.deepOrange500
+      accent1Color: Colors.green800
     });
   },
 
@@ -58,32 +56,25 @@ var DefaultComponent =  React.createClass({
   },
 
   render: function() {
-        // <div className="main-nav">
-        //   <Navbar user={this.state.user} />
+        // <div className='col s4 leftNav'>
         // </div>
-
     return (
       /* jshint ignore:start */
-      <div>
-        <div>
-          <AppLeftNav
-            ref="leftNav"/>
-        </div>
-        <div className="default">
-          <div className="main-container">
-            <div className="messages">
-              <Messages messages={this.state.messages} />
-            </div>
-            <div className="content">
-              {this.props.children}
-            </div>
+      <div className='row'>
+        <AppLeftNav
+        ref="leftNav"/>
+         <div className="main-container">
+          <div className="messages">
+            <Messages messages={this.state.messages} />
+          </div>
+
+          <div className="content">
+            {this.props.children}
           </div>
         </div>
       </div>
       /* jshint ignore:end */
     );
-          // <AppBar onLeftIconButtonTouchTap={this._showLeftNavClick} title="Navigation" />
-
   },
 
   _showLeftNavClick: function() {
