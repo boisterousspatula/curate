@@ -41,27 +41,39 @@ var ReadGuideSectionComponent = React.createClass({
 			/* jshint ignore:start */
 			return(
 				<div key={idx}>
-					<Paper zDepth={1}>
+
+        <span className='linkDesc'>{link.linkDescription}</span>
+
+					<table className ="contentCard">
+          <tr>
+            <th>
 						<Vote votes={link.votes} type="link" linkId ={link.linkId} linkIndex={idx} sectionIndex={self.props.index} guideId ={self.props.guideId}/>
-						<span class='linkTitle'>{link.linkTitle}</span>
-						<p>{link.url}</p>
-						<span class='linkDesc'>{link.linkDescription}</span>
+            </th>
+            <th>
+						<span className='linkTitle'>
+              <a href={link.url}>{link.linkTitle}</a>
+            </span>
+						
 						<p>{link.contentTypes}</p>
 						<p>{link.linkDuration}</p>
-					</Paper>
+            </th>
+          </tr>
+					</table>
 				</div>
 			)
 		});
+
 		var crowdSourcedLinks = section.crowdLinks.map(function(link, idx){
 			/* jshint ignore:start */
 			return(
 				<div key={idx}>
-					<Paper zDepth={1}>
+					<table className ="contentCard">
 						<Vote className ="vote" votes={link.votes} type="link" linkIndex={idx} sectionIndex={self.props.index} />
-						<span class='linkTitle'>{link.linkTitle}</span>
-						<span class='linkUrl'>{link.url}</span>
-						<span class='linkDesc'>{link.linkDescription}</span>
-					</Paper>
+						<span className='linkTitle'>
+              <a href={link.url}>{link.linkTitle}</a>
+            </span>
+						<span className='linkDesc'>{link.linkDescription}</span>
+					</table>
 				</div>
 			);
 			/* jshint ingnore:end */
@@ -76,15 +88,12 @@ var ReadGuideSectionComponent = React.createClass({
 				<div className='sectionDesc'>{section.description}</div>
 
 				{linkList}
-
-				<div className='userSugHeader'>USER SUGGESTED CONTENT</div>
+				<div className='userSugHeader'>User Suggested Content</div>
 				<hr/>
 				<div>
 					{crowdSourcedLinks}
 				</div>
-				<h4>
-					Is this the freshest content on the Interwebz?
-				</h4>
+
 				<RaisedButton label="Suggest your own content here..." primary={true} onClick={this.toggleMenu}/>
 
 				{this.state.showContentForm ? <UserContentForm className="userContent" section={section.sectionId} sectionIndex={self.props.index} onContentSubmit={this.handleContentSubmit} /> : null}
