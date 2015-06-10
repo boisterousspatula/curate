@@ -43,9 +43,9 @@ var ReadGuideSectionComponent = React.createClass({
 				<div key={idx}>
 					<Paper zDepth={1}>
 						<Vote votes={link.votes} type="link" linkId ={link.linkId} linkIndex={idx} sectionIndex={self.props.index} guideId ={self.props.guideId}/>
-						<p>{link.linkTitle}</p>
+						<span class='linkTitle'>{link.linkTitle}</span>
 						<p>{link.url}</p>
-						<p>{link.linkDescription}</p>
+						<span class='linkDesc'>{link.linkDescription}</span>
 						<p>{link.contentTypes}</p>
 						<p>{link.linkDuration}</p>
 					</Paper>
@@ -53,15 +53,14 @@ var ReadGuideSectionComponent = React.createClass({
 			)
 		});
 		var crowdSourcedLinks = section.crowdLinks.map(function(link, idx){
-		console.log('link view', link);
 			/* jshint ignore:start */
 			return(
 				<div key={idx}>
 					<Paper zDepth={1}>
-						<Vote votes={link.votes} type="link" linkIndex={idx} sectionIndex={self.props.index} />
-						<p>{link.linkTitle}</p>
-						<p>{link.url}</p>
-						<p>{link.linkDescription}</p>
+						<Vote className ="vote" votes={link.votes} type="link" linkIndex={idx} sectionIndex={self.props.index} />
+						<span class='linkTitle'>{link.linkTitle}</span>
+						<span class=''>{link.url}</p>
+						<span class='linkDesc'>{link.linkDescription}</span>
 					</Paper>
 				</div>
 			);
@@ -70,16 +69,15 @@ var ReadGuideSectionComponent = React.createClass({
 						//<p>{link.linkDuration}</p>
 		});
 
-		console.log('in guide section', section);
 		return (
 			/* jshint ignore:start */
 			<div>
-				<h5>{section.title}</h5>
-				<h6>{section.description}</h6>
+				<div className='sectionHeader'>{section.title}</div>
+				<div className='sectionDesc'>{section.description}</div>
 
 				{linkList}
 
-				<h5>USER SUGGESTED CONTENT</h5>
+				<div className='userSugHeader'>USER SUGGESTED CONTENT</div>
 				<hr/>
 				<div>
 					{crowdSourcedLinks}
