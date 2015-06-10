@@ -15,28 +15,46 @@
 // bower:scss
 // endbower
 
+/*div {
+  display: block;
+}*/
+
+.cover {
+  background: #1A3034;
+  /*opacity: .15;*/
+  z-index: 1;
+}
 
 .crosshatch {
-  background: #1A3034; 
   background-image: url(https://paylike.io/images/grid.png);
   // background-repeat: repeat;
   // position: absolute;
   background-size: 10px 10px;
   background-position: 20em 0;
-  z-index: -2;
-  /*opacity: .75;*/
+  z-index: 2;
+  opacity: .15;
   /*background: #1A3034;*/
   /*background-color: transparent;*/
 }
 
-.cover {
-  background: #1A3034;
-  opacity: .5;
-  z-index: 1;
+section.cover div.container article div.inner {
+  padding: 4em 9em;
 }
 
 .min-window-height {
   min-height: 100vh;
+  /*min-width: 100vw;*/
+}
+
+.container {
+  width: auto;
+  margin: 0 0 0 19em;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.inner {
+  max-width: 80em;
 }
 
 .homepage {

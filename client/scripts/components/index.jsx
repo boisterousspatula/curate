@@ -19,11 +19,15 @@ var IndexComponent = React.createClass({
           <div className="homepage">
 
             <section className="cover min-window-height">
-              <article className="main-info">
-                <h1 className="title">Crowd-sourced Curriculums</h1>
-                <h2 className="description">Sign up and create your own learning path. Share it with the world
-                  and help others find the most effective material on the internet.</h2>
-              </article>
+              <div className="crosshatch container min-window-height">
+                <article className="main-info">
+                  <div className="col offset-s4">
+                    <h1 className="title">Crowd-sourced Curriculums</h1>
+                    <h2 className="description">Sign up and create your own learning path. Share it with the world
+                    and help others find the most effective material on the internet.</h2>
+                  </div>
+                </article>
+              </div>
             </section>
 
             <section className="guide-list col offset-s4">
