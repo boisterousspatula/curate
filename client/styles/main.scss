@@ -16,31 +16,28 @@
 // endbower
 
 
-
-.background {
-  background-color: white;
-}
-
 .crosshatch {
-  /*background: #1A3034; */
+  background: #1A3034; 
   background-image: url(https://paylike.io/images/grid.png);
   // background-repeat: repeat;
   // position: absolute;
   background-size: 10px 10px;
-  z-index: -5;
-  // opacity: .15;
+  background-position: 20em 0;
+  z-index: -2;
+  /*opacity: .75;*/
   /*background: #1A3034;*/
   /*background-color: transparent;*/
 }
 
 .cover {
   background: #1A3034;
+  opacity: .5;
+  z-index: 1;
 }
 
 .min-window-height {
   min-height: 100vh;
 }
-
 
 .homepage {
   /*background-color: #1A3034;*/
@@ -49,6 +46,20 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/*.main-info {
+  width: 100%;
+  position: relative;
+  margin: 8% auto;
+  transform: translateY(0);
+  z-index: 5;
+  font-size: 1.15em;
+}*/
+
+/*section.cover div.container article div.inner {
+  padding: 4em 9em;
+}*/
+
 
 .title {
   font-family: Roboto-Light;
@@ -102,7 +113,7 @@
 
 .main-container {
   clear: both;
-  max-width:800px;
+  /*max-width:800px;*/
   margin-left:auto;
   margin-right:auto;
 }

@@ -8,10 +8,7 @@ var Messages = require('../modules/messages.jsx');
 var pageStore = require('../../stores/page');
 var userStore = require('../../stores/user');
 var userActions = require('../../actions/user');
-<<<<<<< HEAD
 var Navbar = require('../modules/navbar.jsx');
-=======
->>>>>>> (feat) Include logout functionality in left nav
 
 //Load Material-UI Components
 var mui = require('material-ui');
@@ -74,6 +71,7 @@ var AppLeftNav = React.createClass({
         }}
         onChange={this._onLeftNavChange} />
     );
+
     /* jshint ignore:end */
 
   },
