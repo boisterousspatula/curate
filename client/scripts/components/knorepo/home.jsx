@@ -11,27 +11,26 @@ var HomeComponent = React.createClass({
 	// getInitialState:function(){
 	// 	//return;
 	// },
-  render: function() {
+	render: function() {
 
-    return (
-      /* jshint ignore:start */
-      <DefaultLayout>
-        <div className="main-container">
-          <div className="yeogurt-info">
-            <h1>Knowledge Repository!</h1>
-						<div>
-							<button className="guide-create" onClick={this.handleNewGuide}>Create New Guide</button>
-            	<CuratedList/>
-						</div>
-						<div>
-							<FavoritesList/>
-						</div>
-          </div>
-        </div>
-      </DefaultLayout>
-      /* jshint ignore:end */
-    );
-  },
+		return (
+			/* jshint ignore:start */
+			<DefaultLayout>
+				<div>
+					<h1>Knowledge Repository!</h1>
+					<button className="btn waves-effect waves-light red" onClick={this.handleNewGuide}>Create New Guide
+						<i className="mdi-content-add right"></i>
+					</button>
+					<CuratedList/>
+					<br/>
+					<div className="divider"> </div>
+					<br/>
+					<FavoritesList/>
+				</div>
+			</DefaultLayout>
+			/* jshint ignore:end */
+		);
+	},
 	handleNewGuide: function(e){
 		e.preventDefault();
 		routeActions.setRoute('/createguide');

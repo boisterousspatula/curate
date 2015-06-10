@@ -36,34 +36,26 @@ var FavsComponent = React.createClass({
 			}).map(function (val, idx) {
 				return (
 					/* jshint ignore:start */
-					<tr key={idx} onClick={this.handleClick.bind(this,idx)}>
-						<td>
-							<h6>{val.title}</h6>
-
-							<div>
-								<b>{val.votes}</b>
-								<br/>
-
-								<p>{val.description}</p>
-							</div>
-						</td>
-					</tr>
+					<div className="collection-item" key={idx} onClick={this.handleClick.bind(this,idx)}>
+						<span className="title">{val.title}</span>
+						<p className="truncate">{val.description}</p>
+					</div>
 					/* jshint ignore:end */
 				)
 			}, this);
 		}
 		return (
 			/* jshint ignore:start */
-			<table className="top-guides">
-				<th>Favs List</th>
-				{guideList}
-			</table>
+			<div>
+				<h4 className="left-align">Favs List</h4>
+				<div className="collection">
+					{guideList}
+				</div>
+			</div>
 			/* jshint ignore:end */
 		);
 	},
 	handleClick: function(i){
-		console.log('id', this.state.guides.guides[i]);
-
 		guideActions.passGuideId(this.state.guides.guides[i].id);
 		routeActions.setRoute('/readguide');
 	}
