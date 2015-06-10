@@ -98,6 +98,7 @@ var expressConfig = function(app, express, db) {
   }));
 
   // Initialize Authentication
+	console.log('inside express js');
   auth.init(db.user);
   app.use(passport.initialize());
   app.use(passport.session());
