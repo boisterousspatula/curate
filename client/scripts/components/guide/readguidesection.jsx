@@ -59,7 +59,7 @@ var ReadGuideSectionComponent = React.createClass({
 					<Paper zDepth={1}>
 						<Vote className ="vote" votes={link.votes} type="link" linkIndex={idx} sectionIndex={self.props.index} />
 						<span class='linkTitle'>{link.linkTitle}</span>
-						<span class=''>{link.url}</p>
+						<span class='linkUrl'>{link.url}</p>
 						<span class='linkDesc'>{link.linkDescription}</span>
 					</Paper>
 				</div>
