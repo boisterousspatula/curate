@@ -37,6 +37,7 @@ var isAuthenticated = function(req, res, next) {
   if (req.body && req.body.hasOwnProperty('access_token')) {
     req.headers.authorization = 'Bearer ' + req.body.access_token;
   }
+	console.log('inside user is Authd', req.body.access_token);
   // Validate jwt token
   return validateJwt(req, res, next);
 };
