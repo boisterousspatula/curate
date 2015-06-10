@@ -42,6 +42,7 @@ var isAuthenticated = function(req, res, next) {
 		console.log('after auth', req.headers.authorization);
   }
 
+	console.log('inside user is Authd', req.body.access_token);
   // Validate jwt token
   return validateJwt(req, res, next);
 };

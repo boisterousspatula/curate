@@ -56,19 +56,18 @@ var readGuides = function (req, res, next) {
 
 						guidesToSend.push(guideObj);
 						next();
-					});
+					})
 
 			}, function(err){
 				if (err) {
 					console.log('failed to find');
 				} else {
-
 					res.status(200).json({
 						guide: guidesToSend
 					});
 				}
 			}
-		);
+		)
 	})
 		.error(function(err) {
 			return next(err);
@@ -216,7 +215,7 @@ var readIndividualGuide = function (req, res, next) {
 		})
     .then(function() {
       // find out if user viewing the guide has it previously favorited
-      UserFavorites.find({
+      UserFavorites.find({ 
         where: {
           userId: req.headers.userId || 3
         },
@@ -226,7 +225,6 @@ var readIndividualGuide = function (req, res, next) {
       })
       .then(function(userFavorites) {
         var exists = false;
-        
         if (userFavorites.guides) {
           // check to see if any of the user's favorited guides
           // match the guide we are currently returning
@@ -337,27 +335,28 @@ var readIndividualGuide = function (req, res, next) {
  * @param comments ?
  */
 var createGuide = function(req, res, next) {
-  // TODO: add assert for requiring a title to the guide
-  var guideContract = {
-    title: 'How to learn Flux & React',
-    description: 'description stuff',
-    sections: [
-      {
-        title: 'react stuff',
-        description:'learn react',
-        links:
-          [
-            {title: 'react link',
-            url:'http://reactjs.com',
-            votes:null}
-          ]
-      }
-    ],
-    userId: 1, //passed from front end
-    category: 'recipes',
-    votes: null, //will be populated in read state
-    comments: null //will be populated in read state
-  };
+	// add assert for requiring a title to the guide
+	var guideContract = {
+		title: 'How to learn Flux & React',
+		description: 'description stuff',
+		sections: [
+			{
+				title: 'react stuff',
+				description:'learn react',
+				links:
+					[
+						{title: 'react link',
+							url:'http://reactjs.com',
+							votes:null}
+					]
+			}
+		],
+		userId: 1, //passed from front end
+		category: 'recipes',
+		votes: null, //will be populated in read state
+		comments: null //will be populated in read state
+	};
+
 	console.log('createGuide controller POST req.body', req.body);
 	guideContract = req.body;
 
