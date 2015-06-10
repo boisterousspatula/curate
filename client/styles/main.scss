@@ -207,6 +207,21 @@ section.cover div.container article div.inner {
   padding: 0.5em 0;
 }
 
+.contentCard {
+width: auto;
+background: #FCFCFC;
+padding: 5px;
+margin: 10px;
+border: 1px solid #979797;
+}
+
+
+/* guide styles */
+.guideDescHeader {
+  display: block;
+  font-weight: 400;
+  font-size: 30px;
+}
 
 .guideTitle {
 font-family: Roboto;
@@ -216,40 +231,12 @@ color: #000000;
 line-height: 169px;
 }
 
-.arrow-up:after{
-content:"\231d";
-font-size:50px;
-display:inline-block;
-transform: rotate(-45deg);
 
-}
-
-.arrow-down:after{
-content:"\231d";
-font-size:50px;
-display:inline-block;
-transform: translateX(8px) rotate(135deg);
-
-}
-
-.vote {
-  font-family: Roboto;
-  font-weight: 400;
-  font-size: 15;
-}
-
-.readGuideContainer {
-  /*max-width:800px;*/
-}
-
-.guideDescHeader {
-  font-weight: 400;
-  font-size: 30px;
-}
 
 .guideDescription {
   font-weight: 300;
   font-size: 20px;
+  border-bottom-width: 1px;
 }
 
 .guideContentContainer {
@@ -259,6 +246,7 @@ transform: translateX(8px) rotate(135deg);
   padding: 20px;
 }
 
+/* section styles */
 .sectionHeader {
   font-weight: 300;
   font-size: 30px;
@@ -269,15 +257,59 @@ transform: translateX(8px) rotate(135deg);
   font-size: 20px;
 }
 
+/* link styles */
+
 .linkTitle {
   font-weight: 300;
   font-size: 36px;
   color: #379E59;
 }
-
 .linkDesc {
   font-weight: 300;
   font-size: 20px;
+}
+.linkDetails{
+  float: left;
+}
+
+.linkAttributes {
+
+}
+.contentType {
+margin-right: 5px;
+margin-left: 5px;
+}
+.duration {
+  margin-right: 5px;
+margin-left: 5px;
+
+}
+
+
+/* votes */
+.voteContainer{
+  float: left;
+  margin: 5px;
+}
+.votes { 
+  font-weight: 400;
+  font-size: 15;
+}
+
+.arrow-up:after{
+content:"\231d"; 
+font-size:50px; 
+display:inline-block;
+transform: rotate(-45deg);
+
+}
+
+.arrow-down:after{
+content:"\231d"; 
+font-size:50px; 
+display:inline-block;
+transform: translateX(8px) rotate(135deg);
+
 }
 
 .userSugHeader {
@@ -285,12 +317,7 @@ transform: translateX(8px) rotate(135deg);
   font-size: 28px;
 }
 
-.contentCard {
-background: #FCFCFC;
-padding: 5px;
-margin: 10px;
-border: 1px solid #979797;
-}
+
 
 
 
