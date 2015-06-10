@@ -36,10 +36,10 @@ var ReadGuideVoteComponent = React.createClass({
 
   render: function(){
     return(
-      <div className = "vote-container">
-      <div name="upvote" linkIndex={this.props.linkIndex} onClick = {this.handleUpvote}>upvote</div>
-      <div name="downvote" linkIndex={this.props.linkIndex} onClick = {this.handleDownvote}>downvote</div>
+      <div className="vote-container">
+      <div className="arrow-up" name="upvote" linkIndex={this.props.linkIndex} onClick={this.handleUpvote}></div>
       <div name="votes">{this.state.votes}</div>
+      <div className="arrow-down" name="downvote" linkIndex={this.props.linkIndex} onClick={this.handleDownvote}></div>
      </div>
       )
   },

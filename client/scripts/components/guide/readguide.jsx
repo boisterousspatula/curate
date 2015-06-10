@@ -83,25 +83,30 @@ var ReadGuideComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
-        <div className="main-container">
-					<FavoriteButton guideId={this.state.id} />
-          <h3>
+        <div className='readGuideContainer'>
+          <h1 className='guideTitle'>
             {this.state.guide.title}
-          </h3>
-					<LinearProgress mode="determinate" value={50}/>
-          <h4>
-            {this.state.guide.description}
-          </h4>
-          <ol>
-            {sections}
-          </ol>
-				<CommentsBox guideId={this.state.id} comments={guide.comments}/>
-				</div>
+          </h1>
+
+          <FavoriteButton guideId={this.state.id} />
+					{/*<LinearProgress mode='determinate' value={50}/>*/}
+
+          <div className='guideContentContainer'>
+            <h3 className='guideDescHeader'>GUIDE DESCRIPTION</h3>
+            <h4 className='guideDescription'> {this.state.guide.description}</h4>
+            <ol>
+              {sections}
+            </ol>
+  				  <CommentsBox guideId={this.state.id} comments={guide.comments}/>
+				  </div>
+        </div>
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);
 	}
 
-});
+})
+
+
 
 module.exports = ReadGuideComponent;
