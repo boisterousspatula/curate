@@ -16,7 +16,8 @@ var taskConfig = function(grunt) {
         ]
       },
       files: {
-        '<%= yeogurt.tmp %>/styles/main.css': '<%= yeogurt.client %>/styles/main.{scss,sass}'
+        '<%= yeogurt.tmp %>/styles/main.css': '<%= yeogurt.client %>/styles/main.{scss,sass}',
+				'<%= yeogurt.tmp %>/styles/materialize.css': '<%= yeogurt.client %>/styles/materialize.{scss,sass}'
       }
     },
     dist: {
@@ -30,7 +31,8 @@ var taskConfig = function(grunt) {
         ]
       },
       files: {
-        '<%= yeogurt.dist %>/client/styles/main.css': '<%= yeogurt.client %>/styles/main.{scss,sass}'
+        '<%= yeogurt.dist %>/client/styles/main.css': '<%= yeogurt.client %>/styles/main.{scss,sass}',
+				'<%= yeogurt.dist %>/client/styles/materialize.css': '<%= yeogurt.client %>/styles/materialize.{scss,sass}'
       }
     }
   });
