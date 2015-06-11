@@ -14,11 +14,13 @@ var localStrategy = require('./strategies/local');
  */
 var init = function(User) {
   passport.serializeUser(function(user, done) {
+		console.log('IN serialize', user);
     done(null, user.id);
   });
 
   passport.deserializeUser(function(id, done) {
     User.find(id).success(function(user) {
+			console.log('inside user deserialize', user);
       done(null, user);
     }).error(function(err) {
       done(err);
@@ -35,11 +37,27 @@ var init = function(User) {
 var isAuthenticated = function(req, res, next) {
   // allow access_token to be passed through query parameter as well
   if (req.body && req.body.hasOwnProperty('access_token')) {
+		console.log('before auth', req.headers.authorization);
     req.headers.authorization = 'Bearer ' + req.body.access_token;
+		console.log('after auth', req.headers.authorization);
   }
-	console.log('inside user is Authd', req.body.access_token);
+
   // Validate jwt token
   return validateJwt(req, res, next);
+};
+
+/**
+ * Check to see if user is authenticated
+ */
+var getUser = function(req, res, next) {
+	// allow access_token to be passed through query parameter as well
+	if (req.body && req.body.hasOwnProperty('access_token')) {
+
+		req.headers.authorization = 'Bearer ' + req.body.access_token;
+	}
+
+	// Validate jwt token
+	return jwt.decode();
 };
 
 /**
@@ -87,6 +105,7 @@ var setTokenCookie = function(req, res) {
 module.exports = {
   init: init,
   isAuthenticated: isAuthenticated,
+	getUser: getUser,
   hasRole: hasRole,
   signToken: signToken,
   setTokenCookie: setTokenCookie

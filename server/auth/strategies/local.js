@@ -21,6 +21,7 @@ var strategy = function(User) {
       }
       user.comparePassword(password, function(err, isMatch) {
         if (isMatch) {
+					console.log('all good in local strat', done);
           return done(null, user);
         } else {
           return done(null, false, {

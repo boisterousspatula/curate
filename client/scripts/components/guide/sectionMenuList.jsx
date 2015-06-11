@@ -41,6 +41,7 @@ var SectionMenuListComponent = React.createClass({
       className={this.props.className}
       id={this.props.id}
       name={this.props.name}
+			selectedIndex={this.props.default}
       //placeholder={this.props.placeholder}
       value={this.state.value}
       onChange={this.onChange}
