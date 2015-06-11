@@ -56,7 +56,7 @@ section.cover div.container article div.inner {
 }
 
 .inner {
-  max-width: 80em;
+  /*max-width: 80em;*/
 }
 
 .homepage {
@@ -71,7 +71,7 @@ section.cover div.container article div.inner {
   width: 100%;
   position: relative;
   margin: 8% auto;
-  /*transform: translateY(0);*/
+  transform: translateY(0);
   z-index: 5;
   font-size: 1.15em;
 }
@@ -128,10 +128,10 @@ section.cover div.container article div.inner {
   text-decoration: none;
 }
 
-
 .main-container {
   clear: both;
-  /*max-width:800px;*/
+  max-width:800px;
+  /*max-width:100%;*/
   margin-left:auto;
   margin-right:auto;
 }
@@ -232,9 +232,9 @@ transform: translateX(8px) rotate(135deg);
   font-size: 15;
 }
 
-/*.readGuideContainer {
-
-}*/
+.readGuideContainer {
+  /*max-width:800px;*/
+}
 
 .guideDescHeader {
   font-weight: 400;
