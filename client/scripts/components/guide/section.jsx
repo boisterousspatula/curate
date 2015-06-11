@@ -22,21 +22,21 @@ var SectionComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<div>
-				<div class="row">
+				<div className="row">
 					<SectionTextInput placeholder="Section Title:" name="title" index={this.props.index} />
 				</div>
 				<br/>
-				<div class="row">
+				<div className="row">
 					<SectionTextInput name="description" placeholder="Section Description:" index={this.props.index} />
 				</div>
 				<br/>
-				<div class="row">
-					<button className="btn waves-effect waves-light red" onClick={this.handleNewLink}>
+				<div className="row">
+					<button className="btn waves-effect waves-light green" onClick={this.handleNewLink}>
 						<i className="mdi-content-add right"></i>
 						Add link
 					</button>
 				</div>
-				<div class="row">
+				<div className="row">
 					<h6>Add content for your section: </h6>
 					{linkList}
 				</div>

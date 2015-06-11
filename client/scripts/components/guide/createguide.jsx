@@ -78,9 +78,15 @@ var GuideComponent = React.createClass({
 							<SectionList sections={this.state.sections}/>
 						</div>
 						<br/>
-						<button className="btn waves-effect waves-light red" type="submit" label="Submit" name="save"></button>
+						<button className="btn waves-effect waves-light green" type="submit">
+							<i className="mdi-content-create right"></i>
+							Publish New Guide
+						</button>
 					</form>
-					<button className="btn waves-effect waves-light red" label="Show Knowledge Repo" onTouchTap={this._showKnowledgeRepoBar}></button>
+					<button className="btn waves-effect waves-light green" onTouchTap={this._showKnowledgeRepoBar}>
+						<i className="mdi-file-cloud-circle right"></i>
+						Show Knowledge Repo
+					</button>
 					<KnowledgeRepoBar
 						ref="knowledgeRepoBar"
 						docked={false}/>

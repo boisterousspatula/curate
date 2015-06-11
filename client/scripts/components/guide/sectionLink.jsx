@@ -21,14 +21,14 @@ var SectionLinkComponent = React.createClass({
 			/* jshint ignore:start */
 			<div >
 				<div className="row">
-					<SectionTextInput className="s6" placeholder="Title" name="linkTitle"  linkidx={this.props.linkidx} index={this.props.index} />
+					<SectionTextInput placeholder="Title" name="linkTitle"  linkidx={this.props.linkidx} index={this.props.index} />
 				</div >
 				<div className="row">
-					<SectionTextInput className="s6 padding" placeholder="URL" name="links" linkidx={this.props.linkidx} index={this.props.index} />
+					<SectionTextInput placeholder="URL" name="links" linkidx={this.props.linkidx} index={this.props.index} />
 				</div >
 				<div className="row">
 					<label>Content Type: </label>
-					<SectionMenuList menuItems={this.state.contentTypes} value="Course" default={0} name="contentTypes" linkidx={this.props.linkidx} index={this.props.index}/>
+					<SectionMenuList menuItems={this.state.contentTypes} name="contentTypes" linkidx={this.props.linkidx} index={this.props.index}/>
 
 					<label>Estimated Time to Completion: </label>
 					<SectionMenuList menuItems={this.state.timeRanges} name="linkDuration" linkidx={this.props.linkidx} index={this.props.index}/>
