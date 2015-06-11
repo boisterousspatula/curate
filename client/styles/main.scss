@@ -208,11 +208,18 @@ section.cover div.container article div.inner {
 }
 
 .contentCard {
-width: auto;
+  position: relative;
+  height: 100px;
+width: 95%;
 background: #FCFCFC;
-padding: 5px;
+padding: 10px;
 margin: 10px;
 border: 1px solid #979797;
+
+}
+
+.linkContent {
+
 }
 
 
@@ -221,6 +228,9 @@ border: 1px solid #979797;
   display: block;
   font-weight: 400;
   font-size: 30px;
+  border-bottom: 1px solid #979797;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .guideTitle {
@@ -228,7 +238,6 @@ font-family: Roboto;
 font-weight: 100;
 font-size: 76px;
 color: #000000;
-line-height: 169px;
 }
 
 
@@ -236,7 +245,8 @@ line-height: 169px;
 .guideDescription {
   font-weight: 300;
   font-size: 20px;
-  border-bottom-width: 1px;
+  margin-bottom: 15px;
+
 }
 
 .guideContentContainer {
@@ -247,9 +257,17 @@ line-height: 169px;
 }
 
 /* section styles */
+
+.section {
+
+}
 .sectionHeader {
   font-weight: 300;
   font-size: 30px;
+  border-bottom: 1px solid #979797;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .sectionDesc {
@@ -260,63 +278,92 @@ line-height: 169px;
 /* link styles */
 
 .linkTitle {
-  font-weight: 300;
+  float: left;
+  vertical-align: center;
+  font-weight: 400;
   font-size: 36px;
   color: #379E59;
+
 }
 .linkDesc {
   font-weight: 300;
   font-size: 20px;
 }
 .linkDetails{
-  float: left;
+  position: absolute;
+  height: 90%;
+  top: 0;
+  left: 0;
+  margin-left: 40px;
+  margin-top: 10px;
 }
 
 .linkAttributes {
 
 }
 .contentType {
-margin-right: 5px;
-margin-left: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 .duration {
   margin-right: 5px;
-margin-left: 5px;
-
+  margin-left: 5px;
 }
 
 
 /* votes */
 .voteContainer{
+  position: absolute;
+  top: 0;
+  left: 0;
   float: left;
-  margin: 5px;
+  margin-top: -20px;
+
 }
 .votes { 
   font-weight: 400;
-  font-size: 15;
+  font-size: 30px;
+  text-align: center;
+  display:inline-block;
+  margin-left: 11px;
 }
 
 .arrow-up:after{
-content:"\231d"; 
-font-size:50px; 
-display:inline-block;
-transform: rotate(-45deg);
+  content:"\231d"; 
+  font-size:50px; 
+  display:inline-block;
 
+float:left;
+clear:left;
+  margin-bottom: -30px;
+  margin-left: 5px;
+    transform: rotate(-45deg);
 }
 
 .arrow-down:after{
-content:"\231d"; 
-font-size:50px; 
-display:inline-block;
-transform: translateX(8px) rotate(135deg);
+  content:"\231d"; 
+  font-size:50px; 
+  display: inline-block;
+  margin-top: -30px;
+  margin-left: 2px;
 
+clear:both;
+
+  transform: translateX(8px) rotate(135deg);
 }
 
 .userSugHeader {
   font-weight: 300;
   font-size: 28px;
+  border-bottom: 1px solid #979797;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
+.clock {
+  background: url('../images/clock.png') no-repeat;
+}
 
 
 

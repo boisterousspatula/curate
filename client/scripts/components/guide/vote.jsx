@@ -41,9 +41,9 @@ var VoteComponent = React.createClass({
     return (
       /* jshint ignore:start */
      <div className = "vote-container">
-      <div className='arrow-up' name="upvote" onClick = {this.props.onUpvote}></div>
-      <div name="votes">{this.props.votes}</div>
-      <div className='arrow-down' name="downvote" onClick = {this.props.onDownvote}></div>
+      <span className='arrow-up' name="upvote" onClick = {this.props.onUpvote}></div>
+      <span className='votes' name="votes">{this.props.votes}</div>
+      <span className='arrow-down' name="downvote" onClick = {this.props.onDownvote}></div>
       
      </div>
       /* jshint ignore:end */

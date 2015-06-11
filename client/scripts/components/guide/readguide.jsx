@@ -91,7 +91,7 @@ var ReadGuideComponent = React.createClass({
 					{/*<LinearProgress mode='determinate' value={50}/>*/}
 
           <div className='guideContentContainer'>
-            <span className='guideDescHeader'>GUIDE DESCRIPTION</span>
+            <span className='guideDescHeader'>Guide Description</span>
             <span className='guideDescription'> {this.state.guide.description}</span>
 
               {sections}

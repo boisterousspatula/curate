@@ -41,21 +41,26 @@ var ReadGuideSectionComponent = React.createClass({
 			/* jshint ignore:start */
 			return(
 			<div key={idx}>
-        <span className='linkDesc'>{link.linkDescription}</span>
+        
 					<div className ='contentCard'>
+          <div>
 						<Vote votes={link.votes} type='link' linkId ={link.linkId} linkIndex={idx} sectionIndex={self.props.index} guideId ={self.props.guideId}/>
+            </div>
 
-
+            <div className='linkDetails'>
   						<span className='linkTitle'>
                 <a href={link.url}>{link.linkTitle}</a>
               </span>
   						
               <div className='linkAttributes'>
   						  <span className='contentType'> {link.contentTypes}</span>
+                <span className='clock'></span>
   						  <span className='duration'>{link.linkDuration}</span>
               </div>
+            </div>
 
 					</div>
+          <span className='linkDesc'>{link.linkDescription}</span>
 				</div>
 			)
 		});
@@ -64,13 +69,15 @@ var ReadGuideSectionComponent = React.createClass({
 			/* jshint ignore:start */
 			return(
 				<div key={idx}>
-					<table className ='contentCard'>
-						<Vote className ='vote' votes={link.votes} type='link' linkIndex={idx} sectionIndex={self.props.index} />
+					<div className ='contentCard'>
+						<Vote votes={link.votes} type='link' linkIndex={idx} sectionIndex={self.props.index} />
+            <div className='linkDetails'>
 						<span className='linkTitle'>
               <a href={link.url}>{link.linkTitle}</a>
             </span>
 						<span className='linkDesc'>{link.linkDescription}</span>
-					</table>
+            </div>
+					</div>
 				</div>
 			);
 			/* jshint ingnore:end */
@@ -86,7 +93,7 @@ var ReadGuideSectionComponent = React.createClass({
 
 				{linkList}
 				<div className='userSugHeader'>User Suggested Content</div>
-				<hr/>
+
 				<div>
 					{crowdSourcedLinks}
 				</div>
