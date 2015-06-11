@@ -15,13 +15,86 @@
 // bower:scss
 // endbower
 
+/*div {
+  display: block;
+}*/
 
+.cover {
+  background: #1A3034;
+  /*opacity: .15;*/
+  z-index: 1;
+}
 
-.yeogurt-info {
-  text-align: center;
-  max-width: 500px;
+.crosshatch {
+  background-image: url(https://paylike.io/images/grid.png);
+  // background-repeat: repeat;
+  // position: absolute;
+  background-size: 10px 10px;
+  background-position: 20em 0;
+  z-index: 2;
+  opacity: .15;
+  /*background: #1A3034;*/
+  /*background-color: transparent;*/
+}
+
+section.cover div.container article div.inner {
+  padding: 4em 9em;
+}
+
+.min-window-height {
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow:hidden;
+}
+
+.container {
+  width: auto;
+  margin: 0 0 0 8em;
+  overflow: hidden;
+  z-index: 5;
+  padding: 4em 9em;
+}
+
+.inner {
+  /*max-width: 80em;*/
+}
+
+.homepage {
+  /*background-color: #1A3034;*/
+  /*text-align: center;*/
+  /*max-width: 500px;*/
   margin-left: auto;
   margin-right: auto;
+}
+
+.main-info {
+  width: 100%;
+  position: relative;
+  margin: 8% auto;
+  transform: translateY(0);
+  z-index: 5;
+  font-size: 1.15em;
+}
+
+/*section.cover div.container article div.inner {
+  padding: 4em 9em;
+}*/
+
+
+.title {
+  font-family: Roboto-Light;
+  font-size: 350%;
+  margin: 0;
+  color: #FFFFFF;
+  /*line-height: 18px;*/
+}
+
+.description {
+  font-family: Roboto-Light;
+  font-size: 170%;
+  color: #678387;
+  /*letter-spacing: 1px;*/
+  /*line-height: 85px;*/
 }
 
 .version {
@@ -55,13 +128,14 @@
   text-decoration: none;
 }
 
-
 .main-container {
   clear: both;
   max-width:800px;
+  /*max-width:100%;*/
   margin-left:auto;
   margin-right:auto;
 }
+
 .navbar {
   position: relative;
   top:0;
@@ -71,6 +145,7 @@
   height:50px;
   font-family: 'Roboto', sans-serif;
 }
+
 .nav {
   max-width: 500px;
   margin: 0 auto;
@@ -106,6 +181,17 @@
 .success{
   color: #58e44e;
 }
+
+// Custom Styling
+.favorite {
+  width: 50px;
+  height: 50px;
+  border: 5px;
+  border-color: #000;
+  border-style: solid;
+  display: inline-block;
+}
+
 // Styling on warning for users on IE7 or below
 .browsehappy {
   text-align: center;
@@ -125,30 +211,30 @@ line-height: 169px;
 }
 
 .arrow-up:after{
-content:"\231d"; 
-font-size:50px; 
+content:"\231d";
+font-size:50px;
 display:inline-block;
 transform: rotate(-45deg);
 
 }
 
 .arrow-down:after{
-content:"\231d"; 
-font-size:50px; 
+content:"\231d";
+font-size:50px;
 display:inline-block;
 transform: translateX(8px) rotate(135deg);
 
 }
 
-.vote { 
+.vote {
   font-family: Roboto;
   font-weight: 400;
   font-size: 15;
 }
 
-/*.readGuideContainer {
-
-}*/
+.readGuideContainer {
+  /*max-width:800px;*/
+}
 
 .guideDescHeader {
   font-weight: 400;

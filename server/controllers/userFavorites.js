@@ -12,12 +12,13 @@ var Link = db.link;
  * @param sectionId
  * @param linkId
  */
+var toggleUserFavorite = function(req, res, next) {
+  // console.log('UserID: ', req.headers.userid);
 
-var addToUserFavorites = function(req, res, next) {
-  console.log('UserID: ', req.headers.userid);
-
-  var userId = req.headers.userid || 1;
-  console.log('GuideId: ', req.body.guideId);
+  var userId = req.headers.userid || 3;
+  var holdUserFavorites;
+  var guideToDelete;
+  // console.log('GuideId: ', req.body.guideId);
   // // req.guide = {id:1};
   // // console.log(req);
   // console.log(Console.log('req', req.guideIdToSend);
@@ -27,36 +28,56 @@ var addToUserFavorites = function(req, res, next) {
   })
   .then(function(userFavorites) {
     if (req.body.guideId) {
-      Guide.find({ where: { 
-        id: req.body.guideId
-      }})
-      .then(function(guide) {
-        userFavorites.addGuide(guide);
-      })
-    } else if (req.body.sectionId) {
-      Section.find({ where: { 
-        id: req.body.sectionId
-      }})
-      .then(function(section) {
-        userFavorites.addSection(section);
-      })
-    } else if (req.body.linkId) {
-      Link.find({ where: { 
-        id: req.body.linkId
-      }})
-      .then(function(link) {
-        userFavorites.addLink(link);
-      })
+      console.log('User Favorites: ', userFavorites);
+      holdUserFavorites = userFavorites;
+
+      return userFavorites.getGuides({where: {
+        guideId: req.body.guideId
+      }});
+      
     } else {
       return res.status(400).json({
         errors: [{
           msg: 'Request not formatted properly.'
         }]
-      })
+      });
+    }
+  })
+  .then(function(userFavoriteResource) {
+    console.log("GuideID: ", userFavoriteResource);
+    if(userFavoriteResource.length === 0) {
+      return Guide.find({where:{
+        id: req.body.guideId
+      }});
+    } else {
+      console.log("already Favorited");
+      // guideToDelete = userFavoriteResource[0];
+      // userFavoriteResource.destroy({where: { guideId: req.body.guideId }}).then(function() {
+      //   console.log('I am now dust...');
+      // });
+
+      
+
+      // userFavoriteResource[0].destroy().then(function() {
+      //   console.log('I am now dust...');
+      // });
+      // return holdUserFavorites.removeGuide(userFavoriteResource[0]);
+      return "alreadyFavorited";
+    }
+  })
+  .then(function(newFavoriteGuide) {
+    console.log("In add Guide: ", newFavoriteGuide);
+    if (newFavoriteGuide !== "alreadyFavorited") {
+      return holdUserFavorites.addGuide(newFavoriteGuide);
+    } else {
+      console.log("Trying to remove...");
+      // holdUserFavorites.destroy(guideToDelete);
+
+      // UserFavorites.findAll()   
     }
   })
   .then(function(userFavorites) {
-    res.status(200).json({
+    return res.status(200).json({
       userFavorites: userFavorites,
       success: [{
         msg:'UserFavorites updated successfully.'
@@ -74,7 +95,6 @@ var addToUserFavorites = function(req, res, next) {
  * GET /userFavorites
  * Gets all users favorite guides
  */
-
 var readUserFavorites = function(req, res, next) {
   var allUserFavorites = {};
 
@@ -86,7 +106,7 @@ var readUserFavorites = function(req, res, next) {
 			{ model: Guide },
 			{ model: Section },
 			{ model: Link}
-			]
+		]
 	})
   .then(function(userFavorites) {
 		allUserFavorites = userFavorites;
@@ -106,5 +126,43 @@ var readUserFavorites = function(req, res, next) {
 
 module.exports = {
   readUserFavorites: readUserFavorites,
-  addToUserFavorites: addToUserFavorites
+  toggleUserFavorite: toggleUserFavorite
 };
+
+  // } else if (req.body.sectionId) {
+    //   Section.find({ where: { 
+    //     id: req.body.sectionId
+    //   }})
+    //   .then(function(section) {
+    //     userFavorites.addSection(section);
+    //   });
+    // } else if (req.body.linkId) {
+    //   Link.find({ where: { 
+    //     id: req.body.linkId
+    //   }})
+    //   .then(function(link) {
+    //     userFavorites.addLink(link);
+    //   });
+
+
+// .then(function(guide) {
+      //   console.log("Favorite guide: ", guide);
+
+      //   if (!guide) {
+      //     userFavorites.addGuide(req.body.guideId);
+      //   } else {
+      //     userFavorites.removeGuide(req.body.guideId);
+      //   }
+      // });
+
+      // Guide.find({ where: { 
+      //   id: req.body.guideId
+      // }})
+      // .then(function(guide) {
+      //   // console.log('Guide: ', guide);
+      //   if (!guide) {
+      //     userFavorites.addGuide(guide);
+      //   } else {
+      //     userFavorites.removeGuide(guide);
+      //   }
+      // });

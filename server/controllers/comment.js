@@ -10,6 +10,7 @@ var User = db.user;
 
 var comment = function(req, res, next) {
   var comment = req.body;
+
   Comment.create({
     guideId: comment.guideId,
     userId: req.headers.userid,
