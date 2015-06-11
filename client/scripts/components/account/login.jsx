@@ -23,7 +23,9 @@ var LoginComponent = React.createClass({
             <input type="password" name="password" id="password" placeholder="Password" />
           </p>
 
-          <button>Login</button>
+					<button className="btn waves-effect waves-light green" type="submit">
+						Login
+					</button>
           <p><Link url="/forgot">Forgot your password?</Link></p>
         </form>
       </DefaultLayout>

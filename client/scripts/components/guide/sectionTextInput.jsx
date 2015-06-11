@@ -45,6 +45,7 @@ var SectionTextInputComponent = React.createClass({
       onChange={this.onChange}
       index={this.props.index}
       linkidx={this.props.linkidx}
+			errorText={this.props.errorText}
       />
       /* jshint ignore:end */
     );

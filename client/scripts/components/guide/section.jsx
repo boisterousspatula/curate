@@ -9,45 +9,43 @@ var SectionTextInput = require('./sectionTextInput.jsx')
 var SectionComponent = React.createClass({
 
 
-	render: function() {	
+	render: function() {
 		var self = this;
 		var linkList = this.props.sec.links.map(function(link, idx){
 			/* jshint ignore:start */
 			return(
 				<SectionLink key={idx} linkidx={idx} index={self.props.index} link={link}/>
-				)
+			)
 			/* jshint ignore:end */
 		})
 
 		return (
 			/* jshint ignore:start */
-		<div>
-			<ul>
-				<li>
-
-				<label>Section Title: </label>
-				<SectionTextInput name="title" index={this.props.index} />
-				</li>
-
-				<li>
-				<label>Section Description: </label>
-				<SectionTextInput name="description" index={this.props.index} />
-
-				</li>
-
-				<li>
-				<label>Links: </label>
-				{linkList}
-				<button onClick={this.handleNewLink}>Add link</button>
-				</li>
-			</ul>
-		</div>
-
+			<div>
+				<div className="row">
+					<SectionTextInput placeholder="Section Title:" name="title" index={this.props.index} />
+				</div>
+				<br/>
+				<div className="row">
+					<SectionTextInput name="description" placeholder="Section Description:" index={this.props.index} />
+				</div>
+				<br/>
+				<div className="row">
+					<button className="btn waves-effect waves-light green" onClick={this.handleNewLink}>
+						<i className="mdi-content-add right"></i>
+						Add link
+					</button>
+				</div>
+				<div className="row">
+					<h6>Add content for your section: </h6>
+					{linkList}
+				</div>
+			</div>
 			/* jshint ignore:end */
 		);
 	},
 	handleNewLink: function(e){
-		e.preventDefault();	
+		e.preventDefault();
 
 		var index = this.props.index;
 		guideActions.addLink(index);

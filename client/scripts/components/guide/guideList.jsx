@@ -28,9 +28,9 @@ var GuideListComponent = React.createClass({
 
 	//Set current theme
 	componentWillMount: function() {
-		ThemeManager.setPalette({
-			accent1Color: Colors.green800
-		});
+		//ThemeManager.setPalette({
+		//	accent1Color: Colors.green800
+		//});
 	},
 
 	componentDidMount: function() {
@@ -64,7 +64,9 @@ var GuideListComponent = React.createClass({
 				return ([
 					/* jshint ignore:start */
 					<GuidePreview key={idx} id={guide.id} index={idx} guide={guide} votes={guide.votes}/>,
-					<RaisedButton label="VIEW GUIDE" primary={true}/>
+					<button className="btn waves-effect waves-light green">
+						View Guide
+					</button>
 					/* jshint ignore:end */
 				]);
 			});
@@ -72,7 +74,7 @@ var GuideListComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
-			<table className="top-guides">
+			<table className="container">
 				{guideList}
 			</table>
 			/* jshint ignore:end */
