@@ -40,28 +40,44 @@ var ReadGuideSectionComponent = React.createClass({
 		var linkList = section.links.map(function(link, idx){
 			/* jshint ignore:start */
 			return(
-				<div key={idx}>
-					<Paper zDepth={1}>
-						<Vote votes={link.votes} type="link" linkId ={link.linkId} linkIndex={idx} sectionIndex={self.props.index} guideId ={self.props.guideId}/>
-						<span class='linkTitle'>{link.linkTitle}</span>
-						<p>{link.url}</p>
-						<span class='linkDesc'>{link.linkDescription}</span>
-						<p>{link.contentTypes}</p>
-						<p>{link.linkDuration}</p>
-					</Paper>
+			<div key={idx}>
+        
+					<div className ='contentCard'>
+          <div>
+						<Vote votes={link.votes} type='link' linkId ={link.linkId} linkIndex={idx} sectionIndex={self.props.index} guideId ={self.props.guideId}/>
+            </div>
+
+            <div className='linkDetails'>
+  						<span className='linkTitle'>
+                <a href={link.url}>{link.linkTitle}</a>
+              </span>
+  						
+              <div className='linkAttributes'>
+  						  <span className='contentType'> {link.contentTypes}</span>
+                <span className='clock'></span>
+  						  <span className='duration'>{link.linkDuration}</span>
+              </div>
+            </div>
+
+					</div>
+          <span className='linkDesc'>{link.linkDescription}</span>
 				</div>
 			)
 		});
+
 		var crowdSourcedLinks = section.crowdLinks.map(function(link, idx){
 			/* jshint ignore:start */
 			return(
 				<div key={idx}>
-					<Paper zDepth={1}>
-						<Vote className ="vote" votes={link.votes} type="link" linkIndex={idx} sectionIndex={self.props.index} />
-						<span class='linkTitle'>{link.linkTitle}</span>
-						<span class='linkUrl'>{link.url}</span>
-						<span class='linkDesc'>{link.linkDescription}</span>
-					</Paper>
+					<div className ='contentCard'>
+						<Vote votes={link.votes} type='link' linkIndex={idx} sectionIndex={self.props.index} />
+            <div className='linkDetails'>
+						<span className='linkTitle'>
+              <a href={link.url}>{link.linkTitle}</a>
+            </span>
+						<span className='linkDesc'>{link.linkDescription}</span>
+            </div>
+					</div>
 				</div>
 			);
 			/* jshint ingnore:end */
@@ -76,24 +92,21 @@ var ReadGuideSectionComponent = React.createClass({
 				<div className='sectionDesc'>{section.description}</div>
 
 				{linkList}
+				<div className='userSugHeader'>User Suggested Content</div>
 
-				<div className='userSugHeader'>USER SUGGESTED CONTENT</div>
-				<hr/>
 				<div>
 					{crowdSourcedLinks}
 				</div>
-				<h4>
-					Is this the freshest content on the Interwebz?
-				</h4>
-				<RaisedButton label="Suggest your own content here..." primary={true} onClick={this.toggleMenu}/>
 
-				{this.state.showContentForm ? <UserContentForm className="userContent" section={section.sectionId} sectionIndex={self.props.index} onContentSubmit={this.handleContentSubmit} /> : null}
+				<RaisedButton label='Suggest your own content here...' primary={true} onClick={this.toggleMenu}/>
+
+				{this.state.showContentForm ? <UserContentForm className='userContent' section={section.sectionId} sectionIndex={self.props.index} onContentSubmit={this.handleContentSubmit} /> : null}
 			</div>
 			/* jshint ignore:end */
 		);
 	},
 	toggleMenu: function() {
-		// since we put `ref="nav"` on the LeftNav, we can get to it
+		// since we put `ref='nav"` on the LeftNav, we can get to it
 		// via `this.refs.nav`
 		//this.refs.nav.toggle();
 		var currentState = this.state.showContentForm;

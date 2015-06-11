@@ -45,11 +45,15 @@ var GuidePreviewComponent = React.createClass({
       <div>
           <tr>
             <td>
+            <div className="guidePreviewContainer">
               <h4 guideId={this.props.guide.id} onClick={this.handleClick}>{guide.title}</h4>
               <div>
                 <p>{guide.description}</p>
               </div>
+              <div>
                <VoteComponent votes={guide.votes} type="guide" index={this.props.index} onDownvote={this.handleDownvote} onUpvote={this.handleUpvote}/>
+               </div>
+            </div>
             </td>
           </tr>
       </div>

@@ -19,14 +19,14 @@ var ReadGuideVoteComponent = React.createClass({
   },
 
   _onChange: function(){
-    if(this.props.type === "link"){
+    if(this.props.type === 'link'){
       var linkIndex = this.props.linkIndex;
       var sectionIndex = this.props.sectionIndex;
       this.setState({
        votes: guideStore.getLinkVotes(linkIndex, sectionIndex)
      })
     }
-    else if(this.props.type ==="guide"){
+    else if(this.props.type ==='guide'){
       var index = this.props.index;
       this.setState({
         votes: guideStore.getGuideVotes(index)
@@ -36,10 +36,10 @@ var ReadGuideVoteComponent = React.createClass({
 
   render: function(){
     return(
-      <div className="vote-container">
-      <div className="arrow-up" name="upvote" linkIndex={this.props.linkIndex} onClick={this.handleUpvote}></div>
-      <div name="votes">{this.state.votes}</div>
-      <div className="arrow-down" name="downvote" linkIndex={this.props.linkIndex} onClick={this.handleDownvote}></div>
+      <div className='voteContainer'>
+        <div className='arrow-up' name='upvote' linkIndex={this.props.linkIndex} onClick={this.handleUpvote}></div>
+        <div className='votes'>{this.state.votes}</div>
+        <div className='arrow-down' name='downvote' linkIndex={this.props.linkIndex} onClick={this.handleDownvote}></div>
      </div>
       )
   },
