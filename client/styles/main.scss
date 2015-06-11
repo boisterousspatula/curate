@@ -43,14 +43,16 @@ section.cover div.container article div.inner {
 
 .min-window-height {
   min-height: 100vh;
-  /*min-width: 100vw;*/
+  min-width: 100vw;
+  overflow:hidden;
 }
 
 .container {
   width: auto;
-  margin: 0 0 0 19em;
+  margin: 0 0 0 8em;
   overflow: hidden;
   z-index: 5;
+  padding: 4em 9em;
 }
 
 .inner {
@@ -65,14 +67,14 @@ section.cover div.container article div.inner {
   margin-right: auto;
 }
 
-/*.main-info {
+.main-info {
   width: 100%;
   position: relative;
   margin: 8% auto;
-  transform: translateY(0);
+  /*transform: translateY(0);*/
   z-index: 5;
   font-size: 1.15em;
-}*/
+}
 
 /*section.cover div.container article div.inner {
   padding: 4em 9em;
@@ -81,20 +83,18 @@ section.cover div.container article div.inner {
 
 .title {
   font-family: Roboto-Light;
-  font-size: 40px;
+  font-size: 350%;
   margin: 0;
   color: #FFFFFF;
   /*line-height: 18px;*/
 }
 
-
-
 .description {
   font-family: Roboto-Light;
-  font-size: 20px;
+  font-size: 170%;
   color: #678387;
-  /*letter-spacing: 1px;
-  line-height: 85px;*/
+  /*letter-spacing: 1px;*/
+  /*line-height: 85px;*/
 }
 
 .version {
