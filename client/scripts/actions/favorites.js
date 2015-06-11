@@ -28,7 +28,6 @@ module.exports = {
       .end(function(res) {
         if (res.ok) {
           console.log('Favorite Req Sent Correctly.');
-          console.log('Response: ', res.userFavorites);
         }
       });
   }
