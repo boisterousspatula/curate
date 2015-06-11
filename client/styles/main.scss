@@ -316,6 +316,73 @@ color: #000000;
 }
 
 
+.guidePreviewContainer{
+  position: relative;
+  height: auto;
+  width: auto;
+  background: #FCFCFC;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #979797;
+
+  .guidePreviewTitle {
+    font-size: 24px;
+    color: #379E59;
+    margin-left: 5px;
+    padding-left:25px;
+    padding-bottom:10px;
+  }
+
+  .voteContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    float: left;
+    margin-top: 2px;
+
+      .votes {
+        font-weight: 400;
+        font-size: 18px;
+        text-align: center;
+        display:inline-block;
+        margin-top: 4px;
+        margin-left: 13.5px;
+      }
+
+      .arrow-up:after{
+        content:"\231d";
+        font-size:30px;
+        font-weight: bold;
+        display:inline-block;
+
+        float:left;
+        clear:left;
+        margin-bottom: -25px;
+        margin-left: 8px;
+        transform: rotate(-45deg);
+      }
+
+      .arrow-down:after{
+        content:"\231d";
+        font-size:30px;
+        font-weight: bold;
+        display: inline-block;
+
+        margin-top: -30px;
+        margin-left: 5px;
+        clear:both;
+        transform: translateX(8px) rotate(135deg);
+      }
+    }
+
+    .guidePreviewDescription{
+      font-size: 18px;
+      margin-left: 5px;
+      padding-left:25px;
+      width: 95%;
+    }
+
+}
 /* votes */
 .voteContainer{
   position: absolute;
@@ -338,11 +405,11 @@ color: #000000;
   font-size:50px;
   display:inline-block;
 
-float:left;
-clear:left;
+  float:left;
+  clear:left;
   margin-bottom: -30px;
   margin-left: 5px;
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .arrow-down:after{
@@ -352,7 +419,7 @@ clear:left;
   margin-top: -30px;
   margin-left: 2px;
 
-clear:both;
+  clear:both;
 
   transform: translateX(8px) rotate(135deg);
 }
@@ -371,20 +438,6 @@ clear:both;
 }
 
 
-.guidePreviewContainer{
-  position: relative;
-  height: auto;
-  width: auto;
-  background: #FCFCFC;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #979797;
-
-  .guidePreviewTitle {
-    color: #379E59;
-  }
-
-}
 
 
 
