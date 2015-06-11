@@ -16,30 +16,30 @@ var GuideListComponent = React.createClass({
 
 	//Needed for mui to load theme
 	childContextTypes: {
-	  muiTheme: React.PropTypes.object
+		muiTheme: React.PropTypes.object
 	},
 
 	//Needed for mui to load theme
 	getChildContext: function() {
-	  return {
-	    muiTheme: ThemeManager.getCurrentTheme()
-	  };
+		return {
+			muiTheme: ThemeManager.getCurrentTheme()
+		};
 	},
 
 	//Set current theme
 	componentWillMount: function() {
-	  ThemeManager.setPalette({
-	    accent1Color: Colors.green800
-	  });
+		ThemeManager.setPalette({
+			accent1Color: Colors.green800
+		});
 	},
 
-  componentDidMount: function() {
-    guideStore.addChangeListener(this._onChange);
-  },
+	componentDidMount: function() {
+		guideStore.addChangeListener(this._onChange);
+	},
 
-  componentWillUnmount: function() {
-    guideStore.removeChangeListener(this._onChange);
-  },
+	componentWillUnmount: function() {
+		guideStore.removeChangeListener(this._onChange);
+	},
 
 	_onChange: function(){
 		this.setState({
@@ -73,7 +73,7 @@ var GuideListComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<table className="top-guides">
-					{guideList}
+				{guideList}
 			</table>
 			/* jshint ignore:end */
 		);
@@ -81,4 +81,12 @@ var GuideListComponent = React.createClass({
 
 });
 
+//<form>
+//	<div className="input-field">
+//		<input id="search" type="search" required>
+//			<label for="search"><i className="mdi-action-search"></i></label>
+//			<i className="mdi-navigation-close"></i>
+//		</input>
+//	</div>
+//</form>
 module.exports = GuideListComponent;

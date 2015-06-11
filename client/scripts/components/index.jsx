@@ -19,6 +19,7 @@ var IndexComponent = React.createClass({
             <GuideList/>
           </div>
           <button className="guide-create" onClick={this.handleNewGuide}>Create New Guide</button>
+					<a className="btn-floating btn-large waves-effect waves-light red"><i className="mdi-content-add"></i></a>
         </div>
       </DefaultLayout>
       /* jshint ignore:end */
