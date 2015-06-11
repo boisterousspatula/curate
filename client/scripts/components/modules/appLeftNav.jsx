@@ -25,9 +25,10 @@ var menuItems = [
   { route: '/', text: 'LIST OF GUIDES' },
   { route: '/createguide', text: 'CREATE A GUIDE' },
   { route: '/knowrepo', text: 'KNOWLEDGE REPO' },
-  { route: '/signup', text: 'CREATE ACCOUNT' },
-  { route: '/login', text: 'LOGIN' },
-  { route: '/logout', text: 'LOGOUT' }
+  { type: MenuItem.Types.SUBHEADER },
+  { route: '/signup', text: 'SIGN UP' },
+  { route: '/login', text: 'LOG IN' },
+  { route: '/logout', text: 'LOG OUT' }
 ];
 
 var AppLeftNav = React.createClass({
@@ -36,11 +37,10 @@ var AppLeftNav = React.createClass({
     return {
       cursor: 'pointer',
       //.mui-font-style-headline
-      fontSize: '30px',
-      color: Typography.textFullWhite,
+      fontSize: '34px',
+      color: '#2E8F29',
       lineHeight: Spacing.desktopKeylineIncrement + 'px',
       fontWeight: Typography.fontWeightLight,
-      backgroundColor: Colors.green500,
       paddingLeft: Spacing.desktopGutter,
       paddingTop: '0px',
       marginBottom: '8px'
@@ -64,11 +64,13 @@ var AppLeftNav = React.createClass({
         header={header}
         menuItems={menuItems}
         style={{
-          opacity: .5,
+          opacity: .8,
+          color: '#979797',
+          fontSize: '14px',
+          fontWeight: Typography.fontWeightBold
         }}
         onChange={this._onLeftNavChange} />
     );
-        // selectedIndex={this._getSelectedIndex()}
     /* jshint ignore:end */
 
   },
@@ -101,3 +103,9 @@ var AppLeftNav = React.createClass({
 });
 
 module.exports = AppLeftNav;
+
+/* LIST OF GUIDES: */
+// font-family: Roboto-Bold;
+// font-size: 36px;
+// color: #678387;
+// line-height: 104px;
