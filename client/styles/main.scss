@@ -20,6 +20,11 @@
   display: block;
 }*/
 
+h4{
+  padding-left:25px;
+  padding-bottom:10px;
+}
+
 .cover {
   background: #1A3034;
   /*opacity: .15;*/
@@ -33,8 +38,8 @@ text-decoration: none;
 
 .crosshatch {
   background-image: url(https://paylike.io/images/grid.png);
-  /*// background-repeat: repeat;
-  // position: absolute;*/
+  // background-repeat: repeat;
+  // position: absolute;
   background-size: 10px 10px;
   background-position: 20em 0;
   z-index: 2;
