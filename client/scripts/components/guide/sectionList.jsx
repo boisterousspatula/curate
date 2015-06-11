@@ -22,10 +22,11 @@ var SectionListComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<div>
-				<ul>
-					{htmlSections}
-				</ul>
-				<button onClick={this.handleNewSection}>Add new section</button>
+				{htmlSections}
+				<button className="btn waves-effect waves-light red" onClick={this.handleNewSection}>
+					<i className="mdi-content-add right"></i>
+					Add new section
+				</button>
 			</div>
 
 

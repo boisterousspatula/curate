@@ -21,67 +21,69 @@ var KnowledgeRepoBar = require('../modules/knowledgeRepoBar.jsx');
 
 var GuideComponent = React.createClass({
 
-  //Needed for mui to load theme
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
+	//Needed for mui to load theme
+	childContextTypes: {
+		muiTheme: React.PropTypes.object
+	},
 
-  //Needed for mui to load theme
-  getChildContext: function() {
-    return {
-      muiTheme: ThemeManager.getCurrentTheme()
-    };
-  },
+	//Needed for mui to load theme
+	getChildContext: function() {
+		return {
+			muiTheme: ThemeManager.getCurrentTheme()
+		};
+	},
 
 	getInitialState: function () {
 		sectionStore.init();
 		return {
 			sections: sectionStore.get(),
-      guide: sectionStore.getGuide()
+			guide: sectionStore.getGuide()
 		};
 	},
 
-  //Next 3 properties update state of the view based on the store
+	//Next 3 properties update state of the view based on the store
 	componentDidMount: function() {
-  	sectionStore.addChangeListener(this._onChange);
-  },
+		sectionStore.addChangeListener(this._onChange);
+	},
 
 	componentWillUnmount: function() {
-    sectionStore.removeChangeListener(this._onChange);
-  },
+		sectionStore.removeChangeListener(this._onChange);
+	},
 
-  //Update view based on state of section store
-  _onChange: function(){
-  	this.setState({
-  		sections: sectionStore.get()
-  	});
-  },
+	//Update view based on state of section store
+	_onChange: function(){
+		this.setState({
+			sections: sectionStore.get()
+		});
+	},
 
 	render: function() {
-    return (
+		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
-        <div className="main-container">
+				<div>
 					<form method="post" action="/guide" onSubmit={this.handleSubmit}>
-            <div className="guide-headers">
-            <ul>
-              <li>
-              <label>Guide Title: </label>
-                <SectionTextInput value={this.state.guide.guideTitle} name="guideTitle"/>
-              </li>
-              <li>
-              <label>Guide Description: </label>
-                <SectionTextInput name="guideDescription"/>
-						</li>
-            </ul>
-            </div>
-            <SectionList sections={this.state.sections}/>
-						<input type="submit" name="save"></input>
-				</form>
-        <RaisedButton label="Show Knowledge Repo" onTouchTap={this._showKnowledgeRepoBar} />
-        <KnowledgeRepoBar
-          ref="knowledgeRepoBar"
-          docked={false}/>
+						<div className="guide-headers">
+							<h3>Create New Guide! </h3>
+							<div className="row">
+								<SectionTextInput placeholder="Guide Title:"  value={this.state.guide.guideTitle} name="guideTitle"/>
+							</div>
+							<br/>
+							<div className="row">
+								<SectionTextInput placeholder="Guide Description:" isMultiLine={true} name="guideDescription"/>
+							</div>
+						</div>
+						<br/>
+						<div className="row">
+							<SectionList sections={this.state.sections}/>
+						</div>
+						<br/>
+						<button className="btn waves-effect waves-light red" type="submit" label="Submit" name="save"></button>
+					</form>
+					<button className="btn waves-effect waves-light red" label="Show Knowledge Repo" onTouchTap={this._showKnowledgeRepoBar}></button>
+					<KnowledgeRepoBar
+						ref="knowledgeRepoBar"
+						docked={false}/>
 				</div>
 			</DefaultLayout>
 			/* jshint ignore:end */
@@ -89,20 +91,20 @@ var GuideComponent = React.createClass({
 
 	},
 
-  _showKnowledgeRepoBar: function() {
-    this.refs.knowledgeRepoBar.toggle();
-  },
+	_showKnowledgeRepoBar: function() {
+		this.refs.knowledgeRepoBar.toggle();
+	},
 
 	handleSubmit: function(e) {
 		e.preventDefault();
 		//console.log('in handle submit view', e.currentTarget);
 		var form = e.currentTarget;
 
-    this.setState({
-      sections: sectionStore.get(),
-      guide: sectionStore.getGuide().guide
-    });
-    guideActions.postGuide(this.state.sections, this.state.guide);
+		this.setState({
+			sections: sectionStore.get(),
+			guide: sectionStore.getGuide().guide
+		});
+		guideActions.postGuide(this.state.sections, this.state.guide);
 	}
 });
 

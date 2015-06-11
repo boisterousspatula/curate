@@ -28,9 +28,9 @@ var GuideListComponent = React.createClass({
 
 	//Set current theme
 	componentWillMount: function() {
-		ThemeManager.setPalette({
-			accent1Color: Colors.green800
-		});
+		//ThemeManager.setPalette({
+		//	accent1Color: Colors.green800
+		//});
 	},
 
 	componentDidMount: function() {
@@ -72,7 +72,7 @@ var GuideListComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
-			<table className="top-guides">
+			<table className="container">
 				{guideList}
 			</table>
 			/* jshint ignore:end */
