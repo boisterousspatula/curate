@@ -61,14 +61,11 @@ var GuideListComponent = React.createClass({
 			}).map(function (guide, idx) {
 				console.log('GUIDE VOTES', guide);
 				guide.votes = guide.votes || 0;
-				return ([
+				return (
 					/* jshint ignore:start */
-					<GuidePreview key={idx} id={guide.id} index={idx} guide={guide} votes={guide.votes}/>,
-					<button className="btn waves-effect waves-light green">
-						View Guide
-					</button>
+					<GuidePreview key={idx} id={guide.id} index={idx} guide={guide} votes={guide.votes}/>
 					/* jshint ignore:end */
-				]);
+				);
 			});
 		}
 
