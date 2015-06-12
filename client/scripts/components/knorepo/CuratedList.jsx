@@ -32,6 +32,7 @@ var CuratedComponent = React.createClass({
 	render: function() {
 		var guideList = null;
 		if (this.state.guides) {
+			//If user has curated guides, render to page
 			if(this.state.guides.length !== 0) {
 				guideList = this.state.guides.sort(function (a, b) {
 					return b.votes - a.votes;
@@ -45,6 +46,7 @@ var CuratedComponent = React.createClass({
 						/* jshint ignore:end */
 					);
 				}, this);
+			//Else notify user that he/she does not
 			} else {
 				guideList = (
 					/* jshint ignore:start */
