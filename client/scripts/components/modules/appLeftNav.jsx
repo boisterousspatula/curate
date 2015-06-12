@@ -35,15 +35,20 @@ var AppLeftNav = React.createClass({
 
   getStyles: function() {
     return {
-      cursor: 'pointer',
+      // cursor: 'pointer',
       //.mui-font-style-headline
-      fontSize: '34px',
-      color: '#2E8F29',
-      lineHeight: Spacing.desktopKeylineIncrement + 'px',
-      fontWeight: Typography.fontWeightLight,
-      paddingLeft: Spacing.desktopGutter,
-      paddingTop: '0px',
-      marginBottom: '8px'
+      // fontSize: '34px',
+      // color: '#2E8F29',
+      // lineHeight: Spacing.desktopKeylineIncrement + 'px',
+      // fontWeight: Typography.fontWeightLight,
+      // paddingRight: Spacing.desktopGutter
+      // marginRight: Spacing.desktopGutter
+      // marginRight: '20px'
+      // paddingTop: '0px'
+      marginLeft: '5%',
+      marginTop: '5%',
+      marginBottom: '15%'
+
     };
   },
 
@@ -56,7 +61,7 @@ var AppLeftNav = React.createClass({
 
   render: function() {
     /* jshint ignore:start */
-    var header = <div className="logo" style={this.getStyles()} onClick={this._onHeaderClick}>≈skill.it!</div>;
+    var header = <div className="logo" style={this.getStyles()} onClick={this._onHeaderClick}></div>;
 
     return (
       <LeftNav
@@ -66,7 +71,7 @@ var AppLeftNav = React.createClass({
         style={{
           opacity: .8,
           color: '#979797',
-          fontSize: '14px',
+          fontSize: '110%',
           fontWeight: Typography.fontWeightBold
         }}
         onChange={this._onLeftNavChange} />
