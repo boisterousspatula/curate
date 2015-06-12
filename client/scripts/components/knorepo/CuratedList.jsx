@@ -20,7 +20,7 @@ var CuratedComponent = React.createClass({
 	_onChange: function(){
 		this.setState({
 			guides: knowRepoStore.getUserGuides()
-		})
+		});
 	},
 
 	getInitialState: function () {
@@ -31,34 +31,35 @@ var CuratedComponent = React.createClass({
 
 	render: function() {
 		var guideList = null;
-		if (this.state.guides) {
+		console.log('in curated list, this.state.guides:', this.state.guides);
+		if (this.state.guides.length !== 0) {
 			guideList = this.state.guides.sort(function (a, b) {
 				return b.votes - a.votes;
 			}).map(function (val, idx) {
 				return (
 					/* jshint ignore:start */
-					<li className="collection-item" key={idx} onClick={this.handleClick.bind(this,idx)}>
-						<span className="title">{val.title}</span>
-						<p className="truncate">{val.description}</p>
-					</li>
+					<div className="collection-item guidePreviewContainer" key={idx} onClick={this.handleClick.bind(this,idx)}>
+						<div className="guidePreviewTitle">{val.title}</div>
+						<p className="guidePreviewDescription truncate">{val.description}</p>
+					</div>
 
 					/* jshint ignore:end */
-				)
+				);
 			}, this);
 		}else{
 			guideList = (
 					/* jshint ignore:start */
-					<li className="collection-header">
+					<div className="collection-header">
 						<h6>You have not curated any guides</h6>
-					</li>
+					</div>
 					/* jshint ignore:end */
 			);
 		}
 		return (
 			/* jshint ignore:start */
 			<div>
-				<h4 className="left-align">Curated List</h4>
-				<ul className="collection">
+				<h4 className="left-align">YOUR CURATED GUIDES</h4>
+				<ul>
 					{guideList}
 				</ul>
 			</div>

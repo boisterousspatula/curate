@@ -36,19 +36,19 @@ var FavsComponent = React.createClass({
 			}).map(function (val, idx) {
 				return (
 					/* jshint ignore:start */
-					<div className="collection-item" key={idx} onClick={this.handleClick.bind(this,idx)}>
-						<span className="title">{val.title}</span>
-						<p className="truncate">{val.description}</p>
+					<div className="collection-item guidePreviewContainer" key={idx} onClick={this.handleClick.bind(this,idx)}>
+						<div className="guidePreviewTitle">{val.title}</div>
+						<p className="guidePreviewDescription truncate">{val.description}</p>
 					</div>
 					/* jshint ignore:end */
-				)
+				);
 			}, this);
 		}
 		return (
 			/* jshint ignore:start */
 			<div>
-				<h4 className="left-align">Favs List</h4>
-				<div className="collection">
+				<h4>FAVORITES</h4>
+				<div>
 					{guideList}
 				</div>
 			</div>

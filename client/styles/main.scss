@@ -412,7 +412,7 @@ h4 {
       padding-bottom:10px;
     }
 
-    .voteContainer{
+    .voteContainer {
       position: absolute;
       top: 0;
       left: 0;
@@ -428,7 +428,7 @@ h4 {
           margin-left: 13.5px;
         }
 
-        .arrow-up:after{
+        .arrow-up:after {
           content:"\231d";
           font-size:30px;
           font-weight: bold;
@@ -454,11 +454,16 @@ h4 {
         }
       }
 
-      .guidePreviewDescription{
+      .guidePreviewDescription {
         font-size: 18px;
         margin-left: 5px;
         padding-left:25px;
         width: 95%;
       }
     }
+}
+
+.repoList {
+  margin-left: 98px;
+  width: 125%;
 }

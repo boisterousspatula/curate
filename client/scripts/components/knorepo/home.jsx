@@ -16,21 +16,16 @@ var HomeComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
-				<div>
-					<h1>Knowledge Repository!</h1>
-					<button className="btn waves-effect waves-light red" onClick={this.handleNewGuide}>Create New Guide
-						<i className="mdi-content-add right"></i>
-					</button>
+				<div className="guideList">
+					<div className="callToAction">Knowledge Repository</div>
 					<CuratedList/>
-					<br/>
-					<div className="divider"> </div>
-					<br/>
 					<FavoritesList/>
 				</div>
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);
 	},
+					// <div className="divider"> </div>
 	handleNewGuide: function(e){
 		e.preventDefault();
 		routeActions.setRoute('/createguide');
