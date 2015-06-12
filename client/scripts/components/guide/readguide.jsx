@@ -4,6 +4,7 @@ var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
 var guideStore = require('../../stores/guides');
+var GuideVote = require('./vote.jsx');
 var GuideSection = require('./readguidesection.jsx');
 var CommentsBox = require('../comment/commentBox.jsx');
 var FavoriteButton = require('../favorites/favoriteButton.jsx');
@@ -81,11 +82,19 @@ var ReadGuideComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
+
 			<DefaultLayout>       
         <div className='container readGuideContainer'>
+
+        <div className='readGuideHeader'>
+          <span className='voteContainer'>
+            <GuideVote votes={this.state.guide.votes} type='readGuide' onDownvote={this.handleDownvote} onUpvote={this.handleUpvote}/>
+          </span>
+
           <span className='guideTitle'>
             {this.state.guide.title}
           </span>
+        </div>
 
           <FavoriteButton guideId={this.state.id} />
 					{/*<LinearProgress mode='determinate' value={50}/>*/}
@@ -102,7 +111,21 @@ var ReadGuideComponent = React.createClass({
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);
-	}
+	},
+
+  handleUpvote: function(e) {
+  e.preventDefault();
+  var name = 'upvote';
+  var guideid = this.props.id;
+  inputActions.postGuideVote(guideid, name);
+
+  },
+  handleDownvote: function(e) {
+   e.preventDefault();
+   var name = 'downvote';
+   var guideid = this.props.id;
+   inputActions.postGuideVote(guideid, name);
+  }
 
 })
 

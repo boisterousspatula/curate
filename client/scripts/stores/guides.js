@@ -19,7 +19,7 @@ var GuideStore = new Store({
 		return _guides.sections[sectionIndex].links[linkIndex].votes;
 	},
 	getGuideVotes: function(index){
-		return _guides[index].votes;
+		return index ? _guides[index].votes : _guides.votes;
 	},
 	getId: function() {
 		return _guideId;

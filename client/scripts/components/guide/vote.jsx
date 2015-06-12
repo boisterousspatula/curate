@@ -35,6 +35,11 @@ var VoteComponent = React.createClass({
         votes: guideStore.getGuideVotes(index)
       })
     }
+    else if(this.props.type ==="readGuide"){
+      this.setState({
+        votes: guideStore.getGuideVotes()
+      })
+    }
   },
 
   render: function() {
