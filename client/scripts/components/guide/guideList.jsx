@@ -26,13 +26,6 @@ var GuideListComponent = React.createClass({
 		};
 	},
 
-	//Set current theme
-	componentWillMount: function() {
-		//ThemeManager.setPalette({
-		//	accent1Color: Colors.green800
-		//});
-	},
-
 	componentDidMount: function() {
 		guideStore.addChangeListener(this._onChange);
 	},
@@ -61,22 +54,23 @@ var GuideListComponent = React.createClass({
 			}).map(function (guide, idx) {
 				console.log('GUIDE VOTES', guide);
 				guide.votes = guide.votes || 0;
-				return ([
+				return (
 					/* jshint ignore:start */
-					<GuidePreview key={idx} id={guide.id} index={idx} guide={guide} votes={guide.votes}/>,
-					<button className="btn waves-effect waves-light green">
-						View Guide
-					</button>
+					<GuidePreview key={idx} id={guide.id} index={idx} guide={guide} votes={guide.votes}/>
 					/* jshint ignore:end */
-				]);
+				);
 			});
 		}
 
 		return (
 			/* jshint ignore:start */
-			<table className="container">
-				{guideList}
-			</table>
+			<div className="guideList">
+				<div className="callToAction">Find a learning path</div>
+				<h4>FEATURED GUIDES</h4>
+				<table>
+					{guideList}
+				</table>
+			</div>
 			/* jshint ignore:end */
 		);
 	}

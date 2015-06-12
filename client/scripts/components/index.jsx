@@ -34,14 +34,6 @@ var IndexComponent = React.createClass({
             <section className="guide-list col offset-s4">
               <GuideList/>
             </section>
-
-            <div>
-							<button className="btn waves-effect waves-light green" onClick={this.handleNewGuide}>
-								<i className="mdi-content-add right"></i>
-								Create New Guide
-							</button>
-            </div>
-
           </div>
         </div>
       </DefaultLayout>

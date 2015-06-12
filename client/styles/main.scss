@@ -30,7 +30,7 @@ h4{
   /*opacity: .15;*/
   z-index: 1;
 }
-a { 
+a {
 color: inherit;
 text-decoration: none;
 
@@ -216,12 +216,11 @@ section.cover div.container article div.inner {
 .contentCard {
   position: relative;
   height: 100px;
-width: 95%;
-background: #FCFCFC;
-padding: 10px;
-margin: 10px;
-border: 1px solid #979797;
-
+  width: 95%;
+  background: #FCFCFC;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #979797;
 }
 
 .linkContent {
@@ -326,7 +325,7 @@ color: #000000;
   margin-top: -20px;
 
 }
-.votes { 
+.votes {
   font-weight: 400;
   font-size: 30px;
   text-align: center;
@@ -335,25 +334,25 @@ color: #000000;
 }
 
 .arrow-up:after{
-  content:"\231d"; 
-  font-size:50px; 
+  content:"\231d";
+  font-size:50px;
   display:inline-block;
 
-float:left;
-clear:left;
+  float:left;
+  clear:left;
   margin-bottom: -30px;
   margin-left: 5px;
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .arrow-down:after{
-  content:"\231d"; 
-  font-size:50px; 
+  content:"\231d";
+  font-size:50px;
   display: inline-block;
   margin-top: -30px;
   margin-left: 2px;
 
-clear:both;
+  clear:both;
 
   transform: translateX(8px) rotate(135deg);
 }
@@ -371,20 +370,95 @@ clear:both;
   background: url('../images/clock.png') no-repeat;
 }
 
-
-.guidePreviewContainer{
- position: relative;
-  height: auto;
-width: auto;
-background: #FCFCFC;
-padding: 10px;
-margin: 10px;
-border: 1px solid #979797;
+.callToAction {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 52px;
+  color: #000000;
+  margin-top: 20px;
+  margin-left: 45px;
+  margin-bottom: 100px;
 }
 
+h4 {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 18px;
+  color: #678387;
+  margin-left: 25px;
+}
 
+.guideList {
+  margin-left: 98px;
+  width: 125%;
 
+  .guidePreviewContainer{
+    position: relative;
+    height: auto;
+    width: auto;
+    background: #FCFCFC;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 40px;
+    border: 1px solid #979797;
 
+    .guidePreviewTitle {
+      font-size: 24px;
+      color: #379E59;
+      margin-top: 5px;
+      margin-left: 5px;
+      padding-left:25px;
+      padding-bottom:10px;
+    }
 
+    .voteContainer{
+      position: absolute;
+      top: 0;
+      left: 0;
+      float: left;
+      margin-top: 5px;
 
+        .votes {
+          font-weight: 400;
+          font-size: 18px;
+          text-align: center;
+          display:inline-block;
+          margin-top: 4px;
+          margin-left: 13.5px;
+        }
 
+        .arrow-up:after{
+          content:"\231d";
+          font-size:30px;
+          font-weight: bold;
+          display:inline-block;
+
+          float:left;
+          clear:left;
+          margin-bottom: -25px;
+          margin-left: 8px;
+          transform: rotate(-45deg);
+        }
+
+        .arrow-down:after{
+          content:"\231d";
+          font-size:30px;
+          font-weight: bold;
+          display: inline-block;
+
+          margin-top: -30px;
+          margin-left: 5px;
+          clear:both;
+          transform: translateX(8px) rotate(135deg);
+        }
+      }
+
+      .guidePreviewDescription{
+        font-size: 18px;
+        margin-left: 5px;
+        padding-left:25px;
+        width: 95%;
+      }
+    }
+}

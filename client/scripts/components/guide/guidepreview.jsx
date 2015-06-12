@@ -46,8 +46,8 @@ var GuidePreviewComponent = React.createClass({
           <tr>
             <td>
             <div className="guidePreviewContainer">
-              <h4 guideId={this.props.guide.id} onClick={this.handleClick}>{guide.title}</h4>
-              <div>
+              <div className="guidePreviewTitle" guideId={this.props.guide.id} onClick={this.handleClick}>{guide.title}</div>
+              <div className="guidePreviewDescription">
                 <p>{guide.description}</p>
               </div>
               <div>
