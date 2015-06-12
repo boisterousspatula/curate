@@ -23,7 +23,7 @@ var CuratedComponent = React.createClass({
 		});
 	},
 
-	getInitialState: function () {
+	getInitialState: function() {
 		return {
 			guides : knowRepoActions.getHome()
 		};
@@ -32,29 +32,39 @@ var CuratedComponent = React.createClass({
 	render: function() {
 		var guideList = null;
 		console.log('in curated list, this.state.guides:', this.state.guides);
-		if (this.state.guides.length !== 0) {
-			guideList = this.state.guides.sort(function (a, b) {
-				return b.votes - a.votes;
-			}).map(function (val, idx) {
-				return (
-					/* jshint ignore:start */
-					<div className="collection-item guidePreviewContainer" key={idx} onClick={this.handleClick.bind(this,idx)}>
-						<div className="guidePreviewTitle">{val.title}</div>
-						<p className="guidePreviewDescription truncate">{val.description}</p>
-					</div>
-
-					/* jshint ignore:end */
-				);
-			}, this);
-		}else{
-			guideList = (
+		if (this.state.guides) {
+			if(this.state.guides.length !== 0) {
+				guideList = this.state.guides.sort(function (a, b) {
+					return b.votes - a.votes;
+				}).map(function (val, idx) {
+					return (
+						/* jshint ignore:start */
+						<div className="collection-item guidePreviewContainer" key={idx} onClick={this.handleClick.bind(this,idx)}>
+							<div className="guidePreviewTitle">{val.title}</div>
+							<p className="guidePreviewDescription truncate">{val.description}</p>
+						</div>
+						/* jshint ignore:end */
+					);
+				}, this);
+			} else {
+				guideList = (
 					/* jshint ignore:start */
 					<div className="collection-header">
-						<h6>You have not curated any guides</h6>
+						<h6>You do not have any curated guides</h6>
 					</div>
 					/* jshint ignore:end */
-			);
+				);
+			}
 		}
+		// else {
+		// 	guideList = (
+		// 			/* jshint ignore:start */
+		// 			<div className="collection-header">
+		// 				<h6>You have not curated any guides</h6>
+		// 			</div>
+		// 			/* jshint ignore:end */
+		// 	);
+		// }
 		return (
 			/* jshint ignore:start */
 			<div>
