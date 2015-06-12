@@ -31,7 +31,6 @@ var CuratedComponent = React.createClass({
 
 	render: function() {
 		var guideList = null;
-		console.log('in curated list, this.state.guides:', this.state.guides);
 		if (this.state.guides) {
 			if(this.state.guides.length !== 0) {
 				guideList = this.state.guides.sort(function (a, b) {
@@ -56,15 +55,6 @@ var CuratedComponent = React.createClass({
 				);
 			}
 		}
-		// else {
-		// 	guideList = (
-		// 			/* jshint ignore:start */
-		// 			<div className="collection-header">
-		// 				<h6>You have not curated any guides</h6>
-		// 			</div>
-		// 			/* jshint ignore:end */
-		// 	);
-		// }
 		return (
 			/* jshint ignore:start */
 			<div>

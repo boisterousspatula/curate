@@ -8,9 +8,6 @@ var FavoritesList = require('../knorepo/favoritesList.jsx');
 
 
 var HomeComponent = React.createClass({
-	// getInitialState:function(){
-	// 	//return;
-	// },
 	render: function() {
 
 		return (
@@ -27,7 +24,6 @@ var HomeComponent = React.createClass({
 			/* jshint ignore:end */
 		);
 	},
-					// <div className="divider"> </div>
 	handleNewGuide: function(e){
 		e.preventDefault();
 		routeActions.setRoute('/createguide');
