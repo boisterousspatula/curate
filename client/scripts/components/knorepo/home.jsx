@@ -8,25 +8,18 @@ var FavoritesList = require('../knorepo/favoritesList.jsx');
 
 
 var HomeComponent = React.createClass({
-	// getInitialState:function(){
-	// 	//return;
-	// },
 	render: function() {
 
 		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
-				<div>
-					<h1>Knowledge Repository!</h1>
-					<button className="btn waves-effect waves-light red" onClick={this.handleNewGuide}>Create New Guide
-						<i className="mdi-content-add right"></i>
-					</button>
+			<div className="container">
+				<div className="guideList">
+					<div className="callToAction">Knowledge Repository</div>
 					<CuratedList/>
-					<br/>
-					<div className="divider"> </div>
-					<br/>
 					<FavoritesList/>
 				</div>
+			</div>
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);

@@ -9,9 +9,6 @@ var GuideList = require('./guide/guideList.jsx');
 var IndexComponent = React.createClass({
 
   render: function() {
-      // <div className="row">
-        // <div className="col s6">
-
     return (
       /* jshint ignore:start */
       <DefaultLayout>
@@ -31,7 +28,7 @@ var IndexComponent = React.createClass({
               </div>
             </section>
 
-            <section className="guide-list col offset-s4">
+            <section className="guide-list container">
               <GuideList/>
             </section>
           </div>

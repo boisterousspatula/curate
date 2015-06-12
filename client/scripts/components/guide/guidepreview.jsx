@@ -57,15 +57,10 @@ var GuidePreviewComponent = React.createClass({
             </td>
           </tr>
       </div>
-              //Attempting to add paper mui
-              // <Paper >
-              // <Paper />
       /* jshint ignore:end */
     );
   },
 
-        // <Paper className="curriculum-paper" zDepth={1} rounded={false}>Test
-        // </Paper>
   handleClick: function(e){
     var id = this.props.guide.id;
 
@@ -80,9 +75,8 @@ var GuidePreviewComponent = React.createClass({
     var guideid = this.props.id;
 
     inputActions.postGuideVote(guideid, name, index);
-
-
   },
+
   handleDownvote: function(e) {
    e.preventDefault();
    var name = 'downvote';
