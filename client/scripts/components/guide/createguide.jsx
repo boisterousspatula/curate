@@ -61,7 +61,7 @@ var GuideComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
-				<div>
+				<div className="container">
 					<form method="post" action="/guide" onSubmit={this.handleSubmit}>
 						<div className="guide-headers">
 							<h3>Create New Guide! </h3>

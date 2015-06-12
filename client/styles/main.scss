@@ -160,7 +160,7 @@ section.cover div.container article div.inner {
 }
 
 .nav {
-  /*max-width: 500px;*/
+  max-width: 500px;
   margin: 0 auto;
   padding: 0;
   list-style-type: none;
@@ -378,15 +378,6 @@ section.cover div.container article div.inner {
   margin-top: 20px;
   margin-left: 45px;
   margin-bottom: 100px;
-
-.guidePreviewContainer {
-  position: relative;
-  height: auto;
-  width: auto;
-  background: #FCFCFC;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #979797;
 }
 
 h4 {
@@ -399,7 +390,7 @@ h4 {
 
 .guideList {
   margin-left: 98px;
-  width: 125%;
+  /*width: 125%;*/
 
   .guidePreviewContainer{
     position: relative;
