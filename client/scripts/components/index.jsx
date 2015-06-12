@@ -31,7 +31,7 @@ var IndexComponent = React.createClass({
               </div>
             </section>
 
-            <section className="guide-list col offset-s4">
+            <section className="guide-list container">
               <GuideList/>
             </section>
           </div>

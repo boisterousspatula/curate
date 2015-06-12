@@ -49,8 +49,8 @@ var CuratedComponent = React.createClass({
 			} else {
 				guideList = (
 					/* jshint ignore:start */
-					<div className="collection-header">
-						<h6>You do not have any curated guides</h6>
+					<div>
+						<div className="messaging">You have not curated any guides</div>
 					</div>
 					/* jshint ignore:end */
 				);
