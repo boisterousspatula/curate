@@ -65,7 +65,7 @@ var GuideListComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<div className="guideList">
-				<h2>Find a learning path</h2>
+				<div className="callToAction">Find a learning path</div>
 				<h4>FEATURED GUIDES</h4>
 				<table>
 					{guideList}
