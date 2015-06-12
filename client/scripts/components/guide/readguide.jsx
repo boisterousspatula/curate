@@ -88,12 +88,17 @@ var ReadGuideComponent = React.createClass({
 
         <div className='readGuideHeader'>
           <span className='voteContainer'>
-            <GuideVote votes={this.state.guide.votes} type='readGuide' onDownvote={this.handleDownvote} onUpvote={this.handleUpvote}/>
-          </span>
 
+            <GuideVote votes={this.state.guide.votes} type='readGuide' onDownvote={this.handleDownvote} onUpvote={this.handleUpvote}/>
+
+          </div>
           <span className='guideTitle'>
             {this.state.guide.title}
           </span>
+          <span class="submittedBy">
+            Submitted by: 
+          </span
+          
         </div>
 
           <FavoriteButton guideId={this.state.id} />
@@ -102,6 +107,7 @@ var ReadGuideComponent = React.createClass({
           <div className='guideContentContainer'>
             <span className='guideDescHeader'>Guide Description</span>
             <span className='guideDescription'> {this.state.guide.description}</span>
+
 
               {sections}
 
