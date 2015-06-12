@@ -81,8 +81,8 @@ var ReadGuideComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
-			<DefaultLayout>
-        <div className='readGuideContainer'>
+			<DefaultLayout>       
+        <div className='container readGuideContainer'>
           <span className='guideTitle'>
             {this.state.guide.title}
           </span>
@@ -98,7 +98,7 @@ var ReadGuideComponent = React.createClass({
 
   				  <CommentsBox guideId={this.state.id} comments={guide.comments}/>
 				  </div>
-        </div>
+        </div>     
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);
