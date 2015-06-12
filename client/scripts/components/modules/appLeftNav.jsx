@@ -25,10 +25,7 @@ var menuItems = [
   { route: '/', text: 'LIST OF GUIDES' },
   { route: '/createguide', text: 'CREATE A GUIDE' },
   { route: '/knowrepo', text: 'KNOWLEDGE REPO' },
-  { type: MenuItem.Types.SUBHEADER },
-  { route: '/signup', text: 'SIGN UP' },
-  { route: '/login', text: 'LOG IN' },
-  { route: '/logout', text: 'LOG OUT' }
+  { type: MenuItem.Types.SUBHEADER }
 ];
 
 var AppLeftNav = React.createClass({
@@ -52,14 +49,35 @@ var AppLeftNav = React.createClass({
     };
   },
 
-  componentWillMount: function() {
-    // this.toggle = this.toggle.bind(this);
-    // this._getSelectedIndex = this._getSelectedIndex.bind(this);
-    // this._onLeftNavChange = this._onLeftNavChange.bind(this);
-    // this._onHeaderClick = this._onHeaderClick.bind(this);
-  },
+  // componentWillMount: function() {
+  //   this.toggle = this.toggle.bind(this);
+  //   this._getSelectedIndex = this._getSelectedIndex.bind(this);
+  //   this._onLeftNavChange = this._onLeftNavChange.bind(this);
+  //   this._onHeaderClick = this._onHeaderClick.bind(this);
+  // },
 
   render: function() {
+    //Render sign up, log in, and log out buttons from login status
+    var isLoggedIn = userStore.get().loggedIn;
+    if(isLoggedIn) {
+      menuItems = [
+        { route: '/', text: 'LIST OF GUIDES' },
+        { route: '/createguide', text: 'CREATE A GUIDE' },
+        { route: '/knowrepo', text: 'KNOWLEDGE REPO' },
+        { type: MenuItem.Types.SUBHEADER },
+        { route: '/logout', text: 'LOG OUT' }
+      ];
+    } else {
+      menuItems = [
+        { route: '/', text: 'LIST OF GUIDES' },
+        { route: '/createguide', text: 'CREATE A GUIDE' },
+        { route: '/knowrepo', text: 'KNOWLEDGE REPO' },
+        { type: MenuItem.Types.SUBHEADER },
+        { route: '/signup', text: 'SIGN UP' },
+        { route: '/login', text: 'LOG IN' }
+      ];
+    }
+
     /* jshint ignore:start */
     var header = <div className="logo" style={this.getStyles()} onClick={this._onHeaderClick}></div>;
 
@@ -109,9 +127,3 @@ var AppLeftNav = React.createClass({
 });
 
 module.exports = AppLeftNav;
-
-/* LIST OF GUIDES: */
-// font-family: Roboto-Bold;
-// font-size: 36px;
-// color: #678387;
-// line-height: 104px;
