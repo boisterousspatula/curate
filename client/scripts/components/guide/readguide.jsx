@@ -84,20 +84,19 @@ var ReadGuideComponent = React.createClass({
 			/* jshint ignore:start */
 
 			<DefaultLayout>       
-        <div className='container readGuideContainer'>
-
-        <div className='readGuideHeader'>
+        <div className='readGuideContainer'>
+          <div className='readGuideHeader'>
           <span className='voteContainer'>
 
             <GuideVote votes={this.state.guide.votes} type='readGuide' onDownvote={this.handleDownvote} onUpvote={this.handleUpvote}/>
 
-          </div>
+          </span>
           <span className='guideTitle'>
             {this.state.guide.title}
           </span>
-          <span class="submittedBy">
-            Submitted by: 
-          </span
+          <span className="submittedBy">
+            Curated by: 
+          </span>
           
         </div>
 

@@ -397,10 +397,6 @@ h4 {
 
 .guideList {
   margin-left: 98px;
-<<<<<<< HEAD
-=======
-  /*width: 125%;*/
->>>>>>> working
 
   .guidePreviewContainer{
     position: relative;
@@ -474,62 +470,16 @@ h4 {
 }
 
 .readGuideContainer{
-  margin-top: 2em;
-  margin-left: 15em;
+  margin-top: 4em;
+  margin-left: 25em;
 
   .readGuideHeader{
     margin-bottom: 2em;
 
-<<<<<<< HEAD
-    .voteContainer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      float: left;
-      margin-top: 5px;
+    .submittedBy{
+      display: inherit;
+    }
 
-        .votes {
-          font-weight: 400;
-          font-size: 18px;
-          text-align: center;
-          display:inline-block;
-          margin-top: 4px;
-          margin-left: 13.5px;
-        }
-
-        .arrow-up:after {
-          content:"\231d";
-          font-size:30px;
-          font-weight: bold;
-          display:inline-block;
-
-          float:left;
-          clear:left;
-          margin-bottom: -25px;
-          margin-left: 8px;
-          transform: rotate(-45deg);
-        }
-
-        .arrow-down:after{
-          content:"\231d";
-          font-size:30px;
-          font-weight: bold;
-          display: inline-block;
-
-          margin-top: -30px;
-          margin-left: 5px;
-          clear:both;
-          transform: translateX(8px) rotate(135deg);
-        }
-      }
-
-      .guidePreviewDescription {
-        font-size: 18px;
-        margin-left: 5px;
-        padding-left:25px;
-        width: 95%;
-      }
-=======
     .voteContainer{
       position: relative;
       top: 0;
@@ -537,8 +487,7 @@ h4 {
       float: left;
       margin-top: -2px;
       margin-right: 5px;
->>>>>>> working
-    }
-}
 
+    }
+  }
 }
