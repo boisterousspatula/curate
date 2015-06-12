@@ -26,13 +26,6 @@ var GuideListComponent = React.createClass({
 		};
 	},
 
-	//Set current theme
-	componentWillMount: function() {
-		//ThemeManager.setPalette({
-		//	accent1Color: Colors.green800
-		//});
-	},
-
 	componentDidMount: function() {
 		guideStore.addChangeListener(this._onChange);
 	},
@@ -71,9 +64,13 @@ var GuideListComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
-			<table className="container">
-				{guideList}
-			</table>
+			<div className="guideList">
+				<h2>Find a learning path</h2>
+				<h4>FEATURED GUIDES</h4>
+				<table>
+					{guideList}
+				</table>
+			</div>
 			/* jshint ignore:end */
 		);
 	}
