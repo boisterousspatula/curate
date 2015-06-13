@@ -32,6 +32,9 @@ var IndexComponent = React.createClass({
               <GuideList/>
             </section>
 
+            <section className="about-us">
+            </section>
+
           </div>
         </div>
       </DefaultLayout>
