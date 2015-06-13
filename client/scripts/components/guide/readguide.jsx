@@ -122,7 +122,8 @@ var ReadGuideComponent = React.createClass({
   handleUpvote: function(e) {
     e.preventDefault();
     var name = 'upvote';
-    var guideid = this.props.id;
+    var guideid = this.state.id;
+    console.log(guideid)
 
     inputActions.postGuideVote(guideid, name);
   },
@@ -130,7 +131,7 @@ var ReadGuideComponent = React.createClass({
   handleDownvote: function(e) {
    e.preventDefault();
    var name = 'downvote';
-   var guideid = this.props.id;
+   var guideid = this.state.id;
    inputActions.postGuideVote(guideid, name);
   }
 

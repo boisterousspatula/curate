@@ -69,7 +69,7 @@ module.exports = {
       'userId': window.localStorage.userId,
       'guideId': guideid,
       'val': val
-    }
+    };
 
     var token = self.getToken();
     request
@@ -84,12 +84,18 @@ module.exports = {
 
         switch(typeOfVote){
           case "upvote":
+          console.log("IN UPVOTE")
+          index === undefined ? self.upvoteGuide() :
           self.upvoteGuide(index);
           break;
           case "downvote":
+          index === undefined ? self.downvoteGuide() :
           self.downvoteGuide(index);
           break;
         }
+      }
+      else{
+        console.log("post guide vote error")
       }
     });
   },
@@ -109,7 +115,7 @@ module.exports = {
       'guideId': guideId,
       'linkId': linkId,
       'val': val
-    }
+    };
 
     var token = self.getToken();
     request
