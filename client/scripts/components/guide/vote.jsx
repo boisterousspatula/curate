@@ -8,7 +8,7 @@ var VoteComponent = React.createClass({
   getInitialState: function () {
     var guideId = this.props.id;
     return {
-      votes: this.props.votes || 0,
+      votes: this.props.votes,
       hasVoted: this.props.hasVoted
     }
   },
@@ -49,7 +49,6 @@ var VoteComponent = React.createClass({
       <div className='arrow-up' name="upvote" onClick = {this.props.onUpvote}></div>
       <div className='votes' name="votes">{this.props.votes}</div>
       <div className='arrow-down' name="downvote" onClick = {this.props.onDownvote}></div>
-      
      </div>
       /* jshint ignore:end */
     );
