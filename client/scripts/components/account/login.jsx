@@ -11,23 +11,25 @@ var LoginComponent = React.createClass({
     return (
       /* jshint ignore:start */
       <DefaultLayout>
-        <h3>Sign in</h3>
-        <form method="post" action="/login" onSubmit={this.handleSubmit}>
-          <p>
-            <label htmlFor="email">Email:</label>
-            <input type="text" name="email" id="email" placeholder="Enter your email" autofocus="autofocus" />
-          </p>
+        <div className="container login">
+          <h3>Sign in</h3>
+          <form method="post" action="/login" onSubmit={this.handleSubmit}>
+            <p>
+              <label htmlFor="email">Email:</label>
+              <input type="text" name="email" id="email" placeholder="Enter your email" autofocus="autofocus" />
+            </p>
 
-          <p>
-            <label htmlFor="password">Password:</label>
-            <input type="password" name="password" id="password" placeholder="Password" />
-          </p>
+            <p>
+              <label htmlFor="password">Password:</label>
+              <input type="password" name="password" id="password" placeholder="Password" />
+            </p>
 
-					<button className="btn waves-effect waves-light green" type="submit">
-						Login
-					</button>
-          <p><Link url="/forgot">Forgot your password?</Link></p>
-        </form>
+  					<button className="btn waves-effect waves-light green" type="submit">
+  						Login
+  					</button>
+            <p><Link url="/forgot">Forgot your password?</Link></p>
+          </form>
+        </div>
       </DefaultLayout>
       /* jshint ignore:end */
     );

@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 var db = require('../config/database');
 var UserFavorites = db.userFavorites;
 var Guide = db.guide;
@@ -34,7 +34,7 @@ var toggleUserFavorite = function(req, res, next) {
       return userFavorites.getGuides({where: {
         guideId: req.body.guideId
       }});
-      
+
     } else {
       return res.status(400).json({
         errors: [{
@@ -56,7 +56,7 @@ var toggleUserFavorite = function(req, res, next) {
       //   console.log('I am now dust...');
       // });
 
-      
+
 
       // userFavoriteResource[0].destroy().then(function() {
       //   console.log('I am now dust...');
@@ -73,7 +73,7 @@ var toggleUserFavorite = function(req, res, next) {
       console.log("Trying to remove...");
       // holdUserFavorites.destroy(guideToDelete);
 
-      // UserFavorites.findAll()   
+      // UserFavorites.findAll()
     }
   })
   .then(function(userFavorites) {
@@ -130,14 +130,14 @@ module.exports = {
 };
 
   // } else if (req.body.sectionId) {
-    //   Section.find({ where: { 
+    //   Section.find({ where: {
     //     id: req.body.sectionId
     //   }})
     //   .then(function(section) {
     //     userFavorites.addSection(section);
     //   });
     // } else if (req.body.linkId) {
-    //   Link.find({ where: { 
+    //   Link.find({ where: {
     //     id: req.body.linkId
     //   }})
     //   .then(function(link) {
@@ -155,7 +155,7 @@ module.exports = {
       //   }
       // });
 
-      // Guide.find({ where: { 
+      // Guide.find({ where: {
       //   id: req.body.guideId
       // }})
       // .then(function(guide) {
