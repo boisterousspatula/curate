@@ -53,8 +53,9 @@ var ReadGuideSectionComponent = React.createClass({
               </span>
   						
               <div className='linkAttributes'>
+              <i className='mdi-action-perm-media'></i>
   						  <span className='contentType'> {link.contentTypes}</span>
-                <span className='clock'></span>
+                <i className='mdi-image-timer'></i>
   						  <span className='duration'>{link.linkDuration}</span>
               </div>
             </div>

@@ -32,8 +32,9 @@ var FavoriteButton = React.createClass({
     // <button onClick={this.handleSubmit}>Favorite!</button>
     return (
       /* jshint ignore:start */
-      
-      <a href='#' onClick={this.handleSubmit}><div className="favorite"></div></a>
+
+      <a href='#' onClick={this.handleSubmit}><i className="small mdi-action-favorite-outline"></i></a>
+
       
       /* jshint ignore:end */
     );  

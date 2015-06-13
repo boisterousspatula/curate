@@ -300,7 +300,7 @@ section.cover div.container article div.inner {
   height: 90%;
   top: 0;
   left: 0;
-  margin-left: 40px;
+  margin-left: 50px;
   margin-top: 10px;
 }
 
@@ -476,18 +476,29 @@ h4 {
   .readGuideHeader{
     margin-bottom: 2em;
 
-    .submittedBy{
+  .guideTitle{
+    margin-left: 20px;
+  }
+    .submittedBy {
       display: inherit;
+      position: relative;
+      left: 60px;
+      top: -20px;
     }
 
-    .voteContainer{
-      position: relative;
-      top: 0;
-      left: 0;
-      float: left;
-      margin-top: -2px;
-      margin-right: 5px;
-
+    .voteAndFav{
+        position: relative;
+        top: 0;
+        left: 0;
+        float: left;
+        margin-top: -2px;
+        margin-right: 5px;
+      
+       .favButton {
+            position:relative;
+            top:90px;
+            left:6px;
+          }
     }
   }
 }
