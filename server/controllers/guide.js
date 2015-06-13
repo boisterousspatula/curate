@@ -54,20 +54,46 @@ var readGuides = function (req, res, next) {
 						guideObj.categoryId = guide.categoryId;
 						guideObj.userId = guide.userId;
 
-						//Get num of times guide was favorited
-						// UserFavorites.findAll({
-						// 	where: {
-						// 		id: guide.id
-						// 	}
+						// find out if user viewing the guide has it previously favorited
+						// UserFavorites.find({
+						//   where: {
+						//     userId: req.headers.userId || 3
+						//   },
+						//   include: [
+						//     { model: Guide }
+						//   ]
 						// })
-						// 	.then(function(uniqueUserFavorites){
-						// 		var numFavs = uniqueUserFavorites.length;
-						// 		guideObj.numFavs = numFavs;
-						// 	});
+						// .then(function(userFavorites) {
+						//   var exists = false;
+						//   if (userFavorites.guides) {
+						//     // check to see if any of the user's favorited guides
+						//     // match the guide we are currently returning
+						//     exists = userFavorites.guides.some(function(guide) {
+						//       // TODO: Check browser compatibility of parseInt
+						//       return Number.parseInt(guideId, 10) === guide.id;
+						//     });
+						//   }
+						//   individualGuide.favorited = exists;
+						// });
+
+						// Get num of times guide was favorited
+						Guide.findAll({
+							where: {
+								id: guide.id
+							},
+						  include: [
+						  	{ model: UserFavorites }
+						  ]
+						})
+							.then(function(uniqueUserFavorites){
+								console.log('in guide controller, readGuides, uniqueUserFavorites:', uniqueUserFavorites);
+								var numFavs = uniqueUserFavorites.length;
+								guideObj.numFavs = numFavs;
+							});
 
 						guidesToSend.push(guideObj);
 						next();
-					})
+					});
 
 			}, function(err){
 				if (err) {
@@ -231,10 +257,11 @@ var readIndividualGuide = function (req, res, next) {
           userId: req.headers.userId || 3
         },
         include: [
-          { model: Guide }
+          { model: Guide },
         ]
       })
       .then(function(userFavorites) {
+      	console.log('individualGuide userFavorites:', userFavorites);
         var exists = false;
         if (userFavorites.guides) {
           // check to see if any of the user's favorited guides
