@@ -54,6 +54,17 @@ var readGuides = function (req, res, next) {
 						guideObj.categoryId = guide.categoryId;
 						guideObj.userId = guide.userId;
 
+						//Get num of times guide was favorited
+						// UserFavorites.findAll({
+						// 	where: {
+						// 		id: guide.id
+						// 	}
+						// })
+						// 	.then(function(uniqueUserFavorites){
+						// 		var numFavs = uniqueUserFavorites.length;
+						// 		guideObj.numFavs = numFavs;
+						// 	});
+
 						guidesToSend.push(guideObj);
 						next();
 					})
@@ -215,7 +226,7 @@ var readIndividualGuide = function (req, res, next) {
 		})
     .then(function() {
       // find out if user viewing the guide has it previously favorited
-      UserFavorites.find({ 
+      UserFavorites.find({
         where: {
           userId: req.headers.userId || 3
         },
