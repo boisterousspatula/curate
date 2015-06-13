@@ -21,15 +21,14 @@ var SectionComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
-			<div>
+			<div className="guideContentContainer">
 				<div className="row">
-					<SectionTextInput placeholder="Section Title:" name="title" index={this.props.index} />
+					<SectionTextInput className="col" placeholder="Section Title:" name="title" index={this.props.index} />
 				</div>
-				<br/>
 				<div className="row">
-					<SectionTextInput name="description" placeholder="Section Description:" index={this.props.index} />
+					<SectionTextInput className="col" name="description" placeholder="Section Description:" index={this.props.index} />
 				</div>
-				<br/>
+
 				<div className="row">
 					<button className="btn waves-effect waves-light green" onClick={this.handleNewLink}>
 						<i className="mdi-content-add right"></i>
@@ -37,7 +36,7 @@ var SectionComponent = React.createClass({
 					</button>
 				</div>
 				<div className="row">
-					<h6>Add content for your section: </h6>
+					<h4>Add content for your section: </h4>
 					{linkList}
 				</div>
 			</div>

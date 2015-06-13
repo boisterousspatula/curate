@@ -19,22 +19,24 @@ var SectionLinkComponent = React.createClass({
 		var index = this.props.index;
 		return (
 			/* jshint ignore:start */
-			<div >
+			<div className="guideContentContainer">
 				<div className="row">
-					<SectionTextInput placeholder="Title" name="linkTitle"  linkidx={this.props.linkidx} index={this.props.index} />
-				</div >
+					<div>
+						<SectionTextInput placeholder="Title" name="linkTitle"  linkidx={this.props.linkidx} index={this.props.index} />
+					</div>
+					<div>
+						<SectionTextInput type="url" placeholder="URL" name="links" linkidx={this.props.linkidx} index={this.props.index} />
+					</div>
+				</div>
 				<div className="row">
-					<SectionTextInput placeholder="URL" name="links" linkidx={this.props.linkidx} index={this.props.index} />
-				</div >
+					<SectionTextInput placeholder="Description" name="linkDescription" isMultiLine="true" linkidx={this.props.linkidx} index={this.props.index} />
+				</div>
 				<div className="row">
 					<label>Content Type: </label>
 					<SectionMenuList menuItems={this.state.contentTypes} name="contentTypes" linkidx={this.props.linkidx} index={this.props.index}/>
 
 					<label>Estimated Time to Completion: </label>
 					<SectionMenuList menuItems={this.state.timeRanges} name="linkDuration" linkidx={this.props.linkidx} index={this.props.index}/>
-				</div>
-				<div className="row">
-					<SectionTextInput isMultiLine={true} placeholder="Description" name="linkDescription" isMultiLine="true" linkidx={this.props.linkidx} index={this.props.index} />
 				</div>
 			</div>
 			/* jshint ignore:end */
