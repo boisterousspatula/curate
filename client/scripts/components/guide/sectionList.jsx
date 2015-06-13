@@ -21,8 +21,7 @@ var SectionListComponent = React.createClass({
 		});
 		return (
 			/* jshint ignore:start */
-			<div>
-
+			<div className="section">
 				{htmlSections}
 			</div>
 

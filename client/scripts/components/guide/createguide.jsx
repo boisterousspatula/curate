@@ -62,31 +62,28 @@ var GuideComponent = React.createClass({
 			/* jshint ignore:start */
 			<DefaultLayout>
 				<div className="container">
-					<form method="post" action="/guide" onSubmit={this.handleSubmit}>
+					<form className="createGuideContainer" method="post" action="/guide" onSubmit={this.handleSubmit}>
 						<span className='guideTitle'>Create new guide</span>
 						<div className="guideContentContainer">
-							<span className='guideDescHeader'>Guide</span>
+							<h4 className='guideHeader'>Guide</h4>
 							<div>
-									<SectionTextInput className="col" placeholder="Guide Title:"  value={this.state.guide.guideTitle} name="guideTitle"/>
-									<SectionTextInput className="col" placeholder="Guide Description:" name="guideDescription" id="guideDescription"/>
-
+								<SectionTextInput className="col" placeholder="Guide Title:"  value={this.state.guide.guideTitle} name="guideTitle"/>
+								<SectionTextInput className="col" placeholder="Guide Description:" name="guideDescription" id="guideDescription"/>
 							</div>
-
+							<h4 className='sectionHeader'>Section</h4>
+							<SectionList sections={this.state.sections}/>
 							<div className="row">
-								<button className="btn waves-effect waves-light green" onClick={this.handleNewSection}>
+								<button className="btn waves-effect waves-light green padding" onClick={this.handleNewSection}>
 									<i className="mdi-content-add right"></i>
 									Add new section
 								</button>
 							</div>
-							<span className='guideDescHeader'>Section</span>
-
-							<SectionList sections={this.state.sections}/>
-							<br/>
-							<button className="btn waves-effect waves-light green" type="submit">
-								<i className="mdi-content-create right"></i>
-								Publish New Guide
-							</button>
-
+							<div className="row">
+								<button className="btn waves-effect waves-light green" type="submit">
+									<i className="mdi-content-create right"></i>
+									Publish New Guide
+								</button>
+							</div>
 						</div>
 					</form>
 				</div>

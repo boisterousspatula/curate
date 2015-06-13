@@ -30,15 +30,14 @@ var SectionComponent = React.createClass({
 				</div>
 
 				<div className="row">
-					<button className="btn waves-effect waves-light green" onClick={this.handleNewLink}>
-						<i className="mdi-content-add right"></i>
-						Add link
-					</button>
-				</div>
-				<div className="row">
-					<h4>Add content for your section: </h4>
+					<h4 className="linkHeader">Link</h4>
 					{linkList}
 				</div>
+				<button className="btn waves-effect waves-light green" onClick={this.handleNewLink}>
+					<i className="mdi-content-add right"></i>
+					Add link
+				</button>
+
 			</div>
 			/* jshint ignore:end */
 		);

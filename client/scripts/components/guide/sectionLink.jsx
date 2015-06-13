@@ -20,24 +20,15 @@ var SectionLinkComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<div className="guideContentContainer">
-				<div className="row">
-					<div>
-						<SectionTextInput placeholder="Title" name="linkTitle"  linkidx={this.props.linkidx} index={this.props.index} />
-					</div>
-					<div>
-						<SectionTextInput type="url" placeholder="URL" name="links" linkidx={this.props.linkidx} index={this.props.index} />
-					</div>
-				</div>
-				<div className="row">
-					<SectionTextInput placeholder="Description" name="linkDescription" isMultiLine="true" linkidx={this.props.linkidx} index={this.props.index} />
-				</div>
-				<div className="row">
-					<label>Content Type: </label>
-					<SectionMenuList menuItems={this.state.contentTypes} name="contentTypes" linkidx={this.props.linkidx} index={this.props.index}/>
+				<SectionTextInput placeholder="Title" name="linkTitle"  linkidx={this.props.linkidx} index={this.props.index} />
+				<SectionTextInput type="url" placeholder="URL" name="links" linkidx={this.props.linkidx} index={this.props.index} />
+				<SectionTextInput placeholder="Description" name="linkDescription" isMultiLine="true" linkidx={this.props.linkidx} index={this.props.index} />
 
-					<label>Estimated Time to Completion: </label>
-					<SectionMenuList menuItems={this.state.timeRanges} name="linkDuration" linkidx={this.props.linkidx} index={this.props.index}/>
-				</div>
+				<label >Content Type: </label>
+				<SectionMenuList menuItems={this.state.contentTypes} name="contentTypes" linkidx={this.props.linkidx} index={this.props.index}/>
+
+				<label>Estimated Time to Completion: </label>
+				<SectionMenuList menuItems={this.state.timeRanges} name="linkDuration" linkidx={this.props.linkidx} index={this.props.index}/>
 			</div>
 			/* jshint ignore:end */
 		);
