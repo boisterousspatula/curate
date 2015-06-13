@@ -35,13 +35,14 @@ var SectionMenuListComponent = React.createClass({
   },
 
   render: function() {
+		console.log('dropdown', this.props);
 		return (
       /* jshint ignore:start */
       <DropDownMenu
       className={this.props.className}
       id={this.props.id}
       name={this.props.name}
-			selectedIndex={this.props.default}
+			//selectedIndex={this.props.default}
       //placeholder={this.props.placeholder}
       value={this.state.value}
       onChange={this.onChange}

@@ -70,8 +70,10 @@ var GuideComponent = React.createClass({
 								<SectionTextInput className="col" placeholder="Guide Title:"  value={this.state.guide.guideTitle} name="guideTitle"/>
 								<SectionTextInput className="col" placeholder="Guide Description:" name="guideDescription" id="guideDescription"/>
 							</div>
+							<div>
 							<h4 className='sectionHeader'>Section</h4>
 							<SectionList sections={this.state.sections}/>
+								</div>
 							<div className="row">
 								<button className="btn waves-effect waves-light green padding" onClick={this.handleNewSection}>
 									<i className="mdi-content-add right"></i>
