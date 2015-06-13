@@ -43,14 +43,14 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 			var index = action.index
 
 			index === undefined ? ++_guides.votes : ++_guides[index].votes;
-			console.log(_guides[index].votes)
+
 			GuideStore.emitChange();
 			break;
 		case inputConstants.DOWNVOTE_GUIDE:
 			var index = action.index
 
 			index === undefined ? --_guides.votes : --_guides[index].votes;
-			console.log(_guides[index].votes)
+
 			GuideStore.emitChange();
 			break;
 		case inputConstants.UPVOTE_LINK:
