@@ -52,7 +52,6 @@ var GuideListComponent = React.createClass({
 			var guideList = this.state.guides.sort(function (a, b) {
 				return b.votes - a.votes;
 			}).map(function (guide, idx) {
-				console.log('GUIDE VOTES', guide);
 				guide.votes = guide.votes || 0;
 				return (
 					/* jshint ignore:start */

@@ -2,7 +2,7 @@
 
 var React = require('react');
 var Defaults = require('../../constants/defaults')
-var Vote= require('./readguidevote.jsx');
+var LinkVote= require('./readguidevote.jsx');
 var inputActions = require('../../actions/input');
 var mui = require('material-ui');
 var	Paper = mui.Paper;
@@ -54,7 +54,7 @@ var ReadGuideSectionComponent = React.createClass({
         
 					<div className ='contentCard'>
           <div>
-						<Vote votes={link.votes} type='link' linkId ={link.linkId} linkIndex={idx} sectionIndex={self.props.index} guideId ={self.props.guideId}/>
+						<LinkVote votes={link.votes} type='link' linkId ={link.linkId} linkIndex={idx} sectionIndex={self.props.index} guideId ={self.props.guideId}/>
             </div>
 
             <div className='linkDetails'>
@@ -81,7 +81,7 @@ var ReadGuideSectionComponent = React.createClass({
 			return(
 				<div key={idx}>
 					<div className ='contentCard'>
-						<Vote votes={link.votes} type='link' linkIndex={idx} sectionIndex={self.props.index} />
+						<LinkVote votes={link.votes} type='crowdlink' linkIndex={idx} sectionIndex={self.props.index} />
             <div className='linkDetails'>
 						<span className='linkTitle'>
               <a href={link.url}>{link.linkTitle}</a>

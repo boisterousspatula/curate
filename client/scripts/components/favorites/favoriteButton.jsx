@@ -9,7 +9,9 @@ var FontIcon = mui.FontIcon;
 
 var FavoriteButton = React.createClass({
   getInitialState: function() {
-    return {};
+    return {
+      favorited: false
+    };
   },
 
   //Needed for mui to load theme
@@ -28,12 +30,24 @@ var FavoriteButton = React.createClass({
     favoriteActions.postFavorite(this.props.guideId);
   },
 
+  _onFav: function(){
+    var newState = !this.state.favorited
+    this.setState({
+      favorited: newState
+    })
+    this.handleSubmit();
+  },
+
   render: function() {
     // <button onClick={this.handleSubmit}>Favorite!</button>
     return (
       /* jshint ignore:start */
 
-      <a href='#' onClick={this.handleSubmit}><i className="small mdi-action-favorite-outline"></i></a>
+      <a href='#' onClick={this._onFav}>
+      {this.state.favorited ? 
+        <i className="small mdi-action-favorite"></i> :
+        <i className="small mdi-action-favorite-outline"></i>}
+      </a>
 
       
       /* jshint ignore:end */

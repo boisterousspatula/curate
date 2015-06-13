@@ -121,20 +121,17 @@ var ReadGuideComponent = React.createClass({
 
   handleUpvote: function(e) {
     e.preventDefault();
-    var type = 'upvote';
-    var linkIndex = this.props.linkIndex;
-  
-    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
+    var name = 'upvote';
+    var guideid = this.props.id;
 
+    inputActions.postGuideVote(guideid, name);
   },
+
   handleDownvote: function(e) {
-    e.preventDefault();
-    var type = 'downvote';
-    var linkIndex = this.props.linkIndex;
-    var sectionIndex = this.props.sectionIndex;
-
-    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
-
+   e.preventDefault();
+   var name = 'downvote';
+   var guideid = this.props.id;
+   inputActions.postGuideVote(guideid, name);
   }
 
 
