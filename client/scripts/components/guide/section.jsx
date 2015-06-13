@@ -37,7 +37,6 @@ var SectionComponent = React.createClass({
 					<i className="mdi-content-add right"></i>
 					Add link
 				</button>
-
 			</div>
 			/* jshint ignore:end */
 		);
