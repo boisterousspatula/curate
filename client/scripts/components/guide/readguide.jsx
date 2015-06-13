@@ -43,7 +43,7 @@ var ReadGuideComponent = React.createClass({
       userEmail: null,
       category: null,
       votes: 0,
-      comments: [{message:null, userEmail:null}, {message:null, userEmail:null}]
+      comments: [{message:null, userEmail:null}]
     };
 
     var guideId = guideStore.getId();

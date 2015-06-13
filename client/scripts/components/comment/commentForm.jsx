@@ -46,6 +46,7 @@ var CommentForm = React.createClass({
 		var form = e.currentTarget;
 
 		guideActions.comment(form, guideActions.setComments);
+		form.reset();
 	},
 
 	render: function() {

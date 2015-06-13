@@ -86,7 +86,6 @@ var readGuides = function (req, res, next) {
 						  ]
 						})
 							.then(function(uniqueUserFavorites){
-								console.log('in guide controller, readGuides, uniqueUserFavorites:', uniqueUserFavorites);
 								var numFavs = uniqueUserFavorites.length;
 								guideObj.numFavs = numFavs;
 							});
@@ -110,7 +109,6 @@ var readGuides = function (req, res, next) {
 			return next(err);
 		});
 
-	console.log('Guides successfully retrieved.');
 };
 
 
@@ -119,11 +117,10 @@ var readGuides = function (req, res, next) {
  * Read users guide data
  */
 var readUserGuides = function (req, res, next) {
-	console.log("in read user guides", req.user);
 	Guide.findAll({
 		where: {
 			// need to have front end send userId from localStorage
-			userId: req.headers.userid
+			userId: req.user.id
 		}
 	})
 	.then(function(guides) {
@@ -262,7 +259,6 @@ var readIndividualGuide = function (req, res, next) {
         ]
       })
       .then(function(userFavorites) {
-      	console.log('individualGuide userFavorites:', userFavorites);
         var exists = false;
         if (userFavorites.guides) {
           // check to see if any of the user's favorited guides
