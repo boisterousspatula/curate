@@ -3,7 +3,9 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
+var inputActions = require('../../actions/input');
 var guideStore = require('../../stores/guides');
+var GuideVote = require('./vote.jsx');
 var GuideSection = require('./readguidesection.jsx');
 var CommentsBox = require('../comment/commentBox.jsx');
 var FavoriteButton = require('../favorites/favoriteButton.jsx');
@@ -81,28 +83,60 @@ var ReadGuideComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
+
 			<DefaultLayout>       
-        <div className='container readGuideContainer'>
+        <div className='readGuideContainer'>
+          <div className='readGuideHeader'>
+           
+           <div className='voteAndFav'>
+            <GuideVote votes={this.state.guide.votes} type='readGuide' onDownvote={this.handleDownvote} onUpvote={this.handleUpvote}/>
+            <div className='favButton'>
+             <FavoriteButton guideId={this.state.id} />
+            </div>
+          </div>
+
+
           <span className='guideTitle'>
             {this.state.guide.title}
           </span>
+          <span className="submittedBy">
+            Curated by: {this.state.guide.userEmail}
+          </span>
+          
+        </div>
 
-          <FavoriteButton guideId={this.state.id} />
 					{/*<LinearProgress mode='determinate' value={50}/>*/}
 
           <div className='guideContentContainer'>
             <span className='guideDescHeader'>Guide Description</span>
             <span className='guideDescription'> {this.state.guide.description}</span>
-
               {sections}
-
   				  <CommentsBox guideId={this.state.id} comments={guide.comments}/>
-				  </div>
-        </div>     
+				</div>
+      </div>     
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);
-	}
+	},
+
+  handleUpvote: function(e) {
+    e.preventDefault();
+    var type = 'upvote';
+    var linkIndex = this.props.linkIndex;
+  
+    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
+
+  },
+  handleDownvote: function(e) {
+    e.preventDefault();
+    var type = 'downvote';
+    var linkIndex = this.props.linkIndex;
+    var sectionIndex = this.props.sectionIndex;
+
+    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
+
+  }
+
 
 })
 

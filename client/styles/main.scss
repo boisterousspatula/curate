@@ -220,7 +220,8 @@ section.cover div.container article div.inner {
   width: 95%;
   background: #FCFCFC;
   padding: 10px;
-  margin: 10px;
+  margin: 20px 10px 20px 10px;
+
   border: 1px solid #979797;
 }
 
@@ -257,7 +258,8 @@ section.cover div.container article div.inner {
   font-family: Roboto;
   background: #FFFFFF;
   border: 1px solid #979797;
-  padding: 20px;
+  padding: 4em;
+
 }
 
 /* section styles */
@@ -299,7 +301,7 @@ section.cover div.container article div.inner {
   height: 90%;
   top: 0;
   left: 0;
-  margin-left: 40px;
+  margin-left: 50px;
   margin-top: 10px;
 }
 
@@ -337,7 +339,6 @@ section.cover div.container article div.inner {
   content:"\231d";
   font-size:50px;
   display:inline-block;
-
   float:left;
   clear:left;
   margin-bottom: -30px;
@@ -351,9 +352,7 @@ section.cover div.container article div.inner {
   display: inline-block;
   margin-top: -30px;
   margin-left: 2px;
-
   clear:both;
-
   transform: translateX(8px) rotate(135deg);
 }
 
@@ -411,64 +410,99 @@ h4 {
     margin-left: 40px;
     border: 1px solid #979797;
 
-    .guidePreviewTitle {
-      font-size: 24px;
-      color: #379E59;
-      margin-top: 5px;
+  .guidePreviewTitle {
+    font-size: 24px;
+    color: #379E59;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding-left:25px;
+    padding-bottom:10px;
+  }
+
+  .voteContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    float: left;
+    margin-top: 5px;
+
+      .votes {
+        font-weight: 400;
+        font-size: 18px;
+        text-align: center;
+        display:inline-block;
+        margin-top: 4px;
+        margin-left: 13.5px;
+      }
+
+      .arrow-up:after{
+        content:"\231d";
+        font-size:30px;
+        font-weight: bold;
+        display:inline-block;
+
+        float:left;
+        clear:left;
+        margin-bottom: -25px;
+        margin-left: 8px;
+        transform: rotate(-45deg);
+      }
+
+      .arrow-down:after{
+        content:"\231d";
+        font-size:30px;
+        font-weight: bold;
+        display: inline-block;
+
+        margin-top: -30px;
+        margin-left: 5px;
+        clear:both;
+        transform: translateX(8px) rotate(135deg);
+      }
+    }
+
+    .guidePreviewDescription{
+      font-size: 18px;
       margin-left: 5px;
       padding-left:25px;
-      padding-bottom:10px;
+      width: 95%;
+    }
+  }
+}
+
+.readGuideContainer{
+  margin-top: 4em;
+  margin-left: 25em;
+  width: 50%;
+
+  .readGuideHeader{
+    margin-bottom: 2em;
+
+  .guideTitle{
+    margin-left: 20px;
+  }
+    .submittedBy {
+      display: inherit;
+      position: relative;
+      left: 60px;
+      top: -20px;
     }
 
-    .voteContainer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      float: left;
-      margin-top: 5px;
-
-        .votes {
-          font-weight: 400;
-          font-size: 18px;
-          text-align: center;
-          display:inline-block;
-          margin-top: 4px;
-          margin-left: 13.5px;
-        }
-
-        .arrow-up:after {
-          content:"\231d";
-          font-size:30px;
-          font-weight: bold;
-          display:inline-block;
-
-          float:left;
-          clear:left;
-          margin-bottom: -25px;
-          margin-left: 8px;
-          transform: rotate(-45deg);
-        }
-
-        .arrow-down:after{
-          content:"\231d";
-          font-size:30px;
-          font-weight: bold;
-          display: inline-block;
-
-          margin-top: -30px;
-          margin-left: 5px;
-          clear:both;
-          transform: translateX(8px) rotate(135deg);
-        }
-      }
-
-      .guidePreviewDescription {
-        font-size: 18px;
-        margin-left: 5px;
-        padding-left:25px;
-        width: 95%;
-      }
+    .voteAndFav{
+        position: relative;
+        top: 0;
+        left: 0;
+        float: left;
+        margin-top: -2px;
+        margin-right: 5px;
+      
+       .favButton {
+            position:relative;
+            top:90px;
+            left:6px;
+          }
     }
+  }
 }
 
 .login {

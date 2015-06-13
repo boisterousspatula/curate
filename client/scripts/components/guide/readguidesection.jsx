@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var Defaults = require('../../constants/defaults')
 var Vote= require('./readguidevote.jsx');
 var inputActions = require('../../actions/input');
 var mui = require('material-ui');
@@ -32,12 +33,21 @@ var ReadGuideSectionComponent = React.createClass({
 		//});
 	},
 	getInitialState: function(){
-		return { showContentForm : false }
+		return { showContentForm : false,
+		 }
 	},
 	render: function() {
 		var section = this.props.sec;
 		var self = this;
 		var linkList = section.links.map(function(link, idx){
+
+		//gets the text form of the duration from the Defaults constants
+		var linkDuration;
+		Defaults.timeRange.forEach(function(time){
+			if(time.payload === link.linkDuration){
+				linkDuration = time.text;
+			}
+		})
 			/* jshint ignore:start */
 			return(
 			<div key={idx}>
@@ -53,9 +63,10 @@ var ReadGuideSectionComponent = React.createClass({
               </span>
   						
               <div className='linkAttributes'>
+              <i className='mdi-action-perm-media'></i>
   						  <span className='contentType'> {link.contentTypes}</span>
-                <span className='clock'></span>
-  						  <span className='duration'>{link.linkDuration}</span>
+                <i className='mdi-image-timer'></i>
+  						  <span className='duration'>{linkDuration}</span>
               </div>
             </div>
 
