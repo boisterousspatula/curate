@@ -22,7 +22,7 @@ var MenuItem = mui.MenuItem;
 var RaisedButton = mui.RaisedButton;
 
 var menuItems = [
-  { route: '/', text: 'LIST OF GUIDES' },
+  { route: '/', text: 'FEATURED GUIDES' },
   { route: '/createguide', text: 'CREATE A GUIDE' },
   { route: '/knowrepo', text: 'KNOWLEDGE REPO' },
   { type: MenuItem.Types.SUBHEADER }
