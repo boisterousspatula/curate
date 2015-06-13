@@ -42,12 +42,12 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 	}
 	else if (action.actionType === inputConstants.UPVOTE_GUIDE){
 		var index = action.index
-		_guides[index].votes++;
+		index ? _guides[index].votes++ : _guides.votes++;
 		GuideStore.emitChange();
 	}
 	else if (action.actionType === inputConstants.DOWNVOTE_GUIDE){
 		var index = action.index
-		_guides[index].votes--;
+		index ? _guides[index].votes-- : _guides.votes--;
 		GuideStore.emitChange();
 	}
 	else if (action.actionType === inputConstants.UPVOTE_LINK){

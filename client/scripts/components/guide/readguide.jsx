@@ -3,6 +3,7 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var guideActions = require('../../actions/guide');
+var inputActions = require('../../actions/input');
 var guideStore = require('../../stores/guides');
 var GuideVote = require('./vote.jsx');
 var GuideSection = require('./readguidesection.jsx');
@@ -99,7 +100,7 @@ var ReadGuideComponent = React.createClass({
             {this.state.guide.title}
           </span>
           <span className="submittedBy">
-            Curated by: 
+            Curated by: {this.state.guide.userEmail}
           </span>
           
         </div>
@@ -119,18 +120,23 @@ var ReadGuideComponent = React.createClass({
 	},
 
   handleUpvote: function(e) {
-  e.preventDefault();
-  var name = 'upvote';
-  var guideid = this.props.id;
-  inputActions.postGuideVote(guideid, name);
+    e.preventDefault();
+    var type = 'upvote';
+    var linkIndex = this.props.linkIndex;
+  
+    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
 
   },
   handleDownvote: function(e) {
-   e.preventDefault();
-   var name = 'downvote';
-   var guideid = this.props.id;
-   inputActions.postGuideVote(guideid, name);
+    e.preventDefault();
+    var type = 'downvote';
+    var linkIndex = this.props.linkIndex;
+    var sectionIndex = this.props.sectionIndex;
+
+    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
+
   }
+
 
 })
 
