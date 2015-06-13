@@ -16,7 +16,7 @@ var IndexComponent = React.createClass({
           <div className="homepage">
 
             <section className="cover min-window-height">
-              <div className="container min-window-height">
+              <div className="crosshatch container min-window-height">
                 <article className="main-info">
                   <div className="inner">
                     <h1 className="title">Crowd-sourced Curriculums</h1>

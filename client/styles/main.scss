@@ -43,9 +43,9 @@ a {
   background-size: 10px 10px;
   background-position: 20em 0;
   z-index: 2;
-  opacity: .15;
+  /*opacity: .15;*/
   /*background: #1A3034;*/
-  /*background-color: transparent;*/
+  background-color: rgba(0,0,0,.15);
 }
 
 section.cover div.container article div.inner {
@@ -60,7 +60,7 @@ section.cover div.container article div.inner {
 
 .container {
   width: auto;
-  margin: 0 0 0 8em;
+  margin: 0 0 0 17em;
   overflow: hidden;
   z-index: 5;
   padding: 4em 9em;
@@ -68,6 +68,7 @@ section.cover div.container article div.inner {
 
 .inner {
   /*max-width: 80em;*/
+  max-height:100vh;
 }
 
 .homepage {
@@ -119,7 +120,7 @@ section.cover div.container article div.inner {
 
 .logo {
   margin-top: 15px;
-  content:url(../images/skilletlogo.png);
+  content:url(../images/skilletlogo3.png);
 }
 
 .links a {

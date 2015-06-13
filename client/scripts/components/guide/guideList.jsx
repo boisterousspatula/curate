@@ -64,7 +64,7 @@ var GuideListComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
-			<div className="guideList">
+			<div className="min-window-height crosshatch container guideList">
 				<div className="callToAction">Find a learning path</div>
 				<h4>FEATURED GUIDES</h4>
 				<table>
