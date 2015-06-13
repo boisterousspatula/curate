@@ -28,7 +28,7 @@ var IndexComponent = React.createClass({
               </div>
             </section>
 
-            <section className="guide-list container">
+            <section className="container">
               <GuideList/>
             </section>
 
