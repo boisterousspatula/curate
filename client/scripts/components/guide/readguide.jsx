@@ -123,8 +123,6 @@ var ReadGuideComponent = React.createClass({
     e.preventDefault();
     var name = 'upvote';
     var guideid = this.state.id;
-    console.log(guideid)
-
     inputActions.postGuideVote(guideid, name);
   },
 
