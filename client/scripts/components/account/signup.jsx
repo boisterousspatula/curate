@@ -28,7 +28,7 @@ var SignupComponent = React.createClass({
               <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" />
             </p>
 
-            <button>Signup</button>
+            <button className="btn waves-effect waves-light green">Signup</button>
           </form>
         </div>
       </DefaultLayout>
