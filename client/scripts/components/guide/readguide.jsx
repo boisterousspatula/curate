@@ -100,7 +100,7 @@ var ReadGuideComponent = React.createClass({
             {this.state.guide.title}
           </span>
           <span className="submittedBy">
-            Curated by: {this.state.guide.userEmail}
+            Curated by: <span className='guideCreatorName'>{this.state.guide.userEmail}</span>
           </span>
           
         </div>
