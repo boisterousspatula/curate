@@ -24,7 +24,8 @@ var async = require('async');
 var readGuides = function (req, res, next) {
 	// need to find correct guide by id now
 	var guidesToSend = [];
-	Guide.findAll().then(function(guides) {
+	Guide.findAll()
+		.then(function(guides) {
 		if (!guides) {
 			return res.status(400).json({
 				errors: [{
@@ -34,6 +35,7 @@ var readGuides = function (req, res, next) {
 		}
 
 		async.each(guides, function(guide, next){
+			console.log('in readGuides, guides:', guides);
 				var guideObj = {};
 				GuideVote.findAll({ // find all votes associated with the guide
 					where: {
@@ -89,6 +91,29 @@ var readGuides = function (req, res, next) {
 								var numFavs = uniqueUserFavorites.length;
 								guideObj.numFavs = numFavs;
 							});
+
+						// readIndividualGuide's get email
+						// .then(function() {
+						// 	// Find user email associated with the guide
+						// 	User.find({
+						// 		where: {
+						// 			id: guide.userId
+						// 		}
+						// 	})
+						// 	.then(function(user) {
+						// 		if (user && user.email) {
+						// 			console.log(user.email);
+						// 			individualGuide.userEmail = user.email;
+						// 		}
+						// 	});
+						// })
+
+						// User.find({
+						// 	where: {
+						// 		id: guide.userId
+						// 	}
+						// })
+						// 	.then(function)
 
 						guidesToSend.push(guideObj);
 						next();

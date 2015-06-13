@@ -5,6 +5,7 @@ var guideActions = require('../../actions/guide');
 var inputActions = require('../../actions/input');
 var routeActions = require('../../actions/routes');
 var VoteComponent = require('./vote.jsx');
+var FavoriteButton = require('../favorites/favoriteButton.jsx');
 
 //Load Material Components
 var mui = require('material-ui');
@@ -46,12 +47,20 @@ var GuidePreviewComponent = React.createClass({
           <tr>
             <td>
             <div className="guidePreviewContainer">
-              <div className="guidePreviewTitle" guideId={this.props.guide.id} onClick={this.handleClick}>{guide.title}</div>
+              <div className="guidePreviewTitle" guideId={this.props.guide.id} onClick={this.handleClick}>{guide.title}
+              </div>
+
               <div className="guidePreviewDescription">
                 <p>{guide.description}</p>
               </div>
+
               <div>
                <VoteComponent votes={guide.votes} type="guide" index={this.props.index} onDownvote={this.handleDownvote} onUpvote={this.handleUpvote}/>
+               </div>
+
+               <div className="favContainer">
+                <span className="mdi-action-favorite-outline"></span>
+                <span className="numFavs">3</span>
                </div>
             </div>
             </td>
