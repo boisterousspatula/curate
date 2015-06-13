@@ -5,14 +5,15 @@
 'use strict';
 
 var guideVoteController = require('../controllers/guideVote');
+var auth = require('../auth');
 
 var routes = function(app) {
 
   //Cast vote
-  app.post('/guideVote', guideVoteController.castVote);
+  app.post('/guideVote' ,auth.isAuthenticated, guideVoteController.castVote);
 
 	//Get votes
-	app.get('/guideVote', guideVoteController.getVoteByUser);
+	app.get('/guideVote' ,auth.isAuthenticated, guideVoteController.getVoteByUser);
 };
 
 module.exports = routes;

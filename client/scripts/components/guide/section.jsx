@@ -21,25 +21,22 @@ var SectionComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
-			<div>
+			<div className="guideContentContainer">
 				<div className="row">
-					<SectionTextInput placeholder="Section Title:" name="title" index={this.props.index} />
-				</div>
-				<br/>
-				<div className="row">
-					<SectionTextInput name="description" placeholder="Section Description:" index={this.props.index} />
-				</div>
-				<br/>
-				<div className="row">
-					<button className="btn waves-effect waves-light green" onClick={this.handleNewLink}>
-						<i className="mdi-content-add right"></i>
-						Add link
-					</button>
+					<SectionTextInput className="col" placeholder="Section Title:" name="title" index={this.props.index} />
 				</div>
 				<div className="row">
-					<h6>Add content for your section: </h6>
+					<SectionTextInput className="col" name="description" placeholder="Section Description:" index={this.props.index} />
+				</div>
+
+				<div className="row">
+					<h4 className="linkHeader">Link</h4>
 					{linkList}
 				</div>
+				<button className="btn waves-effect waves-light green" onClick={this.handleNewLink}>
+					<i className="mdi-content-add right"></i>
+					Add link
+				</button>
 			</div>
 			/* jshint ignore:end */
 		);

@@ -13,6 +13,7 @@ var localStrategy = require('./strategies/local');
  * Initialize passport serialization/deserialization
  */
 var init = function(User) {
+	console.log('IN Init', User);
   passport.serializeUser(function(user, done) {
 		console.log('IN serialize', user);
     done(null, user.id);

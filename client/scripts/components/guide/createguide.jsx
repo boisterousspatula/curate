@@ -62,44 +62,47 @@ var GuideComponent = React.createClass({
 			/* jshint ignore:start */
 			<DefaultLayout>
 				<div className="container">
-					<form method="post" action="/guide" onSubmit={this.handleSubmit}>
-						<div className="guide-headers">
-							<h3>Create New Guide! </h3>
-							<div className="row">
-								<SectionTextInput placeholder="Guide Title:"  value={this.state.guide.guideTitle} name="guideTitle"/>
+					<form className="createGuideContainer" method="post" action="/guide" onSubmit={this.handleSubmit}>
+						<span className='guideTitle'>Create new guide</span>
+						<div className="guideContentContainer">
+							<h4 className='guideHeader'>Guide</h4>
+							<div>
+								<SectionTextInput className="col" placeholder="Guide Title:"  value={this.state.guide.guideTitle} name="guideTitle"/>
+								<SectionTextInput className="col" placeholder="Guide Description:" name="guideDescription" id="guideDescription"/>
 							</div>
-							<br/>
-							<div className="row">
-								<SectionTextInput placeholder="Guide Description:" isMultiLine={true} name="guideDescription"/>
-							</div>
-						</div>
-						<br/>
-						<div className="row">
+							<h4 className='sectionHeader'>Section</h4>
 							<SectionList sections={this.state.sections}/>
+							<div className="row">
+								<button className="btn waves-effect waves-light green padding" onClick={this.handleNewSection}>
+									<i className="mdi-content-add right"></i>
+									Add new section
+								</button>
+							</div>
+							<div className="row">
+								<button className="btn waves-effect waves-light green" type="submit">
+									<i className="mdi-content-create right"></i>
+									Publish New Guide
+								</button>
+							</div>
 						</div>
-						<br/>
-						<button className="btn waves-effect waves-light green" type="submit">
-							<i className="mdi-content-create right"></i>
-							Publish New Guide
-						</button>
 					</form>
-					<button className="btn waves-effect waves-light green" onTouchTap={this._showKnowledgeRepoBar}>
-						<i className="mdi-file-cloud-circle right"></i>
-						Show Knowledge Repo
-					</button>
-					<KnowledgeRepoBar
-						ref="knowledgeRepoBar"
-						docked={false}/>
 				</div>
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);
+		//<button className="btn waves-effect waves-light green" onTouchTap={this._showKnowledgeRepoBar}>
+		//	<i className="mdi-file-cloud-circle right"></i>
+		//	Show Knowledge Repo
+		//</button>
+		//<KnowledgeRepoBar
+		//	ref="knowledgeRepoBar"
+		//	docked={false}/>
 
 	},
 
-	_showKnowledgeRepoBar: function() {
-		this.refs.knowledgeRepoBar.toggle();
-	},
+	//_showKnowledgeRepoBar: function() {
+	//	this.refs.knowledgeRepoBar.toggle();
+	//},
 
 	handleSubmit: function(e) {
 		e.preventDefault();
@@ -111,6 +114,10 @@ var GuideComponent = React.createClass({
 			guide: sectionStore.getGuide().guide
 		});
 		guideActions.postGuide(this.state.sections, this.state.guide);
+	},
+	handleNewSection: function(e){
+		e.preventDefault();
+		guideActions.addSection();
 	}
 });
 

@@ -5,11 +5,11 @@
 'use strict';
 
 var crowdLinkController = require('../controllers/crowdLink');
-
+var auth = require('../auth');
 var routes = function(app) {
 
   //Cast vote
-  app.post('/addCrowdLink', crowdLinkController.addCrowdLink);
+  app.post('/addCrowdLink',auth.isAuthenticated, crowdLinkController.addCrowdLink);
 
   //Get votes
   // app.get('/guideVote', linkVoteController.getVote);

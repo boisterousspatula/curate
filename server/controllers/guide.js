@@ -119,6 +119,7 @@ var readGuides = function (req, res, next) {
  * Read users guide data
  */
 var readUserGuides = function (req, res, next) {
+	console.log("in read user guides", req.user);
 	Guide.findAll({
 		where: {
 			// need to have front end send userId from localStorage

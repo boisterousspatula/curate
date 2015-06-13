@@ -229,7 +229,6 @@ section.cover div.container article div.inner {
 
 }
 
-
 /* guide styles */
 .guideDescHeader {
   display: block;
@@ -387,6 +386,14 @@ h4 {
   margin-left: 25px;
 }
 
+.create {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 18px;
+  color: #678387;
+  margin-left: 25px;
+}
+
 .messaging {
   font-size: 18px;
   color: #979797;
@@ -507,4 +514,38 @@ h4 {
 
 .login {
   margin-left: 200px;
+}
+
+.createGuideContainer{
+  //margin-top: 4em;
+  margin-left: 5em;
+  //width: 50%;
+
+  .guideHeader{
+    font-weight: 400;
+    font-size: 30px;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+  .sectionHeader{
+    font-weight: 300;
+    font-size: 30px;
+    margin-left: 0px;
+    border-bottom: 0px;
+    padding-left: 0px;
+  }
+
+  .linkHeader{
+    font-weight: 300;
+    font-size: 26px;
+    margin-left: 0px;
+    border-bottom: 0px;
+    padding-left: 0px;
+  }
+  .section{
+    padding-bottom: 1em;
+  }
+  .guideContentContainer{
+    margin-bottom: 1em;
+  }
 }
