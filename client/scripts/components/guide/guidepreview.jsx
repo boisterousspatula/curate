@@ -59,6 +59,7 @@ var GuidePreviewComponent = React.createClass({
                </div>
 
                <div className="favContainer">
+                <span className="numFavs">Curated by {guide.creator}</span>
                 <span className="mdi-action-favorite-outline"></span>
                 <span className="numFavs">3</span>
                </div>
