@@ -61,7 +61,6 @@ var GuideComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
-				<div className="container">
 					<form className="createGuideContainer" method="post" action="/guide" onSubmit={this.handleSubmit}>
 						<span className='guideTitle'>Create new guide</span>
 						<div className="guideContentContainer">
@@ -73,7 +72,7 @@ var GuideComponent = React.createClass({
 							<div>
 							<h4 className='sectionHeader'>Section</h4>
 							<SectionList sections={this.state.sections}/>
-								</div>
+							</div>
 							<div className="row">
 								<button className="btn waves-effect waves-light green padding" onClick={this.handleNewSection}>
 									<i className="mdi-content-add right"></i>
@@ -88,7 +87,6 @@ var GuideComponent = React.createClass({
 							</div>
 						</div>
 					</form>
-				</div>
 			</DefaultLayout>
 			/* jshint ignore:end */
 		);

@@ -58,7 +58,7 @@ var ContentForm = React.createClass({
 		var form = e.currentTarget;
 
 		guideActions.userContent(form, guideActions.setUserContent, this.props.sectionIndex);
-
+		form.reset();
 	},
 
 	render: function() {

@@ -1,4 +1,4 @@
-'use strict';
+	'use strict';
 
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
@@ -15,14 +15,15 @@ var Comment = React.createClass({
 	},
 
 	render: function() {
+		console.log('in comment', this.props);
 		return (
 			/* jshint ignore:start */
 			<li className="collection-item avatar">
 				<i className="mdi-action-account-circle"></i>
-				<span className="title">
+				<span name="userEmail">
 					{this.props.userEmail}
 				</span>
-				<p>{this.props.message}</p>
+				<p name="message">{this.props.message}</p>
 			</li>
 			/* jshint ignore:end */
 		);

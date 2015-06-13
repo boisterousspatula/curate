@@ -98,7 +98,6 @@ var expressConfig = function(app, express, db) {
   }));
 
   // Initialize Authentication
-	console.log('inside express js');
   auth.init(db.user);
   app.use(passport.initialize());
   app.use(passport.session());
@@ -113,7 +112,6 @@ var expressConfig = function(app, express, db) {
     // Make Node environment available in templates
     res.locals.env = env;
     // Make user object available in templates.
-		console.log('user avail in templates', req.user);
     res.locals.user = req.user;
     next();
   });

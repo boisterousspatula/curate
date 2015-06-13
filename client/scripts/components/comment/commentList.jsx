@@ -29,7 +29,9 @@ var CommentList = React.createClass({
 	//},
 
 	render: function() {
+		console.log('in comment', this.props.comments);
 		var commentNodes = this.props.comments.map(function(comment, index) {
+
 			return (
 				/* jshint ignore:start */
 				<Comment userEmail={comment.userEmail} key={index} message={comment.message}/>
