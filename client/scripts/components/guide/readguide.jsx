@@ -100,7 +100,7 @@ var ReadGuideComponent = React.createClass({
             {this.state.guide.title}
           </span>
           <span className="submittedBy">
-            Curated by: {this.state.guide.userEmail}
+            Curated by: <span className='guideCreatorName'>{this.state.guide.userEmail}</span>
           </span>
           
         </div>
@@ -121,20 +121,16 @@ var ReadGuideComponent = React.createClass({
 
   handleUpvote: function(e) {
     e.preventDefault();
-    var type = 'upvote';
-    var linkIndex = this.props.linkIndex;
-  
-    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
-
+    var name = 'upvote';
+    var guideid = this.state.id;
+    inputActions.postGuideVote(guideid, name);
   },
+
   handleDownvote: function(e) {
-    e.preventDefault();
-    var type = 'downvote';
-    var linkIndex = this.props.linkIndex;
-    var sectionIndex = this.props.sectionIndex;
-
-    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
-
+   e.preventDefault();
+   var name = 'downvote';
+   var guideid = this.state.id;
+   inputActions.postGuideVote(guideid, name);
   }
 
 

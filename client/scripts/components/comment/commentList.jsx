@@ -40,9 +40,9 @@ var CommentList = React.createClass({
 		});
 		return (
 			/* jshint ignore:start */
-			<div className="collection">
+			<ul className="collection">
 				{commentNodes}
-			</div>
+			</ul>
 			/* jshint ignore:end */
 		);
 	}

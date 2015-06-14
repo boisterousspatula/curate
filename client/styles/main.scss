@@ -426,7 +426,7 @@ h4 {
     padding-left:25px;
     padding-bottom:10px;
   }
-
+  
   .voteContainer{
     position: absolute;
     top: 0;
@@ -486,6 +486,8 @@ h4 {
   .readGuideHeader{
     margin-bottom: 2em;
 
+
+
   .guideTitle{
     margin-left: 20px;
   }
@@ -493,7 +495,11 @@ h4 {
       display: inherit;
       position: relative;
       left: 60px;
-      top: -20px;
+      top: -18px;
+
+      .guideCreatorName {
+        font-weight: 600;
+      }
     }
 
     .voteAndFav{

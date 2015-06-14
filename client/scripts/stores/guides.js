@@ -34,54 +34,56 @@ GuideStore.dispatcherToken = Dispatcher.register(function(payload) {
 
 	var action = payload.action;
 
-	if (action.actionType === guideConstants.SET_GUIDES) {
-		//console.log('in guide store set guides');
-		_guides = action.guides;
-		//console.log(_guides);
-		GuideStore.emitChange();
-	}
-	else if (action.actionType === inputConstants.UPVOTE_GUIDE){
-		var index = action.index
-		index ? _guides[index].votes++ : _guides.votes++;
-		GuideStore.emitChange();
-	}
-	else if (action.actionType === inputConstants.DOWNVOTE_GUIDE){
-		var index = action.index
-		index ? _guides[index].votes-- : _guides.votes--;
-		GuideStore.emitChange();
-	}
-	else if (action.actionType === inputConstants.UPVOTE_LINK){
-		var linkIndex = action.linkIndex;
-		var sectionIndex = action.sectionIndex;
-		_guides.sections[sectionIndex].links[linkIndex].votes++;
-		GuideStore.emitChange();
-	}
-	else if (action.actionType === inputConstants.DOWNVOTE_LINK){
-		var linkIndex = action.linkIndex;
-		var sectionIndex = action.sectionIndex;
+	switch(action.actionType){
+		case guideConstants.SET_GUIDES:
+			_guides = action.guides;
+			GuideStore.emitChange();
+			break;
+		case inputConstants.UPVOTE_GUIDE:
+			var index = action.index
 
-		_guides.sections[sectionIndex].links[linkIndex].votes--;
-		GuideStore.emitChange();
-	}
-	else if (action.actionType === guideConstants.PASS_ID) {
-		_guideId = payload.action.id;
-		GuideStore.emitChange();
-	}
+			index === undefined ? ++_guides.votes : ++_guides[index].votes;
 
-	else if (action.actionType === guideConstants.SET_COMMENTS) {
-		_guides.comments.push(action.comments);
-		GuideStore.emitChange();
+			GuideStore.emitChange();
+			break;
+		case inputConstants.DOWNVOTE_GUIDE:
+			var index = action.index
+
+			index === undefined ? --_guides.votes : --_guides[index].votes;
+
+			GuideStore.emitChange();
+			break;
+		case inputConstants.UPVOTE_LINK:
+			var linkIndex = action.linkIndex;
+			var sectionIndex = action.sectionIndex;
+			_guides.sections[sectionIndex].links[linkIndex].votes++;
+			GuideStore.emitChange();
+			break;
+		case inputConstants.DOWNVOTE_LINK:
+			var linkIndex = action.linkIndex;
+			var sectionIndex = action.sectionIndex;
+			_guides.sections[sectionIndex].links[linkIndex].votes--;
+			GuideStore.emitChange();
+			break;
+		case guideConstants.PASS_ID:
+			_guideId = payload.action.id;
+			GuideStore.emitChange();
+			break;
+		case guideConstants.SET_COMMENTS:
+			_guides.comments.push(action.comments);
+			GuideStore.emitChange();
+			break;
+		case guideConstants.ADD_COMMENT:
+			_guides.comments = action.comments;
+			GuideStore.emitChange();
+			break;
+		case guideConstants.SET_USER_CONTENT:
+			var sectionIndex = action.sectionIdx;
+			_guides.sections[sectionIndex].crowdLinks.push(action.userContent);
+			GuideStore.emitChange();
+			break;
 	}
-	else if (action.actionType === guideConstants.ADD_COMMENT) {
-		_guides.comments = action.comments;
-		GuideStore.emitChange();
-	}
-	else if (action.actionType === guideConstants.SET_USER_CONTENT) {
-		var sectionIndex = action.sectionIdx;
-		_guides.sections[sectionIndex].crowdLinks.push(action.userContent);
-		console.log('in guide store', _guides.sections[sectionIndex]);
-		GuideStore.emitChange();
-	}
+	
 
 });
 

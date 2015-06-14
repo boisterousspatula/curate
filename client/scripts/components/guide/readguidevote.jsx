@@ -37,24 +37,24 @@ var ReadGuideVoteComponent = React.createClass({
   render: function(){
     return(
       <div className='voteContainer'>
-        <div className='arrow-up' name='upvote' linkIndex={this.props.linkIndex} onClick={this.handleUpvote}></div>
+        <div className='arrow-up' name='upvote' linkIndex={this.props.linkIndex} onClick={this.handleLinkUpvote}></div>
         <div className='votes'>{this.state.votes}</div>
-        <div className='arrow-down' name='downvote' linkIndex={this.props.linkIndex} onClick={this.handleDownvote}></div>
+        <div className='arrow-down' name='downvote' linkIndex={this.props.linkIndex} onClick={this.handleLinkDownvote}></div>
      </div>
       )
   },
 
-    handleUpvote: function(e) {
-    e.preventDefault();
-    var type = 'upvote';
-    var linkIndex = this.props.linkIndex;
-    var sectionIndex = this.props.sectionIndex;
-    var linkId = this.props.linkId;
-    var guideId = this.props.guideId;
-    inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
+  handleLinkUpvote: function(e) {
+  e.preventDefault();
+  var type = 'upvote';
+  var linkIndex = this.props.linkIndex;
+  var sectionIndex = this.props.sectionIndex;
+  var linkId = this.props.linkId;
+  var guideId = this.props.guideId;
+  inputActions.postLinkVote(type, linkId, guideId, linkIndex, sectionIndex)
 
   },
-  handleDownvote: function(e) {
+  handleLinkDownvote: function(e) {
     e.preventDefault();
     var type = 'downvote';
     var linkIndex = this.props.linkIndex;
