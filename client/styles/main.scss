@@ -374,9 +374,8 @@ section.cover div.container article div.inner {
   font-weight: 100;
   font-size: 52px;
   color: #000000;
-  margin-top: 20px;
   margin-left: 45px;
-  margin-bottom: 100px;
+  margin-bottom: 45px;
 }
 
 h4 {
@@ -476,6 +475,21 @@ h4 {
       width: 95%;
     }
   }
+
+  .guidePreviewFavsandCreator {
+    margin-left: 25px;
+  }
+
+  .favContainer {
+    // font-weight: bold;
+    margin-left: 25px;
+  }
+
+  .numFavs {
+    position: relative;
+    bottom: 1px;
+    margin-left: 5px;
+  }
 }
 
 .readGuideContainer{
@@ -509,7 +523,7 @@ h4 {
         float: left;
         margin-top: -2px;
         margin-right: 5px;
-      
+
        .favButton {
             position:relative;
             top:90px;
@@ -563,6 +577,6 @@ h4 {
   }
 
   .row{
-    
+
   }
 }
