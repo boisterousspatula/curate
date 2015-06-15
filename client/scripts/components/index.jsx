@@ -19,7 +19,7 @@ var IndexComponent = React.createClass({
               <div className="crosshatch container min-window-height">
                 <article className="main-info">
                   <div className="inner">
-                    <h1 className="title">Crowd-sourced Curriculums</h1>
+                    <h1 className="title">Crowd-sourced curriculums</h1>
                     <h2 className="description">Sign up and create your own learning path. Share it with the world
                     and help others find the most effective material on the internet.</h2>
                     <a className="waves-effect waves-light btn-large green">SIGN UP NOW</a>
@@ -33,6 +33,15 @@ var IndexComponent = React.createClass({
             </section>
 
             <section className="about-us">
+              <div className="crosshatch container">
+                <article>
+                  <h1 className="title">About Us</h1>
+                  <div className="john-star"></div>
+                  <div className="anuj-star"></div>
+                  <div className="vince-star"></div>
+                  <div className="david-star"></div>
+                </article>
+              </div>
             </section>
 
           </div>
