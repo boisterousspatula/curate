@@ -22,7 +22,7 @@ var IndexComponent = React.createClass({
                     <h1 className="title">Crowd-sourced curriculums</h1>
                     <h2 className="description">Sign up and create your own learning path. Share it with the world
                     and help others find the most effective material on the internet.</h2>
-                    <a className="waves-effect waves-light btn-large green">SIGN UP NOW</a>
+                    <a className="waves-effect waves-light btn-large green" onClick={this.handleSignUp}>SIGN UP NOW</a>
                   </div>
                 </article>
               </div>
@@ -50,10 +50,16 @@ var IndexComponent = React.createClass({
       /* jshint ignore:end */
     );
   },
+
 	handleNewGuide: function(e){
 		e.preventDefault();
 		routeActions.setRoute('/createguide');
-	}
+	},
+
+  handleSignUp: function(e){
+    e.preventDefault();
+    routeActions.setRoute('/signup');
+  }
 });
 
 module.exports = IndexComponent;
