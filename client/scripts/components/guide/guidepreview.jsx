@@ -58,11 +58,10 @@ var GuidePreviewComponent = React.createClass({
                <VoteComponent votes={guide.votes} type="guide" index={this.props.index} onDownvote={this.handleDownvote} onUpvote={this.handleUpvote}/>
                </div>
 
-               <div className="favContainer">
+               <div className="guidePreviewFavsandCreator">
                 <span className="numFavs">Curated by {guide.creator}</span>
-                <span className="mdi-action-favorite-outline"></span>
-                <span className="numFavs">3</span>
-                <span className="numFavs">{guide.numFavs}</span>
+                <span className="favContainer mdi-action-favorite-outline"></span>
+                <span className="favContainer numFavs">2</span>
                </div>
             </div>
             </td>
