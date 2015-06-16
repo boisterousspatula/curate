@@ -24,8 +24,7 @@ var async = require('async');
 var readGuides = function (req, res, next) {
 	// need to find correct guide by id now
 	var guidesToSend = [];
-	Guide.findAll()
-		.then(function(guides) {
+	Guide.findAll().then(function(guides) {
 		if (!guides) {
 			return res.status(400).json({
 				errors: [{
@@ -35,62 +34,27 @@ var readGuides = function (req, res, next) {
 		}
 
 		async.each(guides, function(guide, next){
-			// console.log('in readGuides, guides:', guides);
-			// Find all votes associated with the guide
-			var guideObj = {};
-
-			//Get creator of guide
-			User.find({
-				where: {
-					id: guide.userId
-				}
-			})
-			.then(function(guideCreator){
-				console.log('guideCreator', guideCreator);
-				console.log('guideCreator email', guideCreator.email);
-				guideObj.creator = guideCreator.email;
-			});
-
-			//Get votes for a guide
-			GuideVote.findAll({
-				where: {
-					guideId: guide.id
-				}
-			})
-			.then(function(guideVotes){
-				var guideVoteTotal = 0;
-				for(var i = 0; i < guideVotes.length; i++) {
-					guideVoteTotal += guideVotes[i].val;
-				}
-
-				guideObj.votes = guideVoteTotal;
-				guideObj.id = guide.id;
-				guideObj.title = guide.title;
-				guideObj.description = guide.description;
-				guideObj.createdAt = guide.createdAt;
-				guideObj.updatedAt = guide.updatedAt;
-				guideObj.categoryId = guide.categoryId;
-				guideObj.userId = guide.userId;
-
-				//Get num of favorites, work in progress
-				//Find all entries from user-favorites table
-					//With each entry, find guides in guidesUserFavorites
-				UserFavorites.findAll({
-					include: [ { model: Guide } ]
+				var guideObj = {};
+				GuideVote.findAll({ // find all votes associated with the guide
+					where: {
+						guideId: guide.id
+					}
 				})
-				.then(function(userFavoriteEntries){
-					// console.log('in read guides, userFavoriteEntries:', userFavoriteEntries);
-					userFavoriteEntries.forEach(function(userFavoriteEntry){
-						console.log('each user favorite entry:', userFavoriteEntry);
-						//What is in the guidesuserFavorite prop?
-						console.log('userFavoriteEntry.dataValues.guides:', userFavoriteEntry.dataValues.guides);
+					.then(function(guideVotes){
+						var guideVoteTotal = 0;
+						for(var i = 0; i < guideVotes.length; i++) {
+							guideVoteTotal += guideVotes[i].val;
+						}
+						guideObj.votes = guideVoteTotal;
+						guideObj.id = guide.id;
+						guideObj.title = guide.title;
+						guideObj.description = guide.description;
+						guideObj.createdAt = guide.createdAt;
+						guideObj.updatedAt = guide.updatedAt;
+						guideObj.categoryId = guide.categoryId;
+						guideObj.userId = guide.userId;
 
-						// console.log('each favorited guide:', eachFavoritedGuide.guides);
-						// console.log('userFavoritedGuides entry guide, *guidesUserFavorite:', userFavoritedGuide.guides.guidesuserFavorite);
-					});
-				});
-
-						// readIndividualGuide's: find out if user viewing the guide has it previously favorited
+						// find out if user viewing the guide has it previously favorited
 						// UserFavorites.find({
 						//   where: {
 						//     userId: req.headers.userId || 3
@@ -126,32 +90,9 @@ var readGuides = function (req, res, next) {
 								guideObj.numFavs = numFavs;
 							});
 
-						// readIndividualGuide's get email
-						// .then(function() {
-						// 	// Find user email associated with the guide
-						// 	User.find({
-						// 		where: {
-						// 			id: guide.userId
-						// 		}
-						// 	})
-						// 	.then(function(user) {
-						// 		if (user && user.email) {
-						// 			console.log(user.email);
-						// 			individualGuide.userEmail = user.email;
-						// 		}
-						// 	});
-						// })
-
-						// User.find({
-						// 	where: {
-						// 		id: guide.userId
-						// 	}
-						// })
-						// 	.then(function)
-
-				guidesToSend.push(guideObj);
-				next();
-			});
+						guidesToSend.push(guideObj);
+						next();
+					});
 
 			}, function(err){
 				if (err) {
@@ -458,7 +399,7 @@ var createGuide = function(req, res, next) {
 	Guide.create({ //create guide entry
 		title: guideContract.title || "JY's Guide to JS",
 		description: guideContract.description || "If JY can JS so can you!",
-		userId: guideContract.userId || 1
+		userId: req.user.id || 1
 	})
 	.then(function(guide) {
 		//create section obj with guide id

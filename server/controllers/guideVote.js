@@ -56,7 +56,7 @@ var castVote = function(req, res, next) {
    GuideVote.findAll({
     where: {
 			// need to have front end send userId from localStorage
-			userId: req.headers.userid
+			userId: req.user.id
 		}
 	})
    .then(function(votes) {

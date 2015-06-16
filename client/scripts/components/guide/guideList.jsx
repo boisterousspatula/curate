@@ -77,3 +77,10 @@ var GuideListComponent = React.createClass({
 });
 
 module.exports = GuideListComponent;
+
+//<div className="input-field">
+//	<input id="search" type="search" required>
+//		<label for="search"><i className="mdi-action-search"></i></label>
+//		<i className="mdi-navigation-close"></i>
+//	</input>
+//</div>

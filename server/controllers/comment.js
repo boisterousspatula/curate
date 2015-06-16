@@ -13,7 +13,7 @@ var comment = function(req, res, next) {
 
   Comment.create({
     guideId: comment.guideId,
-    userId: req.headers.userid,
+    userId: req.user.id,
     message: comment.message
   })
 	.then(function(comment) {
