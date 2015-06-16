@@ -16,23 +16,32 @@ var IndexComponent = React.createClass({
           <div className="homepage">
 
             <section className="cover min-window-height">
-              <div className="crosshatch container min-window-height">
+              <div className="crosshatch containers min-window-height">
                 <article className="main-info">
                   <div className="inner">
-                    <h1 className="title">Crowd-sourced Curriculums</h1>
+                    <h1 className="title">Crowd-sourced curriculums</h1>
                     <h2 className="description">Sign up and create your own learning path. Share it with the world
                     and help others find the most effective material on the internet.</h2>
-                    <a className="waves-effect waves-light btn-large green">SIGN UP NOW</a>
+                    <a className="waves-effect waves-light btn-large green" onClick={this.handleSignUp}>SIGN UP NOW</a>
                   </div>
                 </article>
               </div>
             </section>
 
-            <section className="container">
+            <section className="containers guides">
               <GuideList/>
             </section>
 
             <section className="about-us">
+              <div className="crosshatch containers">
+                <article>
+                  <h1 className="title">Meet the Team</h1>
+                  <div className="john-star"></div>
+                  <div className="anuj-star"></div>
+                  <div className="vince-star"></div>
+                  <div className="david-star"></div>
+                </article>
+              </div>
             </section>
 
           </div>
@@ -41,10 +50,16 @@ var IndexComponent = React.createClass({
       /* jshint ignore:end */
     );
   },
+
 	handleNewGuide: function(e){
 		e.preventDefault();
 		routeActions.setRoute('/createguide');
-	}
+	},
+
+  handleSignUp: function(e){
+    e.preventDefault();
+    routeActions.setRoute('/signup');
+  }
 });
 
 module.exports = IndexComponent;
