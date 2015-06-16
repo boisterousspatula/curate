@@ -71,7 +71,7 @@ var ReadGuideSectionComponent = React.createClass({
             </div>
 
 					</div>
-          <span className='linkDesc'>{link.linkDescription}</span>
+          <div className='linkDesc'>{link.linkDescription}</div>
 				</div>
 			)
 		});
@@ -86,7 +86,7 @@ var ReadGuideSectionComponent = React.createClass({
 						<span className='linkTitle'>
               <a href={link.url}>{link.linkTitle}</a>
             </span>
-						<span className='linkDesc'>{link.linkDescription}</span>
+						<div className='linkDesc'>{link.linkDescription}</div>
             </div>
 					</div>
 				</div>
@@ -98,7 +98,7 @@ var ReadGuideSectionComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
-			<div>
+			<div className="section">
 				<div className='sectionHeader'>{section.title}</div>
 				<div className='sectionDesc'>{section.description}</div>
 
