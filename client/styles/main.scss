@@ -40,6 +40,12 @@ h4{
   /*background: #2e8f29;*/
   z-index: 1;
 }
+.aboutTitle{
+   font-family: Roboto-Light;
+  font-size: 350%;
+  color: #FFFFFF;
+
+}
 
 a {
   color: inherit;
@@ -591,30 +597,76 @@ h4 {
   }
 }
 
-.john-star {
-  background: url('../images/john-star.png');
-  height: 428px;
-  width: 293px;
-  position: relative;
-}
+.people{
+  font-weight: 400;
+  font-size: 1em;
+  color:#f6f6f6;
 
-.anuj-star {
-  background: url('../images/david-star.png');
-  height: 428px;
-  width: 293px;
-  position: relative;
-}
+  .name{
+    clear:both;
+    display:inline-block;
+    }
 
-.vince-star {
-  background: url('../images/vince-star.png');
-  height: 428px;
-  width: 293px;
-  position: relative;
-}
+  .john {
+    background: url('../images/john.jpg');
+    height: 300px;
+    width: 300px;
+    display: block;
+    float:left;
+    margin: 1% 0 1% 1.6%;
+    border: 1px solid transparent;
+    border-radius: 150px;
+  }
 
-.david-star {
-  background: url('../images/david-star.png');
-  height: 428px;
-  width: 293px;
-  position: relative;
+  .anuj {
+    background: url('../images/anuj.jpg');
+    height:300px;
+    width: 300px;
+    display: block;
+    float:left;
+    margin: 1% 0 1% 1.6%;
+     border: 1px solid transparent;
+    border-radius: 150px;
+  }
+
+  .vince {
+    background: url('../images/vince.jpg');
+    height:300px;
+    width: 300px;
+   display: block;
+    float:left;
+    margin: 1% 0 1% 1.6%;
+     border: 1px solid transparent;
+    border-radius: 150px;
+  }
+
+  .david {
+    background: url('../images/david.jpg');
+    height:300px;
+    width: 300px;
+    display: block;
+    float:left;
+    margin: 1% 0 1% 1.6%;
+     border: 1px solid transparent;
+    border-radius: 150px;
+  }
+
+  .social{
+    
+
+    .git{ 
+      background: url('../images/git.png');
+      height:50px;
+      width: 50px;
+
+    }
+    .linkd{
+      background: url('../images/linkd.png');
+      height:50px;
+      width: 50px;
+   }
+
+  }
+  
+
 }
