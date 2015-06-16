@@ -16,7 +16,7 @@ var IndexComponent = React.createClass({
           <div className="homepage">
 
             <section className="cover min-window-height">
-              <div className="crosshatch container min-window-height">
+              <div className="crosshatch containers min-window-height">
                 <article className="main-info">
                   <div className="inner">
                     <h1 className="title">Crowd-sourced curriculums</h1>
@@ -28,14 +28,14 @@ var IndexComponent = React.createClass({
               </div>
             </section>
 
-            <section className="container">
+            <section className="containers guides">
               <GuideList/>
             </section>
 
             <section className="about-us">
-              <div className="crosshatch container">
+              <div className="crosshatch containers">
                 <article>
-                  <h1 className="title">About Us</h1>
+                  <h1 className="title">Meet the Team</h1>
                   <div className="john-star"></div>
                   <div className="anuj-star"></div>
                   <div className="vince-star"></div>

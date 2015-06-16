@@ -31,8 +31,13 @@ h4{
   z-index: 1;
 }
 
+.guides {
+  background: #E0E0E0;
+}
+
 .about-us {
-  background: #4CAF50;
+  background: #1A3034;
+  /*background: #2e8f29;*/
   z-index: 1;
 }
 
@@ -63,7 +68,7 @@ section.cover div.container article div.inner {
   overflow:hidden;
 }
 
-.container {
+.containers {
   width: auto;
   margin: 0 0 0 17em;
   overflow: hidden;
@@ -102,7 +107,7 @@ section.cover div.container article div.inner {
 .title {
   font-family: Roboto-Light;
   font-size: 350%;
-  margin: 0;
+  /*margin: 0;*/
   color: #FFFFFF;
   /*line-height: 18px;*/
 }
@@ -111,6 +116,7 @@ section.cover div.container article div.inner {
   font-family: Roboto-Light;
   font-size: 170%;
   color: #678387;
+  width: 65%;
   /*letter-spacing: 1px;*/
   /*line-height: 85px;*/
 }
@@ -248,7 +254,7 @@ section.cover div.container article div.inner {
 .guideTitle {
   font-family: Roboto;
   font-weight: 100;
-  font-size: 76px;
+  font-size: 3.5em;
   color: #000000;
 }
 
@@ -291,7 +297,7 @@ section.cover div.container article div.inner {
   float: left;
   vertical-align: center;
   font-weight: 400;
-  font-size: 36px;
+  font-size: 1.75em;
   color: #379E59;
 
 }
@@ -378,7 +384,7 @@ section.cover div.container article div.inner {
 .callToAction {
   font-family: Roboto;
   font-weight: 100;
-  font-size: 52px;
+  font-size: 4em;
   color: #000000;
   margin-left: 45px;
   margin-bottom: 45px;
@@ -387,7 +393,7 @@ section.cover div.container article div.inner {
 h4 {
   font-family: Roboto;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.5em;
   color: #678387;
   margin-left: 25px;
 }
@@ -410,7 +416,8 @@ h4 {
 }
 
 .guideList {
-  margin-left: 98px;
+  margin-left: 0px;
+  margin-right: -98px;
 
   .guidePreviewContainer{
     position: relative;
@@ -586,6 +593,28 @@ h4 {
 
 .john-star {
   background: url('../images/john-star.png');
-  height: 50px;
-  width: 50px;
+  height: 428px;
+  width: 293px;
+  position: relative;
+}
+
+.anuj-star {
+  background: url('../images/david-star.png');
+  height: 428px;
+  width: 293px;
+  position: relative;
+}
+
+.vince-star {
+  background: url('../images/vince-star.png');
+  height: 428px;
+  width: 293px;
+  position: relative;
+}
+
+.david-star {
+  background: url('../images/david-star.png');
+  height: 428px;
+  width: 293px;
+  position: relative;
 }
