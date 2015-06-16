@@ -264,9 +264,7 @@ section.cover div.container article div.inner {
 
 /* section styles */
 
-.section {
 
-}
 
 .sectionHeader {
   font-weight: 300;
@@ -294,7 +292,10 @@ section.cover div.container article div.inner {
 }
 .linkDesc {
   font-weight: 300;
-  font-size: 20px;
+  font-size: 16px;
+  margin-left:10px;
+  width:95%;
+
 }
 .linkDetails{
   position: absolute;
