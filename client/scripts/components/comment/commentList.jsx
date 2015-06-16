@@ -8,28 +8,7 @@ var guideStore = require('../../stores/guides');
 var Comment = require('./comment.jsx');
 
 var CommentList = React.createClass({
-	//componentDidMount: function() {
-	//	knowRepoStore.addChangeListener(this._onChange);
-	//},
-	//
-	//componentWillUnmount: function() {
-	//	knowRepoStore.removeChangeListener(this._onChange);
-	//},
-	//
-	//_onChange: function(){
-	//	this.setState({
-	//		comments: guideStore.getCommentsBySection()
-	//	})
-	//},
-	//
-	//getInitialState: function () {
-	//	return {
-	//		guides : knowRepoActions.getComments()
-	//	};
-	//},
-
 	render: function() {
-		console.log('in comment', this.props.comments);
 		var commentNodes = this.props.comments.map(function(comment, index) {
 
 			return (

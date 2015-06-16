@@ -13,9 +13,9 @@ var Link = db.link;
  * @param linkId
  */
 var toggleUserFavorite = function(req, res, next) {
-  // console.log('UserID: ', req.headers.userid);
+  // console.log('UserID: ', req.user.id);
 
-  var userId = req.headers.userid || 3;
+  var userId = req.user.id || 3;
   var holdUserFavorites;
   var guideToDelete;
   // console.log('GuideId: ', req.body.guideId);
@@ -100,7 +100,7 @@ var readUserFavorites = function(req, res, next) {
 
   UserFavorites.findAll({
     where: {
-      userId:  req.headers.userid
+      userId:  req.user.id
     },
 		include: [
 			{ model: Guide },

@@ -19,7 +19,7 @@ var Comment = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<li className="collection-item avatar">
-				<i className="mdi-action-account-circle"></i>
+				<i className="mdi-action-account-circle circle green"></i>
 				<span name="userEmail">
 					{this.props.userEmail}
 				</span>

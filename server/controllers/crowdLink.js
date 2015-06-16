@@ -17,7 +17,7 @@ var CrowdLink = db.crowdLink;
 
 var addCrowdLink = function(req, res, next) {
   var url = req.body.url || 'http://learndatjs.com';
-  var userId = req.headers.userid || 1;
+  var userId = req.user.id || 1;
   var sectionId = req.body.sectionId || 2;
 
   CrowdLink.create({

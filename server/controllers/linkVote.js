@@ -56,7 +56,7 @@ var getLinkVoteByUser = function (req, res, next) {
 	LinkVote.findAll({
 		where: {
 			// need to have front end send userId from localStorage
-			userId: req.headers.userid
+			userId: req.user.id
 		}
 	})
 		.then(function(votes) {
