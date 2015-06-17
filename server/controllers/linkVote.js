@@ -11,8 +11,8 @@ var castVote = function(req, res, next) {
 
   LinkVote.find({
     where:{
-      linkId: req.body.linkId,
-      userId: req.body.userId
+      linkId: req.body.linkId || 1,
+      userId: req.body.userId || 1
     }
   })
   .success(function(vote){

@@ -41,6 +41,7 @@ var GuidePreviewComponent = React.createClass({
 
     var guide = this.props.guide;
 
+
     return (
       /* jshint ignore:start */
       <div>
@@ -59,7 +60,7 @@ var GuidePreviewComponent = React.createClass({
                </div>
 
                <div className="guidePreviewFavsandCreator">
-                <span className="numFavs">Curated by {guide.creator}</span>
+                <span className="numFavs">Curated by: {guide.creator}</span>
                 <span className="favContainer mdi-action-favorite-outline"></span>
                 <span className="favContainer numFavs">2</span>
                </div>

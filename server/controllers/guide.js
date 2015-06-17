@@ -53,6 +53,7 @@ var readGuides = function (req, res, next) {
 						guideObj.updatedAt = guide.updatedAt;
 						guideObj.categoryId = guide.categoryId;
 						guideObj.userId = guide.userId;
+						guideObj.creator = guide.username || 'anuj@skillit.com';
 
 						// find out if user viewing the guide has it previously favorited
 						// UserFavorites.find({

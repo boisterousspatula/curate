@@ -18,7 +18,7 @@ var castVote = function(req, res, next) {
   .success(function(vote){
     if(!vote) {
       GuideVote.create({
-        userId: req.body.userId,
+        userId: req.body.userId || 1,
         guideId: req.body.guideId,
         val: req.body.val
       });

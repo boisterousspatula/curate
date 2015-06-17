@@ -83,8 +83,9 @@ section.cover div.container article div.inner {
 }
 
 .inner {
-  /*max-width: 80em;*/
+  max-width: 75em;
   max-height:100vh;
+  /*padding: 100px;*/
 }
 
 .homepage {
@@ -122,7 +123,7 @@ section.cover div.container article div.inner {
   font-family: Roboto-Light;
   font-size: 170%;
   color: #678387;
-  width: 65%;
+  width: 75%;
   /*letter-spacing: 1px;*/
   /*line-height: 85px;*/
 }
