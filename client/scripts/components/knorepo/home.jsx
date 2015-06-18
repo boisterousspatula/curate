@@ -3,8 +3,8 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var routeActions = require('../../actions/routes');
-var CuratedList = require('../knorepo/curatedList.jsx');
-var FavoritesList = require('../knorepo/favoritesList.jsx');
+var CuratedList = require('./curatedList.jsx');
+var FavoritesList = require('./favoritesList.jsx');
 
 
 var HomeComponent = React.createClass({
