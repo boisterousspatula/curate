@@ -3,7 +3,7 @@
 var React = require('react');
 var DefaultLayout = require('../layouts/default.jsx');
 var routeActions = require('../../actions/routes');
-var CuratedList = require('./curatedList.jsx');
+var CuratedList = require('./CuratedList.jsx');
 var FavoritesList = require('./favoritesList.jsx');
 
 
