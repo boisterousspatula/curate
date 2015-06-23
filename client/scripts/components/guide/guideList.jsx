@@ -63,8 +63,14 @@ var GuideListComponent = React.createClass({
 
 		return (
 			/* jshint ignore:start */
-			<div className="container guideList">
+			<div className="guideList">
 				<div className="callToAction">Find a learning path</div>
+				<div className="input-field">
+					<input id="search" type="search" required>
+						<label for="search"><i className="mdi-action-search"></i></label>
+						<i className="mdi-navigation-close"></i>
+					</input>
+				</div>
 				<h4>FEATURED GUIDES</h4>
 				<table>
 					{guideList}
@@ -78,9 +84,3 @@ var GuideListComponent = React.createClass({
 
 module.exports = GuideListComponent;
 
-//<div className="input-field">
-//	<input id="search" type="search" required>
-//		<label for="search"><i className="mdi-action-search"></i></label>
-//		<i className="mdi-navigation-close"></i>
-//	</input>
-//</div>

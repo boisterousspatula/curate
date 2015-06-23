@@ -13,7 +13,7 @@ var HomeComponent = React.createClass({
 		return (
 			/* jshint ignore:start */
 			<DefaultLayout>
-			<div className="container">
+			<div className="containers">
 				<div className="guideList">
 					<div className="callToAction">Knowledge Repository</div>
 					<CuratedList/>
