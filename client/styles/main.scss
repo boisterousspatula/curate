@@ -137,7 +137,8 @@ section.cover div.container article div.inner {
 }
 
 .logo {
-  margin-top: 15px;
+  margin:10% 20%;
+  width: 50%;
   content:url(../images/skilletlogo3.png);
 }
 
@@ -256,6 +257,7 @@ section.cover div.container article div.inner {
   border-bottom: 1px solid #979797;
   width: 100%;
   margin-bottom: 15px;
+  clear: both;
 }
 
 .guideTitle {
@@ -424,7 +426,7 @@ h4 {
 
 .guideList {
   margin-left: 0px;
-  margin-right: -98px;
+  margin-right: 0px;
 
   .guidePreviewContainer{
     position: relative;
@@ -524,13 +526,15 @@ h4 {
 
 
   .guideTitle{
-    margin-left: 20px;
-  }
+    margin-left: 60px;
+    margin-top: -47px;
+    float: left;
+   }
     .submittedBy {
       display: inherit;
-      position: relative;
+      float:left;
       left: 60px;
-      /*top: -18px;*/
+      margin-left: 15px;
 
       .guideCreatorName {
         font-weight: 600;

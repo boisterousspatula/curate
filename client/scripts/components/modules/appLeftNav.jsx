@@ -42,9 +42,9 @@ var AppLeftNav = React.createClass({
       // marginRight: Spacing.desktopGutter
       // marginRight: '20px'
       // paddingTop: '0px'
-      marginLeft: '10%',
-      marginTop: '15%',
-      marginBottom: '15%'
+      //marginLeft: '10%',
+      //marginTop: '15%',
+      //marginBottom: '15%'
 
     };
   },
