@@ -10,3 +10,4 @@ client/bower_components
 
 .idea
 test/scripts/bundle.js
+server/config/secrets.js
